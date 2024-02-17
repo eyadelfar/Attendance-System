@@ -1,0 +1,13 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "bulid": "node index.js"
+  },
+  "keywords": [],
+  "author": "MRagab",
+  "license": "ISC"
+}
