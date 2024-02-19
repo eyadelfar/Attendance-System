@@ -357,16 +357,17 @@ VALUES
 -- Insert 10 more different rows into attendance table
 INSERT INTO attendance (course_id, session_id, timestamp, status, student_id)
 VALUES 
-    (14, 3, '2025-01-01 09:00:00', 'Present', 13),
-    (14, 3, '2025-01-01 09:00:00', 'Absent', 14),
-    (15, 3, '2025-01-01 09:00:00', 'Present', 15),
-    (15, 3, '2025-01-01 09:00:00', 'Present', 16),
-    (16, 3, '2025-01-01 09:00:00', 'Absent', 17),
-    (16, 3, '2025-01-01 09:00:00', 'Present', 18),
-    (17, 3, '2025-01-01 09:00:00', 'Present', 19),
-    (17, 3, '2025-01-01 09:00:00', 'Absent', 20),
-    (18, 3, '2025-01-01 09:00:00', 'Present', 21);
+    (14, 3, '2025-01-01', 'Present', 13),
+    (14, 3, '2025-01-01', 'Absent', 14),
+    (15, 3, '2025-01-01', 'Present', 15),
+    (15, 3, '2025-01-01', 'Present', 16),
+    (16, 3, '2025-01-01', 'Absent', 17),
+    (16, 3, '2025-01-01', 'Present', 18),
+    (17, 3, '2025-01-01', 'Present', 19),
+    (17, 3, '2025-01-01', 'Absent', 20),
+    (18, 3, '2025-01-01', 'Present', 21);
 
+desc attendance;
 select * from attendance;
 select * from student_details;
 select * from course_allotment;
