@@ -1,7 +1,9 @@
 // Packages
 const express = require("express");
-const app = express();
 const cors = require("cors");
+const mysql = require('mysql');
+
+const app = express();
 
 // Middlewares
 app.use(cors());
@@ -15,15 +17,8 @@ const connectDB = require('./db/dbConnection');
 // APIs
 
 // End Points
-app.get('/',async (req, res)=>{
-    try{
-        console.log("SERVER IS RUNINNG AT: "+4000);
-    }catch(err){
-        console.log(err);
-        res.status(500).json({err: err});
-    }
-});
+
 // Run
-app.listen(port,()=>{
-    console.log(`Listening at ${port}..!`)
+app.listen(4000,"localhost", ()=>{
+    console.log(`SERVER IS RUNINNG AT:${port}`);
 });
