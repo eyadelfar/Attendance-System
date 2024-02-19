@@ -374,3 +374,4 @@ select * from course_details;
 select * from course_registration;
 select * from faculty_details;
 select * from session_details;
+
