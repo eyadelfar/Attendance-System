@@ -9,7 +9,7 @@ const app = express();
 app.use(cors());
 
 // Port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 2002;
 
 // Connect DB
 const connectDB = require('./db/dbConnection');
@@ -19,6 +19,6 @@ const connectDB = require('./db/dbConnection');
 // End Points
 
 // Run
-app.listen(4000,"localhost", ()=>{
-    console.log(`SERVER IS RUNINNG AT:${port}`);
+app.listen(port,"localhost", ()=>{
+    console.log(`SERVER IS RUNINNG AT: ${port}`);
 });
