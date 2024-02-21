@@ -2,10 +2,14 @@
 const express = require("express");
 const cors = require("cors");
 const mysql = require('mysql');
-
-const app = express();
+const bodyParser = require('body-parser');
 
 // Middlewares
+const app = express();
+
+app.use(express.json());
+// app.use(helmet());
+app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 // Port
@@ -32,6 +36,9 @@ app.use("/professors",professorsRouter);
 app.use("/sessions",sessionsRouter);
 app.use("/settings",settingsRouter);
 
+app.get('/test', (req, res) => {
+    console.log(req.body);
+});
 // Run
 app.listen(port,"localhost", ()=>{
     console.log(`SERVER IS RUNINNG AT: ${port}`);
