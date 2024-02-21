@@ -2,7 +2,7 @@ const router = require('express').Router();
 const {body, validationResult} = require("express-validator");
 
 // database connection
-const conn = require ("../db/dbConnection");
+const pool = require ("../db/dbConnection");
 
 // used classes
 const User = require ('../models/user');

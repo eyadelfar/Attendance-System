@@ -1,5 +1,5 @@
 // database connection
-const conn = require ("../db/dbConnection");
+const pool = require ("../db/dbConnection");
 
 // authentication
 const authentication =async (req, res, next) =>{
