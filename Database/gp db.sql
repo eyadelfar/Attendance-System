@@ -18,7 +18,7 @@ VALUES (2024, 'Spring', '2024-01-10', '2024-05-20', 3);
 
 
 INSERT INTO student_details (roll_no, name, phone_no)
-VALUES ('S003', 'Charlie', '555-555-5555');
+VALUES ('S023', 'Bola', '555-999-5555');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
@@ -27,7 +27,8 @@ VALUES (2, 1);
 INSERT INTO course_allotment (faculty_id, course_id, session_id)
 VALUES (3, 3, 1);
 
-
+alter table course_allotment
+add column allotment_date date;
 desc attendance;
 select * from attendance;
 select * from student_details;
@@ -289,4 +290,6 @@ CREATE TABLE data_changes (
     event_type ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
     event_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+
 
