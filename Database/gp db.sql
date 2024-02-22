@@ -18,7 +18,7 @@ VALUES (2024, 'Spring', '2024-01-10', '2024-05-20', 3);
 
 
 INSERT INTO student_details (roll_no, name, phone_no)
-VALUES ('S023', 'Bola', '555-999-5555');
+VALUES ('S024', 'swilam', '555-699-5555');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
@@ -293,3 +293,4 @@ CREATE TABLE data_changes (
 
 
 
+insert into
