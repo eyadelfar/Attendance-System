@@ -3,20 +3,23 @@ const express = require("express");
 const cors = require("cors");
 const mysql = require('mysql');
 const bodyParser = require('body-parser');
+const helmet = require('helmet');
 
 // Middlewares
 const app = express();
 
 app.use(express.json());
-// app.use(helmet());
+app.use(helmet());
 app.use(express.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 app.use(cors());
 
 // Port
-const port = process.env.PORT || 2002;
+const port = process.env.PORT || 4000;
 
 // Connect DB
-const connectDB = require('./db/dbConnection');
+const connect = require('./db/dbConnection');
 
 // APIs
 const loginRouter = require('./routes/loginRouter');
@@ -36,9 +39,29 @@ app.use("/professors",professorsRouter);
 app.use("/sessions",sessionsRouter);
 app.use("/settings",settingsRouter);
 
-app.get('/test', (req, res) => {
-    console.log(req.body);
+
+// Test
+const User = require ('./models/user');
+const DBQuery = require ('./db/dbQuery');
+
+app.post('/test', async(req, res) => {
+
+    try{
+        let Q = new DBQuery();
+        await Q.select('student_details');
+        await Q.orderBy('name');
+
+        let results = await Q.execute();
+
+        console.log(results);
+        res.send(results);
+            
+    } catch (error){
+        console.error(error);
+        res.status(500).json('server error');
+    }
 });
+
 // Run
 app.listen(port,"localhost", ()=>{
     console.log(`SERVER IS RUNINNG AT: ${port}`);
