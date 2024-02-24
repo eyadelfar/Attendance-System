@@ -1,9 +1,11 @@
-// database connection
-const pool = require ("../db/dbConnection");
-
 module.exports = class User{
 
-    constructor(){};
+    constructor(){
+        this.userID;
+        this.name;
+        this.username;
+        this.password;
+        this.phoneNo;
+    };
 
-    
 };

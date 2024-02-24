@@ -1,7 +1,7 @@
 // Packages
 const express = require("express");
 const cors = require("cors");
-const mysql = require('mysql');
+const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
@@ -41,17 +41,15 @@ app.use("/settings",settingsRouter);
 
 
 // Test
-const User = require ('./models/user');
+const UserController = require ('./controllers/userController');
 const DBQuery = require ('./db/dbQuery');
 
 app.post('/test', async(req, res) => {
 
     try{
-        let Q = new DBQuery();
-        await Q.select('student_details');
-        await Q.orderBy('name');
+        let user = new UserController();
 
-        let results = await Q.execute();
+        let results = await user.getOneUserByUsername(req.body.username);
 
         console.log(results);
         res.send(results);
