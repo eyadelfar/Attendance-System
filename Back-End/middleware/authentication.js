@@ -1,12 +1,12 @@
 // database connection
-const pool = require ("../db/dbConnection");
+const connect = require ("../db/dbConnection");
 
 // authentication
 const authentication =async (req, res, next) =>{
     try{
         
         next();
-    }catch(err){
+    }catch(error){
         
     }
 };

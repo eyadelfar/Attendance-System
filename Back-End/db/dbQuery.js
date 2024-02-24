@@ -25,12 +25,9 @@ module.exports = class DBQuery{
 
     async update(tableName, columns = {}) {
         let updates = [];
-        let values = [];
-
         for (let column in columns) {
             updates.push(`${column} = '${columns[column]}'`);
         }
-
         this.query = `UPDATE ${tableName} SET ${updates.join(', ')}`;
         return this;
     }

@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // database connection
-const pool = require ("../db/dbConnection");
+const connect = require ("../db/dbConnection");
 
 // used classes
 

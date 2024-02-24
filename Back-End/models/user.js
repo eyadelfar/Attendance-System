@@ -1,11 +1,12 @@
 module.exports = class User{
 
     constructor(){
-        this.userID;
+        // this.user_id;
         this.name;
-        this.username;
-        this.password;
-        this.phoneNo;
+        // this.username;
+        this.roll_no;
+        // this.password;
+        this.phone_no;
     };
 
 };

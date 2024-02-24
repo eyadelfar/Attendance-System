@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 // database connection
-const pool = require ("../db/dbConnection");
+const connect = require ("../db/dbConnection");
 
 // used classes
 
@@ -10,8 +10,8 @@ router.get("/",
     async (req, res) => {
         try {
             res.status(200).send("ok");
-        }catch (err) {
-            res.status(500).json({err:err});
+        }catch (error) {
+            res.status(500).json({error:error});
         }
 });
 

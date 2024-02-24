@@ -43,20 +43,29 @@ app.use("/settings",settingsRouter);
 // Test
 const UserController = require ('./controllers/userController');
 const DBQuery = require ('./db/dbQuery');
+const User = require("./models/user");
+const Student = require("./models/student");
 
 app.post('/test', async(req, res) => {
-
     try{
-        let user = new UserController();
+        let userC = new UserController();
+        let student = new Student();
+        student = {
+            name: req.body.name,
+            roll_no: req.body.roll_no,
+            phone_no: req.body.phone_no
+        }
+        let results = await userC.addStudent(student);
 
-        let results = await user.getOneUserByUsername(req.body.username);
+        if(results.error)
+            throw results.error.sqlMessage
 
         console.log(results);
-        res.send(results);
+        res.send('Added Successfully');
             
     } catch (error){
         console.error(error);
-        res.status(500).json('server error');
+        res.status(500).json(error);
     }
 });
 
