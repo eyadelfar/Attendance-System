@@ -4,32 +4,45 @@ let dbQuery = new DBQuery();
 
 // used classes
 const User = require ('../models/user');
-let user= new User();
+const Student = require("../models/student");
+const Faculty = require("../models/faculty");
+
+// let user= new User();
+// let student = new Student();
+// let faculty = new Faculty();
 
 //export
 module.exports = class UserController{
     constructor(){};
 
-    async getOneUserByUsername(username){
-        // search in students
-        await dbQuery.select('student_details');
-        await dbQuery.where('roll_no',username);
-        let results = await dbQuery.execute();
+    async getUserByUsername(username){
+        try{
+            // search in students
+            await dbQuery.select('student_details');
+            await dbQuery.where('roll_no',username);
+            let results = await dbQuery.execute();
 
-        // search in faculty
-        if(!results.length){
-            await dbQuery.select('faculty_details');
-            await dbQuery.where('username',username);
-            results = await dbQuery.execute();
+            // search in faculty
+            if(!results.length){
+                await dbQuery.select('faculty_details');
+                await dbQuery.where('username',username);
+                results = await dbQuery.execute();
+            }
+            return results; 
+        }catch(error){
+            return error;
         }
-
-        return results; 
+        
     };
 
     async getAllStudents(){
-        await dbQuery.select('student_details');
-        let results = await dbQuery.execute();
-        return results; 
+        try{
+            await dbQuery.select('student_details');
+            let results = await dbQuery.execute();
+            return results; 
+        }catch(error){
+            return error;
+        }
     };
 
     /*
@@ -41,11 +54,15 @@ module.exports = class UserController{
     };
     */
     async getStudentsByYear(year){
-        await dbQuery.select('student_details');
-        await dbQuery.where('year',year);
-        let results = await dbQuery.execute();
-        return results; 
-    }
+        try{
+            await dbQuery.select('student_details');
+            await dbQuery.where('year',year);
+            let results = await dbQuery.execute();
+            return results; 
+        }catch(error){
+            return error;
+        }
+    };
 
     async addStudent(newUser){
         try{
@@ -67,14 +84,31 @@ module.exports = class UserController{
             return {error:error};
         }
         
-    }
+    };
 
-    async deleteStudent(){
-        await dbQuery.delete('student_details');
-        await dbQuery.where(filter,value);
-        let results = await dbQuery.execute();
-        return results.affectedRows; 
-    }
+    async deleteStudent(student){
+        try{
+            await dbQuery.select('student_details');
+            await dbQuery.where('roll_no',student.roll_no);
+            let result = await dbQuery.execute();
+            console.log(result);
+
+            if(!result.length){
+                result.exist = 0;
+                result.message = 'USER NOT FOUND !';
+                return result;
+            }
+            else{
+                await dbQuery.delete('student_details');
+                await dbQuery.where('roll_no',student.roll_no);
+                result = await dbQuery.execute();
+                result.message = 'USER DELETED...';
+                return result; 
+            }
+        }catch(error){
+            return error;
+        }
+    };
 
     async editStudent(oldStudent,newStudent){
         try{
@@ -100,12 +134,10 @@ module.exports = class UserController{
                 await dbQuery.where('roll_no',oldStudent.roll_no);
                 result = await dbQuery.execute();
                 result.message = 'USER UPDATED...';
-
                 return result; 
             }
-
         }catch(error){
             return {error:error};
         }
-    }
+    };
 };

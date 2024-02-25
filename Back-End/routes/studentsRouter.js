@@ -80,5 +80,28 @@ router.put("/",
         }
     }
 );
+
+router.delete("/",
+    async(req,res) => {
+        try{
+            let studentController = new UserController();
+            let student = new Student();
+            student.roll_no = req.body.roll_no;
+
+            let result = await studentController.deleteStudent(student);
+            if(!result.exist){
+                console.log(result.message);
+                res.status(400).json(result.message);
+            }
+            else{
+                console.log(result);
+                res.status(200).json(result.message);
+            }
+        }catch(error){
+            console.log();
+            res.status(500).send(error);
+        }
+    }
+);
 //export
 module.exports = router;

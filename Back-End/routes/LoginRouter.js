@@ -22,7 +22,7 @@ router.post("/",
 
     // login with id & password
     let userController = new UserController();
-    let user = await userController.getOneUserByUsername(
+    let user = await userController.getUserByUsername(
       req.body.username
     );
 
