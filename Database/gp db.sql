@@ -35,6 +35,9 @@ add column level int;
 ALTER TABLE session_details
 CHANGE end_date session_time datetime;
 
+ALTER TABLE student_details
+CHANGE name fullname varchar(255);
+
 desc attendance;
 select * from attendance;
 select * from student_details;
