@@ -28,7 +28,6 @@ const coursesRouter = require('./routes/coursesRouter');
 const studentsRouter = require('./routes/studentsRouter');
 const professorsRouter = require('./routes/professorsRouter');
 const sessionsRouter = require('./routes/sessionsRouter');
-const settingsRouter = require('./routes/settingsRouter');
 
 // End Points
 app.use("/login",loginRouter);
@@ -37,7 +36,6 @@ app.use("/courses",coursesRouter);
 app.use("/students",studentsRouter);
 app.use("/professors",professorsRouter);
 app.use("/sessions",sessionsRouter);
-app.use("/settings",settingsRouter);
 
 
 // Test

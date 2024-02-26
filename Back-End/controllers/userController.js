@@ -87,7 +87,7 @@ module.exports = class UserController{
     async addStudent(newUser){
         try{
             await dbQuery.select('student_details');
-            await dbQuery.where('roll_no',newUser.roll_no)
+            await dbQuery.where('student_id',newUser.student_id)
             let check = await dbQuery.execute();
             if(check.length){
                 check.exist = 1;
@@ -110,7 +110,7 @@ module.exports = class UserController{
     async deleteStudent(student){
         try{
             await dbQuery.select('student_details');
-            await dbQuery.where('roll_no',student.roll_no);
+            await dbQuery.where('student_id',student.student_id);
             let result = await dbQuery.execute();
             console.log(result);
 
@@ -121,7 +121,7 @@ module.exports = class UserController{
             }
             else{
                 await dbQuery.delete('student_details');
-                await dbQuery.where('roll_no',student.roll_no);
+                await dbQuery.where('student_id',student.student_id);
                 result = await dbQuery.execute();
                 result.exist = 1;
                 result.message = 'STUDENT DELETED...';
@@ -135,7 +135,7 @@ module.exports = class UserController{
     async editStudent(oldStudent,newStudent){
         try{
             await dbQuery.select('student_details');
-            await dbQuery.where('roll_no',oldStudent.roll_no);
+            await dbQuery.where('student_id',oldStudent.student_id);
             let result = await dbQuery.execute();
             console.log(result);
 
@@ -147,13 +147,14 @@ module.exports = class UserController{
             else{
                 oldStudent = result[0];
 
-                newStudent.name = newStudent.name ? newStudent.name : oldStudent.name;
+                newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
                 newStudent.roll_no = newStudent.roll_no ? newStudent.roll_no : oldStudent.roll_no;
-                // newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
+                newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
                 newStudent.phone_no = newStudent.phone_no ? newStudent.phone_no : oldStudent.phone_no;
+                newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
 
                 await dbQuery.update('student_details',newStudent);
-                await dbQuery.where('roll_no',oldStudent.roll_no);
+                await dbQuery.where('student_id',oldStudent.student_id);
                 result = await dbQuery.execute();
                 result.exist = 1;
                 result.message = 'STUDENT UPDATED...';
@@ -260,7 +261,6 @@ module.exports = class UserController{
                 newProfessor.fullname = newProfessor.fullname ? newProfessor.fullname : oldProfessor.fullname;
                 newProfessor.username = newProfessor.username ? newProfessor.username : oldProfessor.username;
                 newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
-                // newProfessor.phone_no = newProfessor.phone_no ? newProfessor.phone_no : oldProfessor.phone_no;
 
                 await dbQuery.update('faculty_details',newProfessor);
                 await dbQuery.where('username',oldProfessor.username);

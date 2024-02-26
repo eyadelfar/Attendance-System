@@ -77,9 +77,15 @@ router.put("/",
             let professorOld = new Professor();
             let professorNew = new Professor();
 
-            professorOld.username = req.body.username;
-            professorNew.fullname =  req.body.fullname;
-            professorNew.password =  req.body.password;
+            professorOld.faculty_id = req.body.faculty_id;
+            
+            if(req.body.username)
+                professorNew.username = req.body.username;
+            if(req.body.fullname)
+                professorNew.fullname = req.body.fullname;
+            if(req.body.password)
+                professorNew.password = req.body.password;
+            
 
 
             let result = await professorController.editProfessor(professorOld,professorNew);
