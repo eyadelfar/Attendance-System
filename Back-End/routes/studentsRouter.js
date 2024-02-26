@@ -26,6 +26,26 @@ router.get("/",
     }
 );
 
+router.get("/student",
+    async (req,res) => {
+        try{
+            let studentController = new UserController();
+            let result = await studentController.getStudentBy('roll_no',req.body.roll_no);
+            if(!result.exist){
+                console.log(result.message);
+                res.status(200).json(result.message);
+            }
+            else{
+                console.log(result[0]);
+                res.status(200).json(result[0]);
+            }
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
 // add student
 router.post("/",
     async (req, res) => {
