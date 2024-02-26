@@ -5,7 +5,7 @@ let dbQuery = new DBQuery();
 // used classes
 const User = require ('../models/user');
 const Student = require("../models/student");
-const Faculty = require("../models/faculty");
+const Faculty = require("../models/professor");
 
 // let user= new User();
 // let student = new Student();
@@ -164,6 +164,26 @@ module.exports = class UserController{
         }
     };
 
+    async getProfessorBy(column,value){
+        try{
+            await dbQuery.select('faculty_details');
+            await dbQuery.where(column,value);
+            let result = await dbQuery.execute();
+
+            if(!result.length){
+                result.exist = 0;
+                result.message = 'PROFESSOR NOT FOUND !';
+                return result;
+            }
+            else{
+                result.exist = 1;
+                return result;
+            }
+        }catch(error){
+            return error;
+        }
+    };
+    
     async getAllProfessors(){
         try{
             await dbQuery.select('faculty_details');

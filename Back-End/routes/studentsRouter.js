@@ -1,13 +1,8 @@
 const router = require('express').Router();
 
-// database connection
-const connect = require ("../db/dbConnection");
-
 // used classes
-const User = require('../models/user');
 const UserController = require('../controllers/userController');
 const Student = require('../models/student');
-
 
 // end points
 
@@ -26,6 +21,7 @@ router.get("/",
     }
 );
 
+// get one student 
 router.get("/student",
     async (req,res) => {
         try{
@@ -123,5 +119,6 @@ router.delete("/",
         }
     }
 );
+
 //export
 module.exports = router;
