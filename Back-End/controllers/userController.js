@@ -7,10 +7,6 @@ const User = require ('../models/user');
 const Student = require("../models/student");
 const Faculty = require("../models/professor");
 
-// let user= new User();
-// let student = new Student();
-// let faculty = new Faculty();
-
 //export
 module.exports = class UserController{
     constructor(){};
@@ -122,29 +118,37 @@ module.exports = class UserController{
     async editStudent(oldStudent,newStudent){
         try{
             let result = await this.getStudentsBy('student_id',oldStudent.student_id);
-            console.log(result);
-
             if(!result.length){
                 result.exist = 0;
                 result.message = 'STUDENT NOT FOUND !';
                 return result;
             }
-            else{
-                oldStudent = result[0];
 
-                newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
-                newStudent.roll_no = newStudent.roll_no ? newStudent.roll_no : oldStudent.roll_no;
-                newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
-                newStudent.phone_no = newStudent.phone_no ? newStudent.phone_no : oldStudent.phone_no;
-                newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
-
-                await dbQuery.update('student_details',newStudent);
-                await dbQuery.where('student_id',oldStudent.student_id);
-                result = await dbQuery.execute();
-                result.exist = 1;
-                result.message = 'STUDENT UPDATED...';
-                return result; 
+            if(newStudent.roll_no){
+                let result = await this.getStudentsBy('roll_no',newStudent.roll_no);
+                
+                if(result.length){
+                    result.exist = 0;
+                    result.message = 'STUDENT ALREADY EXIST ';
+                    return result;
+                }
             }
+
+            oldStudent = result[0];
+
+            newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
+            newStudent.roll_no = newStudent.roll_no ? newStudent.roll_no : oldStudent.roll_no;
+            newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
+            newStudent.phone_no = newStudent.phone_no ? newStudent.phone_no : oldStudent.phone_no;
+            newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
+
+            await dbQuery.update('student_details',newStudent);
+            await dbQuery.where('student_id',oldStudent.student_id);
+            result = await dbQuery.execute();
+            result.exist = 1;
+            result.message = 'STUDENT UPDATED...';
+            return result; 
+            
         }catch(error){
             return {error:error};
         }
@@ -227,28 +231,34 @@ module.exports = class UserController{
 
     async editProfessor(oldProfessor,newProfessor){
         try{
-            let result = await this.getProfessorBy('faculty_id',oldProfessor.faculty_id);
-            console.log(result);
-
+            let result = await this.getProfessorBy('faculty_id',oldProfessor.faculty_id);            
             if(!result.length){
                 result.exist = 0;
                 result.message = 'PROFESSOR NOT FOUND !';
                 return result;
             }
-            else{
-                oldProfessor = result[0];
 
-                newProfessor.fullname = newProfessor.fullname ? newProfessor.fullname : oldProfessor.fullname;
-                newProfessor.username = newProfessor.username ? newProfessor.username : oldProfessor.username;
-                newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
-
-                await dbQuery.update('faculty_details',newProfessor);
-                await dbQuery.where('faculty_id',oldProfessor.faculty_id);
-                result = await dbQuery.execute();
-                result.exist = 1;
-                result.message = 'PROFESSOR UPDATED...';
-                return result; 
+            if(newProfessor.username){
+                let result = await this.getProfessorBy('username',newProfessor.username);
+                if(result.length){
+                    result.exist = 0;
+                    result.message = 'PROFESSOR ALREADY EXIST ';
+                    return result;
+                }
             }
+            oldProfessor = result[0];
+
+            newProfessor.fullname = newProfessor.fullname ? newProfessor.fullname : oldProfessor.fullname;
+            newProfessor.username = newProfessor.username ? newProfessor.username : oldProfessor.username;
+            newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
+
+            await dbQuery.update('faculty_details',newProfessor);
+            await dbQuery.where('faculty_id',oldProfessor.faculty_id);
+            result = await dbQuery.execute();
+            result.exist = 1;
+            result.message = 'PROFESSOR UPDATED...';
+            return result;
+            
         }catch(error){
             return {error:error};
         }

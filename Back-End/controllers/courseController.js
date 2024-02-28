@@ -41,9 +41,7 @@ module.exports = class CourseController{
     
     async getCoursesByProfessor(profesor){
         try{
-            await dbQuery.select('course_details');
-            await dbQuery.where('faculty_id',profesor.profesor_id);
-            let results = await dbQuery.execute();
+            let results = await this.getCourseBy('faculty_id',profesor.profesor_id);
             return results; 
         }catch(error){
             return error;
@@ -52,9 +50,7 @@ module.exports = class CourseController{
 
     async addCourse(newCourse){
         try{
-            await dbQuery.select('course_details');
-            await dbQuery.where('course_id',newCourse.course_id);
-            let check = await dbQuery.execute();
+            let check = await this.getCourseBy('code',newCourse.code);
             if(check.length){
                 check.exist = 1;
                 check.message = 'COURSE ALREADY EXIST !';
@@ -75,9 +71,7 @@ module.exports = class CourseController{
 
     async deleteCourse(course){
         try{
-            await dbQuery.select('course_details');
-            await dbQuery.where('course_id',course.course_id);
-            let result = await dbQuery.execute();
+            let result = await this.getCourseBy('course_id',course.course_id);
             console.log(result);
 
             if(!result.length){
@@ -100,30 +94,34 @@ module.exports = class CourseController{
 
     async editCourse(oldCourse,newCourse){
         try{
-            await dbQuery.select('course_details');
-            await dbQuery.where('course_id',oldCourse.course_id);
-            let result = await dbQuery.execute();
-            console.log(result);
+            let result = await this.getCourseBy('course_id',oldCourse.course_id);
 
             if(!result.length){
                 result.exist = 0;
                 result.message = 'COURSE NOT FOUND !';
                 return result;
             }
-            else{
-                oldCourse = result[0];
-
-                newCourse.code = newCourse.code ? newCourse.code : oldCourse.code;
-                newCourse.title = newCourse.title ? newCourse.title : oldCourse.title;
-                newCourse.credit = newCourse.credit ? newCourse.credit : oldCourse.credit;
-
-                await dbQuery.update('course_details',newCourse);
-                await dbQuery.where('course_id',oldCourse.course_id);
-                result = await dbQuery.execute();
-                result.exist = 1;
-                result.message = 'COURSE UPDATED...';
-                return result; 
+            if(newCourse.code){
+                let result = await this.getCourseBy('code',newCourse.code);
+                if(result.length){
+                    result.exist = 0;
+                    result.message = 'COURSE ALREADY EXIST ';
+                    return result;
+                }
             }
+            oldCourse = result[0];
+
+            newCourse.code = newCourse.code ? newCourse.code : oldCourse.code;
+            newCourse.title = newCourse.title ? newCourse.title : oldCourse.title;
+            newCourse.credit = newCourse.credit ? newCourse.credit : oldCourse.credit;
+
+            await dbQuery.update('course_details',newCourse);
+            await dbQuery.where('course_id',oldCourse.course_id);
+            result = await dbQuery.execute();
+            result.exist = 1;
+            result.message = 'COURSE UPDATED...';
+            return result; 
+        
         }catch(error){
             return {error:error};
         }
