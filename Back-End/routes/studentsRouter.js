@@ -26,13 +26,13 @@ router.get("/student",
         try{
             let studentController = new UserController();
             let result = await studentController.getStudentsBy('student_id',req.body.student_id);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(200).json(result.message);
-            }
-            else{
+            if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         }catch(error){
             console.log(error);
@@ -56,13 +56,13 @@ router.post("/",
             }
             let result = await studentController.addStudent(student);
     
-            if(result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -93,13 +93,13 @@ router.put("/",
                 studentNew.password = req.body.password;
 
             let result = await studentController.editStudent(studentOld,studentNew);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -116,13 +116,13 @@ router.delete("/",
             student.student_id = req.body.student_id;
 
             let result = await studentController.deleteStudent(student);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         }catch(error){
             console.log();

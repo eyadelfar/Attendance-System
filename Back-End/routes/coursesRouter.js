@@ -11,6 +11,7 @@ router.get("/",
         try{
             let courseController = new CourseController();
             let results = await courseController.getAllCourses();
+            
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -28,7 +29,7 @@ router.get("/course",
             let result = await courseController.getCourseBy('course_id',req.body.course_id);
             if(!result.exist){
                 console.log(result.message);
-                res.status(200).json(result.message);
+                res.status(400).json(result.message);
             }
             else{
                 console.log(result[0]);
@@ -54,13 +55,13 @@ router.post("/",
             }
             let result = await courseController.addCourse(course);
     
-            if(result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -87,13 +88,13 @@ router.put("/",
                 courseNew.credit = req.body.credit;
 
             let result = await courseController.editCourse(courseOld,courseNew);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -110,13 +111,13 @@ router.delete("/",
             course.course_id = req.body.course_id;
 
             let result = await courseController.deleteCourse(course);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         }catch(error){
             console.log();

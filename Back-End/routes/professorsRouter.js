@@ -26,13 +26,13 @@ router.get("/professor",
         try{
             let professorController = new UserController();
             let result = await professorController.getProfessorBy('faculty_id',req.body.faculty_id);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(200).json(result.message);
-            }
-            else{
+            if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         }catch(error){
             console.log(error);
@@ -54,13 +54,13 @@ router.post("/",
             }
             let result = await professorController.addProfessor(professor);
     
-            if(result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -86,16 +86,14 @@ router.put("/",
             if(req.body.password)
                 professorNew.password = req.body.password;
             
-
-
             let result = await professorController.editProfessor(professorOld,professorNew);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         } catch (error){
             console.log(error);
@@ -112,13 +110,13 @@ router.delete("/",
             professor.faculty_id = req.body.faculty_id;
 
             let result = await professorController.deleteProfessor(professor);
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
+            }
+            else{
+                console.log(result.message);
+                res.status(400).json(result.message);
             }
         }catch(error){
             console.log();

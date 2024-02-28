@@ -45,6 +45,7 @@ module.exports = class UserController{
             }
             else{
                 result.exist = 1;
+                result.message = 'STUDENT ALREADY EXIST !';
                 return result;
             }
         }catch(error){
@@ -75,14 +76,12 @@ module.exports = class UserController{
         try{
             let check = await this.getStudentsBy('roll_no',newUser.roll_no);
             if(check.length){
-                check.exist = 1;
-                check.message = 'STUDENT ALREADY EXIST !';
+                check.problem = 1;
                 return check;
             }
             else{
                 await dbQuery.insert('student_details',newUser);
                 let results = await dbQuery.execute();
-                check.exist = 0;
                 results.message = 'STUDENT ADDED SUCCESSFULLY...';
                 return results;
             }
@@ -98,15 +97,13 @@ module.exports = class UserController{
             console.log(result);
 
             if(!result.length){
-                result.exist = 0;
-                result.message = 'STUDENT NOT FOUND !';
+                result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('student_details');
                 await dbQuery.where('student_id',student.student_id);
                 result = await dbQuery.execute();
-                result.exist = 1;
                 result.message = 'STUDENT DELETED...';
                 return result; 
             }
@@ -119,23 +116,19 @@ module.exports = class UserController{
         try{
             let result = await this.getStudentsBy('student_id',oldStudent.student_id);
             if(!result.length){
-                result.exist = 0;
-                result.message = 'STUDENT NOT FOUND !';
+                result.problem = 1;
                 return result;
             }
+            oldStudent = result[0];
 
-            if(newStudent.roll_no){
+            if(newStudent.roll_no && newStudent.roll_no !== oldStudent.roll_no){
                 let result = await this.getStudentsBy('roll_no',newStudent.roll_no);
                 
                 if(result.length){
-                    result.exist = 0;
-                    result.message = 'STUDENT ALREADY EXIST ';
+                    result.problem = 1;
                     return result;
                 }
             }
-
-            oldStudent = result[0];
-
             newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
             newStudent.roll_no = newStudent.roll_no ? newStudent.roll_no : oldStudent.roll_no;
             newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
@@ -145,7 +138,6 @@ module.exports = class UserController{
             await dbQuery.update('student_details',newStudent);
             await dbQuery.where('student_id',oldStudent.student_id);
             result = await dbQuery.execute();
-            result.exist = 1;
             result.message = 'STUDENT UPDATED...';
             return result; 
             
@@ -168,6 +160,7 @@ module.exports = class UserController{
             }
             else{
                 result.exist = 1;
+                result.message = 'PROFESSOR ALREADY EXIST !';
                 return result;
             }
         }catch(error){
@@ -189,21 +182,18 @@ module.exports = class UserController{
         try{
             let check = await this.getProfessorBy('username',professor.username);
             if(check.length){
-                check.exist = 1;
-                check.message = 'PROFESSOR ALREADY EXIST !';
+                check.problem = 1;
                 return check;
             }
             else{
                 await dbQuery.insert('faculty_details',professor);
                 let results = await dbQuery.execute();
-                check.exist = 0;
-                results.message = 'PROFESSOR ADDED SUCCESSFULLY...';
+                results.message = 'PROFESSOR ADDED SUCCESSFULLY';
                 return results;
             }
         }catch(error){
             return {error:error};
         }
-        
     };
 
     async deleteProfessor(professor){
@@ -212,15 +202,13 @@ module.exports = class UserController{
             console.log(result);
 
             if(!result.length){
-                result.exist = 0;
-                result.message = 'PROFESSOR NOT FOUND !';
+                result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('faculty_details');
                 await dbQuery.where('faculty_id',professor.faculty_id);
                 result = await dbQuery.execute();
-                result.exist = 1;
                 result.message = 'PROFESSOR DELETED...';
                 return result; 
             }
@@ -233,20 +221,18 @@ module.exports = class UserController{
         try{
             let result = await this.getProfessorBy('faculty_id',oldProfessor.faculty_id);            
             if(!result.length){
-                result.exist = 0;
-                result.message = 'PROFESSOR NOT FOUND !';
+                result.problem = 1;
                 return result;
             }
+            oldProfessor = result[0];
 
-            if(newProfessor.username){
+            if(newProfessor.username && newProfessor.username !== oldProfessor.username){
                 let result = await this.getProfessorBy('username',newProfessor.username);
                 if(result.length){
-                    result.exist = 0;
-                    result.message = 'PROFESSOR ALREADY EXIST ';
+                    result.problem = 1;
                     return result;
                 }
             }
-            oldProfessor = result[0];
 
             newProfessor.fullname = newProfessor.fullname ? newProfessor.fullname : oldProfessor.fullname;
             newProfessor.username = newProfessor.username ? newProfessor.username : oldProfessor.username;
@@ -255,7 +241,6 @@ module.exports = class UserController{
             await dbQuery.update('faculty_details',newProfessor);
             await dbQuery.where('faculty_id',oldProfessor.faculty_id);
             result = await dbQuery.execute();
-            result.exist = 1;
             result.message = 'PROFESSOR UPDATED...';
             return result;
             
