@@ -25,7 +25,7 @@ router.get("/student",
     async (req,res) => {
         try{
             let studentController = new UserController();
-            let result = await studentController.getStudentBy('student_id',req.body.student_id);
+            let result = await studentController.getStudentsBy('student_id',req.body.student_id);
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);

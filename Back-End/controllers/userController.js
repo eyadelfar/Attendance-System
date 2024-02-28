@@ -15,7 +15,28 @@ const Faculty = require("../models/professor");
 module.exports = class UserController{
     constructor(){};
 
-    async getStudentBy(column,value){
+    async getUserByUsername(username){
+        try{
+            // search in students
+            await dbQuery.select('student_details');
+            await dbQuery.where('roll_no',username);
+            let result = await dbQuery.execute();
+
+            // search in faculty
+            if(!result.length){
+                await dbQuery.select('faculty_details');
+                await dbQuery.where('username',username);
+                result = await dbQuery.execute();
+            }
+            return result; 
+        }catch(error){
+            return error;
+        }
+        
+    };
+
+/* students */
+    async getStudentsBy(column,value){
         try{
             await dbQuery.select('student_details');
             await dbQuery.where(column,value);
@@ -35,26 +56,6 @@ module.exports = class UserController{
         }
     };
 
-    async getUserByUsername(username){
-        try{
-            // search in students
-            await dbQuery.select('student_details');
-            await dbQuery.where('roll_no',username);
-            let result = await dbQuery.execute();
-
-            // search in faculty
-            if(!result.length){
-                await dbQuery.select('faculty_details');
-                await dbQuery.where('username',username);
-                result = await dbQuery.execute();
-            }
-            return result; 
-        }catch(error){
-            return error;
-        }
-        
-    };    
-
     async getAllStudents(){
         try{
             await dbQuery.select('student_details');
@@ -65,19 +66,9 @@ module.exports = class UserController{
         }
     };
 
-    /*
-    async getFilteredStudents(filter,value){
-        await dbQuery.select('student_details');
-        await dbQuery.where(filter,value);
-        let results = await dbQuery.execute();
-        return results; 
-    };
-    */
-    async getStudentsByYear(year){
+    async getStudentsByLevel(level){
         try{
-            await dbQuery.select('student_details');
-            await dbQuery.where('year',year);
-            let results = await dbQuery.execute();
+            let results = await this.getStudentsBy('level',level)
             return results; 
         }catch(error){
             return error;
@@ -86,9 +77,7 @@ module.exports = class UserController{
 
     async addStudent(newUser){
         try{
-            await dbQuery.select('student_details');
-            await dbQuery.where('student_id',newUser.student_id)
-            let check = await dbQuery.execute();
+            let check = await this.getStudentsBy('roll_no',newUser.roll_no);
             if(check.length){
                 check.exist = 1;
                 check.message = 'STUDENT ALREADY EXIST !';
@@ -109,9 +98,7 @@ module.exports = class UserController{
 
     async deleteStudent(student){
         try{
-            await dbQuery.select('student_details');
-            await dbQuery.where('student_id',student.student_id);
-            let result = await dbQuery.execute();
+            let result = await this.getStudentsBy('student_id',student.student_id);
             console.log(result);
 
             if(!result.length){
@@ -134,9 +121,7 @@ module.exports = class UserController{
 
     async editStudent(oldStudent,newStudent){
         try{
-            await dbQuery.select('student_details');
-            await dbQuery.where('student_id',oldStudent.student_id);
-            let result = await dbQuery.execute();
+            let result = await this.getStudentsBy('student_id',oldStudent.student_id);
             console.log(result);
 
             if(!result.length){
@@ -165,6 +150,7 @@ module.exports = class UserController{
         }
     };
 
+/* professors */    
     async getProfessorBy(column,value){
         try{
             await dbQuery.select('faculty_details');
@@ -197,9 +183,7 @@ module.exports = class UserController{
 
     async addProfessor(professor){
         try{
-            await dbQuery.select('faculty_details');
-            await dbQuery.where('username',professor.username)
-            let check = await dbQuery.execute();
+            let check = await this.getProfessorBy('username',professor.username);
             if(check.length){
                 check.exist = 1;
                 check.message = 'PROFESSOR ALREADY EXIST !';
@@ -220,9 +204,7 @@ module.exports = class UserController{
 
     async deleteProfessor(professor){
         try{
-            await dbQuery.select('faculty_details');
-            await dbQuery.where('username',professor.username);
-            let result = await dbQuery.execute();
+            let result = await this.getProfessorBy('faculty_id',professor.faculty_id);
             console.log(result);
 
             if(!result.length){
@@ -232,7 +214,7 @@ module.exports = class UserController{
             }
             else{
                 await dbQuery.delete('faculty_details');
-                await dbQuery.where('username',professor.username);
+                await dbQuery.where('faculty_id',professor.faculty_id);
                 result = await dbQuery.execute();
                 result.exist = 1;
                 result.message = 'PROFESSOR DELETED...';
@@ -245,9 +227,7 @@ module.exports = class UserController{
 
     async editProfessor(oldProfessor,newProfessor){
         try{
-            await dbQuery.select('faculty_details');
-            await dbQuery.where('username',oldProfessor.username);
-            let result = await dbQuery.execute();
+            let result = await this.getProfessorBy('faculty_id',oldProfessor.faculty_id);
             console.log(result);
 
             if(!result.length){
@@ -263,7 +243,7 @@ module.exports = class UserController{
                 newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
 
                 await dbQuery.update('faculty_details',newProfessor);
-                await dbQuery.where('username',oldProfessor.username);
+                await dbQuery.where('faculty_id',oldProfessor.faculty_id);
                 result = await dbQuery.execute();
                 result.exist = 1;
                 result.message = 'PROFESSOR UPDATED...';

@@ -25,7 +25,7 @@ router.get("/professor",
     async (req,res) => {
         try{
             let professorController = new UserController();
-            let result = await professorController.getProfessorBy('username',req.body.username);
+            let result = await professorController.getProfessorBy('faculty_id',req.body.faculty_id);
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);
@@ -109,7 +109,7 @@ router.delete("/",
         try{
             let professorController = new UserController();
             let professor = new Professor();
-            professor.username = req.body.username;
+            professor.faculty_id = req.body.faculty_id;
 
             let result = await professorController.deleteProfessor(professor);
             if(!result.exist){
