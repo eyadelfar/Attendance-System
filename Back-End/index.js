@@ -27,6 +27,7 @@ const coursesRouter = require('./routes/coursesRouter');
 const studentsRouter = require('./routes/studentsRouter');
 const professorsRouter = require('./routes/professorsRouter');
 const sessionsRouter = require('./routes/sessionsRouter');
+const registrationsRouter = require('./routes/registrationsRouter');
 
 // End Points
 app.use("/login",loginRouter);
@@ -34,6 +35,7 @@ app.use("/courses",coursesRouter);
 app.use("/students",studentsRouter);
 app.use("/professors",professorsRouter);
 app.use("/sessions",sessionsRouter);
+app.use("/registrations",registrationsRouter);
 
 
 // Test
@@ -42,22 +44,22 @@ const DBQuery = require ('./db/dbQuery');
 const User = require("./models/user");
 const Student = require("./models/student");
 
-app.post('/test', async(req, res) => {
+app.get('/test', async(req, res) => {
     try{
         let userC = new UserController();
-        let student = new Student();
-        student = {
-            name: req.body.name,
-            roll_no: req.body.roll_no,
-            phone_no: req.body.phone_no
-        }
-        let results = await userC.addStudent(student);
+        // let student = new Student();
+        // student = {
+        //     name: req.body.name,
+        //     roll_no: req.body.roll_no,
+        //     phone_no: req.body.phone_no
+        // }
+        let results = await userC.getStudentsByLevel(1);
 
         if(results.error)
             throw results.error.sqlMessage
 
         console.log(results);
-        res.send('Added Successfully');
+        res.status(200).send(results);
             
     } catch (error){
         console.error(error);
