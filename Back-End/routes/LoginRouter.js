@@ -2,9 +2,6 @@ const router = require('express').Router();
 const {body, validationResult} = require("express-validator");
 const bcrypt =require("bcrypt");
 
-// database connection
-const connect = require ("../db/dbConnection");
-
 // used classes
 const UserController = require ('../controllers/userController');
 

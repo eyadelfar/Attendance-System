@@ -4,8 +4,7 @@ const router = require('express').Router();
 const CourseController = require('../controllers/courseController');
 const Course = require('../models/course');
 
-// end points
-
+/* end points */
 // get all courses 
 router.get("/",
     async (req,res) => {

@@ -23,7 +23,6 @@ const connect = require('./db/dbConnection');
 
 // APIs
 const loginRouter = require('./routes/loginRouter');
-const dashboardRouter = require('./routes/dashboardRouter');
 const coursesRouter = require('./routes/coursesRouter');
 const studentsRouter = require('./routes/studentsRouter');
 const professorsRouter = require('./routes/professorsRouter');
@@ -31,7 +30,6 @@ const sessionsRouter = require('./routes/sessionsRouter');
 
 // End Points
 app.use("/login",loginRouter);
-app.use("/dashboard",dashboardRouter);
 app.use("/courses",coursesRouter);
 app.use("/students",studentsRouter);
 app.use("/professors",professorsRouter);

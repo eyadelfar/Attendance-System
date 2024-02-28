@@ -4,7 +4,7 @@ const router = require('express').Router();
 const UserController = require('../controllers/userController');
 const Professor = require('../models/professor');
 
-// end points
+/* end points */
 // get all professors 
 router.get("/",
     async (req,res) => {
