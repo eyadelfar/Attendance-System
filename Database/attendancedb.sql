@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `attendance`;
 CREATE TABLE `attendance` (
   `course_id` int DEFAULT NULL,
   `session_id` int DEFAULT NULL,
-  `timestamp` date DEFAULT NULL,
+  `timestamp` datetime DEFAULT NULL,
   `status` varchar(12) DEFAULT NULL,
   `student_id` int DEFAULT NULL,
   `attendance_id` int NOT NULL AUTO_INCREMENT,
