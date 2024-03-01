@@ -2,10 +2,7 @@
 const DBQuery = require ("../db/dbQuery");
 let dbQuery = new DBQuery();
 
-// used classes
-const Course = require("../models/course");
-
-//export
+//export class
 module.exports = class CourseController{
     constructor(){};
 
@@ -99,8 +96,8 @@ module.exports = class CourseController{
 
             if(newCourse.code && newCourse.code !== oldCourse.code){
                 let result = await this.getCourseBy('code',newCourse.code);
-                if(result.length){
-                    result.message = 'COURSE ALREADY EXIST ';
+                if(result.exist){
+                    result.problem = 1;
                     return result;
                 }
             }

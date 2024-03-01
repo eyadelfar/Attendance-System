@@ -2,12 +2,7 @@
 const DBQuery = require ("../db/dbQuery");
 let dbQuery = new DBQuery();
 
-// used classes
-const User = require ('../models/user');
-const Student = require("../models/student");
-const Faculty = require("../models/professor");
-
-//export
+//export class
 module.exports = class UserController{
     constructor(){};
 

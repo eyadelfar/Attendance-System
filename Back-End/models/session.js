@@ -1,10 +1,11 @@
-module.exports = class Course{
+module.exports = class Session{
 
     constructor(){
+        this.session_id;
         this.course_id;
-        this.code;
-        this.title;
-        this.credit;
+        this.year;
+        this.term;
+        this.session_time;
     };
 
 };

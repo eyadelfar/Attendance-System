@@ -2,10 +2,7 @@
 const DBQuery = require ("../db/dbQuery");
 let dbQuery = new DBQuery();
 
-// used classes
-const Registration = require("../models/registration");
-
-//export
+//export class
 module.exports = class RegistrationController{
     constructor(){};
 
