@@ -37,18 +37,18 @@ module.exports = class RegistrationController{
         }
     };
     
-    async getRegistrationsByStudent(student){
+    async getRegistrationsByStudent(student_id){
         try{
-            let results = await this.getRegistrationBy('student_id',student.student_id);
+            let results = await this.getRegistrationBy('student_id',student_id);
             return results; 
         }catch(error){
             return error;
         }
     };
 
-    async getRegistrationsByCourse(course){
+    async getRegistrationsByCourse(course_id){
         try{
-            let results = await this.getRegistrationBy('course_id',course.course_id);
+            let results = await this.getRegistrationBy('course_id',course_id);
             return results; 
         }catch(error){
             return error;

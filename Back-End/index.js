@@ -28,6 +28,8 @@ const studentsRouter = require('./routes/studentsRouter');
 const professorsRouter = require('./routes/professorsRouter');
 const sessionsRouter = require('./routes/sessionsRouter');
 const registrationsRouter = require('./routes/registrationsRouter');
+const attendancesRouter = require('./routes/attendancesRouter');
+const allotmentsRouter = require('./routes/allotmentsRouter');
 
 // End Points
 app.use("/login",loginRouter);
@@ -36,6 +38,8 @@ app.use("/students",studentsRouter);
 app.use("/professors",professorsRouter);
 app.use("/sessions",sessionsRouter);
 app.use("/registrations",registrationsRouter);
+app.use("/attendances",attendancesRouter);
+app.use("/allotments",allotmentsRouter);
 
 
 // Test

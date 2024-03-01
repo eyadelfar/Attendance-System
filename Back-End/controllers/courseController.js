@@ -37,9 +37,9 @@ module.exports = class CourseController{
         }
     };
     
-    async getCoursesByProfessor(profesor){
+    async getCoursesByProfessor(profesor_id){
         try{
-            let results = await this.getCourseBy('faculty_id',profesor.profesor_id);
+            let results = await this.getCourseBy('faculty_id',profesor_id);
             return results; 
         }catch(error){
             return error;

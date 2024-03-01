@@ -1,5 +1,4 @@
 const moment = require('moment');
-// moment.utc();
 
 // database connection
 const DBQuery = require ("../db/dbQuery");
