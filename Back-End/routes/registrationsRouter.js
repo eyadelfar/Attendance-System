@@ -4,6 +4,10 @@ const router = require('express').Router();
 const RegistrationController = require('../controllers/registrationController');
 const Registration = require('../models/registration');
 
+// middlewares
+const authenticate = require("../middleware/authentication");
+const authorize = require("../middleware/authorization");
+
 /* end points */
 // get all registrations 
 router.get("/",
@@ -41,6 +45,36 @@ router.get("/registration",
     }
 );
 
+// get filtered registrations
+router.get("/student/:student_id",
+    authenticate,
+    async (req,res) => {
+        try{
+            let registrationController = new RegistrationController();
+            let result = await registrationController.getRegistrationsByStudent(req.params.student_id);
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/course/:course_id",
+    authorize,
+    async (req,res) => {
+        try{
+            let registrationController = new RegistrationController();
+            let result = await registrationController.getRegistrationsByCourse(req.params.course_id);
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
 // add registration
 router.post("/",
     async (req, res) => {

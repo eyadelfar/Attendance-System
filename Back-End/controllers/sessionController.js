@@ -59,7 +59,7 @@ module.exports = class SessionController{
 
     async getSessionsByCourse(course){
         try{
-            let results = await this.getSessionBy('course',course);
+            let results = await this.getSessionBy('course_id',course);
             return results; 
         }catch(error){
             return error;

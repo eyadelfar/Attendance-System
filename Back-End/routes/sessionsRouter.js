@@ -4,6 +4,10 @@ const router = require('express').Router();
 const SessionController = require('../controllers/sessionController');
 const Session = require('../models/session');
 
+// middlewares
+const authenticate = require("../middleware/authentication");
+const authorize = require("../middleware/authorization");
+
 /* end points */
 // get all sessions 
 router.get("/",
@@ -41,8 +45,53 @@ router.get("/session",
     }
 );
 
+// get filtered sessions 
+router.get("/course/:course_id",
+    authenticate,
+    async (req,res) => {
+        try{
+            let sessionController = new SessionController();
+            let result = await sessionController.getSessionsByCourse(req.params.course_id);
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/term/:term",
+    async (req,res) => {
+        try{
+            let sessionController = new SessionController();
+            let result = await sessionController.getSessionsByTerm(req.params.term);
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/year/:year",
+    async (req,res) => {
+        try{
+            let sessionController = new SessionController();
+            let result = await sessionController.getSessionsByYear(req.params.year);
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
 // add session
 router.post("/",
+    authorize,
     async (req, res) => {
         try{
             let sessionController = new SessionController();
@@ -72,6 +121,7 @@ router.post("/",
 
 // edit session
 router.put("/",
+    authorize,
     async (req, res) => {
         try{
             let sessionController = new SessionController();
@@ -106,6 +156,7 @@ router.put("/",
 );
 
 router.delete("/",
+    authorize,
     async(req,res) => {
         try{
             let sessionController = new SessionController();

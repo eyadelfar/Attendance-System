@@ -4,9 +4,14 @@ const router = require('express').Router();
 const UserController = require('../controllers/userController');
 const Student = require('../models/student');
 
+// middlewares
+const authenticate = require("../middleware/authentication");
+const authorize = require("../middleware/authorization");
+
 /* end points */
 // get all students 
 router.get("/",
+    authorize,
     async (req,res) => {
         try{
             let studentController = new UserController();
@@ -22,6 +27,7 @@ router.get("/",
 
 // get one student 
 router.get("/student",
+    authenticate,
     async (req,res) => {
         try{
             let studentController = new UserController();
@@ -43,6 +49,7 @@ router.get("/student",
 
 // add student
 router.post("/",
+    authorize,
     async (req, res) => {
         try{
             let studentController = new UserController();
@@ -73,6 +80,7 @@ router.post("/",
 
 // edit student
 router.put("/",
+    authorize,
     async (req, res) => {
         try{
             let studentController = new UserController();
@@ -109,6 +117,7 @@ router.put("/",
 );
 
 router.delete("/",
+    authorize,
     async(req,res) => {
         try{
             let studentController = new UserController();

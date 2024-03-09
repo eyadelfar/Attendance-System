@@ -53,7 +53,7 @@ router.post("/",
       user[0].roll_no : 
       user[0].username
     }`);
-    res.setHeader('Authentication',jwtToken);
+    res.setHeader('authorization',jwtToken);
     res.status(200).json(jwtToken);
   }catch (error) {
     res.status(500).json(error);

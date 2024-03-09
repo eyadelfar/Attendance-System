@@ -5,6 +5,10 @@ const moment = require('moment');
 const AttendanceController = require('../controllers/attendanceController');
 const Attendance = require('../models/attendance');
 
+// middlewares
+const authenticate = require("../middleware/authentication");
+const authorize = require("../middleware/authorization");
+
 /* end points */
 // get all attendances 
 router.get("/",
@@ -42,8 +46,53 @@ router.get("/attendance",
     }
 );
 
+// get filtered attendance 
+router.get("/course/:course_id",
+    async (req,res) => {
+        try{
+            let attendanceController = new AttendanceController();
+            let results = await attendanceController.getAttendancesByCourse(req.params.course_id);
+            console.log(results);
+            res.status(200).json(results);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/session/:session_id",
+    async (req,res) => {
+        try{
+            let attendanceController = new AttendanceController();
+            let results = await attendanceController.getAttendancesBySession(req.params.session_id);
+            console.log(results);
+            res.status(200).json(results);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/student/:student_id",
+    authenticate,
+    async (req,res) => {
+        try{
+            let attendanceController = new AttendanceController();
+            let results = await attendanceController.getAttendancesByStudent(req.params.student_id);
+            console.log(results);
+            res.status(200).json(results);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
 // add attendance
 router.post("/",
+    authenticate,
     async (req, res) => {
         try{
             let attendanceController = new AttendanceController();

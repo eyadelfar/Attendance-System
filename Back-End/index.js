@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const jwt = require('jsonwebtoken');
 
 const authenticate = require("./middleware/authentication");
+const authorize = require("./middleware/authorization");
 
 // Middlewares
 const app = express();
@@ -52,7 +53,8 @@ const User = require("./models/user");
 const Student = require("./models/student");
 
 app.get('/test', 
-authenticate,
+// authenticate,
+authorize,
     async(req, res) => {
     try{
         // const decodedToken = jwt.verify(req.headers['authorization'], "secret_key");
