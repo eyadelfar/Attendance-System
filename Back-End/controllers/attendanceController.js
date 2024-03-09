@@ -115,7 +115,6 @@ module.exports = class AttendanceController{
             newAttendance.course_id = newAttendance.course_id ? newAttendance.course_id : oldAttendance.course_id;
             newAttendance.session_id = newAttendance.session_id ? newAttendance.session_id : oldAttendance.session_id;
             newAttendance.student_id = newAttendance.student_id ? newAttendance.student_id : oldAttendance.student_id;
-            newAttendance.status = newAttendance.status ? newAttendance.status : oldAttendance.status;
 
             await dbQuery.update('attendance',newAttendance);
             await dbQuery.where('attendance_id',oldAttendance.attendance_id);

@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {body, validationResult} = require("express-validator");
-const bcrypt =require("bcrypt");
+const jwt = require('jsonwebtoken');
 
 // used classes
 const UserController = require ('../controllers/userController');
@@ -28,7 +28,6 @@ router.post("/",
       return res.status(404).json('USER NOT FOUND !');
 
     // check password
-    // const checkpassword = await bcrypt.compare(password, user[0].password);
     if(req.body.password !== user[0].password){
       console.log(`LOGGED IN FAILED BY USER ${
         user[0].roll_no ? 
@@ -37,20 +36,27 @@ router.post("/",
       }`);
       return res.status(404).json('WRONG PASSWORD');
     }
-    
     //check if login failed
     if(user.errors) 
       return res.status(404).json(user);
-    
+
+    //login succeed 
+    const payload = {
+      user_id: user[0].student_id ? user[0].student_id : user[0].faculty_id,
+      admin : user[0].student_id ? 0 : 1,
+      role: user[0].student_id ? 'student' : 'faculty',
+    };
+    const jwtToken = jwt.sign(payload,'secret_key');
+  
     console.log(`LOGGED IN SUCCESSFULY BY USER ${
       user[0].roll_no ? 
       user[0].roll_no : 
       user[0].username
     }`);
-    // res.header("token", user.token);
-    res.status(200).json(user);
+    res.setHeader('Authentication',jwtToken);
+    res.status(200).json(jwtToken);
   }catch (error) {
-    res.status(500).json({error:error});
+    res.status(500).json(error);
   }
 });
 

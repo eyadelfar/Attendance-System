@@ -4,6 +4,9 @@ const cors = require("cors");
 const mysql = require('mysql2');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
+const jwt = require('jsonwebtoken');
+
+const authenticate = require("./middleware/authentication");
 
 // Middlewares
 const app = express();
@@ -48,23 +51,14 @@ const DBQuery = require ('./db/dbQuery');
 const User = require("./models/user");
 const Student = require("./models/student");
 
-app.get('/test', async(req, res) => {
+app.get('/test', 
+authenticate,
+    async(req, res) => {
     try{
-        let userC = new UserController();
-        // let student = new Student();
-        // student = {
-        //     name: req.body.name,
-        //     roll_no: req.body.roll_no,
-        //     phone_no: req.body.phone_no
-        // }
-        let results = await userC.getStudentsByLevel(1);
+        // const decodedToken = jwt.verify(req.headers['authorization'], "secret_key");
+        // console.log("Decoded Token:", decodedToken);
 
-        if(results.error)
-            throw results.error.sqlMessage
-
-        console.log(results);
-        res.status(200).send(results);
-            
+        res.status(200).json('ok');
     } catch (error){
         console.error(error);
         res.status(500).json(error);

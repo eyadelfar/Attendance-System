@@ -51,7 +51,6 @@ router.post("/",
             attendance = {
                 course_id: req.body.course_id,
                 session_id: req.body.session_id,
-                status: req.body.status,
                 student_id: req.body.student_id
             }
             let result = await attendanceController.addAttendance(attendance);
@@ -87,8 +86,6 @@ router.put("/",
                 attendanceNew.course_id = req.body.course_id;
             if(req.body.timestamp)
                 attendanceNew.timestamp = req.body.timestamp;
-            if(req.body.status)
-                attendanceNew.status = req.body.status;
             if(req.body.student_id)
                 attendanceNew.student_id = req.body.student_id;
 

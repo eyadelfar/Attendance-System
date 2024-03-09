@@ -5,7 +5,6 @@ module.exports = class Attendance{
         this.course_id;
         this.session_id;
         this.timestamp;
-        this.status;
         this.student_id;
     };
 
