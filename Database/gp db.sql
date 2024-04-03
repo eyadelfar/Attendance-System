@@ -23,13 +23,11 @@ VALUES ('S025', 'swilam', '555-699-5555');
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
 
-
 INSERT INTO course_allotment (faculty_id, course_id, session_id)
 VALUES (3, 3, 1);
 
 alter table student_details
-add column password varchar(64),
-add column level int;
+add column image varchar(512);
 
 
 ALTER TABLE session_details
@@ -37,7 +35,7 @@ CHANGE end_date session_time datetime;
 
 ALTER TABLE student_details
 CHANGE name fullname varchar(255);
-
+set foreign_key_checks=1;
 desc attendance;
 select * from attendance;
 select * from student_details;
