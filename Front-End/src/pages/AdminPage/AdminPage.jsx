@@ -1,7 +1,7 @@
 
 
 import React, { useState } from 'react';
-import './AdminPage.css';
+import './AdminSettings.css';
 import AdminAvatar from './AdminAvatar.png';
 
 const AccountSettings = () => {

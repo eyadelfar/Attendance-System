@@ -19,7 +19,7 @@ const LoginPage = () => {
       </div>
       <div className="formSide">
         <div className="loginForm">
-          <h1>Log In</h1>
+          <h1 className='login-header' >Log In</h1>
           <div className="inputGroup">
             <label htmlFor="id">ID</label>
             <input
@@ -40,7 +40,7 @@ const LoginPage = () => {
               placeholder="Enter Your Password"
             />
           </div>
-          <button onClick={handleLogin}>Log In</button>
+          <button className='login-button' onClick={handleLogin}>Log In</button>
         </div>
       </div>
     </div>
