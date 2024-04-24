@@ -1,52 +1,29 @@
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import HomePage from './pages/LoginPage'; 
+import AboutPage from './pages/AboutPage';
+import ContactPage from './pages/ContactPage';
 
-import React, { useState } from 'react';
-import './App.css'; // Make sure the CSS file is in the same directory
-import login_background from './login_background.png';
-const LoginPage = () => {
-  const [id, setId] = useState('');
-  const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    // Perform login logic here
-    console.log(id, password);
-  };
-
+function App() {
   return (
-    <div className="loginContainer">
-      <div className="brandSide">
-        <div className="slogan">
-        <img src={login_background} alt="login background"  />
-        </div>
-      </div>
-      <div className="formSide">
-        <div className="loginForm">
-          <h1>Log In</h1>
-          <div className="inputGroup">
-            <label htmlFor="id">ID</label>
-            <input
-              type="text"
-              id="id"
-              value={id}
-              onChange={(e) => setId(e.target.value)}
-              placeholder="Enter Your ID"
-            />
-          </div>
-          <div className="inputGroup">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter Your Password"
-            />
-          </div>
-          <button onClick={handleLogin}>Log In</button>
-        </div>
-      </div>
-    </div>
-  );
-};
+    <Router>
+      <div>
+        
 
-export default LoginPage;
+        {/* Route Configuration */}
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          {/* Add more routes as needed */}
+        </Routes>
+      </div>
+    </Router>
+  );
+}
+
+export default App;
+
+
 
