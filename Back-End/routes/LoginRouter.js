@@ -1,12 +1,9 @@
 const router = require('express').Router();
 const {body, validationResult} = require("express-validator");
-const bcrypt =require("bcrypt");
-
-// database connection
-const pool = require ("../db/dbConnection");
+const jwt = require('jsonwebtoken');
 
 // used classes
-const User = require ('../models/user');
+const UserController = require ('../controllers/userController');
 
 router.post("/",
     body("password")
@@ -15,48 +12,51 @@ router.post("/",
     async (req, res) => {
   try {
     const errors = validationResult(req);
+    
     // check errors
     if (!errors.isEmpty()) 
       return res.status(400).json({errors:errors.array ()});
-    console.log(req.body);
 
     // login with id & password
-    let userModel = new User();
-    let user = await userModel.getOneUserByID(
-      req.body.id
+    let userController = new UserController();
+    let user = await userController.getUserByUsername(
+      req.body.username
     );
+
     // check existance
-    if(user.length == 0) 
-      return {errors: [{msg: "USER NOT FOUND"}]};
+    if(!user.length) 
+      return res.status(404).json('USER NOT FOUND !');
 
     // check password
-    // const checkpassword = await bcrypt.compare(password, user[0].password);
-    if(req.body.password != user[0].password)
-      return {errors: [{msg: "WRONG PASSWORD !"}]};
-    
-
+    if(req.body.password !== user[0].password){
+      console.log(`LOGGED IN FAILED BY USER ${
+        user[0].roll_no ? 
+        user[0].roll_no : 
+        user[0].username
+      }`);
+      return res.status(404).json('WRONG PASSWORD');
+    }
     //check if login failed
     if(user.errors) 
       return res.status(404).json(user);
-    
-    // res.header("token", user.token);
-    res.status(200).json(user);
-  }catch (err) {
-    res.status(500).json({err:err});
-  }
-});
 
-router.get('/test',async (req, res) => {
-  try {
-
-    if(req.body.id)
-      console.log('1');
-    else
-      console.log('0');
-
-      res.status(200).json('user');
-  }catch (err) {
-    res.status(500).json({err:err});
+    //login succeed 
+    const payload = {
+      user_id: user[0].student_id ? user[0].student_id : user[0].faculty_id,
+      admin : user[0].student_id ? 0 : 1,
+      role: user[0].student_id ? 'student' : 'faculty',
+    };
+    const jwtToken = jwt.sign(payload,'secret_key');
+  
+    console.log(`LOGGED IN SUCCESSFULY BY USER ${
+      user[0].roll_no ? 
+      user[0].roll_no : 
+      user[0].username
+    }`);
+    res.setHeader('authorization',jwtToken);
+    res.status(200).json(jwtToken);
+  }catch (error) {
+    res.status(500).json(error);
   }
 });
 

@@ -18,16 +18,24 @@ VALUES (2024, 'Spring', '2024-01-10', '2024-05-20', 3);
 
 
 INSERT INTO student_details (roll_no, name, phone_no)
-VALUES ('S003', 'Charlie', '555-555-5555');
+VALUES ('S025', 'swilam', '555-699-5555');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
 
-
 INSERT INTO course_allotment (faculty_id, course_id, session_id)
 VALUES (3, 3, 1);
 
+alter table student_details
+add column image varchar(512);
 
+
+ALTER TABLE session_details
+CHANGE end_date session_time datetime;
+
+ALTER TABLE student_details
+CHANGE name fullname varchar(255);
+set foreign_key_checks=1;
 desc attendance;
 select * from attendance;
 select * from student_details;
@@ -36,6 +44,8 @@ select * from course_details;
 select * from course_registration;
 select * from faculty_details;
 select * from session_details;
+
+alter table student_details
 
 -- Trigger for attendance
 DELIMITER //
@@ -289,4 +299,3 @@ CREATE TABLE data_changes (
     event_type ENUM('INSERT', 'UPDATE', 'DELETE') NOT NULL,
     event_timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
-
