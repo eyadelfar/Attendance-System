@@ -1,29 +1,34 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import HomePage from './pages/LoginPage'; 
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
+import Layout from './Components/Layout/layout';
 
 
 function App() {
   return (
-    <Router>
-      <div>
-        
-
-        {/* Route Configuration */}
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          {/* Add more routes as needed */}
-        </Routes>
-      </div>
-    </Router>
+    <Layout/>
   );
 }
 
 export default App;
+// import React from 'react';
+// import Sidebar from './Components/Sidebar/sidebar';
+// import Topbar from './Components/topbar/topbar';
+// import ProfessorList from './Components/professorlist/professorlist';
+// import './App.css'; // Your CSS file to style the components
+
+// function App() {
+//   return (
+//     <div className="app">
+//       <Sidebar />
+//       <div className="main-content">
+//         <Topbar />
+//         <ProfessorList />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default App;
+
 
 
 
