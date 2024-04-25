@@ -67,15 +67,15 @@ module.exports = class UserController{
         }
     };
 
-    async addStudent(newUser){
+    async addStudent(newStudent){
         try{
-            let check = await this.getStudentsBy('roll_no',newUser.roll_no);
+            let check = await this.getStudentsBy('roll_no',newStudent.roll_no);
             if(check.length){
                 check.problem = 1;
                 return check;
             }
             else{
-                await dbQuery.insert('student_details',newUser);
+                await dbQuery.insert('student_details',newStudent);
                 let results = await dbQuery.execute();
                 results.message = 'STUDENT ADDED SUCCESSFULLY...';
                 return results;

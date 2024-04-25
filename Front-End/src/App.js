@@ -5,28 +5,13 @@ import AdminSettings from'./pages/Admin/AdminSettings/AdminSettings';
 import StudentSettings from './pages/Student/StudentSettings';
 import ProfessorCreate from './pages/Admin/Professor/ProfessorCreate/ProfessorCreate';
 import TEST from'./pages/TEST';
-
-
+import Layout from './Components/Layout/layout';
 
 
 function App() {
   return (
-    <Router>
-      <div>
-        <Routes>
-          <Route path="/LoginPage" element={<LoginPage />} />
-          <Route path="/AdminSettings" element={<AdminSettings />} />
-          <Route path="/StudentSettings" element={<StudentSettings />} />
-          <Route path="/ProfessorCreate" element={<ProfessorCreate />} />
-          <Route path="/TEST" element={<TEST />} />
-        </Routes>
-      </div>
-    </Router>
+    <Layout/>
   );
 }
 
-
-
 export default App;
-
-

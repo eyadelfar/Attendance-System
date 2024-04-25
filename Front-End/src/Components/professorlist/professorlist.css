@@ -1,0 +1,17 @@
+.professor-list {
+    padding: 20px;
+  }
+  
+  .list-header {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .header-item {
+    flex: 1;
+    text-align: left;
+    font-weight: bold;
+  }
+  

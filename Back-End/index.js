@@ -45,28 +45,6 @@ app.use("/registrations",registrationsRouter);
 app.use("/attendances",attendancesRouter);
 app.use("/allotments",allotmentsRouter);
 
-
-// Test
-const UserController = require ('./controllers/userController');
-const DBQuery = require ('./db/dbQuery');
-const User = require("./models/user");
-const Student = require("./models/student");
-
-app.get('/test', 
-// authenticate,
-authorize,
-    async(req, res) => {
-    try{
-        // const decodedToken = jwt.verify(req.headers['authorization'], "secret_key");
-        // console.log("Decoded Token:", decodedToken);
-
-        res.status(200).json('ok');
-    } catch (error){
-        console.error(error);
-        res.status(500).json(error);
-    }
-});
-
 // Run
 app.listen(port,"localhost", ()=>{
     console.log(`SERVER IS RUNINNG AT: ${port}`);
