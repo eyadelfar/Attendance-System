@@ -3,7 +3,7 @@ import {Routes,createBrowserRouter, Route ,Navigate} from 'react-router-dom';
 import LoginPage from'../pages/login/Login';
 import Professor from '../pages/admin/professor/professorList/ProfessorList';
 import AdminSettings from '../pages/admin/adminSettings/AdminSettings';
-import StudentSettings from '../pages/student/StudentSettings';
+import StudentSettings from '../pages/student/studentSettings/StudentSettings';
 import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorCreate';
 import TEST from'../pages/TEST';
 
