@@ -1,6 +1,6 @@
 import React from 'react';
-import ProfessorItem from '../professoritem//professoritem'
-import '../professorlist/professorlist.css';
+import ProfessorItem from '../ProfessorItem/ProfessorItem'
+import './ProfessorList.css';
 
 const professorsData = [
   { name: 'Aimee Blume', id: '000123' },

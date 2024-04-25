@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../pages/admin/professor/professor.css';
+// import '../../pages/admin/professor/professorList/professorList.css';
 
 const ProfessorItem = ({ name, id }) => {
   return (

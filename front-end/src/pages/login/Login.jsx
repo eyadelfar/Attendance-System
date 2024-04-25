@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import './.LoginPage.css'; 
-import login_background from './login_background.png';
-const LoginPage = () => {
+import './Login.css'; 
+import LoginBackground from '../../pics/LoginBackground.png';
+
+const Login = () => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,7 +15,7 @@ return(
     (<div className="loginContainer">
 <div className="brandSide">
   <div className="slogan">
-  <img src={login_background} alt="login background"  />
+  <img src={LoginBackground} alt="login background"  />
   </div>
 </div>
 <div className="formSide">
@@ -48,4 +49,4 @@ return(
   
 }
 
-export default HomePage;
+export default Login;
