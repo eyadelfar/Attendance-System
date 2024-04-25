@@ -1,4 +1,10 @@
 import React from 'react';
+import {BrowserRouter as Router , Routes , Route } from 'react-router-dom';
+import LoginPage from'./pages/LoginPage/LoginPage';
+import AdminSettings from'./pages/Admin/AdminSettings/AdminSettings';
+import StudentSettings from './pages/Student/StudentSettings';
+import ProfessorCreate from './pages/Admin/Professor/ProfessorCreate/ProfessorCreate';
+import TEST from'./pages/TEST';
 import Layout from './Components/Layout/layout';
 
 
@@ -9,22 +15,3 @@ function App() {
 }
 
 export default App;
-// import React from 'react';
-// import Sidebar from './Components/Sidebar/sidebar';
-// import Topbar from './Components/topbar/topbar';
-// import ProfessorList from './Components/professorlist/professorlist';
-// import './App.css'; // Your CSS file to style the components
-
-// function App() {
-//   return (
-//     <div className="app">
-//       <Sidebar />
-//       <div className="main-content">
-//         <Topbar />
-//         <ProfessorList />
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default App;
