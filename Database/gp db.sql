@@ -27,23 +27,45 @@ INSERT INTO course_allotment (faculty_id, course_id, session_id)
 VALUES (3, 3, 1);
 
 alter table student_details
-add column image varchar(512);
+drop column image;
+
+CREATE TABLE faces (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id VARCHAR(255) NOT NULL,
+    face_number INT NOT NULL,
+    encoding BLOB NOT NULL,
+    UNIQUE(student_id, face_number)
+);
+
 
 
 ALTER TABLE session_details
 CHANGE end_date session_time datetime;
 
+set foreign_key_checks=0;
+select * from faces;
+ALTER TABLE session_details
+drop table faces;
+set foreign_key_checks=0;
+
 ALTER TABLE student_details
 CHANGE name fullname varchar(255);
 set foreign_key_checks=1;
 desc attendance;
-select * from attendance;
+
 select * from student_details;
 select * from course_allotment;
 select * from course_details;
 select * from course_registration;
 select * from faculty_details;
 select * from session_details;
+select * from faces;
+select * from attendance;
+select * from student_details;
+desc attendance;
+ALTER TABLE faces MODIFY COLUMN encoding LONGBLOB;
+ALTER TABLE attendance MODIFY COLUMN timestamp datetime;
+
 
 alter table student_details
 
