@@ -12,11 +12,12 @@ const Layout = () => {
     <div className="Layout">
       {/* {auth && (<Sidebar/>)} */}
        {/* Corrected component name and syntax */}
-      <SideBar />
+       <Topbar />
+     
       
       <div className="main_layout">
-      <Topbar />
-        {/* {auth && (<Topbar/>)} */}
+      <SideBar />
+       
 
         <div className="content">
           <Router />

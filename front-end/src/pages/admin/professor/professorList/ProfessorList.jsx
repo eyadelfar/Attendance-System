@@ -1,5 +1,5 @@
 import React from 'react';
-import ProfessorList from '../../../../pages/admin/professor/professorList/ProfessorList';
+import ProfessorList from './ProfessorList';
 import './ProfessorList.css'; // Import the CSS for layout
 
 const Professors = () => {
