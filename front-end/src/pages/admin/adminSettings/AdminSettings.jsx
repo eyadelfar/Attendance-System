@@ -16,10 +16,10 @@ const AdminSettings = () => {
 
   return (
     <div className="account-settings-container">
-        <h1 className='main-header'>Settings</h1>
-        <h3 className='container-header'>Edit Profile</h3>
+        <h1 id='adminsetting-header'>Settings</h1>
+        <h3 id='admin-container-header'>Edit Profile</h3>
         
-        <div className="parent-div">
+        <div id="parent-div">
 
             <div className="account-settings-profile">
                     <img className='admin-pic' src={AdminAvatar} alt="AdminAvatar"  />
@@ -38,12 +38,12 @@ const AdminSettings = () => {
                     
                         <div className="form-field">
                             <label htmlFor="firstName">First Name:</label>
-                            <input type="text" id="firstName" defaultValue="John" readOnly />
+                            <input type="text" id="firstName" defaultValue="John" />
                         </div>
 
                         <div className="form-field">
                             <label htmlFor="lastName">Last Name:</label>
-                            <input type="text" id="lastName" defaultValue="Doe" readOnly />
+                            <input type="text" id="lastName" defaultValue="Doe" />
                         </div>
 
                         <div className="form-field">

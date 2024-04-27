@@ -1,0 +1,244 @@
+.students-main-header{
+    position: relative;
+    text-indent: 19.9%;
+    font-size: 45px;
+    top: -50px;
+    font-weight: 400;
+    
+
+  }
+
+  .student-header-of-form{
+    color:#002251;
+    text-align:center;
+    vertical-align:text-middle;
+    line-height:auto;
+    border-style:hidden;
+    outline:none;
+  }
+
+
+  .parent-div {
+    display: flex;
+    justify-items:stretch;
+    /* background-color: #BEBEBE; */
+    margin-left: 20%;
+    margin-right: 12%;
+    /* height: 70vh;  */
+    height: 1000px; 
+    width: 70vw; 
+    /* flex-direction: row; */
+    margin-top: -1.5%;
+    
+  }
+
+
+  .student-name{
+    text-align: center;
+    margin-bottom: 10%;
+    font-weight: 400;
+    font-size: 34px;
+    
+  }
+
+  .left-container-text{
+    margin-bottom: 1000%;
+    font-weight: 400;
+    color: #4D4D4D;
+    font-size: 30px;
+    margin-left: 30%;
+
+  }
+  .create-form {
+    background-color: #ffffff;
+    margin: 1%;
+    margin-left: 1%;
+    width: 75%;
+    justify-content: center;
+    display:grid;
+    
+    display: flex;
+    justify-items:stretch;
+    /* background-color: #BEBEBE; */
+    margin-left: 20%;
+    margin-right: 12%;
+    /* height: 70vh;  */
+    height: 1000px; 
+    width: 70vw; 
+    /* flex-direction: row; */
+    margin-top: -1.5%;
+    
+    
+  }
+  
+
+  .all-forms{
+    justify-content: space-between;
+    flex-direction: column;
+    display: flex;
+    font-size: 24px;
+    font-weight:400;
+    background-attachment: fixed;
+    width: 500px;
+   
+  }
+
+  
+  .form-field input {
+    background-color: #f3f3f3;
+    height: 4vh;
+    border-radius: 10px ;
+    border-color: #1B3877;
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .courses-select {
+    background-color: #f3f3f3;
+    height: 4vh;
+    border-radius: 10px ;
+    border-color: #1B3877;
+    font-weight: 400;
+    font-size: 20px;
+    border-width: 2px;
+  }
+
+  .level-sperate{
+
+    position: relative;
+    top: -1%;
+  }
+  .level-select{
+    position: relative;
+    background-color: #f3f3f3;
+    border-radius: 10px ;
+    border-color: #1B3877;
+    border-width: 2px;
+    font-weight: 400;
+    font-size: 20px;
+    width: 280px;
+    height: 4.5vh;
+    /* top: 10px; */
+  }
+  
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    max-width: 100%;
+    align-self: left;
+  }
+
+  .file-field{
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    max-width: 100%;
+    align-self: left;
+  }
+
+  #input-button{
+    position: relative;
+    /* color: #395986; */
+    background-color:  #395986;
+    border: #395986;
+    font-size: 20px;
+    cursor: pointer;
+    width: 35%;  
+    display: flex; /* Use flexbox for layout */
+    border-radius: 7px; 
+    padding: 1%;
+   
+  }
+  #input-button::file-selector-button{
+    color: #FFFFFF;
+    position: relative;
+    background-color:  #395986;
+    border: #395986;
+    font-size: 20px;
+    cursor: pointer;
+    width: 100%;  
+    border-radius: 1px; 
+    padding: 10%;
+    justify-content: center;
+  }
+
+  .id-level-form input {
+    background-color: #f3f3f3;
+    height: 4vh;
+    border-radius: 10px ;
+    border-color: #1B3877;
+    font-weight: 400;
+    font-size: 20px;
+    max-width: 130px;
+
+  }
+
+  .id-level-form label {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+
+  }
+  
+  .id-level-form {
+    display: flex;
+    flex-direction: row;
+    padding: 5%;
+    align-self: left;
+    position: relative;
+    justify-content: space-between;
+  }
+
+  #edit-confirm-button{
+    position: relative;
+    color: #FFFFFF;
+    background-color: #395986;
+    border: #395986;
+    font-size: 20px;
+    cursor: pointer;
+    width: 50%;  
+    display: flex; /* Use flexbox for layout */
+    border-radius: 25px; 
+    text-align: right;
+    padding: 5%;
+    justify-content: center;
+    left: 162%;
+    top: 6vh;
+  }
+
+  .upload-label{
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    }
+
+   #upload-button{   
+    position: relative;
+    color: #FFFFFF;
+    background-color: #4A9F48;
+    border: #395986;
+    font-size: 20px;
+    cursor: pointer;
+    width: 60%;  
+    display: flex; /* Use flexbox for layout */
+    border-radius: 25px; 
+    padding: 5%;
+    justify-content: center;
+    }
+  
+
+
+  #edit-confirm-button:hover{
+    background-color: #222122c2;
+
+  }
+
+
+  .all-forms-col{
+    justify-content: space-around;
+    flex-direction: column;
+    display: flex;
+    margin-bottom: 5%;
+   
+  }

@@ -1,6 +1,6 @@
 // Layout.js
 import React from 'react';
-import './Layout.css';
+// import './Layout.css';
 import Router from '../../routes/Router';
 import SideBar from '../sideBar/SideBar'; // Capitalized component name
 import Topbar from '../topBar/TopBar'; // Capitalized component name
@@ -12,10 +12,10 @@ const Layout = () => {
     <div className="Layout">
       {/* {auth && (<Sidebar/>)} */}
        {/* Corrected component name and syntax */}
-      <SideBar />
+      {/* <SideBar /> */}
       
       <div className="main_layout">
-      <Topbar />
+      {/* <Topbar /> */}
         {/* {auth && (<Topbar/>)} */}
 
         <div className="content">

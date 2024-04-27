@@ -84,19 +84,22 @@
     width: 75%;
     justify-content: center;
     display:grid;
+    
+    display: flex;
     justify-items:stretch;
+    /* background-color: #BEBEBE; */
     margin-left: 20%;
     margin-right: 12%;
-
+    /* height: 70vh;  */
     height: 1000px; 
     width: 70vw; 
-
+    /* flex-direction: row; */
     margin-top: -1.5%;
     
     
   }
   
-  .professor-header-of-form{
+  .edit-header-of-form{
     color:#002251;
     text-align:center;
     vertical-align:text-middle;
@@ -115,6 +118,16 @@
    
   }
 
+  /* .form-field input[readonly] {
+    background-color: #f3f3f3;
+    cursor: not-allowed;
+    height: 4vh;
+    border-radius: 10px ;
+    font-size: 20px;
+    
+  }
+   */
+  
   .form-field input {
     background-color: #f3f3f3;
     height: 4vh;
@@ -128,6 +141,8 @@
     display: flex;
     flex-direction: column;
     padding: 5%;
+    max-width: 100%;
+    align-self: left;
     
   }
 
@@ -139,20 +154,24 @@
     border-color: #1B3877;
     font-weight: 400;
     font-size: 20px;
-    width: 130px;
+    max-width: 130px;
+
   }
   
   .id-form-field {
     display: flex;
     flex-direction: column;
     padding: 5%;
+    align-self: left;
+    position: relative;
+
     
   }
 
-  #create-button{
+  #edit-professor-button{
     position: relative;
     color: #FFFFFF;
-    background-color: #4A9F48;
+    background-color: #395986;
     border: #395986;
     font-size: 20px;
     cursor: pointer;
@@ -167,8 +186,8 @@
     top: 20vh;
   }
 
-  #create-button:hover{
-    background-color: #2f662e;
+  #edit-professor-button:hover{
+    background-color: #222122c2;
 
   }
 

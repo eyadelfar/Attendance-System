@@ -16,8 +16,8 @@ const StudentSettings = () => {
 
   return (
     <div className="account-settings-container">
-        <h1 className='main-header'>Settings</h1>
-        <h3 className='container-header'>Edit Profile</h3>
+        <h1 id='studentsetting-header'>Settings</h1>
+        <h3 id='student-container-header'>Edit Profile</h3>
         
         <div className="parent-div">
 
@@ -38,12 +38,12 @@ const StudentSettings = () => {
                     
                         <div className="form-field">
                             <label htmlFor="firstName">First Name:</label>
-                            <input type="text" id="firstName" defaultValue="Dorothy" readOnly />
+                            <input type="text" id="firstName" defaultValue="Dorothy"  />
                         </div>
 
                         <div className="form-field">
                             <label htmlFor="lastName">Last Name:</label>
-                            <input type="text" id="lastName" defaultValue="Wood" readOnly />
+                            <input type="text" id="lastName" defaultValue="Wood"  />
                         </div>
 
                         <div className="form-field">
