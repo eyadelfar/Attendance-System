@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import './SessionCreate.css';
+import './SessionEdit.css';
 
 
-const SessionCreate = () => {
+const SessionEdit = () => {
 //   const [oldPassword, setOldPassword] = useState('');
 //   const [newPassword, setNewPassword] = useState('');
 
@@ -20,21 +20,21 @@ const SessionCreate = () => {
         <h1 className='session-main-header'>Sessions</h1>
         <h2 className='course-name-header'>Computer Graphics</h2>
         </div>
-            <div className="create-form">
+            <div className="edit-form">
                 <div className='all-forms-col'>  
                     <div className='all-forms'>
                         <div className="session-header-of-form">
-                            <h1>Create Session</h1>
+                            <h1>Edit Session</h1>
                         </div>
                     
                         <div className="form-field">
                             <label >Session Number</label>
-                            <input type="text" id=""  placeholder='Enter Session Number' />
+                            <input type="text" id=""  defaultValue="4" />
                         </div>
 
                         <div className="form-field-date">
                             <label htmlFor="lastName">Date</label>
-                            <input type="date" className='date-text'  placeholder='mm/dd/yy' />
+                            <input type="date" className='date-text'   />
                         </div>
 
                         <div className="time-form">
@@ -49,9 +49,9 @@ const SessionCreate = () => {
                            
                         </div>
                     <div >
-                        <button id='create-session-button' onClick={handleSaveChanges}>
+                        <button id='edit-session-button' onClick={handleSaveChanges}>
                             <div className='create-session-button-text'>
-                                Create
+                                Confrim
                                 </div>
                         </button>
                     </div>
@@ -65,4 +65,4 @@ const SessionCreate = () => {
   );
 };
 
-export default SessionCreate;
+export default SessionEdit;

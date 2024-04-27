@@ -96,7 +96,7 @@
     
   }
   
-  .professor-header-of-form{
+  .course-header-of-form{
     color:#002251;
     text-align:center;
     vertical-align:text-middle;
@@ -132,24 +132,24 @@
   }
 
 
-  .id-form-field input {
+  .form-field-code input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
     border-color: #1B3877;
     font-weight: 400;
     font-size: 20px;
-    width: 130px;
+    width: 190px;
   }
   
-  .id-form-field {
+  .form-field-code {
     display: flex;
     flex-direction: column;
     padding: 5%;
     
   }
 
-  #create-button{
+  #create-course-button{
     position: relative;
     color: #FFFFFF;
     background-color: #4A9F48;
@@ -167,7 +167,7 @@
     top: 20vh;
   }
 
-  #create-button:hover{
+  #create-course-button:hover{
     background-color: #2f662e;
 
   }
@@ -177,6 +177,6 @@
     justify-content: space-around;
     flex-direction: column;
     display: flex;
-    margin-bottom: 5%;
+    margin-bottom: 55%;
    
   }

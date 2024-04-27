@@ -16,7 +16,7 @@ const ProfessorCreate = () => {
 
   return (
     <div className="account-settings-container">
-        <h1 className='main-header'>Professor</h1>
+        <h1 className='main-header'>Professors</h1>
         {/* <h3 className='container-header'>Edit Profile</h3> */}
         
         {/* <div className="parent-div"> */}
@@ -32,7 +32,7 @@ const ProfessorCreate = () => {
             <div className="create-form">
                 <div className='all-forms-col'>  
                     <div className='all-forms'>
-                        <div className="header-of-form">
+                        <div className="professor-header-of-form">
                             <h1>Create Professor</h1>
                         </div>
                     
@@ -46,7 +46,7 @@ const ProfessorCreate = () => {
                             <input type="password" id="lastName"  placeholder='Enter Password' />
                         </div>
 
-                        <div className="form-field">
+                        <div className="id-form-field">
                             <label htmlFor="oldPassword">Professor ID:</label>
                             <input
                             type="text"
@@ -66,7 +66,7 @@ const ProfessorCreate = () => {
                         </div> */}
                     </div>
                     <div >
-                        <button className='create-button' onClick={handleSaveChanges}>
+                        <button id='create-button' onClick={handleSaveChanges}>
                             <div className='create-button-text'>
                                 Create
                                 </div>
