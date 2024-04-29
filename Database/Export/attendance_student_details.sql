@@ -16,41 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `course_allotment`
+-- Table structure for table `student_details`
 --
 
-DROP TABLE IF EXISTS `course_allotment`;
+DROP TABLE IF EXISTS `student_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `course_allotment` (
-  `faculty_id` int DEFAULT NULL,
-  `course_id` int DEFAULT NULL,
-  `session_id` int DEFAULT NULL,
-  `allotment_id` int NOT NULL AUTO_INCREMENT,
-  `allotment_date` date DEFAULT NULL,
-  PRIMARY KEY (`allotment_id`),
-  KEY `fk_course_allotment_faculty_id` (`faculty_id`),
-  KEY `fk_course_allotment_course_id` (`course_id`),
-  KEY `fk_course_allotment_session_id` (`session_id`),
-  CONSTRAINT `course_allotment_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `course_allotment_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `session_details` (`session_id`),
-  CONSTRAINT `course_allotment_ibfk_3` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`),
-  CONSTRAINT `fk_course_allotment_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_course_allotment_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`),
-  CONSTRAINT `fk_course_allotment_session_id` FOREIGN KEY (`session_id`) REFERENCES `session_details` (`session_id`),
-  CONSTRAINT `fk_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `student_details` (
+  `student_id` int NOT NULL AUTO_INCREMENT,
+  `roll_no` varchar(15) DEFAULT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
+  `phone_no` varchar(15) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL,
+  `level` int DEFAULT NULL,
+  PRIMARY KEY (`student_id`),
+  UNIQUE KEY `roll_no` (`roll_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=321657 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `course_allotment`
+-- Dumping data for table `student_details`
 --
 
-LOCK TABLES `course_allotment` WRITE;
-/*!40000 ALTER TABLE `course_allotment` DISABLE KEYS */;
-INSERT INTO `course_allotment` VALUES (1,1,1,1,'2024-01-28'),(2,2,1,2,'2024-01-25'),(1,3,1,3,'2024-01-26'),(3,4,2,4,'2024-01-27'),(3,2,2,5,'2024-01-27'),(2,3,2,6,'2024-01-28'),(1,2,2,7,'2024-01-28'),(2,4,2,8,'2024-01-22'),(3,4,2,9,'2024-01-24'),(1,1,2,10,'2024-01-24'),(2,4,2,11,'2024-01-24'),(3,2,2,12,'2024-01-24'),(2,4,2,13,'2024-01-26'),(1,3,3,14,'2024-01-26'),(1,3,3,15,'2024-01-25'),(3,3,3,16,'2024-01-25'),(3,2,3,17,'2024-01-25'),(2,4,3,18,'2024-01-27'),(3,2,3,19,'2024-01-22'),(2,4,3,20,'2024-01-22'),(1,1,3,21,'2024-01-22'),(2,3,3,22,'2024-01-22'),(2,1,3,23,'2024-01-23');
-/*!40000 ALTER TABLE `course_allotment` ENABLE KEYS */;
+LOCK TABLES `student_details` WRITE;
+/*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
+INSERT INTO `student_details` VALUES (1,'S001','Eyad Elfar','123-456-7890','63377',4),(2,'S002','Swilam','234-567-8901','324',4),(3,'S003','Ragab','234-567-8901','2632',1),(4,'S004','Ali','555-999-5555','3236',5),(5,'S005','Ehab','555-699-5555','6327',3),(6,'S006','Bedo','21030213','1231412',2);
+/*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -61,9 +52,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_allotment_insert_trigger` AFTER INSERT ON `course_allotment` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `student_details_insert_trigger` AFTER INSERT ON `student_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_allotment', 'INSERT', CURRENT_TIMESTAMP);
+    VALUES ('student_details', 'INSERT', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -79,9 +70,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_allotment_update_trigger` AFTER UPDATE ON `course_allotment` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `student_details_update_trigger` AFTER UPDATE ON `student_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_allotment', 'UPDATE', CURRENT_TIMESTAMP);
+    VALUES ('student_details', 'UPDATE', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -97,9 +88,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_allotment_delete_trigger` AFTER DELETE ON `course_allotment` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `student_details_delete_trigger` AFTER DELETE ON `student_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_allotment', 'DELETE', CURRENT_TIMESTAMP);
+    VALUES ('student_details', 'DELETE', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -116,4 +107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-26 19:48:46
+-- Dump completed on 2024-04-29 22:21:30

@@ -22,25 +22,15 @@ VALUES ('S025', 'swilam', '555-699-5555');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
-
+-- more automated
 INSERT INTO course_allotment (faculty_id, course_id, session_id)
 VALUES (3, 3, 1);
 
 alter table student_details
 drop column image;
 
-CREATE TABLE faces (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    student_id VARCHAR(255) NOT NULL,
-    face_number INT NOT NULL,
-    encoding BLOB NOT NULL,
-    UNIQUE(student_id, face_number)
-);
 
 
-
-ALTER TABLE session_details
-CHANGE end_date session_time datetime;
 
 set foreign_key_checks=0;
 select * from faces;
@@ -53,21 +43,77 @@ CHANGE name fullname varchar(255);
 set foreign_key_checks=1;
 desc attendance;
 
+ALTER TABLE lectures
+ADD COLUMN course_id INT;
+ALTER TABLE lectures
+ADD CONSTRAINT fk_lectures_course_id FOREIGN KEY (course_id) REFERENCES course_details(course_id);
+
 select * from student_details;
 select * from course_allotment;
 select * from course_details;
 select * from course_registration;
 select * from faculty_details;
-select * from session_details;
-select * from faces;
+select * from semester_details;
 select * from attendance;
-select * from student_details;
-desc attendance;
+select * from lectures;
+select * from data_changes;
+desc lectures;
 ALTER TABLE faces MODIFY COLUMN encoding LONGBLOB;
 ALTER TABLE attendance MODIFY COLUMN timestamp datetime;
 
+select * from data_changes;
+alter table semester_details
+drop session_time;
 
-alter table student_details
+CREATE TABLE lectures (
+  lecture_id INT PRIMARY KEY,
+  session_id INT,
+  lecture_date DATE,
+  lecture_time TIME,
+  FOREIGN KEY (session_id) REFERENCES session_details(session_id)
+);
+
+-- Create a trigger to set default values for lecture_date and lecture_time
+DELIMITER //
+CREATE TRIGGER set_default_lecture_date_time BEFORE INSERT ON lectures
+FOR EACH ROW
+BEGIN
+    IF NEW.lecture_date IS NULL THEN
+        SET NEW.lecture_date = CURRENT_DATE;
+    END IF;
+    IF NEW.lecture_time IS NULL THEN
+        SET NEW.lecture_time = CURRENT_TIME;
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+
+
+
+RENAME TABLE session_details TO semester_details;
+
+ALTER TABLE session_details
+ADD COLUMN lecture_id INT;
+
+
+ALTER TABLE attendance
+MODIFY COLUMN status ENUM('joined', 'left');
+
+ALTER TABLE attendance
+ADD CONSTRAINT fk_attendance_lecture FOREIGN KEY (lecture_id) REFERENCES lectures(lecture_id);
+
+truncate attendance;
+
+CREATE INDEX idx_attendance_course_id ON attendance (course_id);
+
+CREATE INDEX idx_attendance_student_id ON attendance (student_id);
+CREATE INDEX idx_attendance_session_id ON attendance (session_id);
+
+
+
+
 
 -- Trigger for attendance
 DELIMITER //
@@ -303,14 +349,39 @@ BEGIN
 END;
 //
 DELIMITER ;
+
+
 DELIMITER //
-CREATE TRIGGER session_details_delete_trigger
+CREATE TRIGGER lectures_delete_trigger
 AFTER DELETE
-ON session_details
+ON lectures
 FOR EACH ROW
 BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
     VALUES ('session_details', 'DELETE', CURRENT_TIMESTAMP);
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER lectures_update_trigger
+AFTER UPDATE
+ON lectures
+FOR EACH ROW
+BEGIN
+    INSERT INTO data_changes (table_name, event_type, event_timestamp)
+    VALUES ('lectures', 'UPDATE', CURRENT_TIMESTAMP);
+END;
+//
+DELIMITER ;
+DELIMITER //
+CREATE TRIGGER lectures_delete_trigger
+AFTER DELETE
+ON lectures
+FOR EACH ROW
+BEGIN
+    INSERT INTO data_changes (table_name, event_type, event_timestamp)
+    VALUES ('lectures', 'DELETE', CURRENT_TIMESTAMP);
 END;
 //
 DELIMITER ;

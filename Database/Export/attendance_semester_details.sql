@@ -16,42 +16,32 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `attendance`
+-- Table structure for table `semester_details`
 --
 
-DROP TABLE IF EXISTS `attendance`;
+DROP TABLE IF EXISTS `semester_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `attendance` (
+CREATE TABLE `semester_details` (
+  `session_id` int NOT NULL AUTO_INCREMENT,
+  `year` year DEFAULT NULL,
+  `term` varchar(12) DEFAULT NULL,
   `course_id` int DEFAULT NULL,
-  `session_id` int DEFAULT NULL,
-  `timestamp` datetime DEFAULT NULL,
-  `status` varchar(12) DEFAULT NULL,
-  `student_id` int DEFAULT NULL,
-  `attendance_id` int NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`attendance_id`),
-  KEY `fk_attendance_course_id` (`course_id`),
-  KEY `fk_attendance_session_id` (`session_id`),
-  KEY `fk_attendance_student_id` (`student_id`),
-  CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `session_details` (`session_id`),
-  CONSTRAINT `attendance_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
-  CONSTRAINT `fk_attendance_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_attendance_session_id` FOREIGN KEY (`session_id`) REFERENCES `session_details` (`session_id`),
-  CONSTRAINT `fk_attendance_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
-  CONSTRAINT `fk_session_id` FOREIGN KEY (`session_id`) REFERENCES `session_details` (`session_id`),
-  CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=172 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`session_id`),
+  KEY `fk_session_details_course_id` (`course_id`),
+  CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
+  CONSTRAINT `fk_session_details_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `attendance`
+-- Dumping data for table `semester_details`
 --
 
-LOCK TABLES `attendance` WRITE;
-/*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (2,1,'2024-04-19 15:58:05','Present',2,161),(2,1,'2024-04-19 15:58:08','Present',3,162),(2,1,'2024-04-19 15:58:26','Present',1,163),(2,1,'2024-04-19 15:59:11','Present',5,164),(2,1,'2024-04-19 16:00:48','Present',4,165),(2,2,'2024-04-19 17:47:16','Present',1,166),(2,2,'2024-04-19 17:47:50','Present',4,167),(2,2,'2024-04-19 17:47:52','Present',2,168),(2,2,'2024-04-19 17:50:19','Present',6,169),(2,2,'2024-04-19 17:51:22','Present',3,170),(2,2,'2024-04-19 18:25:49','Present',5,171);
-/*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
+LOCK TABLES `semester_details` WRITE;
+/*!40000 ALTER TABLE `semester_details` DISABLE KEYS */;
+INSERT INTO `semester_details` VALUES (1,2024,'Spring',1),(2,2024,'Spring',2),(3,2024,'Fall',3),(4,2024,'Fall',4);
+/*!40000 ALTER TABLE `semester_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -62,9 +52,9 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `attendance_insert_trigger` AFTER INSERT ON `attendance` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `session_details_insert_trigger` AFTER INSERT ON `semester_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('attendance', 'INSERT', CURRENT_TIMESTAMP);
+    VALUES ('session_details', 'INSERT', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -80,9 +70,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `attendance_update_trigger` AFTER UPDATE ON `attendance` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `session_details_update_trigger` AFTER UPDATE ON `semester_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('attendance', 'UPDATE', CURRENT_TIMESTAMP);
+    VALUES ('session_details', 'UPDATE', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -98,9 +88,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `attendance_delete_trigger` AFTER DELETE ON `attendance` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `session_details_delete_trigger` AFTER DELETE ON `semester_details` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('attendance', 'DELETE', CURRENT_TIMESTAMP);
+    VALUES ('session_details', 'DELETE', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -117,4 +107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-26 19:48:46
+-- Dump completed on 2024-04-29 22:21:30
