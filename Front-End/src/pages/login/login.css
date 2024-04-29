@@ -28,7 +28,7 @@
     align-items: center;
     flex-direction: column;
   }
-  h1 {
+  .login-header {
     position: relative;
     font-size: 64px;
     font-weight: 400;
@@ -65,7 +65,7 @@
     box-sizing: border-box;
   }
   
-  button {
+  #login-button {
     position: relative;
     background-color: #395986;
     font-family: 'poppins', sans-serif;

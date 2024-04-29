@@ -32,7 +32,7 @@
 
 
 import React, { useState } from 'react';
-import './sidebar.css'; // Make sure to create a CSS file with this name
+import './SideBar.css'; // Make sure to create a CSS file with this name
 import LogoSidebar from '../../pics/LogoSidebar.png';
 import dashboard from '../../pics/dashboard.png';
 import courses from '../../pics/courses.png';

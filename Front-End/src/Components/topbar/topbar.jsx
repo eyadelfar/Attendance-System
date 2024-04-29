@@ -1,23 +1,21 @@
+// Topbar.js
 import React from 'react';
-import './topbar.css'; // Your CSS file for styling
 
-function Topbar() {
+const Topbar = () => {
   return (
     <div className="topbar">
-      <div className="topbar-logo">
-        <img src="logo.png" alt="Company Logo" />
-      </div>
-      <div className="topbar-menu">
-        <div className="menu-item">Home</div>
-        <div className="menu-item">About</div>
-        <div className="menu-item">Contact</div>
-      </div>
-      <div className="topbar-user">
-        <img src="user.png" alt="User" />
-        <span>John Doe</span>
+      <div className="topbar-left">
+        <div className="topbar-date">30 MAY 2024</div>
+        <div className="topbar-notifications">
+          <img src="notification-icon.png" alt="Notification" />
+          <div className="notification-badge">
+            <img src="profile-image.png" alt="Profile" />
+            <div className="notification-name">John Doe</div>
+          </div>
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default Topbar;

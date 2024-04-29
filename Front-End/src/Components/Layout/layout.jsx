@@ -1,9 +1,9 @@
 // Layout.js
 import React from 'react';
-import './layout.css';
+// import './Layout.css';
 import Router from '../../routes/Router';
-import Sidebar from '../Sidebar/sidebar';
-import Topbar from '../topbar/topbar'; // Capitalized component name
+import SideBar from '../sideBar/SideBar'; // Capitalized component name
+import Topbar from '../topBar/TopBar'; // Capitalized component name
 import Auth from '../../helper/Storage';
 const auth = Auth.getAuthUser();
 
@@ -12,11 +12,13 @@ const Layout = () => {
     <div className="Layout">
       {/* {auth && (<Sidebar/>)} */}
        {/* Corrected component name and syntax */}
-      {/* <Sidebar /> */}
+       <Topbar />
+     
       
       <div className="main_layout">
-      <Topbar />
-        {/* {auth && (<Topbar/>)} */}
+      <SideBar />
+       
+
 
         <div className="content">
           <Router />

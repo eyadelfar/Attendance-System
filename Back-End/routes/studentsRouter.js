@@ -116,6 +116,7 @@ router.put("/",
     }
 );
 
+// delete student
 router.delete("/",
     authorize,
     async(req,res) => {
