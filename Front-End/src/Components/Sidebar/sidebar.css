@@ -1,11 +1,13 @@
 .sidebar {
-  background: white;
-  color: black;
+  position: relative;
+  width: 197px; /* Adjust the width as needed */
+  height: 1024px; /* Set the height to 100% of the viewport height */
+  background-color: white; /* Dark gray background */
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
-  width: 197px; /* Set the width of the sidebar */
+  justify-content: center;
+  align-items: center;
 }
 
 .container {
