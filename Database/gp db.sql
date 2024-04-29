@@ -61,6 +61,11 @@ desc lectures;
 ALTER TABLE faces MODIFY COLUMN encoding LONGBLOB;
 ALTER TABLE attendance MODIFY COLUMN timestamp datetime;
 
+ALTER TABLE course_registration
+DROP COLUMN registration_id,
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (course_id, student_id);
+
 select * from data_changes;
 alter table semester_details
 drop session_time;

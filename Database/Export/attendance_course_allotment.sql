@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `attendance` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `attendance`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: attendance
@@ -49,7 +51,7 @@ CREATE TABLE `course_allotment` (
 
 LOCK TABLES `course_allotment` WRITE;
 /*!40000 ALTER TABLE `course_allotment` DISABLE KEYS */;
-INSERT INTO `course_allotment` VALUES (1,1,1,1,'2024-01-28'),(2,2,1,2,'2024-01-25'),(1,3,1,3,'2024-01-26'),(3,4,2,4,'2024-01-27'),(3,2,2,5,'2024-01-27'),(2,3,2,6,'2024-01-28'),(1,2,2,7,'2024-01-28'),(2,4,2,8,'2024-01-22'),(3,4,2,9,'2024-01-24'),(1,1,2,10,'2024-01-24'),(2,4,2,11,'2024-01-24'),(3,2,2,12,'2024-01-24'),(2,4,2,13,'2024-01-26'),(1,3,3,14,'2024-01-26'),(1,3,3,15,'2024-01-25'),(3,3,3,16,'2024-01-25'),(3,2,3,17,'2024-01-25'),(2,4,3,18,'2024-01-27'),(3,2,3,19,'2024-01-22'),(2,4,3,20,'2024-01-22'),(1,1,3,21,'2024-01-22'),(2,3,3,22,'2024-01-22'),(2,1,3,23,'2024-01-23');
+INSERT INTO `course_allotment` VALUES (1,1,1,1,'2024-01-28'),(2,2,1,2,'2024-01-25'),(1,3,1,3,'2024-01-26'),(3,4,2,4,'2024-01-27'),(3,2,2,5,'2024-01-27'),(2,3,2,6,'2024-01-28'),(1,2,2,7,'2024-01-28'),(2,4,2,8,'2024-01-22'),(3,4,2,9,'2024-01-24'),(1,1,2,10,'2024-01-24'),(2,4,2,11,'2024-01-24'),(3,2,2,12,'2024-01-24'),(2,4,2,13,'2024-01-26'),(1,3,3,14,'2024-01-26'),(1,3,3,15,'2024-01-25');
 /*!40000 ALTER TABLE `course_allotment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -116,4 +118,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29 22:21:30
+-- Dump completed on 2024-04-29 22:33:34
