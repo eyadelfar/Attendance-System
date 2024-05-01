@@ -74,6 +74,26 @@ module.exports = class RegistrationController{
         
     };
 
+    async importRegistrations(data){
+        try{
+            let result;
+            const headers = data[0];
+            for (let i = 1; i < data.length; i++) {
+                const row = data[i];
+                let rowData = {};
+                for (let j = 0; j < headers.length; j++) {
+                    rowData[headers[j]] = row[j];
+                }
+                await dbQuery.insert('test', rowData);
+                result = await dbQuery.execute();
+            }
+            result.message = 'Data uploaded successfully';
+            return result;
+        }catch(error){
+            return {error:error};
+        }
+    };
+
     async deleteRegistration(registration){
         try{
             let result = await this.getRegistrationBy('registration_id',registration.registration_id);
