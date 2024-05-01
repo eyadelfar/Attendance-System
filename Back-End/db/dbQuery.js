@@ -18,8 +18,9 @@ module.exports = class DBQuery{
     async insert(tableName, columns = {}) {
         let columnNames = Object.keys(columns).join(', ');
         let columnValues = Object.values(columns).join("', '");
+        let updates = Object.keys(columns).map(column => `${column} = VALUES(${column})`).join(', ');
 
-        this.query = `INSERT INTO ${tableName} (${columnNames}) VALUES ('${columnValues}')`;
+        this.query = `INSERT INTO ${tableName} (${columnNames}) VALUES ('${columnValues}') ON DUPLICATE KEY UPDATE ${updates}`;
         return this;
     }
 

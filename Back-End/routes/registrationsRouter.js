@@ -1,4 +1,8 @@
 const router = require('express').Router();
+const xlsx = require('xlsx');
+const multer = require('multer');
+const upload = multer({ dest: 'uploads/' });
+const fs = require('fs');
 
 // used classes
 const RegistrationController = require('../controllers/registrationController');
@@ -75,6 +79,7 @@ router.get("/course/:course_id",
         }
     }
 );
+
 // add registration
 router.post("/",
     async (req, res) => {
@@ -96,6 +101,30 @@ router.post("/",
                 res.status(400).json(result.message);
             }
         } catch (error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+// import registration sheet
+router.post("/upload",
+    authorize,
+    upload.single('registrationSheet'), 
+    async (req, res) => {
+        try{
+            const workbook = xlsx.readFile(req.file.path);
+            const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+            const data = xlsx.utils.sheet_to_json(worksheet, { header: 1, range: 0  });
+            
+            let registrationController = new RegistrationController();
+            let result = await registrationController.importRegistrations(data);
+            
+            fs.unlinkSync(req.file.path);
+            res.status(200).send(result.message);
+            
+        } catch (error){
+            fs.unlinkSync(req.file.path);
             console.log(error);
             res.status(500).json(error);
         }
