@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `attendance` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `attendance`;
 -- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: localhost    Database: attendance
@@ -16,34 +18,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `course_registration`
+-- Table structure for table `lectures`
 --
 
-DROP TABLE IF EXISTS `course_registration`;
+DROP TABLE IF EXISTS `lectures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `course_registration` (
+CREATE TABLE `lectures` (
+  `lecture_id` int NOT NULL,
+  `session_id` int DEFAULT NULL,
+  `lecture_date` date DEFAULT NULL,
+  `lecture_time` time DEFAULT NULL,
   `course_id` int DEFAULT NULL,
-  `registration_id` int NOT NULL AUTO_INCREMENT,
-  `student_id` int DEFAULT NULL,
-  PRIMARY KEY (`registration_id`),
-  KEY `fk_course_registration_course_id` (`course_id`),
-  KEY `fk_course_registration_student_id` (`student_id`),
-  CONSTRAINT `course_registration_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_course_registration_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_course_registration_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
-  CONSTRAINT `fk_student_reg_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`lecture_id`),
+  KEY `session_id` (`session_id`),
+  KEY `fk_lectures_course_id` (`course_id`),
+  CONSTRAINT `fk_lectures_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
+  CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `semester_details` (`session_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `course_registration`
+-- Dumping data for table `lectures`
 --
 
-LOCK TABLES `course_registration` WRITE;
-/*!40000 ALTER TABLE `course_registration` DISABLE KEYS */;
-INSERT INTO `course_registration` VALUES (1,1,1),(2,2,1),(3,3,2),(4,4,3),(2,5,4),(3,6,5),(2,7,5),(4,8,5),(1,9,3),(4,10,2),(1,11,4),(2,12,5),(3,13,3),(4,14,2),(2,15,1),(4,16,4),(3,17,3),(3,18,2),(1,19,4),(4,20,3),(3,21,5),(2,22,1),(4,23,3);
-/*!40000 ALTER TABLE `course_registration` ENABLE KEYS */;
+LOCK TABLES `lectures` WRITE;
+/*!40000 ALTER TABLE `lectures` DISABLE KEYS */;
+INSERT INTO `lectures` VALUES (1,2,'2024-04-29','21:49:31',3);
+/*!40000 ALTER TABLE `lectures` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -54,9 +56,13 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_registration_insert_trigger` AFTER INSERT ON `course_registration` FOR EACH ROW BEGIN
-    INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_registration', 'INSERT', CURRENT_TIMESTAMP);
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `set_default_lecture_date_time` BEFORE INSERT ON `lectures` FOR EACH ROW BEGIN
+    IF NEW.lecture_date IS NULL THEN
+        SET NEW.lecture_date = CURRENT_DATE;
+    END IF;
+    IF NEW.lecture_time IS NULL THEN
+        SET NEW.lecture_time = CURRENT_TIME;
+    END IF;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -72,27 +78,9 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_registration_update_trigger` AFTER UPDATE ON `course_registration` FOR EACH ROW BEGIN
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `lectures_delete_trigger` AFTER DELETE ON `lectures` FOR EACH ROW BEGIN
     INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_registration', 'UPDATE', CURRENT_TIMESTAMP);
-END */;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `course_registration_delete_trigger` AFTER DELETE ON `course_registration` FOR EACH ROW BEGIN
-    INSERT INTO data_changes (table_name, event_type, event_timestamp)
-    VALUES ('course_registration', 'DELETE', CURRENT_TIMESTAMP);
+    VALUES ('lectures', 'DELETE', CURRENT_TIMESTAMP);
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -109,4 +97,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-26 19:48:46
+-- Dump completed on 2024-04-29 22:33:34
