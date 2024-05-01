@@ -25,13 +25,16 @@ DROP TABLE IF EXISTS `semester_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `semester_details` (
-  `session_id` int NOT NULL AUTO_INCREMENT,
+  `semester_id` int NOT NULL AUTO_INCREMENT,
   `year` year DEFAULT NULL,
   `term` varchar(12) DEFAULT NULL,
   `course_id` int DEFAULT NULL,
-  PRIMARY KEY (`session_id`),
+  `faculty_id` int DEFAULT NULL,
+  PRIMARY KEY (`semester_id`),
   KEY `fk_session_details_course_id` (`course_id`),
+  KEY `fk_faculty_id` (`faculty_id`),
   CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
+  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`),
   CONSTRAINT `fk_session_details_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -42,7 +45,7 @@ CREATE TABLE `semester_details` (
 
 LOCK TABLES `semester_details` WRITE;
 /*!40000 ALTER TABLE `semester_details` DISABLE KEYS */;
-INSERT INTO `semester_details` VALUES (1,2024,'Spring',1),(2,2024,'Spring',2),(3,2024,'Fall',3),(4,2024,'Fall',4);
+INSERT INTO `semester_details` VALUES (1,2024,'Spring',1,2),(2,2024,'Spring',2,2),(3,2024,'Fall',3,1),(4,2024,'Fall',4,1);
 /*!40000 ALTER TABLE `semester_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -109,4 +112,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29 22:33:34
+-- Dump completed on 2024-05-01 23:39:56

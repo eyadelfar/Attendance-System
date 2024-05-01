@@ -26,7 +26,7 @@ DROP TABLE IF EXISTS `attendance`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `attendance` (
   `course_id` int DEFAULT NULL,
-  `session_id` int DEFAULT NULL,
+  `semester_id` int DEFAULT NULL,
   `timestamp` datetime DEFAULT NULL,
   `status` enum('joined','left') DEFAULT NULL,
   `student_id` int DEFAULT NULL,
@@ -36,15 +36,15 @@ CREATE TABLE `attendance` (
   KEY `fk_attendance_lecture` (`lecture_id`),
   KEY `idx_attendance_course_id` (`course_id`),
   KEY `idx_attendance_student_id` (`student_id`),
-  KEY `idx_attendance_session_id` (`session_id`),
+  KEY `idx_attendance_session_id` (`semester_id`),
   CONSTRAINT `attendance_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`session_id`) REFERENCES `semester_details` (`session_id`),
+  CONSTRAINT `attendance_ibfk_2` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`),
   CONSTRAINT `attendance_ibfk_3` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
   CONSTRAINT `fk_attendance_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
   CONSTRAINT `fk_attendance_lecture` FOREIGN KEY (`lecture_id`) REFERENCES `lectures` (`lecture_id`),
-  CONSTRAINT `fk_attendance_session_id` FOREIGN KEY (`session_id`) REFERENCES `semester_details` (`session_id`),
+  CONSTRAINT `fk_attendance_session_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`),
   CONSTRAINT `fk_attendance_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
-  CONSTRAINT `fk_session_id` FOREIGN KEY (`session_id`) REFERENCES `semester_details` (`session_id`),
+  CONSTRAINT `fk_session_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`),
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -122,4 +122,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29 22:33:34
+-- Dump completed on 2024-05-01 23:39:57

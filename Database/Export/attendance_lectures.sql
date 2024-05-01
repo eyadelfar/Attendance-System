@@ -26,15 +26,15 @@ DROP TABLE IF EXISTS `lectures`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lectures` (
   `lecture_id` int NOT NULL,
-  `session_id` int DEFAULT NULL,
+  `semester_id` int DEFAULT NULL,
   `lecture_date` date DEFAULT NULL,
   `lecture_time` time DEFAULT NULL,
   `course_id` int DEFAULT NULL,
   PRIMARY KEY (`lecture_id`),
-  KEY `session_id` (`session_id`),
+  KEY `session_id` (`semester_id`),
   KEY `fk_lectures_course_id` (`course_id`),
   CONSTRAINT `fk_lectures_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`session_id`) REFERENCES `semester_details` (`session_id`)
+  CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,4 +97,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-29 22:33:34
+-- Dump completed on 2024-05-01 23:39:57
