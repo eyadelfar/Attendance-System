@@ -6,10 +6,11 @@ let dbQuery = new DBQuery();
 module.exports = class RegistrationController{
     constructor(){};
 
-    async getRegistrationBy(column,value){
+    async getRegistrationBy(registration){
         try{
             await dbQuery.select('course_registration');
-            await dbQuery.where(column,value);
+            // if(!registration.student_id)
+            await dbQuery.where(registration);
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -39,7 +40,7 @@ module.exports = class RegistrationController{
     
     async getRegistrationsByStudent(student_id){
         try{
-            let results = await this.getRegistrationBy('student_id',student_id);
+            let results = await this.getRegistrationBy(student_id);
             return results; 
         }catch(error){
             return error;
@@ -48,7 +49,7 @@ module.exports = class RegistrationController{
 
     async getRegistrationsByCourse(course_id){
         try{
-            let results = await this.getRegistrationBy('course_id',course_id);
+            let results = await this.getRegistrationBy(course_id);
             return results; 
         }catch(error){
             return error;
@@ -57,21 +58,19 @@ module.exports = class RegistrationController{
 
     async addRegistration(newRegistration){
         try{
-            let result = await this.getRegistrationBy('registration_id',newRegistration.registration_id);
-            if(result.exist){
-                result.problem = 1;
-                return result;
+            let check = await this.getRegistrationBy(newRegistration);
+            if(check.exist){
+                check.problem = 1;
+                return check;
             }
-            else{
-                await dbQuery.insert('course_registration',newRegistration);
-                let result = await dbQuery.execute();
-                result.message = 'REGISTRATION ADDED SUCCESSFULLY...';
-                return result;
-            }
+            await dbQuery.insert('course_registration',newRegistration);
+            let result = await dbQuery.execute();
+            result.message = 'REGISTRATION ADDED SUCCESSFULLY...';
+            return result;
+            
         }catch(error){
             return {error:error};
         }
-        
     };
 
     async importRegistrations(data){
@@ -81,10 +80,12 @@ module.exports = class RegistrationController{
             for (let i = 1; i < data.length; i++) {
                 const row = data[i];
                 let rowData = {};
+
                 for (let j = 0; j < headers.length; j++) {
                     rowData[headers[j]] = row[j];
                 }
-                await dbQuery.insert('test', rowData);
+                
+                await dbQuery.insert('course_registration', rowData);
                 result = await dbQuery.execute();
             }
             result.message = 'Data uploaded successfully';
@@ -93,17 +94,17 @@ module.exports = class RegistrationController{
             return {error:error};
         }
     };
-
+    
     async deleteRegistration(registration){
         try{
-            let result = await this.getRegistrationBy('registration_id',registration.registration_id);
+            let result = await this.getRegistrationBy(registration);
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('course_registration');
-                await dbQuery.where('registration_id',registration.registration_id);
+                await dbQuery.where(registration);
                 result = await dbQuery.execute();
                 result.message = 'REGISTRATION DELETED...';
                 return result; 
@@ -112,22 +113,20 @@ module.exports = class RegistrationController{
             return error;
         }
     };
-
+/*
     async editRegistration(oldRegistration,newRegistration){
         try{
-            let result = await this.getRegistrationBy('registration_id',oldRegistration.registration_id);
+            let result = await this.getRegistrationBy(oldRegistration);
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
-                           
-            oldRegistration = result[0];
-
+            
             newRegistration.course_id = newRegistration.course_id ? newRegistration.course_id : oldRegistration.course_id;
             newRegistration.student_id = newRegistration.student_id ? newRegistration.student_id : oldRegistration.student_id;
 
             await dbQuery.update('course_registration',newRegistration);
-            await dbQuery.where('registration_id',oldRegistration.registration_id);
+            await dbQuery.where(oldRegistration);
             result = await dbQuery.execute();
             result.message = 'REGISTRATION UPDATED...';
             return result; 
@@ -136,5 +135,5 @@ module.exports = class RegistrationController{
             return {error:error};
         }
     };
-
+*/
 };

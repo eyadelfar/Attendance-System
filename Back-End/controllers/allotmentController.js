@@ -11,7 +11,7 @@ module.exports = class AllotmentController{
     async getAllotmentBy(column,value){
         try{
             await dbQuery.select('course_allotment');
-            await dbQuery.where(column,value);
+            await dbQuery.where({column:value});
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -38,7 +38,7 @@ module.exports = class AllotmentController{
             return error;
         }
     };
-    
+/*    
     async getAllotmentsByYear(year){
         try{
             let results = await this.getAllotmentBy('year',year);
@@ -56,7 +56,7 @@ module.exports = class AllotmentController{
             return error;
         }
     };
-
+*/
     async getAllotmentsByCourse(course){
         try{
             let results = await this.getAllotmentBy('course',course);
@@ -88,7 +88,7 @@ module.exports = class AllotmentController{
             }
             else{
                 await dbQuery.delete('course_allotment');
-                await dbQuery.where('allotment_id',allotment.allotment_id);
+                await dbQuery.where({allotment_id:allotment.allotment_id});
                 result = await dbQuery.execute();
                 result.message = 'ALLOTMENT DELETED...';
                 return result; 
@@ -114,10 +114,10 @@ module.exports = class AllotmentController{
                 moment(oldAllotment.allotment_date).format('YYYY-MM-DD');
             newAllotment.faculty_id = newAllotment.faculty_id ? newAllotment.faculty_id : oldAllotment.faculty_id;
             newAllotment.course_id = newAllotment.course_id ? newAllotment.course_id : oldAllotment.course_id;
-            newAllotment.session_id = newAllotment.session_id ? newAllotment.session_id : oldAllotment.session_id;
+            newAllotment.semester_id = newAllotment.semester_id ? newAllotment.semester_id : oldAllotment.semester_id;
 
             await dbQuery.update('course_allotment',newAllotment);
-            await dbQuery.where('allotment_id',oldAllotment.allotment_id);
+            await dbQuery.where({allotment_id:oldAllotment.allotment_id});
             result = await dbQuery.execute();
             result.message = 'ALLOTMENT UPDATED...';
             return result; 

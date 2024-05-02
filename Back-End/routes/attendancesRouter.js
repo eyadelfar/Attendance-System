@@ -30,7 +30,7 @@ router.get("/attendance",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let result = await attendanceController.getAttendanceBy('attendance_id',req.body.attendance_id);
+            let result = await attendanceController.getAttendanceBy({attendance_id:req.body.attendance_id});
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);
@@ -51,7 +51,7 @@ router.get("/course/:course_id",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesByCourse(req.params.course_id);
+            let results = await attendanceController.getAttendancesByCourse({course_id:req.params.course_id});
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -61,11 +61,11 @@ router.get("/course/:course_id",
     }
 );
 
-router.get("/session/:session_id",
+router.get("/semester/:semester_id",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesBySession(req.params.session_id);
+            let results = await attendanceController.getAttendancesBySemester({semester_id:req.params.semester_id});
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -80,7 +80,7 @@ router.get("/student/:student_id",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesByStudent(req.params.student_id);
+            let results = await attendanceController.getAttendancesByStudent({student_id:req.params.student_id});
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -99,8 +99,11 @@ router.post("/",
             let attendance = new Attendance();
             attendance = {
                 course_id: req.body.course_id,
-                session_id: req.body.session_id,
-                student_id: req.body.student_id
+                semester_id: req.body.semester_id,
+                student_id: req.body.student_id,
+                lecture_id: req.body.lecture_id,
+                status: req.body.status,
+                timestamp: req.body.timestamp,
             }
             let result = await attendanceController.addAttendance(attendance);
     
@@ -129,14 +132,18 @@ router.put("/",
 
             attendanceOld.attendance_id = req.body.attendance_id;
             
-            if(req.body.session_id)
-                attendanceNew.session_id = req.body.session_id;
+            if(req.body.semester_id)
+                attendanceNew.semester_id = req.body.semester_id;
             if(req.body.course_id)
                 attendanceNew.course_id = req.body.course_id;
             if(req.body.timestamp)
                 attendanceNew.timestamp = req.body.timestamp;
             if(req.body.student_id)
                 attendanceNew.student_id = req.body.student_id;
+            if(req.body.status)
+                attendanceNew.status = req.body.status;
+            if(req.body.lecture_id)
+                attendanceNew.status = req.body.lecture_id;
 
             let result = await attendanceController.editAttendance(attendanceOld,attendanceNew);
             if(!result.problem){
