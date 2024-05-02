@@ -32,7 +32,7 @@ router.get("/course",
     async (req,res) => {
         try{
             let courseController = new CourseController();
-            let result = await courseController.getCourseBy('course_id',req.body.course_id);
+            let result = await courseController.getCourseBy({course_id:req.body.course_id});
             if(!result.exist){
                 console.log(result.message);
                 res.status(400).json(result.message);

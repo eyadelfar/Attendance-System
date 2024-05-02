@@ -1,11 +1,10 @@
-module.exports = class Session{
+module.exports = class Semester{
 
     constructor(){
-        this.session_id;
+        this.semester_id;
         this.course_id;
         this.year;
         this.term;
-        this.session_time;
     };
 
 };

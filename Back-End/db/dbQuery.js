@@ -37,9 +37,18 @@ module.exports = class DBQuery{
         this.query = `DELETE FROM ${tableName}`;
         return this;
     }
-
+/*
     async where(column,value){
         this.query += ` WHERE ${column} = '${value}'`;
+        return this;
+    }
+*/
+    async where(columns){
+        let conditions = [];
+        for (let column in columns) {
+            conditions.push(`${column} = '${columns[column]}'`);
+        }
+        this.query += ` WHERE ${conditions.join(' AND ')}`;
         return this;
     }
 

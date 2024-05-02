@@ -1,20 +1,20 @@
 const router = require('express').Router();
 
 // used classes
-const SessionController = require('../controllers/sessionController');
-const Session = require('../models/session');
+const SemesterController = require('../controllers/semesterController');
+const Semester = require('../models/semester');
 
 // middlewares
 const authenticate = require("../middleware/authentication");
 const authorize = require("../middleware/authorization");
 
 /* end points */
-// get all sessions 
+// get all semesters 
 router.get("/",
     async (req,res) => {
         try{
-            let sessionController = new SessionController();
-            let results = await sessionController.getAllSessions();
+            let semesterController = new SemesterController();
+            let results = await semesterController.getAllSemesters();
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -24,12 +24,12 @@ router.get("/",
     }
 );
 
-// get one session 
-router.get("/session",
+// get one semester 
+router.get("/semester",
     async (req,res) => {
         try{
-            let sessionController = new SessionController();
-            let result = await sessionController.getSessionBy('session_id',req.body.session_id);
+            let semesterController = new SemesterController();
+            let result = await semesterController.getSemesterBy({semester_id:req.body.semester_id});
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);
@@ -45,13 +45,13 @@ router.get("/session",
     }
 );
 
-// get filtered sessions 
+// get filtered semesters 
 router.get("/course/:course_id",
     authenticate,
     async (req,res) => {
         try{
-            let sessionController = new SessionController();
-            let result = await sessionController.getSessionsByCourse(req.params.course_id);
+            let semesterController = new SemesterController();
+            let result = await semesterController.getSemestersByCourse({course_id:req.params.course_id});
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -64,8 +64,8 @@ router.get("/course/:course_id",
 router.get("/term/:term",
     async (req,res) => {
         try{
-            let sessionController = new SessionController();
-            let result = await sessionController.getSessionsByTerm(req.params.term);
+            let semesterController = new SemesterController();
+            let result = await semesterController.getSemestersByTerm({term:req.params.term});
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -78,8 +78,8 @@ router.get("/term/:term",
 router.get("/year/:year",
     async (req,res) => {
         try{
-            let sessionController = new SessionController();
-            let result = await sessionController.getSessionsByYear(req.params.year);
+            let semesterController = new SemesterController();
+            let result = await semesterController.getSemestersByYear({year:req.params.year});
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -89,20 +89,20 @@ router.get("/year/:year",
     }
 );
 
-// add session
+// add semester
 router.post("/",
     authorize,
     async (req, res) => {
         try{
-            let sessionController = new SessionController();
-            let session = new Session();
-            session = {
-                session_time: req.body.session_time,
+            let semesterController = new SemesterController();
+            let semester = new Semester();
+            semester = {
+                faculty_id: req.body.faculty_id,
                 course_id: req.body.course_id,
                 year: req.body.year,
                 term: req.body.term
             }
-            let result = await sessionController.addSession(session);
+            let result = await semesterController.addSemester(semester);
     
             if(!result.problem){
                 console.log(result);
@@ -119,27 +119,27 @@ router.post("/",
     }
 );
 
-// edit session
+// edit semester
 router.put("/",
     authorize,
     async (req, res) => {
         try{
-            let sessionController = new SessionController();
-            let sessionOld = new Session();
-            let sessionNew = new Session();
+            let semesterController = new SemesterController();
+            let semesterOld = new Semester();
+            let semesterNew = new Semester();
 
-            sessionOld.session_id = req.body.session_id;
+            semesterOld.semester_id = req.body.semester_id;
             
-            if(req.body.session_time)
-                sessionNew.session_time = req.body.session_time;
-            if(req.body.course_id)
-                sessionNew.course_id = req.body.course_id;
             if(req.body.year)
-                sessionNew.year = req.body.year;
+                semesterNew.year = req.body.year;
             if(req.body.term)
-                sessionNew.term = req.body.term;
+                semesterNew.term = req.body.term;
+            if(req.body.course_id)
+                semesterNew.course_id = req.body.course_id;
+            if(req.body.faculty_id)
+                semesterNew.faculty_id = req.body.faculty_id;
 
-            let result = await sessionController.editSession(sessionOld,sessionNew);
+            let result = await semesterController.editSemester(semesterOld,semesterNew);
             if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
@@ -159,11 +159,11 @@ router.delete("/",
     authorize,
     async(req,res) => {
         try{
-            let sessionController = new SessionController();
-            let session = new Session();
-            session.session_id = req.body.session_id;
+            let semesterController = new SemesterController();
+            let semester = new Semester();
+            semester.semester_id = req.body.semester_id;
 
-            let result = await sessionController.deleteSession(session);
+            let result = await semesterController.deleteSemester(semester);
             if(!result.proplem){
                 console.log(result);
                 res.status(200).json(result.message);

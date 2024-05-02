@@ -6,10 +6,10 @@ let dbQuery = new DBQuery();
 module.exports = class CourseController{
     constructor(){};
 
-    async getCourseBy(column,value){
+    async getCourseBy(course){
         try{
             await dbQuery.select('course_details');
-            await dbQuery.where(column,value);
+            await dbQuery.where(course);
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -36,19 +36,10 @@ module.exports = class CourseController{
             return error;
         }
     };
-    
-    async getCoursesByProfessor(profesor_id){
-        try{
-            let results = await this.getCourseBy('faculty_id',profesor_id);
-            return results; 
-        }catch(error){
-            return error;
-        }
-    };
 
     async addCourse(newCourse){
         try{
-            let check = await this.getCourseBy('code',newCourse.code);
+            let check = await this.getCourseBy({code:newCourse.code});
             if(check.exist){
                 check.problem = 1;
                 return check;
@@ -67,14 +58,14 @@ module.exports = class CourseController{
 
     async deleteCourse(course){
         try{
-            let result = await this.getCourseBy('course_id',course.course_id);
+            let result = await this.getCourseBy({course_id:course.course_id});
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('course_details');
-                await dbQuery.where('course_id',course.course_id);
+                await dbQuery.where({course_id:course.course_id});
                 result = await dbQuery.execute();
                 result.message = 'COURSE DELETED...';
                 return result; 
@@ -86,7 +77,7 @@ module.exports = class CourseController{
 
     async editCourse(oldCourse,newCourse){
         try{
-            let result = await this.getCourseBy('course_id',oldCourse.course_id);
+            let result = await this.getCourseBy({course_id:oldCourse.course_id});
 
             if(!result.exist){
                 result.problem = 1;
@@ -95,7 +86,7 @@ module.exports = class CourseController{
             oldCourse = result[0];
 
             if(newCourse.code && newCourse.code !== oldCourse.code){
-                let result = await this.getCourseBy('code',newCourse.code);
+                let result = await this.getCourseBy({code:newCourse.code});
                 if(result.exist){
                     result.problem = 1;
                     return result;
@@ -106,7 +97,7 @@ module.exports = class CourseController{
             newCourse.credit = newCourse.credit ? newCourse.credit : oldCourse.credit;
 
             await dbQuery.update('course_details',newCourse);
-            await dbQuery.where('course_id',oldCourse.course_id);
+            await dbQuery.where({course_id:oldCourse.course_id});
             result = await dbQuery.execute();
             result.message = 'COURSE UPDATED...';
             return result; 
