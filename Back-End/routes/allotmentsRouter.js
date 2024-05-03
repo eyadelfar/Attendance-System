@@ -50,7 +50,7 @@ router.post("/",
             allotment = {
                 faculty_id: req.body.faculty_id,
                 course_id: req.body.course_id,
-                session_id: req.body.session_id,
+                semester_id: req.body.semester_id,
                 allotment_date: req.body.allotment_date
             }
             let result = await allotmentController.addAllotment(allotment);
@@ -84,8 +84,8 @@ router.put("/",
                 allotmentNew.faculty_id = req.body.faculty_id;
             if(req.body.course_id)
                 allotmentNew.course_id = req.body.course_id;
-            if(req.body.session_id)
-                allotmentNew.session_id = req.body.session_id;
+            if(req.body.semester_id)
+                allotmentNew.semester_id = req.body.semester_id;
             if(req.body.allotment_date)
                 allotmentNew.allotment_date = req.body.allotment_date;
 

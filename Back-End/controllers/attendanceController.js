@@ -8,10 +8,10 @@ let dbQuery = new DBQuery();
 module.exports = class AttendanceController{
     constructor(){};
 
-    async getAttendanceBy(column,value){
+    async getAttendanceBy(attendance){
         try{
             await dbQuery.select('attendance');
-            await dbQuery.where(column,value);
+            await dbQuery.where(attendance);
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -41,16 +41,16 @@ module.exports = class AttendanceController{
 
     async getAttendancesByCourse(course_id){
         try{
-            let results = await this.getAttendanceBy('course_id',course_id);
+            let results = await this.getAttendanceBy(course_id);
             return results; 
         }catch(error){
             return error;
         }
     };
     
-    async getAttendancesBySession(session_id){
+    async getAttendancesBySemester(semester_id){
         try{
-            let results = await this.getAttendanceBy('session_id',session_id);
+            let results = await this.getAttendanceBy(semester_id);
             return results; 
         }catch(error){
             return error;
@@ -59,7 +59,16 @@ module.exports = class AttendanceController{
     
     async getAttendancesByStudent(student_id){
         try{
-            let results = await this.getAttendanceBy('student_id',student_id);
+            let results = await this.getAttendanceBy(student_id);
+            return results; 
+        }catch(error){
+            return error;
+        }
+    };
+
+    async getAttendancesByStudent(lecture_id){
+        try{
+            let results = await this.getAttendanceBy(lecture_id);
             return results; 
         }catch(error){
             return error;
@@ -68,6 +77,16 @@ module.exports = class AttendanceController{
 
     async addAttendance(newAttendance){
         try{
+            let check = await this.getAttendanceBy({
+                course_id:newAttendance.course_id,
+                semester_id:newAttendance.semester_id,
+                student_id:newAttendance.student_id,
+                lecture_id:newAttendance.lecture_id,
+            });
+            if(check.exist){
+                check.problem = 1;
+                return check;
+            }
             newAttendance.timestamp = moment().toISOString().slice(0,19).replace('T',' ');
             await dbQuery.insert('attendance',newAttendance);
             let results = await dbQuery.execute();
@@ -81,14 +100,14 @@ module.exports = class AttendanceController{
 
     async deleteAttendance(attendance){
         try{
-            let result = await this.getAttendanceBy('attendance_id',attendance.attendance_id);
+            let result = await this.getAttendanceBy({attendance_id:attendance.attendance_id});
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('attendance');
-                await dbQuery.where('attendance_id',attendance.attendance_id);
+                await dbQuery.where({attendance_id:attendance.attendance_id});
                 result = await dbQuery.execute();
                 result.message = 'ATTENDANCE DELETED...';
                 return result; 
@@ -100,7 +119,7 @@ module.exports = class AttendanceController{
 
     async editAttendance(oldAttendance,newAttendance){
         try{
-            let result = await this.getAttendanceBy('attendance_id',oldAttendance.attendance_id);
+            let result = await this.getAttendanceBy({attendance_id:oldAttendance.attendance_id});
 
             if(!result.exist){
                 result.problem = 1;
@@ -113,11 +132,13 @@ module.exports = class AttendanceController{
                 newAttendance.timestamp : 
                 moment(oldAttendance.timestamp).format('YYYY-MM-DD HH:mm:ss');
             newAttendance.course_id = newAttendance.course_id ? newAttendance.course_id : oldAttendance.course_id;
-            newAttendance.session_id = newAttendance.session_id ? newAttendance.session_id : oldAttendance.session_id;
+            newAttendance.semester_id = newAttendance.semester_id ? newAttendance.semester_id : oldAttendance.semester_id;
             newAttendance.student_id = newAttendance.student_id ? newAttendance.student_id : oldAttendance.student_id;
+            newAttendance.status = newAttendance.status ? newAttendance.status : oldAttendance.status;
+            newAttendance.lecture_id = newAttendance.lecture_id ? newAttendance.lecture_id : oldAttendance.lecture_id;
 
             await dbQuery.update('attendance',newAttendance);
-            await dbQuery.where('attendance_id',oldAttendance.attendance_id);
+            await dbQuery.where({attendance_id:oldAttendance.attendance_id});
             result = await dbQuery.execute();
             result.message = 'ATTENDANCE UPDATED...';
             return result; 

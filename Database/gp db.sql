@@ -48,8 +48,14 @@ ADD COLUMN course_id INT;
 ALTER TABLE lectures
 ADD CONSTRAINT fk_lectures_course_id FOREIGN KEY (course_id) REFERENCES course_details(course_id);
 
+ALTER TABLE semester_details
+ADD COLUMN faculty_id INT,
+ADD CONSTRAINT fk_faculty_id FOREIGN KEY (faculty_id) REFERENCES faculty_details(faculty_id);
+
+DROP TABLE course_allotment;
+
+
 select * from student_details;
-select * from course_allotment;
 select * from course_details;
 select * from course_registration;
 select * from faculty_details;
@@ -60,6 +66,9 @@ select * from data_changes;
 desc lectures;
 ALTER TABLE faces MODIFY COLUMN encoding LONGBLOB;
 ALTER TABLE attendance MODIFY COLUMN timestamp datetime;
+
+ALTER TABLE course_allotment
+RENAME COLUMN session_id TO semester_id;
 
 ALTER TABLE course_registration
 DROP COLUMN registration_id,

@@ -31,7 +31,7 @@ router.get("/professor",
     async (req,res) => {
         try{
             let professorController = new UserController();
-            let result = await professorController.getProfessorBy('faculty_id',req.body.faculty_id);
+            let result = await professorController.getProfessorBy({faculty_id:req.body.faculty_id});
             if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);

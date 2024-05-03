@@ -10,13 +10,13 @@ module.exports = class UserController{
         try{
             // search in students
             await dbQuery.select('student_details');
-            await dbQuery.where('roll_no',username);
+            await dbQuery.where({roll_no:username});
             let result = await dbQuery.execute();
 
             // search in faculty
             if(!result.length){
                 await dbQuery.select('faculty_details');
-                await dbQuery.where('username',username);
+                await dbQuery.where({username:username});
                 result = await dbQuery.execute();
             }
             return result; 
@@ -27,10 +27,10 @@ module.exports = class UserController{
     };
 
 /* students */
-    async getStudentsBy(column,value){
+    async getStudentsBy(student){
         try{
             await dbQuery.select('student_details');
-            await dbQuery.where(column,value);
+            await dbQuery.where(student);
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -57,19 +57,19 @@ module.exports = class UserController{
             return error;
         }
     };
-
+/*
     async getStudentsByLevel(level){
         try{
-            let results = await this.getStudentsBy('level',level)
+            let results = await this.getStudentsBy({level:level})
             return results; 
         }catch(error){
             return error;
         }
     };
-
+*/
     async addStudent(newStudent){
         try{
-            let check = await this.getStudentsBy('roll_no',newStudent.roll_no);
+            let check = await this.getStudentsBy({roll_no:newStudent.roll_no});
             if(check.length){
                 check.problem = 1;
                 return check;
@@ -88,7 +88,7 @@ module.exports = class UserController{
 
     async deleteStudent(student){
         try{
-            let result = await this.getStudentsBy('student_id',student.student_id);
+            let result = await this.getStudentsBy({student_id:student.student_id});
             console.log(result);
 
             if(!result.length){
@@ -97,7 +97,7 @@ module.exports = class UserController{
             }
             else{
                 await dbQuery.delete('student_details');
-                await dbQuery.where('student_id',student.student_id);
+                await dbQuery.where({student_id:student.student_id});
                 result = await dbQuery.execute();
                 result.message = 'STUDENT DELETED...';
                 return result; 
@@ -109,7 +109,7 @@ module.exports = class UserController{
 
     async editStudent(oldStudent,newStudent){
         try{
-            let result = await this.getStudentsBy('student_id',oldStudent.student_id);
+            let result = await this.getStudentsBy({student_id:oldStudent.student_id});
             if(!result.length){
                 result.problem = 1;
                 return result;
@@ -117,7 +117,7 @@ module.exports = class UserController{
             oldStudent = result[0];
 
             if(newStudent.roll_no && newStudent.roll_no !== oldStudent.roll_no){
-                let result = await this.getStudentsBy('roll_no',newStudent.roll_no);
+                let result = await this.getStudentsBy({roll_no:newStudent.roll_no});
                 
                 if(result.length){
                     result.problem = 1;
@@ -131,7 +131,7 @@ module.exports = class UserController{
             newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
 
             await dbQuery.update('student_details',newStudent);
-            await dbQuery.where('student_id',oldStudent.student_id);
+            await dbQuery.where({student_id:oldStudent.student_id});
             result = await dbQuery.execute();
             result.message = 'STUDENT UPDATED...';
             return result; 
@@ -142,10 +142,10 @@ module.exports = class UserController{
     };
 
 /* professors */    
-    async getProfessorBy(column,value){
+    async getProfessorBy(professor){
         try{
             await dbQuery.select('faculty_details');
-            await dbQuery.where(column,value);
+            await dbQuery.where(professor);
             let result = await dbQuery.execute();
 
             if(!result.length){
@@ -175,7 +175,7 @@ module.exports = class UserController{
 
     async addProfessor(professor){
         try{
-            let check = await this.getProfessorBy('username',professor.username);
+            let check = await this.getProfessorBy({username:professor.username});
             if(check.length){
                 check.problem = 1;
                 return check;
@@ -193,7 +193,7 @@ module.exports = class UserController{
 
     async deleteProfessor(professor){
         try{
-            let result = await this.getProfessorBy('faculty_id',professor.faculty_id);
+            let result = await this.getProfessorBy({faculty_id:professor.faculty_id});
             console.log(result);
 
             if(!result.length){
@@ -202,7 +202,7 @@ module.exports = class UserController{
             }
             else{
                 await dbQuery.delete('faculty_details');
-                await dbQuery.where('faculty_id',professor.faculty_id);
+                await dbQuery.where({faculty_id:professor.faculty_id});
                 result = await dbQuery.execute();
                 result.message = 'PROFESSOR DELETED...';
                 return result; 
@@ -214,7 +214,7 @@ module.exports = class UserController{
 
     async editProfessor(oldProfessor,newProfessor){
         try{
-            let result = await this.getProfessorBy('faculty_id',oldProfessor.faculty_id);            
+            let result = await this.getProfessorBy({faculty_id:oldProfessor.faculty_id});            
             if(!result.length){
                 result.problem = 1;
                 return result;
@@ -222,7 +222,7 @@ module.exports = class UserController{
             oldProfessor = result[0];
 
             if(newProfessor.username && newProfessor.username !== oldProfessor.username){
-                let result = await this.getProfessorBy('username',newProfessor.username);
+                let result = await this.getProfessorBy({username:newProfessor.username});
                 if(result.length){
                     result.problem = 1;
                     return result;
@@ -234,7 +234,7 @@ module.exports = class UserController{
             newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
 
             await dbQuery.update('faculty_details',newProfessor);
-            await dbQuery.where('faculty_id',oldProfessor.faculty_id);
+            await dbQuery.where({faculty_id:oldProfessor.faculty_id});
             result = await dbQuery.execute();
             result.message = 'PROFESSOR UPDATED...';
             return result;

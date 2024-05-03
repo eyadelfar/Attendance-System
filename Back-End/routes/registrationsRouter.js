@@ -33,7 +33,10 @@ router.get("/registration",
     async (req,res) => {
         try{
             let registrationController = new RegistrationController();
-            let result = await registrationController.getRegistrationBy('registration_id',req.body.registration_id);
+            let result = await registrationController.getRegistrationBy({
+                student_id:req.body.student_id,
+                course_id:req.body.course_id
+            });
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);
@@ -55,7 +58,7 @@ router.get("/student/:student_id",
     async (req,res) => {
         try{
             let registrationController = new RegistrationController();
-            let result = await registrationController.getRegistrationsByStudent(req.params.student_id);
+            let result = await registrationController.getRegistrationsByStudent({student_id:req.params.student_id});
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -70,7 +73,7 @@ router.get("/course/:course_id",
     async (req,res) => {
         try{
             let registrationController = new RegistrationController();
-            let result = await registrationController.getRegistrationsByCourse(req.params.course_id);
+            let result = await registrationController.getRegistrationsByCourse({course_id:req.params.course_id});
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -120,17 +123,16 @@ router.post("/upload",
             let registrationController = new RegistrationController();
             let result = await registrationController.importRegistrations(data);
             
-            fs.unlinkSync(req.file.path);
+            // fs.unlinkSync(req.file.path);
             res.status(200).send(result.message);
-            
         } catch (error){
-            fs.unlinkSync(req.file.path);
+            // fs.unlinkSync(req.file.path);
             console.log(error);
             res.status(500).json(error);
         }
     }
 );
-
+/*
 // edit registration
 router.put("/",
     async (req, res) => {
@@ -139,7 +141,8 @@ router.put("/",
             let registrationOld = new Registration();
             let registrationNew = new Registration();
 
-            registrationOld.registration_id = req.body.registration_id;
+            registrationOld.student_id = req.body.student_id;
+            registrationOld.course_id = req.body.course_id;
 
             if(req.body.student_id)
                 registrationNew.student_id = req.body.student_id;
@@ -161,16 +164,17 @@ router.put("/",
         }
     }
 );
-
+*/
 router.delete("/",
     async(req,res) => {
         try{
             let registrationController = new RegistrationController();
             let registration = new Registration();
-            registration.registration_id = req.body.registration_id;
+            registration.course_id = req.body.course_id;
+            registration.student_id = req.body.student_id;
 
             let result = await registrationController.deleteRegistration(registration);
-            if(!result.proplem){
+            if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);
             }
