@@ -1,19 +1,47 @@
 import React, { useState } from 'react';
 import './AdminSettings.css';
 import AdminAvatar from './AdminAvatar.png';
+import axios from 'axios';
 
 const AdminSettings = () => {
     const [oldPassword, setOldPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
 
-    const handleSaveChanges = () => {
-    // Add your logic to save changes here
-    };
+    const handleSaveChanges = async () => {
+        const oldPassword = oldPassword;
+        const newPassword = newPassword;
+      
+        try {
+          const response = await axios.post('http://localhost:4000/professors', {
+            oldPassword,
+            newPassword,
+          });
+      
+          if (response.data === 'Password updated successfully') {
+            console.log('Password updated successfully');
+          } else {
+            console.error('Error updating password');
+          }
+        } catch (error) {
+          console.error('Error updating password');
+        }
+      };
+   
+      const handleDeleteAccount = async () => {
+        try {
+          const response = await axios.post('http://localhost:4000/professors');
+      
+          if (response.data === 'Account deleted successfully') {
+            console.log('Account deleted successfully');
+          } else {
+            console.error('Error deleting account');
+          }
+        } catch (error) {
+          console.error('Error deleting account');
+        }
+      };
 
-    const handleDeleteAccount = () => {
-    // Add your logic to delete account here
-    };
-
+   
     return (
         <div className="account-settings-container">
             <h1 id='adminsetting-header'>Settings</h1>
