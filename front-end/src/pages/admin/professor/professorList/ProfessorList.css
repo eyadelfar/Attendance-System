@@ -12,33 +12,39 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-bottom: none; /* Adjust border style and color */
 }
+
+
 .professors-list table {
   width: 100%;
-  table-layout: fixed; /* Fix column width */
+  row-gap: 20px !important;
+  table-layout: fixed; 
+  border-collapse: collapse; /* Ensures borders collapse for spacing */
+  border-spacing: 10px !important;
 }
 .professors-list thead th{
-  padding: 15px; /* Increased padding for space */
+  padding: 15px; 
   border: none;
   text-align: center;
-}
+} 
 
-.professors-list thead {
-  /* Create a single border for all headers */
-  border-bottom: 1px solid #ffffff; /* Adjust border style and color */
+ .professors-list thead {
+  border-bottom: 1px solid #ffffff; 
 }
 
 .professors-list thead th{
-  padding: 15px; /* Maintain padding for space */
+  padding: 15px; 
   text-align: center;
 }
 .professors-list thead th {
-  background-color: #ffffff; /* Light gray header background */
+  background-color: #ffffff; 
   font-weight: bold;
   font-family: poppins;
 }
+
+
 .button1{
 
-  left: 800px;
+  left: 631px;
   position: relative;
   color: white;
   position: relative;
@@ -63,7 +69,7 @@
 
 .professors-list-row{
 background-color: #4A9F48;
-}
+} 
 .button2{
     border: 1px solid transparent;
     padding: 0px 1px;
@@ -72,18 +78,29 @@ background-color: #4A9F48;
     cursor: pointer;
     position: relative;
     background-color: #F2F2F2;
+   
 }
 .button2:hover {
   background-color: transparent; /* Ensure transparency on hover */
 }
-.table-body{
+ .table-body{
   background-color: white;
- top: 60px;
+ top: 40px;
  position: relative;
  text-align: center;
  font-family: poppins;
-}
-.row2{
-top: 65px;
+} 
+
+
+ .professor-row2{
+top: 50px;
 position: relative;
-}
+} 
+ .edit-icon{
+
+  width: 10%;
+ }
+ .delete-icon{
+  width: 30px;
+  height: 30px;
+ }

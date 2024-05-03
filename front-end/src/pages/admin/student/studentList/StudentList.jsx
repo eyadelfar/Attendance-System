@@ -1,47 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import './StudentList.css';
+import Edit from '../../../../pics/edit.png'
+ import Delete from '../../../../pics/delete.png'
+ import plus from '../../../../pics/plus.png'
 
-const StudentsList = () => {
-  const [students, setStudents] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
-
-  useEffect(() => {
-    // Fetch data from API or database
-    const studentsData = [
-      { id: 1, name: 'John Doe', department: 'Mathematics' },
-      { id: 2, name: 'Jane Smith', department: 'Biology' },
-      { id: 3, name: 'Bob Johnson', department: 'Computer Science' },
-      // ...
-    ];
-    setStudents(studentsData);
-  }, []);
-
-  const handleSearch = (event) => {
-    setSearchTerm(event.target.value);
-  };
-
-  const filteredStudents = students.filter((student) => {
-    return student.name.toLowerCase().includes(searchTerm.toLowerCase());
-  });
-
+function StudentList() {
   return (
-    <div>
-      <input
-        type="search"
-        value={searchTerm}
-        onChange={handleSearch}
-        placeholder="Search students"
-      />
-      <ul>
-        {filteredStudents.map((student) => (
-          <li key={student.id}>
-            <span>{student.name}</span>
-            <span>({student.id})</span>
-          </li>
-        ))}
-      </ul>
+    <div className="Student-list">
+     <div className='header'>
+      <h1>Professors</h1>
+      <div>
+      <button className='button1' >
+      <img src={plus} alt={'image'} />
+        Create Professor
+       
+        </button>
+      </div>
+      </div>
+      
+      <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody className='table-body'>
+    <tr className='row'>
+      <td>slim</td>
+      <td>201200</td>
+      <td><a href="http://localhost:3000/professorEdit">
+               <img src={Edit} alt={'image'} />
+                 </a>
+          <button className='button2'>
+            <img src={Delete}  />
+            </button></td>
+      {/* Add other table cells as needed */}
+    </tr>
+    <tr className='row2'>
+      <td>slim</td>
+      <td>201200</td>
+      <td><a href="http://localhost:3000/professorEdit">
+               <img src={Edit} alt={'image'} />
+                 </a>
+          <button className='button2'>
+            <img src={Delete}  />
+            </button></td>
+      {/* Add other table cells as needed */}
+    </tr>
+    {/* Add more rows if necessary */}
+  </tbody>
+</table>
+
     </div>
   );
-};
+}
 
-export default StudentsList;
+export default StudentList;

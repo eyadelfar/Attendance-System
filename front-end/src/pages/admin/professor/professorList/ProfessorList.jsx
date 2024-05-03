@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 // import ProfessorList from './ProfessorList';
 import './ProfessorList.css';
-import ProfessorItem from '../../../../components/reusable/professorItem/ProfessorItem';
+// import ProfessorItem from '../../../../components/reusable/professorItem/ProfessorItem';
 // ProfessorList.js
 import plus from '../../../../pics/plus.png'
 import Edit from '../../../../pics/edit.png'
@@ -30,7 +30,7 @@ function ProfessorsList() {
       </div>
       </div>
       
-      <table>
+      <table className='list-table'>
   <thead>
     <tr>
       <th>Name</th>
@@ -39,25 +39,25 @@ function ProfessorsList() {
     </tr>
   </thead>
   <tbody className='table-body'>
-    <tr className='row'>
+    <tr className='professor-row'>
       <td>slim</td>
       <td>201200</td>
       <td><a href="http://localhost:3000/professorEdit">
-               <img src={Edit} alt={'image'} />
+               <img className='edit-icon' src={Edit} alt={'image'} />
                  </a>
           <button className='button2'>
-            <img src={Delete}  />
+            <img className='delete-icon' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>
-    <tr className='row2'>
+    <tr className='professor-row2'>
       <td>slim</td>
       <td>201200</td>
       <td><a href="http://localhost:3000/professorEdit">
-               <img src={Edit} alt={'image'} />
+               <img className='edit-icon' src={Edit} alt={'image'} />
                  </a>
           <button className='button2'>
-            <img src={Delete}  />
+            <img className='delete-icon' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>

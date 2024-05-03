@@ -1,6 +1,6 @@
-.students-list {
+/* .students-list {
   margin: 20px auto;
-  width: 600px; /* Adjust width as needed */
+  width: 600px;
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -30,5 +30,5 @@
 }
 
 .student-id {
-  font-weight: bold; /* Optional for styling IDs */
-}
+  font-weight: bold; 
+} */
