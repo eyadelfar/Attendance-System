@@ -16,8 +16,7 @@
   width: 100%;
   table-layout: fixed; /* Fix column width */
 }
-.professors-list thead th,
-.professors-list tbody td {
+.professors-list thead th{
   padding: 15px; /* Increased padding for space */
   border: none;
   text-align: center;
@@ -28,8 +27,7 @@
   border-bottom: 1px solid #ffffff; /* Adjust border style and color */
 }
 
-.professors-list thead th,
-.professors-list tbody td {
+.professors-list thead th{
   padding: 15px; /* Maintain padding for space */
   text-align: center;
 }
@@ -38,7 +36,7 @@
   font-weight: bold;
   font-family: poppins;
 }
-.professors-list button{
+.button1{
 
   left: 800px;
   position: relative;
@@ -61,4 +59,31 @@
 .header{
   display: flexbox; /* Use flexbox */
   align-items: center; /* Align items vertically */
+}
+
+.professors-list-row{
+background-color: #4A9F48;
+}
+.button2{
+    border: 1px solid transparent;
+    padding: 0px 1px;
+    left: 18px;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #F2F2F2;
+}
+.button2:hover {
+  background-color: transparent; /* Ensure transparency on hover */
+}
+.table-body{
+  background-color: white;
+ top: 60px;
+ position: relative;
+ text-align: center;
+ font-family: poppins;
+}
+.row2{
+top: 65px;
+position: relative;
 }

@@ -6,6 +6,8 @@ import './ProfessorList.css';
 import ProfessorItem from '../../../../components/reusable/professorItem/ProfessorItem';
 // ProfessorList.js
 import plus from '../../../../pics/plus.png'
+import Edit from '../../../../pics/edit.png'
+ import Delete from '../../../../pics/delete.png'
 
 let professor1 = {
   id : 202251,
@@ -20,7 +22,7 @@ function ProfessorsList() {
      <div className='header'>
       <h1>Professors</h1>
       <div>
-      <button >
+      <button className='button1' >
       <img src={plus} alt={'image'} />
         Create Professor
        
@@ -28,23 +30,41 @@ function ProfessorsList() {
       </div>
       </div>
       
-      <table >
-        <thead>
-          <tr>
-         
-            <th>Name</th>
-            <th>ID</th>
-            <th>Dashboard</th>
-            <th>Actions</th>
+      <table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>ID</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody className='table-body'>
+    <tr className='row'>
+      <td>slim</td>
+      <td>201200</td>
+      <td><a href="http://localhost:3000/professorEdit">
+               <img src={Edit} alt={'image'} />
+                 </a>
+          <button className='button2'>
+            <img src={Delete}  />
+            </button></td>
+      {/* Add other table cells as needed */}
+    </tr>
+    <tr className='row2'>
+      <td>slim</td>
+      <td>201200</td>
+      <td><a href="http://localhost:3000/professorEdit">
+               <img src={Edit} alt={'image'} />
+                 </a>
+          <button className='button2'>
+            <img src={Delete}  />
+            </button></td>
+      {/* Add other table cells as needed */}
+    </tr>
+    {/* Add more rows if necessary */}
+  </tbody>
+</table>
 
-          </tr>
-        </thead>
-        
-        <div>
-          <ProfessorItem item={professor1}/>
-        </div>
-
-      </table>
     </div>
   );
 }
