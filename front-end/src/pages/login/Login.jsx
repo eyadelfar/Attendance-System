@@ -2,8 +2,7 @@ import React, { useState,useEffect } from 'react';
 import LoginBackground from '../../pics/LoginBackground.png';
 import './Login.css'; 
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
-
+import { jwtDecode } from 'jwt-decode';
 
 function Login() {
   const [username, setUsername] = useState('');
@@ -22,22 +21,24 @@ function Login() {
       const token = response.data;
       setToken(token);
       localStorage.setItem('token', token);
+    
+      const decodedToken = jwtDecode(token);
+      const role = decodedToken.role;
+          if (role === 'faculty') {
+        // Redirect to admin dashboard
+        window.location.href = '/dashboard';
+      } else if (role === 'student') {
+        // Redirect to user dashboard
+        window.location.href = '/Courses';
+       }   
 
-      // Decode the JWT token to get the user's role
+        console.log(`Logged in successfully with JWT token: ${token}`);
+        console.log(`Role: ${role}`);
 
-      // const decodedToken = jwt.decode(token);
-      // const role = decodedToken.role;
-      
-      console.log(`Logged in successfully with JWT token: ${token}`);
-      // console.log(`Role: ${role}`);
     } catch (error) {
       setError(error.message);
     }
   };
-
-
-
-
 
   return (
     <div className="loginContainer">
