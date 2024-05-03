@@ -1,18 +1,64 @@
 .professor-item {
-    display: flex;
-    padding: 15px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .professor-name,
-  .professor-id {
-    flex: 1;
-  }
-  
-  .professor-dashboard,
-  .professor-actions {
-    flex: 0 0 auto;
-    padding: 0 10px;
-    /* Use this space to add your icon styles */
-  }
-  
+  display: table-row;
+  position: relative;
+  top: 60px;
+  background-color: white;
+}
+
+.professor-name {
+  margin-left: 75px;
+  margin-top: 15px;
+  width: 30%;
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
+  padding: 0px 55px;
+}
+
+.professor-id {
+  display: table-cell;
+  width: 20%;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  padding: 0px 215px;
+}
+
+.professor-dashboard {
+  display: table-cell;
+  width: 20%;
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  padding: 0px 60px;
+}
+.professor-dashboard-img {
+position: relative;
+top: 1500px;
+
+}
+.professor-actions {
+  display: table-cell;
+  width: 30%;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0px 200px;
+}
+
+.professor-actions > * {
+  margin-right: 10px;
+}
+
+.professor-actions > :last-child {
+  margin-right: 0;
+}
+.professor-name img {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  object-fit: cover;
+}

@@ -1,7 +1,8 @@
 import React from 'react';
 import {Routes,createBrowserRouter, Route ,Navigate} from 'react-router-dom';
 import LoginPage from'../pages/login/Login';
-import Professor from '../pages/admin/professor/professorList/ProfessorList';
+import ProfessorList from '../pages/admin/professor/professorList/ProfessorList';
+import StudentsList from '../pages/admin/student/studentList/StudentList';
 import AdminSettings from '../pages/admin/adminSettings/AdminSettings';
 import StudentSettings from '../pages/student/studentSettings/StudentSettings';
 import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorCreate';
@@ -20,7 +21,9 @@ const Router = () => {
             <Route path='/' element={<Navigate to='/Login' element={<LoginPage/>}/>}/>
             <Route path='/login' element={<LoginPage/>}/>
 
-            <Route path='/professor' element={<Professor/>}/>
+            <Route path='/professorList' element={<ProfessorList/>}/>
+
+            <Route path='/StudentsList' element={<StudentsList/>}/>
 
             <Route path='/adminSettings' element={<AdminSettings/>}/>
 

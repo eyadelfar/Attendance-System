@@ -1,16 +1,38 @@
-/* .professorItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .professorName,
-  .professorId,
-  .professorDashboard,
-  .professorActions {
-    flex: 1;
-  } */
-  
-  /* Additional styling for actions and icons */
-  
+.professors-list {
+  max-width: 1230px;
+  height: 100vh;
+  margin: 40px; 
+  margin-left: 200px;
+  margin-top: 80px;
+  padding: 20px;
+  background-color: #F2F2F2;
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom: none; /* Adjust border style and color */
+}
+.professors-list table {
+  width: 100%;
+  table-layout: fixed; /* Fix column width */
+}
+.professors-list thead th,
+.professors-list tbody td {
+  padding: 15px; /* Increased padding for space */
+  border: none;
+  text-align: center;
+}
+
+.professors-list thead {
+  /* Create a single border for all headers */
+  border-bottom: 1px solid #ffffff; /* Adjust border style and color */
+}
+
+.professors-list thead th,
+.professors-list tbody td {
+  padding: 15px; /* Maintain padding for space */
+  text-align: center;
+}
+.professors-list thead th {
+  background-color: #ffffff; /* Light gray header background */
+  font-weight: bold;
+}
