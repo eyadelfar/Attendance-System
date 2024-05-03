@@ -5,11 +5,11 @@ import React, { useState, useEffect } from 'react';
 import './ProfessorList.css';
 import ProfessorItem from '../../../../components/reusable/professorItem/ProfessorItem';
 // ProfessorList.js
-
+import plus from '../../../../pics/plus.png'
 
 let professor1 = {
-  id : 1,
-name:"bola"
+  id : 202251,
+name:"Swilam"
 };
   
 
@@ -17,7 +17,17 @@ name:"bola"
 function ProfessorsList() {
   return (
     <div className="professors-list">
-      <h1>Professor List</h1>
+     <div className='header'>
+      <h1>Professors</h1>
+      <div>
+      <button >
+      <img src={plus} alt={'image'} />
+        Create Professor
+       
+        </button>
+      </div>
+      </div>
+      
       <table >
         <thead>
           <tr>

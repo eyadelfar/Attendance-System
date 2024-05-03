@@ -5,6 +5,7 @@
   margin-left: 200px;
   margin-top: 80px;
   padding: 20px;
+  font-family: poppins;
   background-color: #F2F2F2;
   border-collapse: collapse;
   border-radius: 10px;
@@ -35,4 +36,29 @@
 .professors-list thead th {
   background-color: #ffffff; /* Light gray header background */
   font-weight: bold;
+  font-family: poppins;
+}
+.professors-list button{
+
+  left: 800px;
+  position: relative;
+  color: white;
+  position: relative;
+  color: #FFFFFF;
+  background-color: #4A9F48;
+  border: #395986;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 25px; 
+  text-align: center;
+  padding: 8px 20px;
+  width: auto;
+  display: flex;
+  bottom: 60px;
+  justify-content: center;
+  line-height: 30px; /* Adjust the line-height to move the text down */
+}
+.header{
+  display: flexbox; /* Use flexbox */
+  align-items: center; /* Align items vertically */
 }

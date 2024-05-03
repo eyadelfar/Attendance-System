@@ -2,6 +2,8 @@
 
 .layout {
   display: flex;
+  flex-direction: column; /* Layout the elements vertically */
+  height: 100vh; /* Ensure the layout takes up the full viewport height */
 }
 
 .topbar {

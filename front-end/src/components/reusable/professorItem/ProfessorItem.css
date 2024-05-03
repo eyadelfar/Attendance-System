@@ -3,6 +3,7 @@
   position: relative;
   top: 60px;
   background-color: white;
+  width: 50px;
 }
 
 .professor-name {
@@ -11,6 +12,7 @@
   width: 30%;
   font-weight: bold;
   font-size: 18px;
+  font-family: poppins;
   margin-bottom: 10px;
   padding: 0px 55px;
 }
@@ -21,7 +23,8 @@
   font-size: 16px;
   color: #666;
   margin-bottom: 10px;
-  padding: 0px 215px;
+  padding: 0px 190px;
+  font-weight: bold;
 }
 
 .professor-dashboard {
@@ -32,21 +35,17 @@
   margin-bottom: 10px;
   padding: 0px 60px;
 }
-.professor-dashboard-img {
-position: relative;
-top: 1500px;
 
-}
 .professor-actions {
-  display: table-cell;
+  /* display: table-cell; */
   width: 30%;
   justify-content: space-between;
   margin-bottom: 10px;
-  padding: 0px 200px;
+  padding: 0px 170px;
 }
 
 .professor-actions > * {
-  margin-right: 10px;
+  margin-right: 0px;
 }
 
 .professor-actions > :last-child {
@@ -54,11 +53,20 @@ top: 1500px;
 }
 .professor-name img {
   position: absolute;
-  top: 50%;
+  top: 35%;
   left: 5%;
   transform: translate(-50%, -50%);
   width: 3em;
   height: 3em;
   border-radius: 50%;
   object-fit: cover;
+}
+.professor-actions button {
+  border: 1px solid transparent; /* Add a transparent border */
+  padding: 5px 10px; /* Add padding to create space around the image */
+  background: none; /* Remove background color */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  position: relative;
+ left: 40px; /* Adjust the left position to move the button to the left */
+bottom: 50px;
 }

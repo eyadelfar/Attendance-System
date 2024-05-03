@@ -20,8 +20,13 @@ const ProfessorItem = (prop) => {
       </div>
       <div className="professor-actions">
         {/* Action icons placeholders */}
-        <img src={Edit}  />
-        <img src={Delete}  />
+        <a href="http://localhost:3000/professorEdit">
+               <img src={Edit} alt={'image'} />
+                 </a>
+          <button id='delete'>
+            <img src={Delete}  />
+            </button>
+        
       </div>
     </div>
   );
