@@ -37,8 +37,6 @@
 .create-student{
    left: 800px;
   position: relative;
-  color: white;
-  position: relative;
   color: #FFFFFF;
   background-color: #4A9F48;
   border: #395986;
@@ -82,18 +80,15 @@
   text-align: center;
   font-family: poppins;
 }
-.student-row2{
-  top: 50px;
-position: relative;
-}
+
 .space-row{
   background-color: #F2F2F2;
 }
-.pen-icon{
+.pen-icon-student{
 
   width: 10%;
  }
- .del-icon{
+ .del-icon-student{
   width: 30px;
   height: 30px;
  }

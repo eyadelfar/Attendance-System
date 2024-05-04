@@ -3,7 +3,7 @@ import './StudentList.css';
 import Edit from '../../../../pics/edit.png'
  import Delete from '../../../../pics/delete.png'
  import plus from '../../../../pics/plus.png'
- import styled from 'styled-components';
+
  
 function StudentList() {
   return (
@@ -35,11 +35,11 @@ function StudentList() {
       <td>201200</td>
       <td>3</td>
       <td>0121526542</td>
-      <td><a href="http://localhost:3000/professorEdit">
-               <img className='pen-icon' src={Edit} alt={'edit-image'} />
+      <td><a href="http://localhost:3000/StudentsEdit">
+               <img className='pen-icon-student' src={Edit} alt={'edit-image'} />
                  </a>
           <button className='delete'>
-            <img className='del-icon' src={Delete}  />
+            <img className='del-icon-student' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>
@@ -52,7 +52,7 @@ function StudentList() {
       <td>3</td>
       <td>0121526542</td>
       <td><a href="http://localhost:3000/professorEdit">
-               <img className='pen-icon' src={Edit} alt={'edit-image'} />
+               <img className='pen-icon-student' src={Edit} alt={'edit-image'} />
                  </a>
           <button className='button2'>
             <img className='del-icon' src={Delete}  />
