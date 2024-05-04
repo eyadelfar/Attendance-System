@@ -3,49 +3,59 @@ import './StudentList.css';
 import Edit from '../../../../pics/edit.png'
  import Delete from '../../../../pics/delete.png'
  import plus from '../../../../pics/plus.png'
-
+ import styled from 'styled-components';
+ 
 function StudentList() {
   return (
-    <div className="Student-list">
-     <div className='header'>
-      <h1>Professors</h1>
+    <div className="student-list">
+     <div className='head'>
+      <h1>Students</h1>
       <div>
-      <button className='button1' >
-      <img src={plus} alt={'image'} />
-        Create Professor
+      <button className='create-student' >
+      <img className='plus-icon' src={plus} alt={'image'} />
+        Create Student
        
         </button>
       </div>
       </div>
       
-      <table>
+      <table className='student-table'>
   <thead>
     <tr>
       <th>Name</th>
-      <th>ID</th>
+      <th>roll no</th>
+      <th>Level</th>
+      <th>Phone Number</th>
       <th>Actions</th>
     </tr>
   </thead>
-  <tbody className='table-body'>
-    <tr className='row'>
+  <tbody className='body-table'>
+    <tr >
       <td>slim</td>
       <td>201200</td>
+      <td>3</td>
+      <td>0121526542</td>
       <td><a href="http://localhost:3000/professorEdit">
-               <img src={Edit} alt={'image'} />
+               <img className='pen-icon' src={Edit} alt={'edit-image'} />
                  </a>
-          <button className='button2'>
-            <img src={Delete}  />
+          <button className='delete'>
+            <img className='del-icon' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>
-    <tr className='row2'>
+    <tr>
+      <td className='space-row' style={{ height: '30px' }}></td>
+    </tr>
+    <tr >
       <td>slim</td>
       <td>201200</td>
+      <td>3</td>
+      <td>0121526542</td>
       <td><a href="http://localhost:3000/professorEdit">
-               <img src={Edit} alt={'image'} />
+               <img className='pen-icon' src={Edit} alt={'edit-image'} />
                  </a>
           <button className='button2'>
-            <img src={Delete}  />
+            <img className='del-icon' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>

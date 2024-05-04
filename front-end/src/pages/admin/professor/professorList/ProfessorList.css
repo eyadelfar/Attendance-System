@@ -51,7 +51,7 @@
   color: #FFFFFF;
   background-color: #4A9F48;
   border: #395986;
-  font-size: 20px;
+  font-size: 15px;
   cursor: pointer;
   border-radius: 25px; 
   text-align: center;
@@ -92,10 +92,7 @@ background-color: #4A9F48;
 } 
 
 
- .professor-row2{
-top: 50px;
-position: relative;
-} 
+ 
  .edit-icon{
 
   width: 10%;
@@ -104,3 +101,6 @@ position: relative;
   width: 30px;
   height: 30px;
  }
+ .empty-row{
+  background-color: #F2F2F2;
+}

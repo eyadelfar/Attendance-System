@@ -50,7 +50,10 @@ function ProfessorsList() {
             </button></td>
       {/* Add other table cells as needed */}
     </tr>
-    <tr className='professor-row2'>
+    <tr>
+      <td className='empty-row' style={{ height: '30px' }}></td>
+    </tr>
+    <tr >
       <td>slim</td>
       <td>201200</td>
       <td><a href="http://localhost:3000/professorEdit">
