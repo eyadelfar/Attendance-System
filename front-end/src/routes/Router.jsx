@@ -13,6 +13,7 @@ import SessionList from '../pages/admin/session/sessionList/SessionList';
 import SessionCreate from '../pages/admin/session/sessionCreate/SessionCreate';
 import SessionEdit from '../pages/admin/session/sessionEdit/SessionEdit';
 import CourseCreate from '../pages/admin/course/courseCreate/CourseCreate';
+import CourseList from '../pages/admin/course/courseList/CourseList';
 import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
 import TEST from'../pages/TEST';
 
@@ -41,7 +42,7 @@ const Router = () => {
 
             <Route path='/CourseCreate' element={<CourseCreate/>}/>
             <Route path='/CourseEdit' element={<CourseEdit/>}/>
-     
+            <Route path='/CourseList' element={<CourseList/>}/>
         
 
             <Route path='/studentSettings' element={<StudentSettings/>}/>
