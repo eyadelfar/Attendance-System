@@ -16,6 +16,7 @@ import CourseCreate from '../pages/admin/course/courseCreate/CourseCreate';
 import CourseList from '../pages/admin/course/courseList/CourseList';
 import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
 import CourseListStudent from '../pages/student/course/CourseList';
+import SessionListStudent from '../pages/student/session/SessionList';
 import TEST from'../pages/TEST';
 
 const Router = () => {
@@ -48,6 +49,7 @@ const Router = () => {
 
             <Route path='/studentSettings' element={<StudentSettings/>}/>
             <Route path='/CourseListStudent' element={<CourseListStudent/>}/>
+            <Route path='/SessionListStudent' element={<SessionListStudent/>}/>
             <Route path='/test' element={<TEST/>}/>        
         </Routes>
     )

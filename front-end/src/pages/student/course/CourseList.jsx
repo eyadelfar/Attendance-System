@@ -14,6 +14,7 @@ import'./CourseList.css'
     <thead>
       <tr>
         <th>Name</th>
+        <th>Code</th>
         <th>Professor Name</th>
         <th>Actions</th>
       </tr>
@@ -21,6 +22,7 @@ import'./CourseList.css'
     <tbody className='body-table-course-student'>
       <tr >
         <td>Computer Graphics</td>
+        <td>IT 331</td>
         <td>Dale Robertson</td>
         <td> <button className='button-course-student'>
             Go to Lecture
@@ -32,6 +34,7 @@ import'./CourseList.css'
       </tr>
       <tr >
         <td>Computer Graphics</td>
+        <td>IT 331</td>
         <td>Dale Robertson</td>
         <td> <button className='button-course-student'>
             Go to Lecture
