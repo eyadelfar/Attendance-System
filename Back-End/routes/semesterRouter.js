@@ -2,6 +2,7 @@ const router = require('express').Router();
 
 // used classes
 const SemesterController = require('../controllers/semesterController');
+const CourseController = require('../controllers/courseController');
 const Semester = require('../models/semester');
 
 // middlewares
@@ -89,18 +90,76 @@ router.get("/year/:year",
     }
 );
 
+router.get("/courseDetails",
+    async (req,res) => {
+        try{
+            let semesterController = new SemesterController();
+            let result = await semesterController.getAllCourseDetails();
+
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/courseDetails/:semester_id",
+    async (req,res) => {
+        try{
+            let semesterController = new SemesterController();
+            let result = await semesterController.getCourseDetails(
+                {
+                    semester_id: req.params.semester_id
+                }
+            );
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
 // add semester
 router.post("/",
     authorize,
     async (req, res) => {
         try{
             let semesterController = new SemesterController();
+            let courseController = new CourseController();
             let semester = new Semester();
-            semester = {
-                faculty_id: req.body.faculty_id,
-                course_id: req.body.course_id,
-                year: req.body.year,
-                term: req.body.term
+            
+            let check = await courseController.getCourseBy({
+                code: req.body.course_code
+            });
+            console.log(check);
+            if(check.exist){
+                semester = {
+                    faculty_id: req.body.faculty_id,
+                    course_id: check[0].course_id,
+                    year: req.body.year,
+                    term: req.body.term
+                }            
+            }
+            else{
+                let newCourse = {
+                    code: req.body.course_code,
+                    title: req.body.course_title,
+                }
+                await courseController.addCourse(newCourse);
+                let course = await courseController.getCourseBy({
+                    code: req.body.course_code
+                });
+
+                semester = {
+                    faculty_id: req.body.faculty_id,
+                    course_id: course[0].course_id,
+                    year: req.body.year,
+                    term: req.body.term
+                }
             }
             let result = await semesterController.addSemester(semester);
     

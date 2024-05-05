@@ -7,14 +7,14 @@ const ImageInfo = () => {
 
   return (
     <div className="image-info-container">
-      <div className="image-text">
-        {imageText.split('\n').map((line, index) => (
-          <p key={index}>{line}</p>
-        ))}
-      </div>
-      <div className="image-description">
-        {imageDescription}
-      </div>
+      <iframe 
+        title="gp dashboard"
+        width="1140" 
+        height="541.25" 
+        src="https://app.powerbi.com/reportEmbed?reportId=15bb7554-7f5e-47d6-8a94-f5966c168e5c&autoAuth=true&ctid=aadc0e0a-65ee-471a-99a1-9f86faecbaed" 
+        frameborder="0" 
+        allowFullScreen="true">
+        </iframe>
     </div>
   );
 };

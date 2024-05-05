@@ -2,6 +2,8 @@ const moment = require('moment');
 
 // database connection
 const DBQuery = require ("../db/dbQuery");
+const connect = require ("../db/dbConnection");
+
 let dbQuery = new DBQuery();
 
 //export class
@@ -61,6 +63,26 @@ module.exports = class SemesterController{
         try{
             let results = await this.getSemesterBy(course);
             return results; 
+        }catch(error){
+            return error;
+        }
+    };
+
+    async getAllCourseDetails(){
+        try{
+            await dbQuery.joinAllCourseDetails();
+            let result = await dbQuery.execute();
+            return result;
+        }catch(error){
+            return error;
+        }
+    };
+
+    async getCourseDetails(semester){
+        try{
+            await dbQuery.joinCourseDetails(semester.semester_id);
+            let result = await dbQuery.execute();
+            return result;
         }catch(error){
             return error;
         }
