@@ -57,6 +57,53 @@ module.exports = class DBQuery{
         return this;
     }
 
+    async joinAllCourseDetails(){
+        this.query = `SELECT 
+                        s.semester_id,
+                        c.title, 
+                        c.code, 
+                        f.fullname, 
+                        COUNT(r.student_id) AS num_registered
+                    FROM 
+                        semester_details s 
+                    JOIN 
+                        course_details c ON s.course_id = c.course_id 
+                    JOIN 
+                        faculty_details f ON s.faculty_id = f.faculty_id 
+                    JOIN 
+                        course_registration r ON s.course_id = r.course_id 
+                    GROUP BY 
+                        c.title, 
+                        c.code, 
+                        f.fullname,
+                        s.semester_id;` ;        
+        return this;
+    }
+
+    async joinCourseDetails(semester_id){
+        this.query = `SELECT 
+                        s.semester_id,
+                        c.title, 
+                        c.code, 
+                        f.fullname, 
+                        COUNT(r.student_id) AS num_registered
+                    FROM 
+                        semester_details s 
+                    JOIN 
+                        course_details c ON s.course_id = c.course_id 
+                    JOIN 
+                        faculty_details f ON s.faculty_id = f.faculty_id 
+                    JOIN 
+                        course_registration r ON s.course_id = r.course_id 
+                    WHERE
+                        s.semester_id = ${semester_id}
+                    GROUP BY 
+                        c.title, 
+                        c.code, 
+                        f.fullname;` ;        
+        return this;
+    }
+    
     async execute(){
         return new Promise((resolve, reject) => {
             if (!this.query){
