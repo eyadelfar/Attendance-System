@@ -35,7 +35,7 @@ function StudentList() {
       <td>201200</td>
       <td>3</td>
       <td>0121526542</td>
-      <td><a href="http://localhost:3000/StudentsEdit">
+      <td><a href="/StudentsEdit">
                <img className='pen-icon-student' src={Edit} alt={'edit-image'} />
                  </a>
           <button className='delete'>
@@ -51,11 +51,11 @@ function StudentList() {
       <td>201200</td>
       <td>3</td>
       <td>0121526542</td>
-      <td><a href="http://localhost:3000/professorEdit">
+      <td><a href="/professorEdit">
                <img className='pen-icon-student' src={Edit} alt={'edit-image'} />
                  </a>
           <button className='button2'>
-            <img className='del-icon' src={Delete}  />
+            <img className='del-icon-student' src={Delete}  />
             </button></td>
       {/* Add other table cells as needed */}
     </tr>

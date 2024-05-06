@@ -13,7 +13,7 @@ import'./CourseList.css'
         <table className='course-table-student'>
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Title</th>
         <th>Code</th>
         <th>Professor Name</th>
         <th>Actions</th>
