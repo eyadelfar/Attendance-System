@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import'./Register.css'
-import Edit from '../../../pics/edit.png'
- import Delete from '../../../pics/delete.png'
  import plus from '../../../pics/plus.png'
 
 
