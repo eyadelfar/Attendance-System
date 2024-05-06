@@ -46,7 +46,7 @@ CREATE TABLE `attendance` (
   CONSTRAINT `fk_attendance_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
   CONSTRAINT `fk_session_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`),
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (2,2,'2024-04-29 22:19:07','joined',3,1,1),(2,2,'2024-04-29 22:19:51','joined',1,2,1),(2,2,'2024-04-29 22:20:14','joined',2,3,1),(2,2,'2024-04-29 22:20:30','joined',4,4,1);
+INSERT INTO `attendance` VALUES (2,2,'2024-05-04 21:13:00','joined',1,10,1),(2,2,'2024-05-04 21:13:03','joined',2,11,1),(2,2,'2024-05-04 21:13:27','joined',3,12,1),(2,2,'2024-05-04 21:13:54','joined',4,13,1);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -122,4 +122,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 23:39:57
+-- Dump completed on 2024-05-06 17:44:14

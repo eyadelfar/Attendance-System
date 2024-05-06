@@ -55,6 +55,29 @@ ADD CONSTRAINT fk_faculty_id FOREIGN KEY (faculty_id) REFERENCES faculty_details
 DROP TABLE course_allotment;
 
 
+ALTER TABLE course_registration
+ADD COLUMN semester_id INT, -- Assuming INT as datatype, adjust if necessary
+ADD CONSTRAINT fk_semester_id FOREIGN KEY (semester_id) REFERENCES semester_details(semester_id);
+
+
+
+ALTER TABLE course_registration
+DROP column course_id;
+
+ALTER TABLE course_registration
+drop foreign key fk_course_registration_course_id;
+Error Code: 1828. Cannot drop column 'course_id': needed in a foreign key constraint 'fk_course_registration_course_id'
+
+ADD PRIMARY KEY (student_id, semester_id);
+
+SELECT CONSTRAINT_NAME, TABLE_NAME
+FROM INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+WHERE REFERENCED_TABLE_NAME = 'course_registration';
+
+-- Step 3: Add new composite primary key constraint
+ALTER TABLE course_registration
+drop column course_id;
+
 select * from student_details;
 select * from course_details;
 select * from course_registration;
@@ -71,9 +94,7 @@ ALTER TABLE course_allotment
 RENAME COLUMN session_id TO semester_id;
 
 ALTER TABLE course_registration
-DROP COLUMN registration_id,
-DROP PRIMARY KEY,
-ADD PRIMARY KEY (course_id, student_id);
+ADD PRIMARY KEY (semester_id, student_id);
 
 select * from data_changes;
 alter table semester_details

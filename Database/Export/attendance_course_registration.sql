@@ -25,14 +25,11 @@ DROP TABLE IF EXISTS `course_registration`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `course_registration` (
-  `course_id` int NOT NULL,
   `student_id` int NOT NULL,
-  PRIMARY KEY (`course_id`,`student_id`),
+  `semester_id` int NOT NULL,
+  PRIMARY KEY (`semester_id`,`student_id`),
   KEY `fk_course_registration_student_id` (`student_id`),
-  CONSTRAINT `course_registration_ibfk_1` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_course_registration_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_course_registration_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`),
-  CONSTRAINT `fk_student_reg_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`)
+  CONSTRAINT `fk_semester_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +39,7 @@ CREATE TABLE `course_registration` (
 
 LOCK TABLES `course_registration` WRITE;
 /*!40000 ALTER TABLE `course_registration` DISABLE KEYS */;
-INSERT INTO `course_registration` VALUES (1,1),(2,1),(3,2),(4,2),(1,3),(3,3),(4,3),(1,4),(2,4),(2,5),(3,5),(4,5);
+INSERT INTO `course_registration` VALUES (1,1),(1,2),(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(5,1),(5,2),(5,3);
 /*!40000 ALTER TABLE `course_registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -109,4 +106,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-01 23:39:57
+-- Dump completed on 2024-05-06 17:44:14
