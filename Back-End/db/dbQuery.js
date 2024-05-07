@@ -71,7 +71,7 @@ module.exports = class DBQuery{
                     JOIN 
                         faculty_details f ON s.faculty_id = f.faculty_id 
                     JOIN 
-                        course_registration r ON s.course_id = r.course_id 
+                        course_registration r ON s.semester_id = r.semester_id 
                     GROUP BY 
                         c.title, 
                         c.code, 
@@ -94,13 +94,75 @@ module.exports = class DBQuery{
                     JOIN 
                         faculty_details f ON s.faculty_id = f.faculty_id 
                     JOIN 
-                        course_registration r ON s.course_id = r.course_id 
+                        course_registration r ON s.semester_id = r.semester_id 
                     WHERE
                         s.semester_id = ${semester_id}
                     GROUP BY 
                         c.title, 
                         c.code, 
                         f.fullname;` ;        
+        return this;
+    }
+    
+    async joinAllRegisteredCourses(){
+        this.query = `SELECT 
+                        c.title, 
+                        c.code,
+                        c.course_id,
+                        f.fullname as professor_name, 
+	                    st.fullname as student_name,
+                        st.roll_no,
+                        st.student_id,
+                        sm.semester_id
+                    FROM 
+                        student_details st
+                    JOIN 
+                        course_registration r ON st.student_id = r.student_id 
+                    JOIN 
+                        semester_details sm ON sm.semester_id = r.semester_id 
+                    JOIN 
+                        faculty_details f ON f.faculty_id = sm.faculty_id 
+                    JOIN 
+                        course_details c ON c.course_id = sm.course_id;` ;        
+        return this;
+    }
+
+    async joinRegisteredCourses(student_id){
+        this.query = `SELECT 
+                        c.title, 
+                        c.code, 
+                        c.course_id,
+                        f.fullname, 
+                        sm.semester_id
+                    FROM 
+                        student_details st
+                    JOIN 
+                        course_registration r ON st.student_id = r.student_id 
+                    JOIN 
+                        semester_details sm ON sm.semester_id = r.semester_id 
+                    JOIN 
+                        faculty_details f ON f.faculty_id = sm.faculty_id 
+                    JOIN 
+                        course_details c ON c.course_id = sm.course_id 
+                    WHERE 
+                        st.student_id = ${student_id};` ;        
+        return this;
+    }
+
+    async joinAttendance(student_id){
+        this.query = `SELECT 
+                        a.status, 
+                        l.lecture_date, 
+                        l.lecture_time, 
+                        l.lecture_id
+                    FROM 
+                        attendance a
+                    JOIN 
+                        lectures l ON a.lecture_id = l.lecture_id 
+                    JOIN 
+                        student_details s ON a.student_id = s.student_id 
+                    WHERE
+                        s.student_id = ${student_id};` ;        
         return this;
     }
     

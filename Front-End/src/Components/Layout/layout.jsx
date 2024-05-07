@@ -17,12 +17,14 @@ const Layout = () => {
       
       <div className="main_layout">
       {/* <SideBar /> */}
-       
 
 
         <div className="content">
+          
           <Router />
+          
         </div>
+        
       </div>
     </div>
   );

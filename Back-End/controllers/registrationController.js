@@ -9,7 +9,6 @@ module.exports = class RegistrationController{
     async getRegistrationBy(registration){
         try{
             await dbQuery.select('course_registration');
-            // if(!registration.student_id)
             await dbQuery.where(registration);
             let result = await dbQuery.execute();
 
@@ -47,9 +46,9 @@ module.exports = class RegistrationController{
         }
     };
 
-    async getRegistrationsByCourse(course_id){
+    async getRegistrationsBySemester(semester_id){
         try{
-            let results = await this.getRegistrationBy(course_id);
+            let results = await this.getRegistrationBy(semester_id);
             return results; 
         }catch(error){
             return error;
@@ -122,7 +121,7 @@ module.exports = class RegistrationController{
                 return result;
             }
             
-            newRegistration.course_id = newRegistration.course_id ? newRegistration.course_id : oldRegistration.course_id;
+            newRegistration.semester_id = newRegistration.semester_id ? newRegistration.semester_id : oldRegistration.semester_id;
             newRegistration.student_id = newRegistration.student_id ? newRegistration.student_id : oldRegistration.student_id;
 
             await dbQuery.update('course_registration',newRegistration);
