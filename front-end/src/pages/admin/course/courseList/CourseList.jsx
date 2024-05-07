@@ -5,7 +5,7 @@ import Edit from '../../../../pics/edit.png'
  import plus from '../../../../pics/plus.png'
 
 
- function SessionList() {
+ function LectureList() {
     return (
       <div className="course-list">
        <div className='course-header'>
@@ -71,4 +71,4 @@ import Edit from '../../../../pics/edit.png'
     );
   }
   
-  export default SessionList;
+  export default LectureList;
