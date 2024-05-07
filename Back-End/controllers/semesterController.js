@@ -141,6 +141,7 @@ module.exports = class SemesterController{
                 return result;
             }
             else{
+                semester = result[0];
                 await dbQuery.delete('semester_details');
                 await dbQuery.where({
                     semester_id:semester.semester_id
