@@ -26,7 +26,13 @@ const StudentSettings = () => {
                     <div >
                         <h2 className="student-name" >Dorothy Wood</h2>
                     </div>
-                    <h3 className="left-container-text">Student</h3>
+                    <h3 className="left-container-text">S 007</h3>
+                    <div>
+                    <h4 className="left-container-phone">+20122565599</h4>
+                    </div>
+                    <div>
+                    <h5 className="left-container-text-2">Level 3</h5>
+                    </div>
             </div>
             
             <div className="account-settings-form">
@@ -37,17 +43,17 @@ const StudentSettings = () => {
                         </div>
                     
                         <div className="form-field">
-                            <label htmlFor="firstName">First Name:</label>
+                            <label htmlFor="firstName">Full Name </label>
                             <input type="text" id="firstName" defaultValue="Dorothy"  />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Last Name:</label>
-                            <input type="text" id="lastName" defaultValue="Wood"  />
+                            <label htmlFor="lastName">Phone Number </label>
+                            <input type="text" id="lastName" defaultValue="+20122565599"  />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="oldPassword">Old Password:</label>
+                            <label htmlFor="oldPassword">Old Password </label>
                             <input
                             type="password"
                             id="oldPassword"

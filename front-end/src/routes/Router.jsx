@@ -11,8 +11,8 @@ import StudentCreate from '../pages/admin/student/studentCreate/StudentCreate';
 import StudentEdit from '../pages/admin/student/studentEdit/StudentEdit';
 
 import SessionList from '../pages/admin/session/sessionList/SessionList';
-import SessionCreate from '../pages/admin/session/sessionCreate/SessionCreate';
-import SessionEdit from '../pages/admin/session/sessionEdit/SessionEdit';
+import SessionCreate from '../pages/admin/session/sessionCreate/LectureCreate';
+import SessionEdit from '../pages/admin/session/sessionEdit/LectureEdit';
 import CourseCreate from '../pages/admin/course/courseCreate/CourseCreate';
 import CourseList from '../pages/admin/course/courseList/CourseList';
 import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
