@@ -101,8 +101,8 @@ router.put("/",
                 professorNew.fullname = req.body.fullname;
             
             if(req.body.passwordNew)
-                if(req.body.passwordNew === req.body.passwordOld)
-                    studentNew.password = req.body.passwordNew;
+                if(professorOld.password === req.body.passwordOld)
+                    professorNew.password = req.body.passwordNew;
                 else{
                     result.message = "passwords do not match";
                     console.log(result);

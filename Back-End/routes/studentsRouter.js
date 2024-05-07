@@ -110,7 +110,7 @@ router.put("/",
                 studentNew.level = req.body.level;
             
             if(req.body.passwordNew)
-                if(req.body.passwordNew === req.body.passwordOld)
+                if(studentOld.password === req.body.passwordOld)
                     studentNew.password = req.body.passwordNew;
                 else{
                     result.message = "passwords do not match";

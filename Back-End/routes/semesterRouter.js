@@ -231,10 +231,13 @@ router.put("/",
                 semesterNew.year = req.body.year;
             if(req.body.term)
                 semesterNew.term = req.body.term;
-            if(req.body.course_id)
-                semesterNew.course_id = req.body.course_id;
             if(req.body.faculty_id)
                 semesterNew.faculty_id = req.body.faculty_id;
+
+            if(req.body.course_title)
+                semesterNew.course_title = req.body.course_title;
+            if(req.body.course_code)
+                semesterNew.course_code = req.body.course_code;
 
             let result = await semesterController.editSemester(semesterOld,semesterNew);
             if(!result.problem){
