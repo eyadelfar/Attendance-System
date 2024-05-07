@@ -9,11 +9,11 @@ import Edit from '../../../../pics/edit.png'
     return (
       <div className="course-list">
        <div className='course-header'>
-       <h1>Lectures</h1>
+       <h1>Courses</h1>
         <div>
         <button className='create-course' >
         <img className='plus-icon' src={plus} alt={'image'} />
-          Create Lecture
+          Create Course
          
           </button>
         </div>
@@ -23,15 +23,17 @@ import Edit from '../../../../pics/edit.png'
     <thead>
       <tr>
         <th>Name</th>
+        <th>Code</th>
         <th>Number of Registerations</th>
         <th>Professor Name</th>
-        <th>Sessions</th>
+        <th>Lecture</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody className='body-table-course'>
       <tr >
         <td>Computer Graphics</td>
+        <td>it 131</td>
         <td>1125 </td>
         <td>Dale Robertson</td>
         <td> <button className='button-course'>
@@ -50,6 +52,7 @@ import Edit from '../../../../pics/edit.png'
       </tr>
       <tr >
       <td>Computer Graphics</td>
+      <td>it 131</td>
         <td>1125 </td>
         <td>Dale Robertson</td>
         <td> <button className='button-course'>
