@@ -34,7 +34,7 @@ function ProfessorsList() {
   <thead>
     <tr>
       <th>Name</th>
-      <th>ID</th>
+      <th>Username</th>
       <th>Actions</th>
     </tr>
   </thead>
