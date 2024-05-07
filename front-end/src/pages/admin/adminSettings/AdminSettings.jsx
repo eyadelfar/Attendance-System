@@ -36,7 +36,7 @@ const AdminSettings = () => {
                             </div>
                         
                             <div className="admin-settings-form-field">
-                                <label htmlFor="firstName">First Name:</label>
+                                <label htmlFor="firstName">Full Name:</label>
                                 <input 
                                     type="text" 
                                     id="firstName" 
@@ -47,13 +47,13 @@ const AdminSettings = () => {
                             </div>
 
                             <div className="admin-settings-form-field">
-                                <label htmlFor="lastName">Last Name:</label>
+                                <label htmlFor="lastName">Username:</label>
                                 <input 
                                     type="text" 
                                     id="lastName" 
                                     className='admin-settings-input'  
-                                    defaultValue="Doe" 
-                                    placeholder='Last Name'
+                                    defaultValue="221456" 
+                                    placeholder='Username'
                                 />
                             </div>
 

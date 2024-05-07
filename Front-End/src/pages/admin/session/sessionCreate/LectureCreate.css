@@ -1,6 +1,6 @@
-.session-main-header{
+.create-lecture-main-header{
     position: relative;
-    transform: translateX(273%);
+    transform: translateX(290%);
     font-size: 45px;
     top: -50px;
     font-weight: 400;
@@ -17,7 +17,7 @@
     
   }
 
-  .session-headers{
+  .lecture-headers{
     display: flex;
     /* flex-direction: row; */
   }
@@ -40,13 +40,14 @@
 
   }
 
-  .session-header-of-form{
+  .lecture-header-of-form{
     color: #002251;
     text-align: center;
     vertical-align: text-middle;
     line-height: auto;
     border-style: hidden;
     outline: none;
+    /* margin-bottom: 25vh; */
   }
 
   .parent-div {
@@ -90,29 +91,16 @@
     font-size: 24px;
     font-weight:400;
     background-attachment: fixed;
+    margin-bottom: 30vh;
    
   }
 
-  .form-field input {
-    background-color: #f3f3f3;
-    height: 4vh;
-    border-radius: 10px ;
-    border-color: #1B3877;
-    font-weight: 400;
-    font-size: 20px;
-  }
-  
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-    
-  }
-  .time-select-1 {
+
+  .create-time-select-1 {
     position: relative;
     background-color: #f3f3f3;
     border-radius: 10px;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     border-width: 2px;
     font-weight: 400;
     font-size: 20px;
@@ -120,44 +108,41 @@
     width: 15vh;
   }
 
-  .form-field-date {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-  }
-
   .form-field-date input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 30px;
     text-align: center;
   }
 
-  .time-select-2 {
-    position: relative;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    border-color: #1B3877;
-    border-width: 2px;
-    font-weight: 400;
-    font-size: 20px;
-    width: 16vh;
-    height: 4.5vh;
-  }
-
-  .time-form {
-    display: flex;
+  .time-formx {
+    display: block;
     flex-direction: row;
     padding: 5%;
-    align-self: ce;
     position: relative;
     justify-content: space-between;
+    margin-top: 9vh;
+    position: relative;
+    left: 5vh;
+    
   }
 
-  #create-session-button{
+  .time-formx label {
+    display: block;
+
+  }
+  
+  .form-field-date {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    margin-top: 8vh;
+  }
+
+  #create-lecture-button{
     position: relative;
     color: #FFFFFF;
     background-color: #4A9F48;
@@ -177,7 +162,7 @@
 
 
 
-  #create-session-button:hover{
+  #create-lecture-button:hover{
     background-color: #2f662e;
 
   }
@@ -189,4 +174,10 @@
     display: flex;
     margin-bottom: 75%;
    
+  }
+
+
+
+  .mandatory{
+    color: red;
   }

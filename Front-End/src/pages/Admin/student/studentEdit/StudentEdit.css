@@ -67,8 +67,7 @@
     width: 70vw; 
     /* flex-direction: row; */
     margin-top: -1.5%;
-    
-    
+     
   }
   
 
@@ -83,36 +82,54 @@
    
   }
 
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    max-width: 100%;
+    align-self: left;
+  }
   
   .form-field input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 20px;
   }
 
-  .courses-select {
+
+  .form-field-phone {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    max-width: 100%;
+    align-self: left;
+    position: relative;
+    top: -10px;
+  }
+  
+  .form-field-phone input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 20px;
-    border-width: 2px;
+
   }
 
   .level-sperate{
-
     position: relative;
     top: -1%;
   }
+
   .level-select{
     position: relative;
     background-color: #f3f3f3;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     border-width: 2px;
     font-weight: 400;
     font-size: 20px;
@@ -121,53 +138,13 @@
     /* top: 10px; */
   }
   
-  .form-field {
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-    max-width: 100%;
-    align-self: left;
-  }
 
-  .file-field{
-    display: flex;
-    flex-direction: column;
-    padding: 5%;
-    max-width: 100%;
-    align-self: left;
-  }
-
-  #input-button{
-    position: relative;
-    /* color: #395986; */
-    background-color:  #395986;
-    border: #395986;
-    font-size: 20px;
-    cursor: pointer;
-    width: 35%;  
-    display: flex; /* Use flexbox for layout */
-    border-radius: 7px; 
-    padding: 1%;
-   
-  }
-  #input-button::file-selector-button{
-    color: #FFFFFF;
-    position: relative;
-    background-color:  #395986;
-    border: #395986;
-    font-size: 20px;
-    cursor: pointer;
-    width: 100%;  
-    border-radius: 1px; 
-    padding: 10%;
-    justify-content: center;
-  }
 
   .id-level-form input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 20px;
     max-width: 130px;
@@ -188,6 +165,8 @@
     align-self: left;
     position: relative;
     justify-content: space-between;
+    left: -2px;
+    top: -20px;
   }
 
   #edit-confirm-button{
@@ -204,30 +183,8 @@
     padding: 5%;
     justify-content: center;
     left: 162%;
-    top: 6vh;
+    top: -19vh;
   }
-
-  .upload-label{
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    }
-
-   #upload-button{   
-    position: relative;
-    color: #FFFFFF;
-    background-color: #4A9F48;
-    border: #395986;
-    font-size: 20px;
-    cursor: pointer;
-    width: 60%;  
-    display: flex; /* Use flexbox for layout */
-    border-radius: 25px; 
-    padding: 5%;
-    justify-content: center;
-    }
-  
-
 
   #edit-confirm-button:hover{
     background-color: #222122c2;
@@ -241,4 +198,15 @@
     display: flex;
     margin-bottom: 5%;
    
+  }
+
+  .mandatory {
+    color: red;
+    margin-left: 1px; /* Adjust spacing as needed */
+  }
+
+  .id-level-form label:after{
+    content: ' *'; /* Add the asterisk as content */
+    color: red;
+    display: contents;
   }

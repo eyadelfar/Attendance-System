@@ -1,6 +1,6 @@
-.session-main-header{
+.lecture-main-header{
     position: relative;
-    transform: translateX(273%);
+    transform: translateX(290%);
     font-size: 45px;
     top: -50px;
     font-weight: 400;
@@ -17,7 +17,7 @@
     
   }
 
-  .session-headers{
+  .lecture-headers{
     display: flex;
     /* flex-direction: row; */
   }
@@ -40,7 +40,7 @@
 
   }
 
-  .session-header-of-form{
+  .lecture-header-of-form{
     color: #002251;
     text-align: center;
     vertical-align: text-middle;
@@ -97,7 +97,7 @@
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 20px;
   }
@@ -108,11 +108,11 @@
     padding: 5%;
     
   }
-  .time-select-1 {
+  .edit-time-select-1 {
     position: relative;
     background-color: #f3f3f3;
     border-radius: 10px;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     border-width: 2px;
     font-weight: 400;
     font-size: 20px;
@@ -124,29 +124,21 @@
     display: flex;
     flex-direction: column;
     padding: 5%;
+    position: relative;
+    left: 5vh;
   }
 
   .form-field-date input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
-    border-color: #1B3877;
+    border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 30px;
     text-align: center;
+    width: 25vh;
   }
 
-  .time-select-2 {
-    position: relative;
-    background-color: #f3f3f3;
-    border-radius: 10px;
-    border-color: #1B3877;
-    border-width: 2px;
-    font-weight: 400;
-    font-size: 20px;
-    width: 16vh;
-    height: 4.5vh;
-  }
 
   .time-form {
     display: flex;
@@ -155,9 +147,16 @@
     align-self: ce;
     position: relative;
     justify-content: space-between;
+    margin-top: 9vh;
+    position: relative;
+    left: 5vh;
   }
 
-  #edit-session-button{
+  .time-form label{
+    display: block;
+  }
+
+  #edit-lecture-button{
     position: relative;
     color: #FFFFFF;
     background-color: #395986;
@@ -177,7 +176,7 @@
 
 
 
-  #edit-session-button:hover{
+  #edit-lecture-button:hover{
     background-color: #222122c2;
 
   }

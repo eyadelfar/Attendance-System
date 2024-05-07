@@ -8,8 +8,8 @@ import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorC
 import ProfessorEdit from '../pages/admin/professor/professorEdit/ProfessorEdit';
 import StudentCreate from '../pages/admin/student/studentCreate/StudentCreate';
 import StudentEdit from '../pages/admin/student/studentEdit/StudentEdit';
-import SessionCreate from '../pages/admin/session/sessionCreate/SessionCreate';
-import SessionEdit from '../pages/admin/session/sessionEdit/SessionEdit';
+import SessionCreate from '../pages/admin/session/sessionCreate/LectureCreate';
+import SessionEdit from '../pages/admin/session/sessionEdit/LectureEdit';
 import CourseCreate from '../pages/admin/course/courseCreate/CourseCreate';
 import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
 import TEST from'../pages/TEST';

@@ -20,21 +20,21 @@ const CourseCreate = () => {
                 <form id='course-create-forms-parent'>  
                     <div id='course-create-form-child'>
                         <div id="course-create-form-header">
-                            <h1>Create Course</h1>
+                            <h1>Create Course </h1>
                         </div>
                 
                         <div className="course-create-form-field">
-                            <label >Course Name</label>
+                            <label >Course Title <span className='mandatory'>*</span></label>
                             <input type="text" id="" placeholder='Enter The Course Name' />
                         </div>
 
                         <div id="course-create-form-field-code">
-                            <label >Course Code</label>
+                            <label >Course Code <span className='mandatory'>*</span></label>
                             <input type="text" id="" placeholder='Enter The Code' />
                         </div>
 
                         <div className="course-create-form-field">
-                            <label >Professor Name</label>
+                            <label >Professor Name <span className='mandatory'>*</span></label>
                             <select className="course-select">
                                 <option value="">Select A Professor</option>
                                 <option value="option1">Dale Robertson</option>
@@ -42,6 +42,25 @@ const CourseCreate = () => {
                                 <option value="option3">Option 3</option>
                             </select>
                         </div>
+                        <div id="term-year-form">
+                            <label >Term <span className='mandatory'>*</span></label>
+                            <label id='xxx'>Year <span className='mandatory'>*</span></label>
+                        </div>
+                        <div id='term-year-form'>
+                        <select id="term-year-form">
+                                <option value="">Select a term</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                            <select id="term-year-form">
+                                <option value="">Select a year</option>
+                                <option value="option1">Option 1</option>
+                                <option value="option2">Option 2</option>
+                                <option value="option3">Option 3</option>
+                            </select>
+                        </div>
+
                     </div>
 
                     <div>

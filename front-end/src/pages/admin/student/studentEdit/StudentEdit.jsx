@@ -25,12 +25,12 @@ const StudentEdit = () => {
                         </div>
                     
                         <div className="form-field">
-                            <label htmlFor="firstName">Student Name</label>
+                            <label htmlFor="firstName">Student Name <span className="mandatory">*</span></label>
                             <input type="text" id="Student-Name"  defaultValue="Melissa Ellison" />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Password</label>
+                            <label htmlFor="lastName">Password <span className="mandatory">*</span></label>
                             <input type="password" id="Student-Password"  defaultValue="Melissa Ellison" />
                         </div>
 
@@ -52,27 +52,15 @@ const StudentEdit = () => {
                            
                         </div>
 
-                        <div className="form-field">
-                            <label htmlFor="lastName">Courses</label>
-                            <select className="courses-select">
-                        <option value="">Select Courses</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                        <div className="form-field-phone">
+                            <label htmlFor="lastName">Phone Number</label>
+                            <input type="text" id="Student-Name"  placeholder='Enter Phone Number' />
                         </div>
-
-                        <div className="file-field">
-                            <label htmlFor="firstName">Upload Photo</label>
-                            <input type="file" id='input-button' />
-                        
-                        </div>
-  
                     </div>
                     <div >
                     <button id='edit-confirm-button' onClick={handleSaveChanges}>
                             <div className='create-button-text'>
-                                Create
+                                Confirm
                                 </div>
                         </button>
                     </div>
