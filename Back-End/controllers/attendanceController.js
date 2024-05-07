@@ -75,6 +75,15 @@ module.exports = class AttendanceController{
         }
     };
 
+    async getDetailedAttendance(student){
+        try{
+            await dbQuery.joinAttendance(student.student_id);
+            let result = await dbQuery.execute();
+            return result;
+        }catch(error){
+            return error;
+        }
+    };
     async addAttendance(newAttendance){
         try{
             let check = await this.getAttendanceBy({

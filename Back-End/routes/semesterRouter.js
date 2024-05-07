@@ -90,7 +90,9 @@ router.get("/year/:year",
     }
 );
 
+//get all courses details
 router.get("/courseDetails",
+    authorize,
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
@@ -109,11 +111,41 @@ router.get("/courseDetails/:semester_id",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
-            let result = await semesterController.getCourseDetails(
-                {
+            let result = await semesterController.getCourseDetails({
                     semester_id: req.params.semester_id
-                }
-            );
+            });
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/registeration",
+    authenticate,
+    async (req,res) => {
+        try{
+            let semesterController = new SemesterController();
+            let result = await semesterController.getAllRegisteredCourses();
+            console.log(result);
+            res.status(200).json(result);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+router.get("/registeration/:student_id",
+    authenticate,
+    async (req,res) => {
+        try{
+            let semesterController = new SemesterController();
+            let result = await semesterController.getRegisteredCourses({
+                student_id:req.params.student_id
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
