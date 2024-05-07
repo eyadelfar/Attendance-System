@@ -37,7 +37,7 @@ import Edit from '../../../../pics/edit.png'
         <td> <button className='button-course'>
             Go to Lecture
             </button> </td>
-        <td><a href="http://localhost:3000/professorEdit">
+        <td><a href="/CourseEdit">
                  <img className='pen-icon-lecture' src={Edit} alt={'edit-image'} />
                    </a>
             <button className='delete-course'>
@@ -55,7 +55,7 @@ import Edit from '../../../../pics/edit.png'
         <td> <button className='button-course'>
             Go to Lecture
             </button> </td>
-        <td><a href="http://localhost:3000/professorEdit">
+        <td><a href="/CourseEdit">
                  <img className='pen-icon-lecture' src={Edit} alt={'edit-image'} />
                    </a>
             <button className='delete-course'>

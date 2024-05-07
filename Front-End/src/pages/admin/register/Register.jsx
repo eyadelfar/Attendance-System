@@ -13,7 +13,7 @@ import'./Register.css'
         Upload
         <img className='plus-icon' src={plus} alt={'image'} />
           </button>
-        </div>
+        </div> 
         </div>
         
         <table className='register-table'>

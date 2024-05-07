@@ -39,7 +39,7 @@ import Edit from '../../../../pics/edit.png'
             Open Camera
             <img className='camera-icon-lecture' src={camera}  />
             </button> </td>
-        <td><a href="http://localhost:3000/professorEdit">
+        <td><a href="/SessionEdit">
                  <img className='pen-icon-lecture' src={Edit} alt={'edit-image'} />
                    </a>
             <button className='delete-lecture'>
@@ -57,7 +57,7 @@ import Edit from '../../../../pics/edit.png'
             Open Camera
             <img className='camera-icon-lecture' src={camera}  />
             </button> </td>
-        <td><a href="http://localhost:3000/professorEdit">
+        <td><a href="/SessionEdit">
                  <img className='pen-icon-lecture' src={Edit} alt={'edit-image'} />
                    </a>
             <button className='delete-lecture'>
