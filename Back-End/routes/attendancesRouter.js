@@ -64,11 +64,13 @@ router.get("/detailed",
 });
 
 // get filtered attendance 
-router.get("/course/:course_id",
+router.get("/course",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesByCourse({course_id:req.params.course_id});
+            let results = await attendanceController.getAttendancesByCourse({
+                course_id:req.body.course_id
+            });
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -78,11 +80,13 @@ router.get("/course/:course_id",
     }
 );
 
-router.get("/semester/:semester_id",
+router.get("/semester",
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesBySemester({semester_id:req.params.semester_id});
+            let results = await attendanceController.getAttendancesBySemester({
+                semester_id:req.body.semester_id
+            });
             console.log(results);
             res.status(200).json(results);
         }catch(error){
@@ -92,12 +96,14 @@ router.get("/semester/:semester_id",
     }
 );
 
-router.get("/student/:student_id",
+router.get("/student",
     authenticate,
     async (req,res) => {
         try{
             let attendanceController = new AttendanceController();
-            let results = await attendanceController.getAttendancesByStudent({student_id:req.params.student_id});
+            let results = await attendanceController.getAttendancesByStudent({
+                student_id:req.body.student_id
+            });
             console.log(results);
             res.status(200).json(results);
         }catch(error){

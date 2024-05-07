@@ -32,15 +32,31 @@ router.get("/lecture",
     async (req,res) => {
         try{
             let lectureController = new LectureController();
-            let result = await lectureController.getLectureBy({lecture_id:req.body.lecture_id});
-            if(!result.exist){
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-            else{
-                console.log(result[0]);
-                res.status(200).json(result[0]);
-            }
+            let result = await lectureController.getLectureDetailed({
+                lecture_id:req.body.lecture_id
+            });
+            console.log(result[0]);
+            res.status(200).json(result[0]);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
+
+// get filtered lectures 
+router.get("/semester",
+    authenticate,
+    async (req,res) => {
+        try{
+            let lectureController = new LectureController();
+            let results = await lectureController.getLecturesBySemester({
+                semester_id: req.body.semester_id
+            });
+            
+            console.log(results);
+            res.status(200).json(results);
+            
         }catch(error){
             console.log(error);
             res.status(500).json(error);

@@ -30,7 +30,9 @@ router.get("/semester",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
-            let result = await semesterController.getSemesterBy({semester_id:req.body.semester_id});
+            let result = await semesterController.getSemesterBy({
+                semester_id:req.body.semester_id
+            });
             if(!result.exist){
                 console.log(result.message);
                 res.status(200).json(result.message);
@@ -47,12 +49,14 @@ router.get("/semester",
 );
 
 // get filtered semesters 
-router.get("/course/:course_id",
+router.get("/course",
     authenticate,
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
-            let result = await semesterController.getSemestersByCourse({course_id:req.params.course_id});
+            let result = await semesterController.getSemestersByCourse({
+                course_id:req.body.course_id
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -62,11 +66,13 @@ router.get("/course/:course_id",
     }
 );
 
-router.get("/term/:term",
+router.get("/term",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
-            let result = await semesterController.getSemestersByTerm({term:req.params.term});
+            let result = await semesterController.getSemestersByTerm({
+                term:req.body.term
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -76,11 +82,13 @@ router.get("/term/:term",
     }
 );
 
-router.get("/year/:year",
+router.get("/year",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
-            let result = await semesterController.getSemestersByYear({year:req.params.year});
+            let result = await semesterController.getSemestersByYear({
+                year:req.body.year
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -107,15 +115,15 @@ router.get("/courseDetails",
     }
 );
 
-router.get("/courseDetails/:semester_id",
+router.get("/courseDetails/semester",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
             let result = await semesterController.getCourseDetails({
-                    semester_id: req.params.semester_id
+                    semester_id: req.body.semester_id
             });
-            console.log(result);
-            res.status(200).json(result);
+            console.log(result[0]);
+            res.status(200).json(result[0]);
         }catch(error){
             console.log(error);
             res.status(500).json(error);
@@ -138,13 +146,13 @@ router.get("/registeration",
     }
 );
 
-router.get("/registeration/:student_id",
+router.get("/registeration/student",
     authenticate,
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
             let result = await semesterController.getRegisteredCourses({
-                student_id:req.params.student_id
+                student_id:req.body.student_id
             });
             console.log(result);
             res.status(200).json(result);
@@ -167,15 +175,13 @@ router.post("/",
             let check = await courseController.getCourseBy({
                 code: req.body.course_code
             });
-            console.log(check);
-            if(check.exist){
+            if(check.exist)
                 semester = {
                     faculty_id: req.body.faculty_id,
                     course_id: check[0].course_id,
                     year: req.body.year,
                     term: req.body.term
                 }            
-            }
             else{
                 let newCourse = {
                     code: req.body.course_code,
