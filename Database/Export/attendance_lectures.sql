@@ -31,10 +31,10 @@ CREATE TABLE `lectures` (
   `lecture_time` time DEFAULT NULL,
   `course_id` int DEFAULT NULL,
   PRIMARY KEY (`lecture_id`),
-  KEY `session_id` (`semester_id`),
   KEY `fk_lectures_course_id` (`course_id`),
-  CONSTRAINT `fk_lectures_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`)
+  KEY `lectures_ibfk_1` (`semester_id`),
+  CONSTRAINT `fk_lectures_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -97,4 +97,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-06 17:44:14
+-- Dump completed on 2024-05-07 19:32:08

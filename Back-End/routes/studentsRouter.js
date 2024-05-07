@@ -89,7 +89,16 @@ router.put("/",
             let studentOld = new Student();
             let studentNew = new Student();
 
-            studentOld.student_id = req.body.student_id;
+            let result = await studentController.getStudentsBy({
+                student_id: req.body.student_id
+            });
+            if(!result.exist){
+                console.log(result.message);
+                res.status(404).json(result.message);
+                return;
+            }
+            
+            studentOld = result[0];
             
             if(req.body.roll_no)
                 studentNew.roll_no = req.body.roll_no;
@@ -97,12 +106,19 @@ router.put("/",
                 studentNew.fullname = req.body.fullname;
             if(req.body.phone_no)
                 studentNew.phone_no = req.body.phone_no;
-            if(req.body.password)
-                studentNew.password = req.body.password;
             if(req.body.level)
                 studentNew.level = req.body.level;
             
-            let result = await studentController.editStudent(studentOld,studentNew);
+            if(req.body.passwordNew)
+                if(studentOld.password === req.body.passwordOld)
+                    studentNew.password = req.body.passwordNew;
+                else{
+                    result.message = "passwords do not match";
+                    console.log(result);
+                    res.status(400).json(result.message);
+                }
+            
+            result = await studentController.editStudent(studentOld,studentNew);
             if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);

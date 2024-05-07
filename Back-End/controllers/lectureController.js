@@ -36,10 +36,21 @@ module.exports = class LectureController{
             return error;
         }
     };
-    
-    async getLecturesBySemester(semester_id){
+
+    async getLectureDetailed(lecture){
         try{
-            let results = await this.getLectureBy({semester_id:semester_id});
+            await dbQuery.joinLectureDetails(lecture.lecture_id);
+            let results = await dbQuery.execute();
+            return results; 
+        }catch(error){
+            return error;
+        }
+    };
+    
+    async getLecturesBySemester(semester){
+        try{
+            await dbQuery.joinLectureDetailsBySemester(semester.semester_id);
+            let results = await dbQuery.execute();
             return results; 
         }catch(error){
             return error;

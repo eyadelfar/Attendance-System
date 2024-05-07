@@ -85,16 +85,31 @@ router.put("/",
             let professorOld = new Professor();
             let professorNew = new Professor();
 
-            professorOld.faculty_id = req.body.faculty_id;
+            let result = await professorController.getProfessorBy({
+                faculty_id: req.body.faculty_id
+            });
+            if(!result.exist){
+                console.log(result.message);
+                res.status(404).json(result.message);
+                return;
+            }
+            professorOld = result[0];
             
             if(req.body.username)
                 professorNew.username = req.body.username;
             if(req.body.fullname)
                 professorNew.fullname = req.body.fullname;
-            if(req.body.password)
-                professorNew.password = req.body.password;
             
-            let result = await professorController.editProfessor(professorOld,professorNew);
+            if(req.body.passwordNew)
+                if(professorOld.password === req.body.passwordOld)
+                    professorNew.password = req.body.passwordNew;
+                else{
+                    result.message = "passwords do not match";
+                    console.log(result);
+                    res.status(400).json(result.message);
+                }
+            
+            result = await professorController.editProfessor(professorOld,professorNew);
             if(!result.problem){
                 console.log(result);
                 res.status(200).json(result.message);

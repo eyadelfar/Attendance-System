@@ -3,7 +3,12 @@ const moment = require('moment');
 // database connection
 const DBQuery = require ("../db/dbQuery");
 const connect = require ("../db/dbConnection");
+const CourseController = require('./courseController');
+const ProfessorController = require('./userController');
 
+// controllers
+let courseController = new CourseController();
+let professorController = new ProfessorController();
 let dbQuery = new DBQuery();
 
 //export class
@@ -141,6 +146,7 @@ module.exports = class SemesterController{
                 return result;
             }
             else{
+                semester = result[0];
                 await dbQuery.delete('semester_details');
                 await dbQuery.where({
                     semester_id:semester.semester_id
@@ -168,35 +174,79 @@ module.exports = class SemesterController{
         }
     };
 
-    async editSemester(oldSemester,newSemester){
+    async editSemester(semesterOld,semesterNew){
         try{
-            let result = await this.getSemesterBy({semester_id:oldSemester.semester_id});
-
-            if(!result.exist){
-                result.problem = 1;
-                return result;
-            }
+        //check if semester exist
             let check = await this.getSemesterBy({
-                year: newSemester.year,
-                term: newSemester.term,
-                course_id: newSemester.course_id,
-                faculty_id: newSemester.faculty_id,
+                semester_id: semesterOld.semester_id
+            });
+            if(!check.exist){
+                check.problem = 1;
+                return check;
+            }
+            semesterOld = check[0];
+console.log(semesterOld);
+            check = await this.getSemesterBy({
+                year: semesterNew.year,
+                term: semesterNew.term,
+                course_id: semesterNew.course_id,
+                faculty_id: semesterNew.faculty_id,
             });
             if (check.exist){
                 check.problem = 1;
                 return check;
             }
 
-            oldSemester = result[0];
+            if(semesterNew.faculty_id){
+        //check if new professor exist
+                let check = await professorController.getProfessorBy({
+                    faculty_id: semesterNew.faculty_id
+                });
+                if(!check.exist){
+                    check.problem = 1;
+                    return check;
+                }
+            }
 
-            newSemester.course_id = newSemester.course_id ? newSemester.course_id : oldSemester.course_id;
-            newSemester.faculty_id = newSemester.faculty_id ? newSemester.faculty_id : oldSemester.faculty_id;
-            newSemester.year = newSemester.year ? newSemester.year : oldSemester.year;
-            newSemester.term = newSemester.term ? newSemester.term : oldSemester.term;
+            if(semesterNew.course_code){
+        //check if new course exist
+                let courseOld = await courseController.getCourseBy({
+                    course_id: semesterOld.course_id,
+                });
 
-            await dbQuery.update('semester_details',newSemester);
-            await dbQuery.where({semester_id:oldSemester.semester_id});
-            result = await dbQuery.execute();
+                let courseCheck = await courseController.getCourseBy({
+                    code: semesterNew.course_code,
+                });
+
+                if(courseCheck.exist && courseOld[0].code !== courseCheck[0].code){
+                    courseCheck.problem = 1;
+                    courseCheck.message = 'COURSE CODE ALREADY EXIST';
+                    return courseCheck;
+                }
+                let courseNew = {
+                    code : semesterNew.course_code,
+                    title: semesterNew.course_title ? semesterNew.course_title : courseOld[0].title,
+                }
+                
+                let result = await courseController.editCourse(courseOld[0],courseNew);
+                if(result.problem)
+                    return result;
+
+                semesterNew.course_id = courseOld[0].course_id;
+            }
+
+            let updatedSemester = {
+                year:       semesterNew.year       ? semesterNew.year       : semesterOld.year,
+                term:       semesterNew.term       ? semesterNew.term       : semesterOld.term,
+                course_id:  semesterNew.faculty_id ? semesterNew.faculty_id : semesterOld.faculty_id,
+                faculty_id: semesterNew.course_id  ? semesterNew.course_id  : semesterOld.course_id
+            }
+
+            await dbQuery.update('semester_details',updatedSemester);
+            await dbQuery.where({
+                semester_id: semesterOld.semester_id
+            });
+            let result = await dbQuery.execute();
             result.message = 'SEMESTER UPDATED...';
             return result;
         }catch(error){

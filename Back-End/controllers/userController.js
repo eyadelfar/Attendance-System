@@ -128,10 +128,10 @@ module.exports = class UserController{
                 }
             }
             newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
-            newStudent.roll_no = newStudent.roll_no ? newStudent.roll_no : oldStudent.roll_no;
+            newStudent.roll_no  = newStudent.roll_no  ? newStudent.roll_no  : oldStudent.roll_no;
             newStudent.password = newStudent.password ? newStudent.password : oldStudent.password;
             newStudent.phone_no = newStudent.phone_no ? newStudent.phone_no : oldStudent.phone_no;
-            newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
+            newStudent.level    = newStudent.level    ? newStudent.level    : oldStudent.level;
 
             await dbQuery.update('student_details',newStudent);
             await dbQuery.where({

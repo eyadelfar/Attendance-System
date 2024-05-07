@@ -37,12 +37,7 @@ module.exports = class DBQuery{
         this.query = `DELETE FROM ${tableName}`;
         return this;
     }
-/*
-    async where(column,value){
-        this.query += ` WHERE ${column} = '${value}'`;
-        return this;
-    }
-*/
+
     async where(columns){
         let conditions = [];
         for (let column in columns) {
@@ -73,10 +68,9 @@ module.exports = class DBQuery{
                     JOIN 
                         course_registration r ON s.semester_id = r.semester_id 
                     GROUP BY 
-                        c.title, 
-                        c.code, 
-                        f.fullname,
-                        s.semester_id;` ;        
+                        s.semester_id
+                    ORDER BY
+                        s.year;` ;        
         return this;
     }
 
@@ -123,7 +117,9 @@ module.exports = class DBQuery{
                     JOIN 
                         faculty_details f ON f.faculty_id = sm.faculty_id 
                     JOIN 
-                        course_details c ON c.course_id = sm.course_id;` ;        
+                        course_details c ON c.course_id = sm.course_id
+                    ORDER BY
+                        sm.year;` ;        
         return this;
     }
 
@@ -145,7 +141,9 @@ module.exports = class DBQuery{
                     JOIN 
                         course_details c ON c.course_id = sm.course_id 
                     WHERE 
-                        st.student_id = ${student_id};` ;        
+                        st.student_id = ${student_id}
+                    ORDER BY
+                            s.year;` ;        
         return this;
     }
 
@@ -163,6 +161,38 @@ module.exports = class DBQuery{
                         student_details s ON a.student_id = s.student_id 
                     WHERE
                         s.student_id = ${student_id};` ;        
+        return this;
+    }
+    
+    async joinLectureDetailsBySemester(semester_id){
+        this.query = `SELECT 
+                        l.*,
+                        c.title,
+                        c.code
+                    FROM 
+                        lectures l 
+                    JOIN 
+                        course_details c ON l.course_id = c.course_id 
+                    
+                    WHERE
+                        l.semester_id = ${semester_id};`;
+
+        return this;
+    }
+
+    async joinLectureDetails(lecture_id){
+        this.query = `SELECT 
+                        l.*,
+                        c.title,
+                        c.code
+                    FROM 
+                        lectures l 
+                    JOIN 
+                        course_details c ON l.course_id = c.course_id 
+                    
+                    WHERE
+                        l.lecture_id = ${lecture_id};`;
+
         return this;
     }
     

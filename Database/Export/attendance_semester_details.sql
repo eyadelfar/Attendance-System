@@ -31,11 +31,10 @@ CREATE TABLE `semester_details` (
   `course_id` int DEFAULT NULL,
   `faculty_id` int DEFAULT NULL,
   PRIMARY KEY (`semester_id`),
-  KEY `fk_session_details_course_id` (`course_id`),
+  KEY `fk_course_session_id` (`course_id`),
   KEY `fk_faculty_id` (`faculty_id`),
-  CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`),
-  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`),
-  CONSTRAINT `fk_session_details_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`)
+  CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -112,4 +111,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-06 17:44:14
+-- Dump completed on 2024-05-07 19:32:08

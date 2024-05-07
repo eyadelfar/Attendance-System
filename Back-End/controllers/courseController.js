@@ -77,27 +77,34 @@ module.exports = class CourseController{
 
     async editCourse(oldCourse,newCourse){
         try{
-            let result = await this.getCourseBy({course_id:oldCourse.course_id});
+            let result = await this.getCourseBy({
+                course_id:oldCourse.course_id
+            });
 
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             oldCourse = result[0];
+            console.log(oldCourse);
 
             if(newCourse.code && newCourse.code !== oldCourse.code){
-                let result = await this.getCourseBy({code:newCourse.code});
+                let result = await this.getCourseBy({
+                    code:newCourse.code
+                });
                 if(result.exist){
                     result.problem = 1;
                     return result;
                 }
             }
-            newCourse.code = newCourse.code ? newCourse.code : oldCourse.code;
-            newCourse.title = newCourse.title ? newCourse.title : oldCourse.title;
-            newCourse.credit = newCourse.credit ? newCourse.credit : oldCourse.credit;
+            newCourse.code      = newCourse.code ? newCourse.code : oldCourse.code;
+            newCourse.title     = newCourse.title ? newCourse.title : oldCourse.title;
+            newCourse.credit    = newCourse.credit ? newCourse.credit : oldCourse.credit;
 
             await dbQuery.update('course_details',newCourse);
-            await dbQuery.where({course_id:oldCourse.course_id});
+            await dbQuery.where({
+                course_id: oldCourse.course_id
+            });
             result = await dbQuery.execute();
             result.message = 'COURSE UPDATED...';
             return result; 
