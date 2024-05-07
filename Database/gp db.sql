@@ -108,6 +108,59 @@ CREATE TABLE lectures (
   FOREIGN KEY (session_id) REFERENCES session_details(session_id)
 );
 
+desc semester_details;
+
+
+ALTER TABLE semester_details
+DROP FOREIGN KEY fk_course_session_id,
+DROP FOREIGN KEY fk_faculty_id;
+
+-- Recreate foreign key constraints with ON DELETE and ON UPDATE CASCADE
+ALTER TABLE semester_details
+ADD CONSTRAINT fk_course_session_id FOREIGN KEY (course_id) REFERENCES course_details(course_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE semester_details
+ADD CONSTRAINT fk_faculty_id FOREIGN KEY (faculty_id) REFERENCES faculty_details(faculty_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- Drop existing foreign key constraints
+ALTER TABLE attendance
+DROP FOREIGN KEY fk_attendance_course_id,
+DROP FOREIGN KEY fk_attendance_lecture,
+DROP FOREIGN KEY fk_attendance_session_id,
+DROP FOREIGN KEY fk_attendance_student_id,
+DROP FOREIGN KEY fk_session_id,
+DROP FOREIGN KEY fk_student_id;
+
+-- Drop existing foreign key constraints
+ALTER TABLE lectures
+DROP FOREIGN KEY fk_lectures_course_id,
+DROP FOREIGN KEY lectures_ibfk_1;
+
+-- Recreate foreign key constraints with ON DELETE and ON UPDATE CASCADE
+ALTER TABLE lectures
+ADD CONSTRAINT fk_lectures_course_id FOREIGN KEY (course_id) REFERENCES course_details(course_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+ALTER TABLE lectures
+ADD CONSTRAINT lectures_ibfk_1 FOREIGN KEY (semester_id) REFERENCES semester_details(semester_id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+
+
+ALTER TABLE semester_details
+ADD CONSTRAINT fk_semester_faculty_details
+FOREIGN KEY (faculty_id)
+REFERENCES faculty_details(faculty_id)
+ON DELETE CASCADE
+ON UPDATE CASCADE;
+
+
+
+
+
+
+
+
+
+
 -- Create a trigger to set default values for lecture_date and lecture_time
 DELIMITER //
 CREATE TRIGGER set_default_lecture_date_time BEFORE INSERT ON lectures
