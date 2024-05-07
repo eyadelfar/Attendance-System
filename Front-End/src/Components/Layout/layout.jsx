@@ -14,15 +14,18 @@ const Layout = () => {
        {/* Corrected component name and syntax */}
        {/* <Topbar /> */}
      
+       <Topbar />
+       <SideBar />
+
       
       <div className="main_layout">
-      <SideBar />
-       
-
 
         <div className="content">
+          
           <Router />
+          
         </div>
+        
       </div>
     </div>
   );

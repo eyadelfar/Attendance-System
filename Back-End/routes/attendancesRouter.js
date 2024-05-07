@@ -46,6 +46,23 @@ router.get("/attendance",
     }
 );
 
+// get detailed attendance
+router.get("/detailed",
+    authenticate,
+    async (req,res) => {
+        try{
+            let attendanceController = new AttendanceController();
+            let results = await attendanceController.getDetailedAttendance({
+                student_id:req.body.student_id
+            });
+            console.log(results);
+            res.status(200).json(results);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+});
+
 // get filtered attendance 
 router.get("/course/:course_id",
     async (req,res) => {

@@ -109,19 +109,22 @@ module.exports = class UserController{
 
     async editStudent(oldStudent,newStudent){
         try{
-            let result = await this.getStudentsBy({student_id:oldStudent.student_id});
-            if(!result.length){
+            let result = await this.getStudentsBy({
+                student_id:oldStudent.student_id
+            });
+            if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             oldStudent = result[0];
 
             if(newStudent.roll_no && newStudent.roll_no !== oldStudent.roll_no){
-                let result = await this.getStudentsBy({roll_no:newStudent.roll_no});
-                
-                if(result.length){
-                    result.problem = 1;
-                    return result;
+                let check = await this.getStudentsBy({
+                    roll_no:newStudent.roll_no
+                });                
+                if(check.length){
+                    check.problem = 1;
+                    return check;
                 }
             }
             newStudent.fullname = newStudent.fullname ? newStudent.fullname : oldStudent.fullname;
@@ -131,7 +134,9 @@ module.exports = class UserController{
             newStudent.level = newStudent.level ? newStudent.level : oldStudent.level;
 
             await dbQuery.update('student_details',newStudent);
-            await dbQuery.where({student_id:oldStudent.student_id});
+            await dbQuery.where({
+                student_id:oldStudent.student_id
+            });
             result = await dbQuery.execute();
             result.message = 'STUDENT UPDATED...';
             return result; 

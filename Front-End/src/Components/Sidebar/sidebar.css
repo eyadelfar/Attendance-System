@@ -4,17 +4,17 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh; /* Set the height of the sidebar to 100% of the viewport height */
-  width: 197px; /* Set the width of the sidebar */
+  height: 100vh;
+  width: 197px;
 }
 
 .container {
   display: flex;
-  height: 100vh; /* Set the height of the container to 100% of the viewport height */
+  height: 100vh;
 }
 
 .logo {
-  margin-bottom: 20px; /* Adjust as needed */
+  margin-bottom: 20px;
 }
 
 .nav-menu {
@@ -27,17 +27,12 @@
   display: flex;
   align-items: center;
   padding: 10px 0;
-  color: black;
   text-decoration: none;
-}
-
-.nav-link .icon {
-  margin-right: 10px; /* Adjust as needed */
+  color: black; /* Set default text color to black */
 }
 
 .nav-link:hover {
-  color: white; /* Change the text color when hovering */
-  background-color: #395986; /* Change the background color when hovering */
+  background-color: #395986; /* Change the background color when hovered over */
 }
 
 .nav-link.active {
@@ -48,8 +43,8 @@
   display: flex;
   align-items: center;
   padding: 10px 0;
-  margin-top: auto; /* Push the logout button to the bottom of the sidebar */
-  margin-bottom: 60px; /* Add space below the logout button */
+  margin-top: auto;
+  margin-bottom: 60px;
   color: black;
   cursor: pointer;
 }

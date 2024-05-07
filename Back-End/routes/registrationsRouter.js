@@ -35,7 +35,7 @@ router.get("/registration",
             let registrationController = new RegistrationController();
             let result = await registrationController.getRegistrationBy({
                 student_id:req.body.student_id,
-                course_id:req.body.course_id
+                semester_id:req.body.semester_id
             });
             if(!result.exist){
                 console.log(result.message);
@@ -53,12 +53,14 @@ router.get("/registration",
 );
 
 // get filtered registrations
-router.get("/student/:student_id",
+router.get("/student",
     authenticate,
     async (req,res) => {
         try{
             let registrationController = new RegistrationController();
-            let result = await registrationController.getRegistrationsByStudent({student_id:req.params.student_id});
+            let result = await registrationController.getRegistrationsByStudent({
+                student_id:req.body.student_id
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -68,12 +70,14 @@ router.get("/student/:student_id",
     }
 );
 
-router.get("/course/:course_id",
+router.get("/semester",
     authorize,
     async (req,res) => {
         try{
             let registrationController = new RegistrationController();
-            let result = await registrationController.getRegistrationsByCourse({course_id:req.params.course_id});
+            let result = await registrationController.getRegistrationsBySemester({
+                semester_id:req.body.semester_id
+            });
             console.log(result);
             res.status(200).json(result);
         }catch(error){
@@ -91,7 +95,7 @@ router.post("/",
             let registration = new Registration();
             registration = {
                 student_id: req.body.student_id,
-                course_id: req.body.course_id,
+                semester_id: req.body.semester_id,
             }
             let result = await registrationController.addRegistration(registration);
     
@@ -116,6 +120,9 @@ router.post("/upload",
     upload.single('registrationSheet'), 
     async (req, res) => {
         try{
+            if(!req.file){
+                res.status(400).send('No file uploaded');
+            }
             const workbook = xlsx.readFile(req.file.path);
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
             const data = xlsx.utils.sheet_to_json(worksheet, { header: 1, range: 0  });
@@ -142,12 +149,12 @@ router.put("/",
             let registrationNew = new Registration();
 
             registrationOld.student_id = req.body.student_id;
-            registrationOld.course_id = req.body.course_id;
+            registrationOld.semester_id = req.body.semester_id;
 
             if(req.body.student_id)
                 registrationNew.student_id = req.body.student_id;
-            if(req.body.course_id)
-                registrationNew.course_id = req.body.course_id;
+            if(req.body.semester_id)
+                registrationNew.semester_id = req.body.semester_id;
 
             let result = await registrationController.editRegistration(registrationOld,registrationNew);
             if(!result.problem){
@@ -170,8 +177,10 @@ router.delete("/",
         try{
             let registrationController = new RegistrationController();
             let registration = new Registration();
-            registration.course_id = req.body.course_id;
-            registration.student_id = req.body.student_id;
+            registration = {
+                semester_id : req.body.semester_id,
+                student_id : req.body.student_id,
+            };
 
             let result = await registrationController.deleteRegistration(registration);
             if(!result.problem){

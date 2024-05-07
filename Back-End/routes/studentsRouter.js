@@ -31,7 +31,9 @@ router.get("/student",
     async (req,res) => {
         try{
             let studentController = new UserController();
-            let result = await studentController.getStudentsBy({student_id:req.body.student_id});
+            let result = await studentController.getStudentsBy({
+                student_id:req.body.student_id
+            });
             if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);
@@ -80,7 +82,7 @@ router.post("/",
 
 // edit student
 router.put("/",
-    authorize,
+    authenticate,
     async (req, res) => {
         try{
             let studentController = new UserController();
@@ -95,11 +97,11 @@ router.put("/",
                 studentNew.fullname = req.body.fullname;
             if(req.body.phone_no)
                 studentNew.phone_no = req.body.phone_no;
-            if(req.body.level)
-                studentNew.level = req.body.level;
             if(req.body.password)
                 studentNew.password = req.body.password;
-
+            if(req.body.level)
+                studentNew.level = req.body.level;
+            
             let result = await studentController.editStudent(studentOld,studentNew);
             if(!result.problem){
                 console.log(result);

@@ -88,13 +88,32 @@ module.exports = class SemesterController{
         }
     };
 
+    async getAllRegisteredCourses(){
+        try{
+            await dbQuery.joinAllRegisteredCourses();
+            let result = await dbQuery.execute();
+            return result;
+        }catch(error){
+            return error;
+        }
+    };
+
+    async getRegisteredCourses(student){
+        try{
+            await dbQuery.joinRegisteredCourses(student.student_id);
+            let result = await dbQuery.execute();
+            return result;
+        }catch(error){
+            return error;
+        }
+    };
+
     async addSemester(newSemester){
         try{
             let result = await this.getSemesterBy({
                 year: newSemester.year,
                 term: newSemester.term,
                 course_id: newSemester.course_id,
-                faculty_id: newSemester.faculty_id,
             });
             if (result.exist){
                 result.problem = 1;
@@ -114,16 +133,34 @@ module.exports = class SemesterController{
 
     async deleteSemester(semester){
         try{
-            let result = await this.getSemesterBy({semester_id:semester.semester_id});
+            let result = await this.getSemesterBy({
+                semester_id:semester.semester_id
+            });
             if(!result.exist){
                 result.problem = 1;
                 return result;
             }
             else{
                 await dbQuery.delete('semester_details');
-                await dbQuery.where({semester_id:semester.semester_id});
+                await dbQuery.where({
+                    semester_id:semester.semester_id
+                });
                 result = await dbQuery.execute();
                 result.message = 'SEMESTER DELETED...';
+
+                await dbQuery.select('course_details');
+                await dbQuery.where({
+                    course_id: semester.course_id
+                });
+                let course = await dbQuery.execute();
+                if(course.length === 1){
+                    await dbQuery.delete('course_details');
+                    await dbQuery.where({
+                        course_id: semester.course_id
+                    });
+                    await dbQuery.execute();
+                }
+                
                 return result; 
             }
         }catch(error){
