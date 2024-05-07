@@ -1,16 +1,106 @@
-/* .professorItem {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .professorName,
-  .professorId,
-  .professorDashboard,
-  .professorActions {
-    flex: 1;
-  } */
-  
-  /* Additional styling for actions and icons */
-  
+.professors-list {
+  max-width: 1230px;
+  height: 100vh;
+  margin: 40px; 
+  margin-left: 200px;
+  margin-top: 80px;
+  padding: 20px;
+  font-family: poppins;
+  background-color: #F2F2F2;
+  border-collapse: collapse;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-bottom: none; /* Adjust border style and color */
+}
+
+
+.professors-list table {
+  width: 100%;
+  row-gap: 20px !important;
+  table-layout: fixed; 
+  border-collapse: collapse; /* Ensures borders collapse for spacing */
+  border-spacing: 10px !important;
+}
+.professors-list thead th{
+  padding: 15px; 
+  border: none;
+  text-align: center;
+} 
+
+ .professors-list thead {
+  border-bottom: 1px solid #ffffff; 
+}
+
+.professors-list thead th{
+  padding: 15px; 
+  text-align: center;
+}
+.professors-list thead th {
+  background-color: #ffffff; 
+  font-weight: bold;
+  font-family: poppins;
+}
+
+
+.button1{
+
+  left: 800px;
+  position: relative;
+  color: white;
+  position: relative;
+  color: #FFFFFF;
+  background-color: #4A9F48;
+  border: #395986;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 25px; 
+  text-align: center;
+  padding: 8px 20px;
+  width: auto;
+  display: flex;
+  bottom: 60px;
+  justify-content: center;
+  line-height: 30px; /* Adjust the line-height to move the text down */
+}
+.header{
+  display: flexbox; /* Use flexbox */
+  align-items: center; /* Align items vertically */
+}
+
+.professors-list-row{
+background-color: #4A9F48;
+} 
+.button2{
+    border: 1px solid transparent;
+    padding: 0px 1px;
+    left: 18px;
+    background: none;
+    cursor: pointer;
+    position: relative;
+    background-color: #F2F2F2;
+   
+}
+.button2:hover {
+  background-color: transparent; /* Ensure transparency on hover */
+}
+ .table-body{
+  background-color: white;
+ top: 40px;
+ position: relative;
+ text-align: center;
+ font-family: poppins;
+} 
+
+
+ 
+ .edit-icon{
+
+  width: 10%;
+ }
+ .delete-icon{
+  width: 30px;
+  height: 30px;
+ }
+ .empty-row{
+  background-color: #F2F2F2;
+}

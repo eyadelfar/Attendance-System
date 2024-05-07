@@ -41,7 +41,7 @@ import professor from '../../pics/professor.png'
 import session from '../../pics/session.png'
 import settings from '../../pics/settings.png'
 import LogoutButoon from '../../pics/LogoutButoon.png'
-
+import register from '../../pics/register.png'
 
 
 const Sidebar = () => {
@@ -57,29 +57,35 @@ return (
   </span>
   <span className="link-text">Dashboard</span>
 </a>
-<a href="/Courses" className="nav-link active">
+<a href="/CourseList" className="nav-link active">
   <span className="icon">
     <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
   </span>
   <span className="link-text">Courses</span>
 </a>
-<a href="/Students" className="nav-link active">
+<a href="/StudentsList" className="nav-link active">
   <span className="icon">
     <img src={student} alt="student" style={{ marginRight: '15px' }} />
   </span>
   <span className="link-text">Students</span>
 </a>
-<a href="/professors" className="nav-link active">
+<a href="/ProfessorList" className="nav-link active">
   <span className="icon">
     <img src={professor} alt="professor" style={{ marginRight: '15px' }} />
   </span>
   <span className="link-text">Professors</span>
 </a>
-<a href="/sessions" className="nav-link active">
+<a href="/Sessionlist" className="nav-link active">
   <span className="icon">
     <img src={session} alt="session" style={{ marginRight: '15px' }} />
   </span>
   <span className="link-text">Sessions</span>
+</a>
+<a href="/register" className="nav-link active">
+  <span className="icon">
+    <img src={register} alt="courses" style={{ marginRight: '15px' }} />
+  </span>
+  <span className="link-text">Register</span>
 </a>
 <a href="/Settings" className="nav-link active">
   <span className="icon">
