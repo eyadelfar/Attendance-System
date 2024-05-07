@@ -34,8 +34,7 @@ CREATE TABLE `semester_details` (
   KEY `fk_course_session_id` (`course_id`),
   KEY `fk_faculty_id` (`faculty_id`),
   CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `fk_session_details_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`)
+  CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
