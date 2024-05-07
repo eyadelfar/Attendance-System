@@ -37,33 +37,22 @@ const ProfessorCreate = () => {
                         </div>
                     
                         <div className="form-field">
-                            <label htmlFor="firstName">Professor Name:</label>
+                            <label htmlFor="firstName">Professor Name <span className='mandatory'>*</span></label>
                             <input type="text" id="Professor-Name"  placeholder='Enter The Professor Name' />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Professor Password:</label>
+                            <label htmlFor="lastName">Password <span className='mandatory'>*</span></label>
                             <input type="password" id="lastName"  placeholder='Enter Password' />
                         </div>
 
-                        <div className="id-form-field">
-                            <label htmlFor="oldPassword">Professor ID:</label>
+                        <div className="create-id-form-field">
+                            <label htmlFor="oldPassword">Username <span className='mandatory'>*</span></label>
                             <input
-                            type="text"
-                            id="Professor-ID"     
-                            placeholder='Enter ID'               
+                            type="text"    
+                            placeholder='Enter Username'               
                             />
                         </div>
-
-                        {/* <div className="form-field">
-                            <label htmlFor="newPassword">New Password:</label>
-                            <input
-                            type="password"
-                            id="newPassword"
-                            value={newPassword}
-                            onChange={(e) => setNewPassword(e.target.value)}
-                            />
-                        </div> */}
                     </div>
                     <div >
                         <button id='create-button' onClick={handleSaveChanges}>

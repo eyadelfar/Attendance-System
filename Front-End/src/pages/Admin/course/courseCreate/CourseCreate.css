@@ -15,6 +15,8 @@
   justify-items:stretch;
   height: 1000px; 
   width: 70vw; 
+  position: relative;
+  left: 15vh;
 }
 
 #course-create-form-header{
@@ -29,14 +31,14 @@
 #course-create-forms-parent{
   justify-content: space-around;
   flex-direction: column;
-  display: flex;
+  display: block;
   margin-bottom: 55%;
 }
 
 #course-create-form-child{
   justify-content: space-between;
   flex-direction: column;
-  display: flex;
+  display: block;
   font-size: 24px;
   font-weight:400;
   background-attachment: fixed;
@@ -52,7 +54,7 @@
   background-color: #f3f3f3;
   height: 4vh;
   border-radius: 10px ;
-  border-color: #1B3877;
+  border: 2px solid #2b56b4;
   font-weight: 400;
   font-size: 20px;
   padding: 2% 5% ;
@@ -63,7 +65,7 @@
   height: 5vh;
   /* min-height:25px; */
   border-radius: 10px ;
-  border-color: #1B3877;
+  border: 2px solid #2b56b4;
   font-weight: 400;
   font-size: 20px;
   padding: 3% 5% 1% 5%;
@@ -73,17 +75,48 @@
   color: #ffffff;
 }
 
+#term-year-form {
+  display: flex;
+  flex-direction: row;
+  padding: 5%;
+  margin-bottom: -10%;
+}
+
+/* #term-year-form label{
+  transform: translateX(200px);
+} */
+
+#xxx{
+  transform: translateX(140px);
+}
+#term-year-form select {
+  background-color: #f3f3f3;
+  height: 5vh;
+  border-radius: 10px ;
+  border-color: #1B3877;
+  font-weight: 400;
+  font-size: 20px;
+  width: 15vh;
+  padding: 2% 5% ;
+  border: 2px solid #2b56b4;
+  display: inline-block;
+  margin-right: 20px;
+}
+
+
 #course-create-form-field-code {
   display: flex;
   flex-direction: column;
   padding: 5%;
+  
 }
+
 
 #course-create-form-field-code input {
   background-color: #f3f3f3;
   height: 4vh;
   border-radius: 10px ;
-  border-color: #1B3877;
+  border: 2px solid #2b56b4;
   font-weight: 400;
   font-size: 20px;
   width: 175px;
@@ -103,8 +136,8 @@
   /* text-align: right; */
   padding: 5%;
   justify-content: center;
-  left: 162%;
-  /* top: 20vh; */
+  left: 190%;
+  top: 22vh;
   justify-self: left;
 }
 

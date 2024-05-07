@@ -14,52 +14,66 @@ const CourseEdit = () => {
 //     // Add your logic to delete account here
 //   };
 
-  return (
-    <div className="account-settings-container">
-        <h1 className='main-header'>Courses</h1>      
-            <div className="create-form">
-                <div className='all-forms-col'>  
-                    <div className='all-forms'>
-                        <div className="course-header-of-form">
-                            <h1>Edit Course</h1>
-                        </div>
-                    
-                        <div className="form-field">
-                            <label >Course Name</label>
-                            <input type="text" id=""  defaultValue="Computer Graphics" />
-                        </div>
+return (
+    <div className="">
+        <h1 id='course-edit-header'>Courses</h1>      
+        <div id="course-edit-form">
+            <form id='course-edit-forms-parent'>  
+                <div id='course-edit-form-child'>
+                    <div id="course-edit-form-header">
+                        <h1>Edit Course </h1>
+                    </div>
+            
+                    <div className="course-edit-form-field">
+                        <label >Course Title <span className='mandatory'>*</span></label>
+                        <input type="text" id="" defaultValue='Computer Graphics' />
+                    </div>
 
-                        <div className="form-field-code">
-                            <label >Course Code</label>
-                            <input type="text" id="l"  defaultValue="IT 331" />
-                        </div>
+                    <div id="course-edit-form-field-code">
+                        <label >Course Code <span className='mandatory'>*</span></label>
+                        <input type="text" id="" defaultValue='IT 331' />
+                    </div>
 
-                        <div className="form-field">
-                            <label >Professor Name</label>
-                            <select className="courses-select">
-                        <option value="">Select A Professor</option>
+                    <div className="course-edit-form-field">
+                        <label >Professor Name <span className='mandatory'>*</span></label>
+                        <select className="course-select">
+                            <option value="">Select A Professor</option>
                             <option value="option1">Dale Robertson</option>
                             <option value="option2">Option 2</option>
                             <option value="option3">Option 3</option>
                         </select>
-                        </div>
-                        
                     </div>
-                    <div >
-                        <button id='edit-course-button' onClick={handleSaveChanges}>
-                            <div className='create-button-text'>
-                                Confirm
-                                </div>
-                        </button>
+                    <div id="term-year-form">
+                        <label >Term <span className='mandatory'>*</span></label>
+                        <label id='xxx'>Year <span className='mandatory'>*</span></label>
                     </div>
-                </div>
-            </div>
-            
-        </div>
-        
-    // </div>
-    
-  );
-};
+                    <div id='term-year-form'>
+                    <select id="term-year-form">
+                            <option value="">Select a term</option>
+                            <option value="option1">Summer</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                        <select id="term-year-form">
+                            <option value="">Select a year</option>
+                            <option value="option1">2025</option>
+                            <option value="option2">Option 2</option>
+                            <option value="option3">Option 3</option>
+                        </select>
+                    </div>
 
+                </div>
+
+                <div>
+                    <button id='edit-course-button' onClick={handleSaveChanges}>
+                        <div className='edit-course-text'>
+                            Create
+                        </div>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+);
+};
 export default CourseEdit;

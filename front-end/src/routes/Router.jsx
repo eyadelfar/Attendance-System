@@ -9,6 +9,7 @@ import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorC
 import ProfessorEdit from '../pages/admin/professor/professorEdit/ProfessorEdit';
 import StudentCreate from '../pages/admin/student/studentCreate/StudentCreate';
 import StudentEdit from '../pages/admin/student/studentEdit/StudentEdit';
+
 import SessionList from '../pages/admin/session/sessionList/SessionList';
 import SessionCreate from '../pages/admin/session/sessionCreate/SessionCreate';
 import SessionEdit from '../pages/admin/session/sessionEdit/SessionEdit';

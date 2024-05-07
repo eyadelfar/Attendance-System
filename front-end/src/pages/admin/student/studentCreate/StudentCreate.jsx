@@ -25,22 +25,22 @@ const StudentCreate = () => {
                         </div>
                     
                         <div className="form-field">
-                            <label htmlFor="firstName">Student Name</label>
+                            <label htmlFor="firstName">Student Name <span className="mandatory">*</span> </label>
                             <input type="text" id="Student-Name"  placeholder='Enter The Student Name' />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Password</label>
+                            <label htmlFor="lastName">Password  <span className="mandatory">*</span> </label>
                             <input type="password" id="Student-Password"  placeholder='Enter Password' />
                         </div>
 
                         <div className="id-level-form">
                             <div>
-                                <label >Student ID</label> 
+                                <label >Student ID </label> 
                                 <input type="text" id="Student-ID" placeholder='Enter The ID'/>
                             </div>
                             <div className='level-sperate'>
-                                <label className=''>Level</label> 
+                                <label className=''>Level   </label> 
                                 <select className='level-select'>
                                 <option value="">Select Level</option>
                                     <option value="option1">Level 1</option>
@@ -53,21 +53,9 @@ const StudentCreate = () => {
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Courses</label>
-                            <select className="courses-select">
-                        <option value="">Select Courses</option>
-                            <option value="option1">Option 1</option>
-                            <option value="option2">Option 2</option>
-                            <option value="option3">Option 3</option>
-                        </select>
+                            <label htmlFor="lastName">Phone Number</label>
+                            <input type="text" id="Student-Name"  placeholder='Enter Phone Number' />
                         </div>
-
-                        <div className="file-field">
-                            <label htmlFor="firstName">Upload Photo</label>
-                            <input type="file" id='input-button' />
-                        
-                        </div>
-  
                     </div>
                     <div >
                         <button id='edit-create-button' onClick={handleSaveChanges}>
@@ -87,3 +75,5 @@ const StudentCreate = () => {
 };
 
 export default StudentCreate;
+
+

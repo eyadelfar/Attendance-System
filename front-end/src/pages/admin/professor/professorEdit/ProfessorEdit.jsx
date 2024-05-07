@@ -37,17 +37,17 @@ const ProfessorEdit = () => {
                         </div>
                     
                         <div className="form-field">
-                            <label htmlFor="firstName">Professor Name:</label>
+                            <label htmlFor="firstName">Professor Name <span className='mandatory'>*</span></label>
                             <input type="text" id="Professor-Name"  defaultValue="Aimee Blume" />
                         </div>
 
                         <div className="form-field">
-                            <label htmlFor="lastName">Professor Password:</label>
+                            <label htmlFor="lastName">Password <span className='mandatory'>*</span></label>
                             <input type="password" id="lastName"  defaultValue="Aimee Blume" />
                         </div>
 
                         <div className="id-form-field">
-                            <label htmlFor="oldPassword">Professor ID:</label>
+                            <label htmlFor="oldPassword">Username </label>
                             <input
                             type="text"
                             id="Professor-ID"     
