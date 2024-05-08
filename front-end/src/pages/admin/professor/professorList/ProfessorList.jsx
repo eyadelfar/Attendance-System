@@ -42,7 +42,7 @@ function ProfessorsList() {
     <tr className='professor-row'>
       <td>slim</td>
       <td>201200</td>
-      <td><a href="http://localhost:3000/professorEdit">
+      <td><a href="/professorEdit">
                <img className='edit-icon' src={Edit} alt={'image'} />
                  </a>
           <button className='button2'>
@@ -56,7 +56,7 @@ function ProfessorsList() {
     <tr >
       <td>slim</td>
       <td>201200</td>
-      <td><a href="http://localhost:3000/professorEdit">
+      <td><a href="/professorEdit">
                <img className='edit-icon' src={Edit} alt={'image'} />
                  </a>
           <button className='button2'>
