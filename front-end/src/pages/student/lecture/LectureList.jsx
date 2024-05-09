@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import'./SessionList.css'
+import'./LectureList.css'
 import camera from '../../../pics/camera.png'
 
 

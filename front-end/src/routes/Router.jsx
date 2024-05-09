@@ -9,16 +9,15 @@ import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorC
 import ProfessorEdit from '../pages/admin/professor/professorEdit/ProfessorEdit';
 import StudentCreate from '../pages/admin/student/studentCreate/StudentCreate';
 import StudentEdit from '../pages/admin/student/studentEdit/StudentEdit';
-
-import SessionList from '../pages/admin/session/sessionList/SessionList';
-import SessionCreate from '../pages/admin/session/sessionCreate/LectureCreate';
-import SessionEdit from '../pages/admin/session/sessionEdit/LectureEdit';
+import LectureList from '../pages/admin/lecture/lectureList/LectureList';
+import LectureCreate from '../pages/admin/lecture/lectureCreate/LectureCreate';
+import LectureEdit from '../pages/admin/lecture/lectureEdit/LectureEdit';
 import CourseCreate from '../pages/admin/course/courseCreate/CourseCreate';
 import CourseList from '../pages/admin/course/courseList/CourseList';
 import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
 import Register from '../pages/admin/register/Register';
 import CourseListStudent from '../pages/student/course/CourseList';
-import SessionListStudent from '../pages/student/session/SessionList';
+import LectureListStudent from '../pages/student/lecture/LectureList';
 import TEST from'../pages/TEST';
 
 const Router = () => {
@@ -40,9 +39,9 @@ const Router = () => {
             <Route path='/StudentEdit' element={<StudentEdit/>}/>
 
 
-            <Route path='/SessionCreate' element={<SessionCreate/>}/>
-            <Route path='/SessionList' element={<SessionList/>}/>
-            <Route path='/SessionEdit' element={<SessionEdit/>}/>
+            <Route path='/LectureCreate' element={<LectureCreate/>}/>
+            <Route path='/LectureList' element={<LectureList/>}/>
+            <Route path='/LectureEdit' element={<LectureEdit/>}/>
 
             <Route path='/CourseCreate' element={<CourseCreate/>}/>
             <Route path='/CourseEdit' element={<CourseEdit/>}/>
@@ -51,7 +50,7 @@ const Router = () => {
             <Route path='/Register' element={<Register/>}/>
             <Route path='/studentSettings' element={<StudentSettings/>}/>
             <Route path='/CourseListStudent' element={<CourseListStudent/>}/>
-            <Route path='/SessionListStudent' element={<SessionListStudent/>}/>
+            <Route path='/LectureListStudent' element={<LectureListStudent/>}/>
             <Route path='/test' element={<TEST/>}/>        
         </Routes>
     )
