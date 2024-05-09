@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import'./SessionList.css'
+import'./LectureList.css'
 import Edit from '../../../../pics/edit.png'
  import Delete from '../../../../pics/delete.png'
  import plus from '../../../../pics/plus.png'
  import camera from '../../../../pics/camera.png'
 
- function SessionList() {
+ function LectureList() {
     return (
       <div className="session-list">
        <div className='lecture-header'>
@@ -73,4 +73,4 @@ import Edit from '../../../../pics/edit.png'
     );
   }
   
-  export default SessionList;
+  export default LectureList;
