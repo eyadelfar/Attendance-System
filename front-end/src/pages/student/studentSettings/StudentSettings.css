@@ -70,11 +70,34 @@
   }
 
   .left-container-text{
-    margin-bottom: 1000%;
+    position: relative;
+    top: -3vh;
+    left: 5.5vh;
     font-weight: 400;
     color: #4D4D4D;
     font-size: 30px;
-    margin-left: 30%;
+    left: 0vh;
+
+  }
+
+  .left-container-text-2{
+    position: relative;
+    top: -204vh;
+    left: 5.5vh;
+    font-weight: 400;
+    color: #4D4D4D;
+    font-size: 30px;
+    
+
+  }
+
+  .left-container-phone{
+    position: relative;
+    top: -198.5vh;
+    font-weight: 400;
+    color: #4D4D4D;
+    font-size: 30px;
+    left: 1vh;
 
   }
   .account-settings-form {
