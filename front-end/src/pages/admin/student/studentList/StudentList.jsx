@@ -23,7 +23,7 @@ function StudentList() {
   <thead>
     <tr>
       <th>Name</th>
-      <th>roll number</th>
+      <th>roll no</th>
       <th>Level</th>
       <th>Phone Number</th>
       <th>Actions</th>

@@ -1,6 +1,6 @@
 .topbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   height: 60px;
   background-color: #ffffff;
@@ -8,14 +8,6 @@
   padding: 0 20px;
   width: 80vw;
   margin-left: 197px;
-  position: absolute;
-  top: 0;
-  left: 40px;
-  width: 78vw; /* Match the width with the first code */
-
-
-
-
 }
 
 .topbar-menu {
@@ -44,23 +36,31 @@
   margin-bottom: 10px;
 }
 
-
+.topbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80vw; /* Match the width with the first code */
+  height: 60px;
+  background-color: #ffffff;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .topbar-left {
   margin-right: 20px;
 }
 
 .topbar-date {
-  color: #000000; /* Match the text color with the first code */
+  color: #fff; /* Match the text color with the first code */
   font-size: 14px;
- margin-right: 20px;
-  line-height: 60px;
+  margin-left: 10px;
 }
 
 .topbar-right {
-  float: left;
-  display: flex;
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .notification-badge {
@@ -70,8 +70,8 @@
 }
 
 .notification-badge img {
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   object-fit: cover;
   padding: 5px;
@@ -81,13 +81,4 @@
   font-weight: bold;
   font-size: 14px;
   margin-left: 5px;
-  color: #000000;
-  line-height: 30px;
-}
-.calendar-image{
-
-width: 40px;
-height: 40px;
-margin-top: 10px;
-margin-right: 20px;
 }

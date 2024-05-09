@@ -1,4 +1,4 @@
-.lecture-list {
+.session-list {
     max-width: 1230px;
     height: 100vh;
     margin: 40px; 
@@ -31,12 +31,13 @@
     padding: 15px; 
     text-align: center;
   }
-  .lecture-table{
- width: 100%;
+  .session-table{
+
+    width: 100%;
      row-gap: 20px !important;
      table-layout: fixed; 
-     border-collapse: separate;
-     border-spacing: 0 30px;
+     border-collapse: collapse; /* Ensures borders collapse for spacing */
+     border-spacing: 10px !important;
    }
    
    .create-lecture{
@@ -73,11 +74,11 @@
   background-color: transparent;
 }
 .body-table-lecture{
-  background-color: white;
-  top: 40px;
-  position: relative;
-  text-align: center;
-  font-family: poppins;
+    background-color: white;
+    top: 40px;
+    position: relative;
+    text-align: center;
+    font-family: poppins;
   }
 .pen-icon-lecture{
 

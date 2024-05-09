@@ -1,101 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import'./SessionList.css'
-import elipse from '../../../pics/elipse.png'
+import camera from '../../../pics/camera.png'
 
-const courses = [
-  { attendance: 'Attended', date: '1 April 2024',time:'12:00' },
-  { attendance: 'Skipped', date: '8 April 2024',time:'12:00' },
-  { attendance: 'Not Started', date: '15 April 2024',time:'12:00' },
-  // add more courses as needed
-];
 
-const LectureList = () => {
-
-  
-  return (
-    <div className='lecture-list-student'>
+ function LectureList() {
+    return (
+      <div className="lecture-list-student">
        <div className='lecture-header-student'>
-        <h1>Lectures</h1>
-        <h1 className='lecture-name-student'>Computer Graphics</h1>
-         </div>
-    <table className='lecture-table-student'>
-      <thead>
-        <tr>
-        <th>Lecture#</th>
-        <th>Attendance</th>
-        <th>Date</th>
-        <th>Time</th>
-        </tr>
-      </thead>
-      <tbody className='body-table-lecture-student'>
-        {courses.map((course, index) => (
-          <tr key={course.name}>
-            <td> <div class="image-container">
-            <img src={elipse} alt="Image" />
-            <span>{index+1}</span>
-          </div>
-          </td>
-            <td className={
-                course.attendance === 'Attended'? 'attended' :
-                course.attendance === 'Skipped'? 'skipped' :
-                'not-started'
-              }>{course.attendance}</td>
-            <td>{course.date}</td>
-            <td>{course.time}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-    </div>
-  );
-};
-export default LectureList;
-
-
-//  function LectureList() {
-//     return (
-//       <div className="lecture-list-student">
-//        <div className='lecture-header-student'>
-//        <h1>Lectures</h1>
-//        <h1 className='lecture-name-student'>Computer Graphics</h1>
-//         </div>
+       <h1>Lectures</h1>
+        </div>
         
-//         <table className='lecture-table-student'>
-//     <thead>
-//       <tr>
-//         <th>Lecture#</th>
-//         <th>Attendance</th>
-//         <th>Date</th>
-//         <th>Time</th>
-//       </tr>
-//     </thead>
-//     <tbody className='body-table-lecture-student'>
-//       <tr >
-//         <td>1</td>
-//         <td>Attended</td>
-//         <td> 1 Apr </td>
-//             <td>12:00</td>
-//         {/* Add other table cells as needed */}
-//       </tr>
-//       <tr>
-//         <td className='space-row' style={{ height: '30px' }}></td>
-//       </tr>
-//       <tr >
-//         <td>1</td>
-//         <td>Skipped</td>
-//         <td> 1 Apr </td>
-//             <td>12:00</td>
-//         {/* Add other table cells as needed */}
-//       </tr>
+        <table className='lecture-table-student'>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Professor Name</th>
+        <th>Attendance</th>
+      </tr>
+    </thead>
+    <tbody className='body-table-lecture-student'>
+      <tr >
+        <td>Computer Graphics</td>
+        <td>Dale Robertson</td>
+        <td> <button className='camera-button-lecture-student'>
+            Open Camera
+            <img className='camera-icon-lecture-student' src={camera}  />
+            </button> </td>
+        {/* Add other table cells as needed */}
+      </tr>
+      <tr>
+        <td className='space-row' style={{ height: '30px' }}></td>
+      </tr>
+      <tr >
+        <td>Computer Graphics</td>
+        <td>Dale Robertson</td>
+        <td> <button className='camera-button-lecture-student'>
+            Open Camera
+            <img className='camera-icon-lecture' src={camera}  />
+            </button> </td>
+        {/* Add other table cells as needed */}
+      </tr>
+      <tr></tr>
       
-//         {/* Add other table cells as needed */}
+        {/* Add other table cells as needed */}
      
-//       {/* Add more rows if necessary */}
-//     </tbody>
-//   </table>
+      {/* Add more rows if necessary */}
+    </tbody>
+  </table>
   
-//       </div>
-//     );
-//   }
+      </div>
+    );
+  }
   
-//   export default LectureList;
+  export default LectureList;
