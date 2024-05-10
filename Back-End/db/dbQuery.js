@@ -65,7 +65,7 @@ module.exports = class DBQuery{
                         course_details c ON s.course_id = c.course_id 
                     JOIN 
                         faculty_details f ON s.faculty_id = f.faculty_id 
-                    JOIN 
+                    LEFT JOIN 
                         course_registration r ON s.semester_id = r.semester_id 
                     GROUP BY 
                         s.semester_id
@@ -87,14 +87,12 @@ module.exports = class DBQuery{
                         course_details c ON s.course_id = c.course_id 
                     JOIN 
                         faculty_details f ON s.faculty_id = f.faculty_id 
-                    JOIN 
+                    LEFT JOIN  
                         course_registration r ON s.semester_id = r.semester_id 
                     WHERE
                         s.semester_id = ${semester_id}
                     GROUP BY 
-                        c.title, 
-                        c.code, 
-                        f.fullname;` ;        
+                        s.semester_id;` ;        
         return this;
     }
     
