@@ -1,22 +1,51 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import './CourseEdit.css';
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'
 
-
-const CourseEdit = () => {
-//   const [oldPassword, setOldPassword] = useState('');
-//   const [newPassword, setNewPassword] = useState('');
-
-  const handleSaveChanges = () => {
-    // Add your logic to save changes here
+const CourseEdit = (props) => {
+        const [courses, setCourses] = useState([]);
+        const [token] = useState(localStorage.getItem('token'));
+        const decodedToken = jwtDecode(token);
+        const [error, setError] = useState(null);
+        const sems_id = props.match.params.id;
+    useEffect(() => {
+      axios.get(`http://localhost:4000/semester/courseDetails/semester/${sems_id}`, {
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((res) => {
+        setCourses(res.data);
+        console.log(courses);
+      })
+      .catch((error) => {
+        setError(error);
+      });
+    }, []);
+  
+    const handleSaveChanges = async () => {
+      await axios.put('http://localhost:4000/semester', {
+      semester_id:courses.semster_id,
+      course_title:courses.course_title,
+      course_code:courses.course_code,
+      faculty_id:courses.faculty_id,
+      year:courses.year,
+      term:courses.term
+    },{
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }  
+    }
+  )
+  .then(response => console.log(response.data))
+  .catch(error => console.error(error));
   };
-
-//   const handleDeleteAccount = () => {
-//     // Add your logic to delete account here
-//   };
-
 return (
     <div className="">
-        <h1 id='course-edit-header'>Courses</h1>      
+        <h1 id='course-edit-header'>Courses</h1>   
         <div id="course-edit-form">
             <form id='course-edit-forms-parent'>  
                 <div id='course-edit-form-child'>

@@ -115,12 +115,12 @@ router.get("/courseDetails",
     }
 );
 
-router.get("/courseDetails/semester",
+router.get("/courseDetails/semester/:semester_id",
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
             let result = await semesterController.getCourseDetails({
-                    semester_id: req.body.semester_id
+                    semester_id: req.params.semester_id
             });
             console.log(result[0]);
             res.status(200).json(result[0]);

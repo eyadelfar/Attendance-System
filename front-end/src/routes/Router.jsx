@@ -1,5 +1,5 @@
 import React from 'react';
-import {Routes,createBrowserRouter, Route ,Navigate} from 'react-router-dom';
+import {Routes, Route ,Navigate } from 'react-router-dom';
 import LoginPage from'../pages/login/Login';
 import ProfessorList from '../pages/admin/professor/professorList/ProfessorList';
 import StudentsList from '../pages/admin/student/studentList/StudentList';
@@ -44,7 +44,7 @@ const Router = () => {
             <Route path='/LectureEdit' element={<LectureEdit/>}/>
 
             <Route path='/CourseCreate' element={<CourseCreate/>}/>
-            <Route path='/CourseEdit' element={<CourseEdit/>}/>
+            <Route path="/CourseEdit/:sems_id" component={CourseEdit} />
             <Route path='/CourseList' element={<CourseList/>}/>
         
             <Route path='/Register' element={<Register/>}/>
