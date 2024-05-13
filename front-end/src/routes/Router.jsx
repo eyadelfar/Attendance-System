@@ -44,7 +44,7 @@ const Router = () => {
             <Route path='/LectureEdit' element={<LectureEdit/>}/>
 
             <Route path='/CourseCreate' element={<CourseCreate/>}/>
-            <Route path="/CourseEdit/:sems_id" component={CourseEdit} />
+            <Route path="/CourseEdit" element={<CourseEdit/>} />
             <Route path='/CourseList' element={<CourseList/>}/>
         
             <Route path='/Register' element={<Register/>}/>

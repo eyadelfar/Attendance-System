@@ -6,7 +6,7 @@ import plus from '../../../../pics/plus.png';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
 
-function CourseList() {
+function CourseList(props) {
   const [courses, setCourses] = useState([]);
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
@@ -25,10 +25,30 @@ function CourseList() {
       setError(error);
     });
   }, []);
-    const handleEdit = (course) => {
-    // Send the course object to the new page
-    window.location.href = `/CourseEdit/${course.semester_id}`;
-   };
+
+  const handleEdit = (course) => {
+    // Save the course.semester_id in local storage
+    localStorage.setItem('semester_id', course.semester_id);
+    // Redirect to the new page
+    window.location.href = '/CourseEdit';
+  };
+
+  const handleDeleteSemester = async (semesterId) => {
+    try {
+      const response = await axios({
+        method: 'delete',
+        url: `http://localhost:4000/semester/${semesterId}`,
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      });
+      props.onDeleteSuccess();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
   return (
     <div className="course-list">
       <div className="course-header">
@@ -68,13 +88,18 @@ function CourseList() {
                 </a>
               </td>
               <td>
-              <a href="#" onClick={() => handleEdit(course)}>
-                <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
-              </a>
-              
-                <button className="delete-course">
-                  <img className="del-icon-course" src={Delete} />
-                </button>
+                <a href="#" onClick={() => handleEdit(course)}>
+                  <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
+                </a>
+                <button
+                className="delete-course"
+                onClick={() => {
+                  handleDeleteSemester(course.semester_id);
+                  window.location.reload();
+                }}
+              >
+                <img className="del-icon-course" src={Delete} />
+              </button>
               </td>
             </tr>
           ))}

@@ -217,7 +217,7 @@ router.post("/",
 );
 
 // edit semester
-router.put("/",
+router.put("/:semester_id",
     authorize,
     async (req, res) => {
         try{
@@ -225,7 +225,7 @@ router.put("/",
             let semesterOld = new Semester();
             let semesterNew = new Semester();
 
-            semesterOld.semester_id = req.body.semester_id;
+            semesterOld.semester_id = req.params.semester_id;
             
             if(req.body.year)
                 semesterNew.year = req.body.year;
@@ -255,13 +255,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:semester_id",
     authorize,
     async(req,res) => {
         try{
             let semesterController = new SemesterController();
             let semester = new Semester();
-            semester.semester_id = req.body.semester_id;
+            semester.semester_id = req.params.semester_id;
 
             let result = await semesterController.deleteSemester(semester);
             if(!result.proplem){
