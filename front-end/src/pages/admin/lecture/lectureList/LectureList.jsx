@@ -6,6 +6,7 @@ import plus from '../../../../pics/plus.png'
 import camera from '../../../../pics/camera.png'
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
+import moment from 'moment';
 
 function LectureList(props) {
   const [courses, setCourses] = useState([]);
@@ -14,6 +15,9 @@ function LectureList(props) {
   const [semes_id] = useState(localStorage.getItem('semester_id'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
+  const dateTime = lecture.lecture_date;
+  const formattedDate = moment(dateTime).format('YYYY-MM-DD');
+  
   useEffect(() => {
     axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {
       headers: {
@@ -97,7 +101,7 @@ function LectureList(props) {
   <tbody className="body-table-lecture">
           {lecture.map((lectures, index) => (
             <tr key={index}>
-              <td>{lectures.lecture_date}</td>
+              <td>{formattedDate}</td>
               <td>{lectures.lecture_time}</td>
               <td>
                 <button className="camera-button-lecture">

@@ -18,7 +18,7 @@ const LectureEdit = () => {
     const [lectures, setLectures] = useState([]);
     const dateTime = lectures.lecture_date;
     const formattedDate = moment(dateTime).format('YYYY-MM-DD');
-     
+      
     
     useEffect(() => {
         axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {

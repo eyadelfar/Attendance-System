@@ -2,7 +2,7 @@ import React from 'react';
 import {Routes, Route ,Navigate } from 'react-router-dom';
 import LoginPage from'../pages/login/Login';
 import ProfessorList from '../pages/admin/professor/professorList/ProfessorList';
-import StudentsList from '../pages/admin/student/studentList/StudentList';
+import StudentList from '../pages/admin/student/studentList/StudentList';
 import AdminSettings from '../pages/admin/adminSettings/AdminSettings';
 import StudentSettings from '../pages/student/studentSettings/StudentSettings';
 import ProfessorCreate from '../pages/admin/professor/professorCreate/ProfessorCreate';
@@ -28,7 +28,7 @@ const Router = () => {
 
             <Route path='/professorList' element={<ProfessorList/>}/>
 
-            <Route path='/StudentsList' element={<StudentsList/>}/>
+            <Route path='/StudentList' element={<StudentList/>}/>
 
             <Route path='/adminSettings' element={<AdminSettings/>}/>
 

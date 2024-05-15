@@ -27,14 +27,14 @@ const LectureCreate = () => {
         .catch((error) => {
           setError(error);
         });
-      }, []);
+      }, []); 
 
     const handleSaveChanges = async (event) => {
         event.preventDefault();
         try {
           const response = await axios.post('http://localhost:4000/lecture', {
             semester_id:semes_id,
-            course_id,
+            course_id:course_id,
             lecture_date,
             lecture_time
           },{

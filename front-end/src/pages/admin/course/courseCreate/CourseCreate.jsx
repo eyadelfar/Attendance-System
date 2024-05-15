@@ -112,7 +112,7 @@ const CourseCreate = () => {
             <div id='term-year-form'>
               <select id="term-year-form" value={term}
               onChange={(e) => setTerm(e.target.value)} >
-                <option value="">Select a term</option>
+                <option value="text">Select a term</option>
                 <option value="fall">fall</option>
                 <option value="spring">spring</option>
                 <option value="winter">winter</option>
@@ -120,7 +120,7 @@ const CourseCreate = () => {
               </select>
               <select id="term-year-form" value={year}
               onChange={(e) => setYear(e.target.value)}>
-                <option value="">Select a year</option>
+                <option value="string">Select a year</option>
                 <option value="2024">2024</option>
                 <option value="2025">2025</option>
                 <option value="2026">2026</option>
