@@ -61,7 +61,8 @@ module.exports = class DBQuery{
                         COUNT(r.student_id) AS num_registered,
                         f.faculty_id,
                         s.term,
-                        s.year
+                        s.year,
+                        c.course_id
                     FROM 
                         semester_details s 
                     JOIN 

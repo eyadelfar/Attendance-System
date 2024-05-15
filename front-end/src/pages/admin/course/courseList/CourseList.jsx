@@ -11,6 +11,7 @@ function CourseList(props) {
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
+
   useEffect(() => {
     axios.get('http://localhost:4000/semester/courseDetails', {
       headers: {
@@ -31,6 +32,14 @@ function CourseList(props) {
     localStorage.setItem('semester_id', course.semester_id);
     // Redirect to the new page
     window.location.href = '/CourseEdit';
+  };
+
+  const handleLecture = (course) => {
+    // Save the course.semester_id in local storage
+    localStorage.setItem('semester_id', course.semester_id);
+    localStorage.setItem('course_id', course.course_id);
+    // Redirect to the new page
+    window.location.href = '/LectureList';
   };
 
   const handleDeleteSemester = async (semesterId) => {
@@ -81,7 +90,7 @@ function CourseList(props) {
               <td>{course.num_registered}</td>
               <td>{course.fullname}</td>
               <td>
-                <a href="/LectureList">
+              <a href="#" onClick={() => handleLecture(course)}>
                   <button className="button-course">
                     Go to Lecture
                   </button>
