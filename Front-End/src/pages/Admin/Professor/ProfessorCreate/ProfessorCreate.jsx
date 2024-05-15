@@ -3,16 +3,12 @@ import './ProfessorCreate.css';
 
 
 const ProfessorCreate = () => {
-//   const [oldPassword, setOldPassword] = useState('');
-//   const [newPassword, setNewPassword] = useState('');
+
 
   const handleSaveChanges = () => {
-    // Add your logic to save changes here
+   
   };
 
-//   const handleDeleteAccount = () => {
-//     // Add your logic to delete account here
-//   };
 
   return (
     <div className="account-settings-container">

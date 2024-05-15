@@ -125,13 +125,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:faculty_id",
     authorize,
     async(req,res) => {
         try{
             let professorController = new UserController();
             let professor = new Professor();
-            professor.faculty_id = req.body.faculty_id;
+            professor.faculty_id = req.params.faculty_id;
 
             let result = await professorController.deleteProfessor(professor);
             if(!result.problem){
