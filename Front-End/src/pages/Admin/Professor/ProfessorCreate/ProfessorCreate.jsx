@@ -1,30 +1,43 @@
 import React, { useState } from 'react';
 import './ProfessorCreate.css';
-
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'
 
 const ProfessorCreate = () => {
-
-
-  const handleSaveChanges = () => {
-   
-  };
-
+    const [token] = useState(localStorage.getItem('token'));
+    const decodedToken = jwtDecode(token);
+    const [error, setError] = useState(null);
+    const [fullname, setFullname] = useState([]);
+    const [username, setUsername] = useState([]);
+    const [password, setPassword] = useState([]);
+    
+      const handleSaveChanges = async (event) => {
+        event.preventDefault();
+        try {
+          const response = await axios.post('http://localhost:4000/professors', {
+            username,
+            fullname,
+            password
+          },{
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token,
+          }
+        }
+        );
+        if (response.data ) {   
+            window.location.href = '/ProfessorList';
+          } else  {
+            console.log('FAILD');
+          }   
+        } catch (error) {
+          setError(error.message);
+        }
+      };
 
   return (
     <div className="account-settings-container">
-        <h1 className='main-header'>Professors</h1>
-        {/* <h3 className='container-header'>Edit Profile</h3> */}
-        
-        {/* <div className="parent-div"> */}
-
-            {/* <div className="account-settings-profile">
-                    <img className='student-pic' src={StudentAvatar} alt="StudentAvatar"  />
-                    <div >
-                        <h2 className="student-name" >Dorothy Wood</h2>
-                    </div>
-                    <h3 className="left-container-text">Student</h3>
-            </div> */}
-            
+        <h1 className='main-header'>Professors</h1> 
             <div className="create-form">
                 <div className='all-forms-col'>  
                     <div className='all-forms'>
@@ -34,19 +47,27 @@ const ProfessorCreate = () => {
                     
                         <div className="form-field">
                             <label htmlFor="firstName">Professor Name <span className='mandatory'>*</span></label>
-                            <input type="text" id="Professor-Name"  placeholder='Enter The Professor Name' />
+                            <input type="text" id="Professor-Name"  placeholder='Enter The Professor Name' 
+                            value={fullname}
+                            onChange={(e) => setFullname(e.target.value)}
+                            />
                         </div>
 
                         <div className="form-field">
                             <label htmlFor="lastName">Password <span className='mandatory'>*</span></label>
-                            <input type="password" id="lastName"  placeholder='Enter Password' />
+                            <input type="password" id="lastName"  placeholder='Enter Password'
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
 
                         <div className="create-id-form-field">
                             <label htmlFor="oldPassword">Username <span className='mandatory'>*</span></label>
                             <input
                             type="text"    
-                            placeholder='Enter Username'               
+                            placeholder='Enter Username'     
+                            value={username}
+                            onChange={(e) => setUsername(e.target.value)}          
                             />
                         </div>
                     </div>

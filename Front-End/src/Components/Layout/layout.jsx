@@ -10,14 +10,14 @@ const auth = Auth.getAuthUser();
 const Layout = () => {
   return (
     <div className="Layout">
-      {/* {auth && (<Sidebar/>)} */}
+      {auth && (<SideBar/>)}
        {/* Corrected component name and syntax */}
-       {/* <Topbar /> */}
+       <Topbar />
      
 
       
       <div className="main_layout">
-      {/* <SideBar /> */}
+      <SideBar />
 
 
         <div className="content">

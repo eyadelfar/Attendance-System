@@ -1,36 +1,3 @@
-// import React from 'react';
-// import './sidebar.css'; // Your CSS file for styling
-
-
-// const Sidebar = () => {
-//   return (
-//     <aside className="sidebar">
-//       {/* Assuming you have svg icons or images for each menu item */}
-//       <div className="logo">LOGO</div>
-//       <nav className="nav">
-//         <a href="#dashboard" className="nav-item">Dashboard</a>
-//         <a href="#courses" className="nav-item">Courses</a>
-//         <a href="#students" className="nav-item">Students</a>
-//         <a href="#professors" className="nav-item active">Professors</a>
-//         <a href="#sessions" className="nav-item">Sessions</a>
-//         <a href="#settings" className="nav-item">Settings</a>
-//       </nav>
-//       <button className="logout">Logout</button>
-//     </aside>
-//   );
-// };
-
-// export default Sidebar;
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from 'react';
 import './SideBar.css'; // Make sure to create a CSS file with this name
 import LogoSidebar from '../../pics/LogoSidebar.png';
@@ -44,7 +11,7 @@ import LogoutButoon from '../../pics/LogoutButoon.png'
 import register from '../../pics/register.png'
 
 
-const Sidebar = () => {
+const SideBar = () => {
 return (
     <div className="container">
       <aside className="sidebar">
@@ -106,4 +73,4 @@ return (
 );
 };
 
-export default Sidebar
+export default SideBar
