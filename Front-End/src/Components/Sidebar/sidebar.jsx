@@ -10,67 +10,124 @@ import settings from '../../pics/settings.png'
 import LogoutButoon from '../../pics/LogoutButoon.png'
 import register from '../../pics/register.png'
 
-
 const SideBar = () => {
-return (
+  const [token, setToken] = useState(localStorage.getItem('token'));
+  const [decodedToken, setDecodedToken] = useState(null);
+
+  React.useEffect(() => {
+    if (token) {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      setDecodedToken(decoded);
+    }
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken(null);
+    window.location.href = '/Login';
+  };
+
+  const isRoleAdmin = decodedToken && decodedToken.role === 'faculty';
+  const isRoleStudent = decodedToken && decodedToken.role === 'student';
+
+  return (
     <div className="container">
       <aside className="sidebar">
         {/* Assuming you have SVGs or icon fonts */}
         <div><div className="logo"><img src={LogoSidebar} alt="LogoSidebar" /></div>
         <nav className="nav-menu">
-        <a href="/dashboard" className="nav-link active">
-  <span className="icon">
-    <img src={dashboard} alt="dashboard" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Dashboard</span>
-</a>
-<a href="/CourseList" className="nav-link active">
-  <span className="icon">
-    <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Courses</span>
-</a>
-<a href="/StudentsList" className="nav-link active">
-  <span className="icon">
-    <img src={student} alt="student" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Students</span>
-</a>
-<a href="/ProfessorList" className="nav-link active">
-  <span className="icon">
-    <img src={professor} alt="professor" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Professors</span>
-</a>
-<a href="/Sessionlist" className="nav-link active">
-  <span className="icon">
-    <img src={session} alt="session" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Sessions</span>
-</a>
-<a href="/register" className="nav-link active">
-  <span className="icon">
-    <img src={register} alt="courses" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Register</span>
-</a>
-<a href="/Settings" className="nav-link active">
-  <span className="icon">
-    <img src={settings} alt="settings" style={{ marginRight: '15px' }} />
-  </span>
-  <span className="link-text">Settings</span>
-</a>
+          {isRoleAdmin && (
+            <a href="/dashboard" className="nav-link active">
+              <span className="icon">
+                <img src={dashboard} alt="dashboard" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Dashboard</span>
+            </a>
+          )}
+         
+           {isRoleAdmin && (
+          <a href="/CourseList" className="nav-link active">
+            <span className="icon">
+              <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
+            </span>
+            <span className="link-text">Courses</span>
+          </a>
+           )}
+          {isRoleStudent && (
+          <a href="/CourseListStudent" className="nav-link active">
+            <span className="icon">
+              <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
+            </span>
+            <span className="link-text">Courses</span>
+          </a>
+         )}
 
-          {/* Repeat for other links */}
+          {isRoleAdmin && (
+            <a href="/StudentList" className="nav-link active">
+              <span className="icon">
+                <img src={student} alt="student" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Students</span>
+            </a>
+          )}
+          {isRoleAdmin && (
+            <a href="/ProfessorList" className="nav-link active">
+              <span className="icon">
+                <img src={professor} alt="professor" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Professors</span>
+            </a>
+          )}
+          {isRoleAdmin && (
+           <a href="/LectureList" className="nav-link active">
+              <span className="icon">
+                <img src={session} alt="session" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Lectures</span>
+            </a>
+           )}
+            {isRoleStudent&&(
+            <a href="/LectureListStudent" className="nav-link active">
+              <span className="icon">
+                <img src={session} alt="session" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Lectures</span>
+            </a>
+           )}
+
+          {isRoleAdmin && (
+          <a href="/register" className="nav-link active">
+            <span className="icon">
+              <img src={register} alt="courses" style={{ marginRight: '15px' }} />
+            </span>
+            <span className="link-text">Register</span>
+          </a>
+           )}
+          {isRoleAdmin && (
+            <a href="/AdminSettings" className="nav-link active">
+              <span className="icon">
+                <img src={settings} alt="settings" style={{ }} />
+              </span>
+              <span className="link-text">Settings</span>
+            </a>
+          )}
+          {isRoleStudent&&(
+          <a href="/StudentSettings" className="nav-link active">
+              <span className="icon">
+                <img src={settings} alt="settings" style={{ marginRight: '15px' }} />
+              </span>
+              <span className="link-text">Settings</span>
+            </a>
+             )}
         </nav></div>
-        
+
         <div className="logout">
           <span className="icon"><img src={LogoutButoon} alt="LogoutButoon" style={{ marginRight: '15px' }}/></span>
-          <span className="link-text">Logout</span>
+          <span className="link-text" onClick={handleLogout}>Logout</span>
         </div>
       </aside>
     </div>
-);
+  );
 };
 
-export default SideBar
+export default SideBar;

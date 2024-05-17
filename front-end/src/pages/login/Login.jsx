@@ -29,7 +29,7 @@ function Login() {
         window.location.href = '/AdminSettings';
       } else if (role === 'student') {
         // Redirect to user dashboard
-        window.location.href = '/Courses';
+        window.location.href = '/CourseListStudent';
        }   
 
         console.log(`Logged in successfully with JWT token: ${token}`);

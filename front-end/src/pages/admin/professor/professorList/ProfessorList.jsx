@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode'
 
 function ProfessorsList(props) {
   const [professors, setProfessors] = useState([]);
-  const [token] = useState(localStorage.getItem('token'));
+  const [token] = useState(localStorage.getItem('token')); 
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
 
