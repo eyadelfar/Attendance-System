@@ -74,7 +74,7 @@ function ProfessorsList(props) {
   <thead>
     <tr>
       <th>Name</th>
-      <th>ID</th>
+      <th>UserName</th>
       <th>Actions</th>
     </tr>
   </thead>

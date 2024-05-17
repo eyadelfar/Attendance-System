@@ -7,6 +7,7 @@ import camera from '../../../../pics/camera.png'
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
 import moment from 'moment';
+import elipse from '../../../../pics/elipse.png'
 
 function LectureList(props) {
   const [courses, setCourses] = useState([]);
@@ -92,6 +93,7 @@ function LectureList(props) {
       <table className='session-table'>
   <thead>
     <tr>
+      <th>Lecture#</th>
       <th>Date</th>
       <th>Time</th>
       <th>Attendance</th>
@@ -101,6 +103,11 @@ function LectureList(props) {
   <tbody className="body-table-lecture">
           {lecture.map((lectures, index) => (
             <tr key={index}>
+               <td> <div className="image-container">
+             <img src={elipse} alt="Image" />
+             <span>{index+1}</span>
+             </div>
+           </td>
               <td>{formattedDate}</td>
               <td>{lectures.lecture_time}</td>
               <td>

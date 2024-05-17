@@ -35,7 +35,28 @@
      border-spacing: 10px !important;
    }
 
- 
+   .image-container {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 80px;
+  }
+  .image-container span {
+    position: absolute;
+    bottom: 17px;
+    left: 22px;
+    width: 20%;
+    color: white;
+    padding: 5px;
+    text-align: center;
+  }
+  .image-container img {
+    max-width: 70%;
+    max-height: 70%;
+  }
   
 
  

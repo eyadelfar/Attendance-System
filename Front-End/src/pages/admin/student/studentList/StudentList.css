@@ -2,16 +2,15 @@
  .student-list {
   max-width: 1230px;
   height: 100vh;
-  margin: 40px; 
-  margin-left: 200px;
-  margin-top: 80px;
-  padding: 20px;
+  margin-left: 57px; ;
   font-family: poppins;
   background-color: #F2F2F2;
   border-collapse: collapse;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-bottom: none; /* Adjust border style and color */
+  display: flex;  
+ flex-direction: column; 
 }
 .student-list thead th {
   background-color: #ffffff; 
@@ -22,8 +21,8 @@
 }
 
 .student-table{
-
- width: 100%;
+  overflow-x: auto;
+  width: 100%;
   row-gap: 20px !important;
   table-layout: fixed; 
   border-collapse: collapse; /* Ensures borders collapse for spacing */
@@ -79,6 +78,7 @@
   position: relative;
   text-align: center;
   font-family: poppins;
+  overflow-y: auto;
 }
 
 .space-row{

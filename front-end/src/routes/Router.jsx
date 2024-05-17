@@ -19,12 +19,14 @@ import Register from '../pages/admin/register/Register';
 import CourseListStudent from '../pages/student/course/CourseList';
 import LectureListStudent from '../pages/student/lecture/LectureList';
 import TEST from'../pages/TEST';
-
+import dashboard from '../dashboard/Dashboard';
 const Router = () => {
     return(
         <Routes>
             <Route path='/' element={<Navigate to='/Login' element={<LoginPage/>}/>}/>
             <Route path='/login' element={<LoginPage/>}/>
+
+            <Route path='/Dashboard' />
 
             <Route path='/professorList' element={<ProfessorList/>}/>
 
