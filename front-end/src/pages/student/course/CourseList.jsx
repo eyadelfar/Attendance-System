@@ -1,9 +1,38 @@
 import React, { useState, useEffect } from 'react';
 import'./CourseList.css'
-
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'
 
 
  function CourseList() {
+  const [courses, setCourses] = useState([]);
+  const [token] = useState(localStorage.getItem('token'));
+  const decodedToken = jwtDecode(token);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    axios.get('http://localhost:4000/semester/courseDetails', {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      setCourses(res.data);
+    })
+    .catch((error) => {
+      setError(error);
+    });
+  }, []);
+
+      const handleLecture = (course) => {
+        // Save the course.semester_id in local storage
+        localStorage.setItem('semester_id', course.semester_id);
+        localStorage.setItem('course_id', course.course_id);
+        // Redirect to the new page
+        window.location.href = '/LectureListStudent';
+      };
+    
     return (
       <div className="course-list-student">
        <div className='course-header-student'>
@@ -16,40 +45,27 @@ import'./CourseList.css'
         <th>Title</th>
         <th>Code</th>
         <th>Professor Name</th>
-        <th>Actions</th>
+        <th>Lectures</th>
       </tr>
     </thead>
-    <tbody className='body-table-course-student'>
-      <tr >
-        <td>Computer Graphics</td>
-        <td>IT 331</td>
-        <td>Dale Robertson</td>
-        <td> <button className='button-course-student'>
-            Go to Lecture
-            </button> </td>
-        {/* Add other table cells as needed */}
-      </tr>
-      <tr>
-        <td className='space-row' style={{ height: '30px' }}></td>
-      </tr>
-      <tr >
-        <td>Computer Graphics</td>
-        <td>IT 331</td>
-        <td>Dale Robertson</td>
-        <td> <button className='button-course-student'>
-            Go to Lecture
-            </button> </td>
-        {/* Add other table cells as needed */}
-      </tr>
-      <tr></tr>
-      
-        {/* Add other table cells as needed */}
-     
-      {/* Add more rows if necessary */}
-    </tbody>
-  </table>
-  
-      </div>
+          <tbody className='body-table-course-student'>
+        {courses.map((course, index) => (
+          <tr key={index}>
+            <td>{course.title}</td>
+            <td>{course.code}</td>
+            <td>{course.faculty_id}</td>
+            <td> 
+            <a href="#" onClick={() => handleLecture(course)}>
+              <button className='button-course-student'>
+                Go to Lecture
+              </button> 
+              </a>
+              </td>
+          </tr>
+          ))}
+             </tbody>
+         </table>
+        </div>
     );
   }
   

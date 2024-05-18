@@ -100,7 +100,7 @@ router.get("/year",
 
 //get all courses details
 router.get("/courseDetails",
-    authorize,
+    // authorize,
     async (req,res) => {
         try{
             let semesterController = new SemesterController();
