@@ -6,6 +6,7 @@
   flex-direction: column;
   height: 100vh;
   width: 197px;
+  /* display: none; */
 }
 
 .container {
@@ -16,7 +17,9 @@
 .logo {
   margin-bottom: 20px;
 }
-
+/* .sidebar[token] {
+  display: block;
+} */
 .nav-menu {
   flex: 1;
   display: flex;
