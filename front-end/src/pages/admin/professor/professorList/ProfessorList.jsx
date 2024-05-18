@@ -1,20 +1,18 @@
-import React, { useState, useEffect } from 'react';
-// import ProfessorList from './ProfessorList';
+import React, { useState, useEffect  } from 'react';
 import './ProfessorList.css';
-// import ProfessorItem from '../../../../components/reusable/professorItem/ProfessorItem';
-// ProfessorList.js
 import plus from '../../../../pics/plus.png'
 import Edit from '../../../../pics/edit.png'
 import Delete from '../../../../pics/delete.png'
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
 
+
 function ProfessorsList(props) {
   const [professors, setProfessors] = useState([]);
   const [token] = useState(localStorage.getItem('token')); 
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
-
+  
 
         useEffect(() => {
           axios.get('http://localhost:4000/professors', {
@@ -41,6 +39,10 @@ function ProfessorsList(props) {
 
       const handleDeleteSemester = async (facultyId) => {
         try {
+          if (decodedToken.user_id === facultyId) {
+            setError('You cannot delete your own account');
+            return;
+          }
           const response = await axios({
             method: 'delete',
             url: `http://localhost:4000/professors/${facultyId}`,
@@ -54,7 +56,7 @@ function ProfessorsList(props) {
           setError(error.message);
         }
       };
-
+     
   return (
     <div className="professors-list">
      <div className='header'>
