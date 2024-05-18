@@ -19,8 +19,18 @@ const Topbar = () => {
   const [decodedToken, setDecodedToken] = useState({});
   const [professorData, setProfessorData] = useState({});
   const [studentData, setStudentData] = useState({});
+ 
+
+  React.useEffect(() => {
+    if (token) {
+      const decoded = JSON.parse(atob(token.split('.')[1]));
+      setDecodedToken(decoded);
+    }
+  }, [token])
+
   const isRoleAdmin = decodedToken && decodedToken.role === 'faculty';
-  const isRoleStudent = decodedToken && decodedToken.role === 'student';
+  const isRoleStudent =decodedToken &&decodedToken.role === 'student';
+  
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
@@ -30,28 +40,40 @@ const Topbar = () => {
     }
   }, []);
 
+
+
+  
   useEffect(() => {
-    if (isLoggedIn) {
-      const token = localStorage.getItem('token');
-      const decodedToken = jwtDecode(token);
-      setDecodedToken(decodedToken);
-      axios.get(`http://localhost:4000/professors/professor/${decodedToken.user_id}`, {
-        headers: {
-          'Authorization': token,
-          'Content-Type': 'application/json'
-        }
-      })
-      .then((res) => {
-        setProfessorData(res.data);
-      })
-      .catch((error) => {
-        setError(error);
-      });
+    if (!isLoggedIn) {
+      return; // exit early if not a role admin or not logged in
     }
-  }, [isLoggedIn]);
+    if (!isRoleAdmin) {
+      return; // exit early if not a role admin
+    }
+    const token = localStorage.getItem('token');
+    const decodedToken = jwtDecode(token);
+    axios.get(`http://localhost:4000/professors/professor/${decodedToken.user_id}`, {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+      setProfessorData(res.data);
+    })
+    .catch((error) => {
+      setError(error);
+    });
+  }, [isRoleAdmin, isLoggedIn]);
+
 
   useEffect(() => {
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
+      return; // exit early if not a student or not logged in
+    }
+    if (!isRoleStudent) {
+      return; // exit early if not a role admin
+    }
       const token = localStorage.getItem('token');
       const decodedToken = jwtDecode(token);
       setDecodedToken(decodedToken);
@@ -67,8 +89,9 @@ const Topbar = () => {
       .catch((error) => {
         setError(error);
       });
-    }
-  }, [isLoggedIn]);
+  }, [isRoleStudent,isLoggedIn]);
+
+
 
   if (!isLoggedIn) {
     return null;
@@ -84,7 +107,7 @@ const Topbar = () => {
             <img src={icon} alt="Profile" />
             <div className="notification-name">{studentData.fullname||professorData.fullname}</div>
           </div>
-        </div>
+          </div>
       )}
     </div>
   );
