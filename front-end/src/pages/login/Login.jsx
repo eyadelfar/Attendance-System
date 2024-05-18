@@ -13,7 +13,7 @@ function Login() {
 
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/login', {
         username,
@@ -77,6 +77,11 @@ function Login() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter Your Password"
+              onKeyDown={(event) => {
+                if (event.key === 'Enter') {
+                  handleSubmit();
+                }
+              }}
             />
           </div>
           <button id='login-button' onClick={handleSubmit}>Log In</button>
@@ -85,5 +90,4 @@ function Login() {
     </div>
   );
 };
-
 export default Login;
