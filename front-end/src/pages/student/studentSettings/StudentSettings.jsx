@@ -30,21 +30,20 @@ const StudentSettings = () => {
         });
       }, []);
 
-      const handleSaveChanges = async () => {
+      const handleSaveChanges = async (event) => {
         try {
           const response = await axios.put('http://localhost:4000/students', {
             student_id: decodedToken.user_id,
             fullname,
             passwordOld,
             passwordNew,
-            phone_no
+            phone_no,
           }, {
             headers: {
               'Authorization': token,
               'Content-Type': 'application/json'
             }
           });
-        
         } catch (error) {
           console.error(error);
         }
@@ -114,13 +113,22 @@ const StudentSettings = () => {
                             type="password"
                             id="newPassword"
                             placeholder='Enter Your New Password'
+                            onKeyDown={(event) => {
+                              if (event.key === 'Enter') {
+                                handleSaveChanges();
+                                window.location.reload();
+                              }
+                            }}
                             value={passwordNew}
                             onChange={(e) => setPasswordNew(e.target.value)}
                             />
                         </div>
                     </div>
                     <div >
-                        <button className='save-button' onClick={handleSaveChanges}>
+                        <button className='save-button' onClick={() => {
+                            handleSaveChanges();
+                            window.location.reload();
+                            }}>
                             <div className='save-button-text'>
                                 Save Changes
                                 </div>
