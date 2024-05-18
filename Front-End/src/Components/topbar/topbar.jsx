@@ -19,7 +19,8 @@ const Topbar = () => {
   const [decodedToken, setDecodedToken] = useState({});
   const [professorData, setProfessorData] = useState({});
   const [studentData, setStudentData] = useState({});
-  
+  const isRoleAdmin = decodedToken && decodedToken.role === 'faculty';
+  const isRoleStudent = decodedToken && decodedToken.role === 'student';
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {

@@ -67,7 +67,7 @@ const LectureList = () => {
       <tbody className='body-table-lecture-student'>
          {lecture.map((lectures, index) => (
           <tr key={index}>
-            <td> <div class="image-container">
+            <td> <div className="image-container">
             <img src={elipse} alt="Image" />
             <span>{index+1}</span>
           </div>

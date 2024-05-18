@@ -3,7 +3,7 @@ import './StudentSettings.css';
 import StudentAvatar from './StudentAvatar.png';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
-
+import phone from '../../../pics/phone.png'
 
 const StudentSettings = () => {
     const [roll_no, setRoll_no] = useState([]);
@@ -67,10 +67,12 @@ const StudentSettings = () => {
                     </div>
                     <h3 className="left-container-text">{studentData.roll_no}</h3>
                     <div>
-                    <h4 className="left-container-phone">{studentData.phone_no}</h4>
+                    <img className='phone-pic' src={phone} alt="StudentAvatar"  />
+                    <h4 className="left-container-phone">
+                      {studentData.phone_no}</h4>
                     </div>
                     <div>
-                    <h5 className="left-container-text-2">{studentData.level}</h5>
+                    <h5 className="left-container-text-2">Level :  {studentData.level}</h5>
                     </div>
             </div>
             

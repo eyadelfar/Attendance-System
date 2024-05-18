@@ -14,7 +14,9 @@ const SideBar = () => {
   const [token, setToken] = useState(localStorage.getItem('token'));
   const [decodedToken, setDecodedToken] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+
   
+
   React.useEffect(() => {
     if (token) {
       const decoded = JSON.parse(atob(token.split('.')[1]));
@@ -33,6 +35,8 @@ const SideBar = () => {
   if (!isLoggedIn) {
     return null;
   }
+
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');

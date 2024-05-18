@@ -11,6 +11,10 @@
   border-bottom: none; /* Adjust border style and color */
   display: flex;  
  flex-direction: column; 
+ -webkit-user-select: none; /* Safari */
+ -moz-user-select: none; /* Firefox */
+ -ms-user-select: none; /* IE10 and IE11 */
+ user-select: none; /* Standard syntax */
 }
 .student-list thead th {
   background-color: #ffffff; 
@@ -27,6 +31,10 @@
   table-layout: fixed; 
   border-collapse: collapse; /* Ensures borders collapse for spacing */
   border-spacing: 10px !important;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
 
 

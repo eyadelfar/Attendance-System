@@ -4,7 +4,10 @@
   font-size: 45px;
   top: -15px;
   font-weight: 400;
-  
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 
 }
 
@@ -23,7 +26,10 @@
     justify-content: center;
     margin-left: 20%;
     margin-bottom: 42px;
-
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
   }
 
   /* body{
@@ -51,6 +57,14 @@
     margin-top: 20%;
     width: 251px;
     height: 251px;
+  }
+  .phone-pic{
+    position: relative;
+    bottom: 201vh;
+    margin-top: -26%;
+    left: -3%;
+    width: 37px;
+    height: 43px;
   }
   .account-settings-profile {
     background-color: #ffffff;
@@ -82,22 +96,21 @@
 
   .left-container-text-2{
     position: relative;
-    top: -204vh;
+    top: -214vh;
     left: 5.5vh;
     font-weight: 400;
     color: #4D4D4D;
     font-size: 30px;
-    
 
   }
 
   .left-container-phone{
     position: relative;
-    top: -198.5vh;
+    top: -208.5vh;
     font-weight: 400;
     color: #4D4D4D;
     font-size: 30px;
-    left: 1vh;
+    left: 4vh;
 
   }
   .account-settings-form {
@@ -160,7 +173,7 @@
     cursor: pointer;
     width: 100%;  
     display: flex; /* Use flexbox for layout */
-    margin-top: 20%;
+    margin-top: -44%;
     border-radius: 25px; 
     text-align: right;
     padding: 5%;

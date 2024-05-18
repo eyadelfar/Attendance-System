@@ -9,7 +9,12 @@
     "sidebar container";
   height: 100vh; 
 }
-
+.layout {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
+}
 .layout {
   display: flex;
   flex-direction: column; /* Layout the elements vertically */

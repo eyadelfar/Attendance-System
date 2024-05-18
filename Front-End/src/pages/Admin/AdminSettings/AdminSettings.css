@@ -4,8 +4,17 @@
   font-size: 45px;
   top: -15px;
   font-weight: 400;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
-
+#admin-settings-form {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
+}
 #admin-container-header{
   position: relative;
   color: #FFFFFF;
@@ -21,6 +30,10 @@
   justify-content: center;
   margin-left: 20%;
   margin-bottom: 0px;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
 
 #admin-setting-card{
@@ -31,6 +44,10 @@
   margin-right: 12%;
   height: 1000px; 
   width: 70vw;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
 
 #account-settings-profile {

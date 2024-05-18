@@ -8,7 +8,12 @@
   width: 197px;
   /* display: none; */
 }
-
+.sidebar {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
+}
 .container {
   display: flex;
   height: 100vh;
@@ -31,7 +36,7 @@
   align-items: center;
   padding: 10px 0;
   text-decoration: none;
-  color: black; /* Set default text color to black */
+  color: rgb(0, 0, 0); /* Set default text color to black */
 }
 
 .nav-link:hover {
@@ -51,3 +56,5 @@
   color: black;
   cursor: pointer;
 }
+
+
