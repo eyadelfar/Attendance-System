@@ -6,11 +6,9 @@ import { jwtDecode } from 'jwt-decode';
 import phone from '../../../pics/phone.png'
 
 const StudentSettings = () => {
-    const [roll_no, setRoll_no] = useState([]);
     const [fullname, setFullname] = useState([]);
     const [passwordOld, setPasswordOld] = useState([]);
     const [passwordNew, setPasswordNew] = useState([]);
-    const [level, setLevel] = useState([]);
     const [phone_no, setPhone_no] = useState([]);
     const [token] = useState(localStorage.getItem('token'));
     const decodedToken = jwtDecode(token);
@@ -66,10 +64,9 @@ const StudentSettings = () => {
                         <h2 className="student-name" >{studentData.fullname}</h2>
                     </div>
                     <h3 className="left-container-text">{studentData.roll_no}</h3>
-                    <div>
                     <img className='phone-pic' src={phone} alt="StudentAvatar"  />
-                    <h4 className="left-container-phone">
-                      {studentData.phone_no}</h4>
+                    <div>  
+                    <h4 className="left-container-phone">{studentData.phone_no}</h4>
                     </div>
                     <div>
                     <h5 className="left-container-text-2">Level :  {studentData.level}</h5>
@@ -85,12 +82,19 @@ const StudentSettings = () => {
                     
                         <div className="form-field">
                             <label htmlFor="firstName">Full Name </label>
-                            <input type="text" id="firstName" defaultValue= {studentData.fullname} />
+                            <input type="text" id="firstName" placeholder= {studentData.fullname} 
+                            
+                            value={fullname}
+                            onChange={(e) => setFullname(e.target.value)}
+                            />
                         </div>
 
                         <div className="form-field">
                             <label htmlFor="lastName">Phone Number </label>
-                            <input type="text" id="lastName" defaultValue={studentData.phone_no}  />
+                            <input type="text" id="lastName" placeholder={studentData.phone_no} 
+                              value={phone_no}
+                              onChange={(e) => setPhone_no(e.target.value)}
+                            />
                         </div>
 
                         <div className="form-field">
