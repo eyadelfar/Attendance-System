@@ -9,8 +9,9 @@ import { jwtDecode } from 'jwt-decode'
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
-  const [file, setFile] = useState(null);
   const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     axios.get('http://localhost:4000/semester/registeration', {
@@ -44,40 +45,44 @@ import { jwtDecode } from 'jwt-decode'
     }
   };
 
-  const handleSaveChanges = async (event) => {
-    event.preventDefault();
-    try {
-      const formData = new FormData();
-      formData.append('file', file);
-      const response = await axios.post('http://localhost:4000/registrations/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-          'Authorization': token,
-        },
-      });
-    } catch (error) {
-      setError(error.message);
-    }
-  };
-
   const handleFileChange = (event) => {
     setFile(event.target.files[0]);
   };
 
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append('registrationSheet', file);
+    axios.post('http://localhost:4000/registrations/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': token,
+      }
+    })
+      .then((response) => {
+        setMessage(response.data.message);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  };
 
   return (
     <div className="register-list">
       <div className='register-header'>
         <h1>Register</h1>
         <div>
-          <input type="file" onChange={handleFileChange} ref={fileInputRef} />
-          <button className='register-course' onClick={handleSaveChanges}>
-            Upload
-            <img className='plus-icon' src={plus} alt={'image'} />
-          </button>
-        </div>
+      <input type="file" onChange={handleFileChange} />
+      <button className='register-course' onClick={() => {
+        handleUpload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }}>
+        Upload File
+      </button>
+      <p>{message}</p>
+    </div>
       </div>
-      
         <table className='register-table'>
     <thead>
       <tr>
