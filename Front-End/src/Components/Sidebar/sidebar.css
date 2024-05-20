@@ -37,6 +37,7 @@
   padding: 10px 0;
   text-decoration: none;
   color: rgb(0, 0, 0); /* Set default text color to black */
+  font-weight: bold;
 }
 
 .nav-link:hover {
@@ -44,8 +45,10 @@
 }
 
 .nav-link.active {
-  font-weight: bold;
+  background-color: #395986;
+  color: #151517;
 }
+
 
 .logout {
   display: flex;
