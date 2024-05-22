@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 197px;
+  width: 160px;
   /* display: none; */
 }
 .sidebar {
@@ -17,6 +17,7 @@
 .container {
   display: flex;
   height: 100vh;
+  margin-left: -19px;
 }
 
 .logo {

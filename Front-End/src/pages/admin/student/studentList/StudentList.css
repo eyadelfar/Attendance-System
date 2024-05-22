@@ -1,105 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
- .student-list {
+
+.student-list {
   max-width: 1230px;
   height: 100vh;
-  margin-left: 57px; ;
-  font-family: poppins;
+  margin-left: auto; /* Center align horizontally */
+  margin-right: auto;
+  font-family: 'Poppins', sans-serif;
   background-color: #F2F2F2;
   border-collapse: collapse;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-bottom: none; /* Adjust border style and color */
-  display: flex;  
- flex-direction: column; 
- -webkit-user-select: none; /* Safari */
- -moz-user-select: none; /* Firefox */
- -ms-user-select: none; /* IE10 and IE11 */
- user-select: none; /* Standard syntax */
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  padding: 20px;
 }
+
 .student-list thead th {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   font-weight: bold;
-  font-family: poppins;
-  padding: 15px; 
+  font-family: 'Poppins', sans-serif;
+  padding: 15px;
   text-align: center;
 }
 
-.student-table{
+.student-table {
   overflow-x: auto;
   width: 100%;
-  row-gap: 20px !important;
-  table-layout: fixed; 
-  border-collapse: collapse; /* Ensures borders collapse for spacing */
+  table-layout: fixed;
+  border-collapse: collapse;
   border-spacing: 10px !important;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-
 .student-id {
-  font-weight: bold; 
-} 
-.create-student{
-   left: 800px;
-  position: relative;
+  font-weight: bold;
+}
+
+.create-student {
+  margin: 20px auto; 
   color: #FFFFFF;
   background-color: #4A9F48;
-  border: #395986;
+  border: none;
   font-size: 15px;
   cursor: pointer;
-  border-radius: 25px; 
+  border-radius: 25px;
   text-align: center;
   padding: 8px 20px;
   width: 212px;
   height: 50px;
+  margin-left: 800px;
   display: flex;
-  bottom: 60px;
   justify-content: center;
-  line-height: 30px;
+  align-items: center;
 }
-.create-student:hover{
-  background-color: #4A9F48;
-}
-.head{
-  display: flexbox; /* Use flexbox */
-  align-items: center; /* Align items vertically */
-}
-.delete{
 
-  border: 1px solid transparent;
+.create-student:hover {
+  background-color: #3d8742; /* Darken button on hover */
+}
+
+.head {
+  display: flex;
+  align-items: center;
+}
+
+.delete {
+  border: none;
   padding: 0px 1px;
-  left: 18px;
   background: none;
   cursor: pointer;
   position: relative;
-  background-color: #F2F2F2;
-
 }
-.delete:hover{
+
+.delete:hover {
   background-color: transparent;
 }
-.body-table{
+
+.body-table {
   background-color: white;
-  top: 40px;
   position: relative;
   text-align: center;
-  font-family: poppins;
+  font-family: 'Poppins', sans-serif;
   overflow-y: auto;
 }
 
-.space-row{
+.space-row {
   background-color: #F2F2F2;
 }
-.pen-icon-student{
 
+.pen-icon-student {
   width: 10%;
- }
- .del-icon-student{
+}
+
+.del-icon-student {
   width: 30px;
   height: 30px;
- }
- .plus-icon{
+}
+
+.plus-icon {
   padding: 0px 5px;
- }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .student-list {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  
+  .create-student {
+    width: 180px;
+    height: 45px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .student-list {
+    height: auto;
+  }
+  
+  .student-table, .body-table {
+    width: 100%;
+  }
+  
+  .create-student {
+    width: 160px;
+    height: 40px;
+    font-size: 13px;
+  }
+  
+  .pen-icon-student, .del-icon-student {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .student-list {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+  }
+  
+  .create-student {
+    width: 140px;
+    height: 35px;
+    font-size: 12px;
+  }
+  
+  .pen-icon-student, .del-icon-student {
+    width: 15px;
+    height: 15px;
+  }
+}

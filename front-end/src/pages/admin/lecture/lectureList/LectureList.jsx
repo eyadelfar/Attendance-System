@@ -9,6 +9,7 @@ import { jwtDecode } from 'jwt-decode'
 import moment from 'moment';
 import elipse from '../../../../pics/elipse.png'
 
+
 function LectureList(props) {
   const [courses, setCourses] = useState([]);
   const [lecture, setLecture] = useState([]);
@@ -16,8 +17,9 @@ function LectureList(props) {
   const [semes_id] = useState(localStorage.getItem('semester_id'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
-  const dateTime = lecture.lecture_date;
-  const formattedDate = moment(dateTime).format('YYYY-MM-DD');
+
+
+  
   
   useEffect(() => {
     axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {
@@ -108,13 +110,15 @@ function LectureList(props) {
              <span>{index+1}</span>
              </div>
            </td>
-              <td>{formattedDate}</td>
+              <td>{moment(lectures.lecture_date).format('YYYY-MM-DD')}</td>
               <td>{lectures.lecture_time}</td>
               <td>
-                <button className="camera-button-lecture">
-                  Open Camera
-                  <img className="camera-icon-lecture" src={camera} />
-                </button>
+              {index === lecture.length - 1 && (
+                  <button className="camera-button-lecture">
+                    Open Camera
+                    <img className="camera-icon-lecture" src={camera} />
+                  </button>
+                )}
               </td>
               <td>
               <a href="#" onClick={() => handleEdit(lectures)}>
