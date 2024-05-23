@@ -1,19 +1,19 @@
+/* Default styles */
 .sidebar {
   background: white;
   color: black;
-  padding: 20px;
+
   display: flex;
   flex-direction: column;
   height: 100vh;
   width: 160px;
-  /* display: none; */
-}
-.sidebar {
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
 }
+
+
 .container {
   display: flex;
   height: 100vh;
@@ -23,9 +23,7 @@
 .logo {
   margin-bottom: 20px;
 }
-/* .sidebar[token] {
-  display: block;
-} */
+
 .nav-menu {
   flex: 1;
   display: flex;
@@ -50,7 +48,6 @@
   color: #151517;
 }
 
-
 .logout {
   display: flex;
   align-items: center;
@@ -61,4 +58,117 @@
   cursor: pointer;
 }
 
+/* Media Queries for Responsiveness */
 
+/* Small screens (up to 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+   display: none;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .logout {
+    margin-bottom: 40px;
+    padding: 10px 0;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+}
+
+/* Medium screens (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .sidebar {
+    width: 120px;
+    height: 189vh;
+    padding: 15px;
+  }
+
+  .nav-link {
+    padding: 9px 0;
+    font-size: 14px;
+  }
+
+  .logout {
+    margin-bottom: 30px;
+    padding: 9px 0;
+  }
+
+  .container {
+    margin-left: -10px;
+  }
+}
+
+/* Large screens (769px and above) */
+@media (min-width: 769px) {
+  .sidebar {
+    width: 160px;
+    padding: 20px;
+    height: 96vh;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+  .logout {
+    margin-bottom: 60px;
+    padding: 10px 0;
+  }
+
+  .container {
+    margin-left: -19px;
+  }
+}
+
+/* For max zoom in */
+@media (zoom: 1.5) {
+  .sidebar {
+    width: 200px;
+    height: 120vh;
+    padding: 25px;
+  }
+
+  .nav-link {
+    padding: 12px 0;
+    font-size: 18px;
+  }
+
+  .logout {
+    margin-bottom: 80px;
+    padding: 12px 0;
+  }
+
+  .container {
+    margin-left: -25px;
+  }
+}
+
+/* For max zoom out */
+@media (zoom: 0.5) {
+  .sidebar {
+    width: 100px;
+    height: 60vh;
+    padding: 10px;
+  }
+
+  .nav-link {
+    padding: 8px 0;
+    font-size: 12px;
+  }
+
+  .logout {
+    margin-bottom: 40px;
+    padding: 8px 0;
+  }
+
+  .container {
+    margin-left: -15px;
+  }
+}
