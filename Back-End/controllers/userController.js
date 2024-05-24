@@ -219,7 +219,9 @@ module.exports = class UserController{
 
     async editProfessor(oldProfessor,newProfessor){
         try{
-            let result = await this.getProfessorBy({faculty_id:oldProfessor.faculty_id});            
+            let result = await this.getProfessorBy({
+                faculty_id:oldProfessor.faculty_id
+            });            
             if(!result.length){
                 result.problem = 1;
                 return result;
@@ -227,7 +229,9 @@ module.exports = class UserController{
             oldProfessor = result[0];
 
             if(newProfessor.username && newProfessor.username !== oldProfessor.username){
-                let result = await this.getProfessorBy({username:newProfessor.username});
+                let result = await this.getProfessorBy({
+                    username:newProfessor.username
+                });
                 if(result.length){
                     result.problem = 1;
                     return result;
@@ -239,7 +243,9 @@ module.exports = class UserController{
             newProfessor.password = newProfessor.password ? newProfessor.password : oldProfessor.password;
 
             await dbQuery.update('faculty_details',newProfessor);
-            await dbQuery.where({faculty_id:oldProfessor.faculty_id});
+            await dbQuery.where({
+                faculty_id:oldProfessor.faculty_id}
+            );
             result = await dbQuery.execute();
             result.message = 'PROFESSOR UPDATED...';
             return result;
