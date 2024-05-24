@@ -1,6 +1,6 @@
 // Layout.js
 import React from 'react';
-// import './Layout.css';
+import './Layout.css';
 import Router from '../../routes/Router';
 import SideBar from '../sideBar/SideBar'; // Capitalized component name
 import Topbar from '../topBar/TopBar'; // Capitalized component name
@@ -9,27 +9,13 @@ const auth = Auth.getAuthUser();
 
 const Layout = () => {
   return (
-    <div className="Layout">
-      {/* {auth && (<Sidebar/>)} */}
-       {/* Corrected component name and syntax */}
-       {/* <Topbar /> */}
-     
 
-      
-      <div className="main_layout">
-      {/* <SideBar /> */}
-
-
-        <div className="content">
-          
-          <Router />
-          
-        </div>
-        
-      </div>
+    <div className="page-container">
+      <div className="top-bar" style={{ gridArea: 'top-bar' }}><Topbar /></div>
+      <div className="sidebar" style={{ gridArea: 'sidebar' }}><SideBar /></div>
+      <div className="container" style={{ gridArea: 'container' }}><Router /></div>
     </div>
   );
 };
 
 export default Layout;
-
