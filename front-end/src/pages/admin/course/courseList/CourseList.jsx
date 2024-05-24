@@ -76,7 +76,7 @@ function CourseList(props) {
           <tr>
             <th>Name</th>
             <th>Code</th>
-            <th>No.Registerations</th>
+            <th>No. Registerations</th>
             <th>Professor Name</th>
             <th>Lecture</th>
             <th>Actions</th>

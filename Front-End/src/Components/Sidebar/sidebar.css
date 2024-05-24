@@ -1,18 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
 /* Default styles */
 .sidebar {
   background: white;
   color: black;
-
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 160px;
+  height: fit-content;
+  width: fit-content;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
 }
-
 
 .container {
   display: flex;
@@ -63,7 +63,7 @@
 /* Small screens (up to 480px) */
 @media (max-width: 480px) {
   .sidebar {
-   display: none;
+    display: none;
   }
 
   .nav-link {
@@ -84,9 +84,8 @@
 /* Medium screens (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .sidebar {
-    width: 120px;
-    height: 189vh;
-    padding: 15px;
+    width: 161px;
+    padding: 10px;
   }
 
   .nav-link {
@@ -104,12 +103,33 @@
   }
 }
 
-/* Large screens (769px and above) */
-@media (min-width: 769px) {
+/* Large screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 140px;
+    padding: 18px;
+  }
+
+  .nav-link {
+    padding: 9px 0;
+    font-size: 15px;
+  }
+
+  .logout {
+    margin-bottom: 50px;
+    padding: 9px 0;
+  }
+
+  .container {
+    margin-left: -15px;
+  }
+}
+
+/* Extra large screens (1025px and above) */
+@media (min-width: 1025px) {
   .sidebar {
     width: 160px;
     padding: 20px;
-    height: 96vh;
   }
 
   .nav-link {
@@ -124,51 +144,5 @@
 
   .container {
     margin-left: -19px;
-  }
-}
-
-/* For max zoom in */
-@media (zoom: 1.5) {
-  .sidebar {
-    width: 200px;
-    height: 120vh;
-    padding: 25px;
-  }
-
-  .nav-link {
-    padding: 12px 0;
-    font-size: 18px;
-  }
-
-  .logout {
-    margin-bottom: 80px;
-    padding: 12px 0;
-  }
-
-  .container {
-    margin-left: -25px;
-  }
-}
-
-/* For max zoom out */
-@media (zoom: 0.5) {
-  .sidebar {
-    width: 100px;
-    height: 60vh;
-    padding: 10px;
-  }
-
-  .nav-link {
-    padding: 8px 0;
-    font-size: 12px;
-  }
-
-  .logout {
-    margin-bottom: 40px;
-    padding: 8px 0;
-  }
-
-  .container {
-    margin-left: -15px;
   }
 }

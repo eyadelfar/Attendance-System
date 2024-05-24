@@ -151,25 +151,54 @@
 /* Small screens (up to 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .course-list {
-    margin: 20px;
-    margin-left: 20px;
-    margin-top: 40px;
+    margin: -20px;
+    margin-left: -7px;
+    margin-top: -18px;
   }
 
   .create-course {
-    width: 150px;
-    height: 40px;
-    font-size: 12px;
+    width: 110px;
+    height: 36px;
+    font-size: 9px;
     padding: 6px 15px;
+    margin-top: 29px;
+  }
+  .course-header {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px; 
+  }
+
+  .course-list thead th {
+    padding: 0px;
+    font-size: 7px;
+  }
+
+  .course-table {
+    border-spacing: 10px;
+    font-size: x-small;
+  }
+
+  .button-course {
+    width: 100%;
+    height: auto;
+    font-size: 10px;
+    padding: 4px 5px;
+    margin: 10px 0; /* Margin for spacing */
+  }
+
+  .pen-icon-course, .del-icon-course {
+    width: 20px;
+    height: 20px;
   }
 }
 
 /* Medium screens (769px - 1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
   .course-list {
-    margin: 30px;
-    margin-left: 30px;
-    margin-top: 60px;
+    margin: -9px;
+    margin-left: -5px;
+    margin-top: -14px;
   }
 
   .create-course {
@@ -178,13 +207,41 @@
     font-size: 14px;
     padding: 8px 18px;
   }
+  .course-header {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px; 
+  }
+
+  .course-list thead th {
+    padding: 10px;
+    font-size: 11px; 
+  }
+
+  .course-table {
+    border-spacing: 10px;
+  }
+
+  .button-course {
+    width: 100%;
+    height: auto;
+    font-size: 10px;
+    padding: 4px 5px;
+    margin: 10px 0; /* Margin for spacing */
+  }
+
+  .pen-icon-course, .del-icon-course {
+    width: 20px;
+    height: 20px;
+  }
 }
 
 /* Large screens (1025px and above) */
 @media (min-width: 1025px) {
   .course-list {
-    margin-left: 175px;
-    margin-top: -25px;
+    margin-left: 22px;
+    margin-top: -22px;
+    margin-right: 19px;
   }
 
   .create-course {
@@ -192,5 +249,32 @@
     height: 50px;
     font-size: 15px;
     padding: 8px 20px;
+  }
+  .course-header {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px; 
+  }
+
+  .course-list thead th {
+    padding: 10px;
+    font-size: 12px; 
+  }
+
+  .course-table {
+    border-spacing: 10px;
+  }
+
+  .button-course {
+    width: 100%;
+    height: auto;
+    font-size: 10px;
+    padding: 4px 5px;
+    margin: 10px 0; /* Margin for spacing */
+  }
+
+  .pen-icon-course, .del-icon-course {
+    width: 20px;
+    height: 20px;
   }
 }

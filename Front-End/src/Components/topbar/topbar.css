@@ -88,20 +88,28 @@
   margin-right: 20px;
 }
 
-@media only screen and (max-width: 1024px) {
+/* Large screens (1025px and above) */
+@media (min-width: 1025px) {
   .topbar {
     width: calc(100% - 65px);
-    left: 65px;
-    padding: 0 1%;
+    left: 0;
   }
 }
 
-@media only screen and (max-width: 768px) {
+/* Medium screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
   .topbar {
-    width: calc(100% - 40px);
-    left: 40px;
-    padding: 0 1%;
-    height: 44px;
+    width: calc(100% - 24px);
+    left: 2px;
+  }
+}
+
+/* Small screens (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .topbar {
+     width: calc(100% - -4px);
+     left: 4px;
+     height: 44px;
   }
   .topbar-user img {
     height: 40px;
@@ -112,7 +120,8 @@
   }
 }
 
-@media only screen and (max-width: 480px) {
+/* Extra small screens (up to 480px) */
+@media (max-width: 480px) {
   .topbar {
     display: none;
   }
