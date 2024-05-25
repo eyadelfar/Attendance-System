@@ -107,7 +107,7 @@ const LectureEdit = () => {
                     <div >
                         <button id='edit-lecture-button' onClick={handleSaveChanges}>
                             <div className='edit-lecture-button-text'>
-                                Confrim
+                            Save
                                 </div>
                         </button>
                     </div>

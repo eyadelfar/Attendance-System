@@ -114,7 +114,7 @@ const ProfessorEdit = () => {
                             window.location.reload();
                             }}>
                              <div className='create-button-text'>
-                                Confirm
+                             Save
                                 </div>
                         </button>
                     </div>

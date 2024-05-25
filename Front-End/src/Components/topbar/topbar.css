@@ -107,7 +107,7 @@
 /* Small screens (481px - 768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   .topbar {
-     width: calc(100% - -4px);
+     width: calc(100% - 10px);
      left: 4px;
      height: 44px;
   }
