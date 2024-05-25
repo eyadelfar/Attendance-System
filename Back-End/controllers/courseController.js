@@ -87,19 +87,21 @@ module.exports = class CourseController{
             }
             oldCourse = result[0];
             console.log(oldCourse);
+            console.log(newCourse);
 
             if(newCourse.code && newCourse.code !== oldCourse.code){
                 let result = await this.getCourseBy({
                     code:newCourse.code
                 });
+
                 if(result.exist){
                     result.problem = 1;
                     return result;
                 }
             }
-            newCourse.code      = newCourse.code ? newCourse.code : oldCourse.code;
-            newCourse.title     = newCourse.title ? newCourse.title : oldCourse.title;
-            newCourse.credit    = newCourse.credit ? newCourse.credit : oldCourse.credit;
+            newCourse.code      = newCourse.code   ? newCourse.code   : oldCourse.code;
+            newCourse.title     = newCourse.title  ? newCourse.title  : oldCourse.title;
+            // newCourse.credit    = newCourse.credit ? newCourse.credit : oldCourse.credit;
 
             await dbQuery.update('course_details',newCourse);
             await dbQuery.where({

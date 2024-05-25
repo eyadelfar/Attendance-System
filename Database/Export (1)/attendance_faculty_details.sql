@@ -28,7 +28,7 @@ CREATE TABLE `faculty_details` (
   `faculty_id` int NOT NULL AUTO_INCREMENT,
   `password` varchar(32) DEFAULT NULL,
   `username` varchar(24) DEFAULT NULL,
-  `fullname` varchar(32) DEFAULT NULL,
+  `fullname` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`faculty_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

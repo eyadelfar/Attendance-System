@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `course_details`;
 CREATE TABLE `course_details` (
   `course_id` int NOT NULL AUTO_INCREMENT,
   `code` varchar(32) DEFAULT NULL,
-  `title` varchar(24) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
   `credit` float DEFAULT NULL,
   PRIMARY KEY (`course_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
