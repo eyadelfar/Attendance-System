@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import'./LectureList.css'
-import Edit from '../../../../pics/edit.png'
-import Delete from '../../../../pics/delete.png'
-import plus from '../../../../pics/plus.png'
-import camera from '../../../../pics/camera.png'
+import './LectureList.css';
+import Edit from '../../../../pics/edit.png';
+import Delete from '../../../../pics/delete.png';
+import plus from '../../../../pics/plus.png';
+import camera from '../../../../pics/camera.png';
 import axios from 'axios';
-import { jwtDecode } from 'jwt-decode'
+import {jwtDecode} from 'jwt-decode';
 import moment from 'moment';
-import elipse from '../../../../pics/elipse.png'
-
+import elipse from '../../../../pics/elipse.png';
 
 function LectureList(props) {
   const [courses, setCourses] = useState([]);
@@ -28,39 +27,34 @@ function LectureList(props) {
   const handleOpenPopup = (lectureId) => {
     setCurrentLectureId(lectureId);
     setIsPopupOpen(true);
+   
   };
-
-  // const handleOpenPopup = () => {
-  //   setIsPopupOpen(true);
-  // };
 
   const handleClosePopup = () => {
     setIsPopupOpen(false);
   };
+  // console.log(currentLectureId);
 
-  const handleSubmit = async (event) => {
-    // event.preventDefault();
-    // axios.post('http://www.google.com', {
-    //     semester_id: localStorage.getItem('semester_id'),
-    //     course_id: localStorage.getItem('course_id'),
-    //     lecture_id: currentLectureId,
-    //     attendance_type: Attendance_Status,
-    //     video_source: Camera_Source
-    // })
-    // .then(response => {
-    //     console.log(response.data);
-    //     setIsPopupOpen(false);
-    // })
-    // .catch(error => {
-    //     console.error('There was an error submitting the form!', error);
-    // });
+  const handleSubmit = (event) => {
     event.preventDefault();
-  window.location.href = 'http://www.google.com';
-  setIsPopupOpen(false);
-};
+    const requestData = {
+      semester_id: localStorage.getItem('semester_id'),
+      course_id: localStorage.getItem('course_id'),
+      lecture_id: currentLectureId,
+      attendance_type: Attendance_Status,
+      video_source: Camera_Source
+    };
+    
+    axios.post('http://127.0.0.1:5000/recognize', requestData)
+    .then(response => {
+      console.log(response.data);
+      setIsPopupOpen(false);
+    })
+    .catch(error => {
+      console.error('There was an error submitting the form!', error);
+    });
+  };
 
-  
-  
   useEffect(() => {
     axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {
       headers: {
@@ -70,7 +64,6 @@ function LectureList(props) {
     })
     .then((res) => {
       setCourses(res.data);
-      // console.log(courses);
     })
     .catch((error) => {
       setError(error);
@@ -91,6 +84,8 @@ function LectureList(props) {
       setError(error);
     });
   }, []);
+
+
 
   const handleEdit = (lectures) => {
     // Save the lecture_id in local storage
@@ -114,6 +109,7 @@ function LectureList(props) {
       setError(error.message);
     }
   };
+  
 
   return (
     <div className="session-list">
@@ -155,7 +151,9 @@ function LectureList(props) {
               <td>
               {index === lecture.length - 1 && (
                       <div className="App">
-                      <button className="camera-button-lecture" onClick={handleOpenPopup}>
+                      <button className="camera-button-lecture" onClick={() => {
+                      handleOpenPopup(lectures.lecture_id);
+                    }}>
                         Open Camera
                         <img className="camera-icon-lecture" src={camera} alt="Camera Icon" />
                       </button>
@@ -180,7 +178,7 @@ function LectureList(props) {
                                 value={Camera_Source}
                                 onChange={(e) => setCamera_Source(e.target.value)}
                               /><br /><br />
-                              <button onclick={handleSubmit}>Submit</button>
+                              <button onClick={handleSubmit}>Submit</button>
                             </div>
                           </div>
                         </div>

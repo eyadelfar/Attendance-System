@@ -4,8 +4,11 @@ import os
 import mysql.connector
 from train import Trainer
 from recognize import Recognizer
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
 app.config['UPLOAD_FOLDER'] = 'db'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 
@@ -47,13 +50,9 @@ def train():
     result = trainer.train()
     return result
 
-
 @app.route('/recognize', methods=['POST'])
 def recognize():
-    if request.is_json:
-        data = request.json
-    else:
-        data = request.form
+    data = request.get_json()
 
     semester_id = data.get('semester_id')
     course_id = data.get('course_id')
