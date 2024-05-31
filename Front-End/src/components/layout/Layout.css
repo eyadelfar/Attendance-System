@@ -1,0 +1,37 @@
+/* Layout.css */
+
+.page-container {
+  display: grid;
+  grid-template-columns: 200px 1fr; 
+  grid-template-rows: 50px 1fr; 
+  grid-template-areas:
+    "sidebar top-bar"
+    "sidebar container";
+  height: 100vh; 
+}
+.layout {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
+}
+.layout {
+  display: flex;
+  flex-direction: column; /* Layout the elements vertically */
+  height: 100vh; /* Ensure the layout takes up the full viewport height */
+}
+
+.topbar {
+  background-color: #f8f9fa;
+  color: #212529;
+  padding: 10px 20px;
+  width: 100%;
+  z-index: 1; /* Ensure the topbar is above other elements */
+}
+
+.sidebar {
+  background-color: #343a40;
+  color: white;
+  width: 250px;
+  flex-shrink: 0; /* Prevent sidebar from shrinking */
+}

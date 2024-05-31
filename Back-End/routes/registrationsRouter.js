@@ -172,14 +172,14 @@ router.put("/",
     }
 );
 */
-router.delete("/",
+router.delete("/:semester_id/:student_id",
     async(req,res) => {
         try{
             let registrationController = new RegistrationController();
             let registration = new Registration();
             registration = {
-                semester_id : req.body.semester_id,
-                student_id : req.body.student_id,
+                semester_id : req.params.semester_id,
+                student_id : req.params.student_id,
             };
 
             let result = await registrationController.deleteRegistration(registration);

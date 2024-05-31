@@ -7,7 +7,7 @@ const Student = require('../models/student');
 // middlewares
 const authenticate = require("../middleware/authentication");
 const authorize = require("../middleware/authorization");
-
+ 
 /* end points */
 // get all students 
 router.get("/",
@@ -26,13 +26,13 @@ router.get("/",
 );
 
 // get one student 
-router.get("/student",
+router.get("/student/:student_id",
     authenticate,
     async (req,res) => {
         try{
             let studentController = new UserController();
             let result = await studentController.getStudentsBy({
-                student_id:req.body.student_id
+                student_id:req.params.student_id
             });
             if(result.exist){
                 console.log(result[0]);
@@ -135,13 +135,13 @@ router.put("/",
 );
 
 // delete student
-router.delete("/",
+router.delete("/:student_id",
     authorize,
     async(req,res) => {
         try{
             let studentController = new UserController();
             let student = new Student();
-            student.student_id = req.body.student_id;
+            student.student_id = req.params.student_id;
 
             let result = await studentController.deleteStudent(student);
             if(!result.problem){

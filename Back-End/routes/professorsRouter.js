@@ -26,12 +26,12 @@ router.get("/",
 );
 
 // get one professor 
-router.get("/professor",
+router.get("/professor/:faculty_id",
     authenticate,
     async (req,res) => {
         try{
             let professorController = new UserController();
-            let result = await professorController.getProfessorBy({faculty_id:req.body.faculty_id});
+            let result = await professorController.getProfessorBy({faculty_id:req.params.faculty_id});
             if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);
@@ -125,13 +125,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:faculty_id",
     authorize,
     async(req,res) => {
         try{
             let professorController = new UserController();
             let professor = new Professor();
-            professor.faculty_id = req.body.faculty_id;
+            professor.faculty_id = req.params.faculty_id;
 
             let result = await professorController.deleteProfessor(professor);
             if(!result.problem){

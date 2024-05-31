@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `lectures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lectures` (
-  `lecture_id` int NOT NULL,
+  `lecture_id` int NOT NULL auto_increment,
   `semester_id` int DEFAULT NULL,
   `lecture_date` date DEFAULT NULL,
   `lecture_time` time DEFAULT NULL,
