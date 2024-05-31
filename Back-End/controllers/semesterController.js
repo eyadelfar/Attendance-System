@@ -177,31 +177,28 @@ module.exports = class SemesterController{
     async editSemester(semesterOld,semesterNew){
         try{
         //check if semester exist
-            let check = await this.getCourseDetails({
+            let check = await this.getSemesterBy({
                 semester_id: semesterOld.semester_id
             });
-
-            if(check.length === 0){
+            if(!check.exist){
                 check.problem = 1;
-                check.message = 'SEMESTER NOT FOUND';
                 return check;
             }
             semesterOld = check[0];
-
-        // check if new semester exist
-            /*check = await this.getSemesterBy({
+console.log(semesterOld);
+            check = await this.getSemesterBy({
                 year: semesterNew.year,
                 term: semesterNew.term,
-                course_code: semesterOld.code,
+                course_id: semesterNew.course_id,
                 faculty_id: semesterNew.faculty_id,
             });
             if (check.exist){
                 check.problem = 1;
                 return check;
             }
-        */
-        //check if new professor exist
+
             if(semesterNew.faculty_id){
+        //check if new professor exist
                 let check = await professorController.getProfessorBy({
                     faculty_id: semesterNew.faculty_id
                 });
@@ -211,9 +208,8 @@ module.exports = class SemesterController{
                 }
             }
 
-            console.log(semesterNew);
-        //check if new course exist
             if(semesterNew.course_code){
+        //check if new course exist
                 let courseOld = await courseController.getCourseBy({
                     course_id: semesterOld.course_id,
                 });
@@ -221,13 +217,12 @@ module.exports = class SemesterController{
                 let courseCheck = await courseController.getCourseBy({
                     code: semesterNew.course_code,
                 });
-                
-                if(courseCheck.exist && courseOld[0].code != courseCheck[0].code){
+
+                if(courseCheck.exist && courseOld[0].code !== courseCheck[0].code){
                     courseCheck.problem = 1;
                     courseCheck.message = 'COURSE CODE ALREADY EXIST';
                     return courseCheck;
                 }
-
                 let courseNew = {
                     code : semesterNew.course_code,
                     title: semesterNew.course_title ? semesterNew.course_title : courseOld[0].title,
@@ -237,14 +232,14 @@ module.exports = class SemesterController{
                 if(result.problem)
                     return result;
 
-                // semesterNew.course_id = courseOld[0].course_id;
+                semesterNew.course_id = courseOld[0].course_id;
             }
 
             let updatedSemester = {
                 year:       semesterNew.year       ? semesterNew.year       : semesterOld.year,
                 term:       semesterNew.term       ? semesterNew.term       : semesterOld.term,
-                // course_id:  semesterNew.course_id  ? semesterNew.course_id  : semesterOld.course_id,
-                faculty_id: semesterNew.faculty_id ? semesterNew.faculty_id : semesterOld.faculty_id
+                course_id:  semesterNew.faculty_id ? semesterNew.faculty_id : semesterOld.faculty_id,
+                faculty_id: semesterNew.course_id  ? semesterNew.course_id  : semesterOld.course_id
             }
 
             await dbQuery.update('semester_details',updatedSemester);

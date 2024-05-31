@@ -39,19 +39,21 @@
 }
 
 .create-student {
-  color: #fff;
-  background-color: #4a9f48;
+  margin: 20px auto; 
+  color: #FFFFFF;
+  background-color: #4A9F48;
   border: none;
   font-size: 15px;
   cursor: pointer;
   border-radius: 25px;
   text-align: center;
   padding: 8px 20px;
+  width: 212px;
+  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 
 .create-student:hover {
   background-color: #3d8742; /* Darken button on hover */
@@ -59,10 +61,7 @@
 
 .head {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid #ddd;
 }
 
 .delete {
@@ -106,17 +105,17 @@
 @media (max-width: 480px) {
   .student-list {
     padding: 0px;
-    max-width: 170%;
+    max-width: 112%;
     margin-left: -198px;
-    margin-top: -61px;
+    margin-top: -62px;
     margin-right: 0px;
   }
   
   .create-student {
-    width: 154px;
-    height: 34px;
-    font-size: 11px;
-    margin-left: 184px;
+    width: 110px;
+     height: 38px;
+    font-size: 14px;
+     margin-left: 44px;
   }
   
   
@@ -131,51 +130,33 @@
 
 @media (min-width: 481px) and (max-width: 768px) {
   .student-list {
-    margin: -20px;
-    margin-left: -7px;
-    margin-top: -18px;
+    height: auto;
+    margin: 10px;
+    padding: 10px;
   }
   
   .create-student {
-    width: 110px;
-    height: 36px;
-    font-size: 9px;
-    padding: 6px 15px;
-    margin-top: -1px;
-    margin-left: 27px;
+    width: 160px;
+    height: 40px;
+    font-size: 13px;
   }
-  .student-list thead th {
-    background-color: #ffffff;
-    font-weight: bold;
-    font-family: 'Poppins', sans-serif;
-    padding: 0px;
-    text-align: center;
-    font-size: x-small;
-
-}
   
-.body-table {
-  border-spacing: 10px;
-  font-size: xx-small;
-}
   .pen-icon-student, .del-icon-student {
     width: 20px;
     height: 20px;
   }
 }
 
-@media (min-width: 769px) and (max-width: 1025px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .student-list {
-    margin: -9px;
-    margin-left: -5px;
-    margin-top: -14px;
+    margin: 20px;
+    padding: 15px;
   }
   
   .create-student {
-    width: 183px;
-    height: 41px;
-    font-size: 15px;
-    margin-left: 232px;
+    width: 180px;
+    height: 45px;
+    font-size: 14px;
   }
 }
 

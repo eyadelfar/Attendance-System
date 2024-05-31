@@ -231,7 +231,6 @@ router.put("/:semester_id",
                 semesterNew.year = req.body.year;
             if(req.body.term)
                 semesterNew.term = req.body.term;
-            
             if(req.body.faculty_id)
                 semesterNew.faculty_id = req.body.faculty_id;
 

@@ -100,7 +100,7 @@ router.put("/",
             if(req.body.fullname)
                 professorNew.fullname = req.body.fullname;
             
-            if(req.body.passwordNew){
+            if(req.body.passwordNew)
                 if(professorOld.password === req.body.passwordOld)
                     professorNew.password = req.body.passwordNew;
                 else{
@@ -108,7 +108,6 @@ router.put("/",
                     console.log(result);
                     res.status(400).json(result.message);
                 }
-            }
             
             result = await professorController.editProfessor(professorOld,professorNew);
             if(!result.problem){
