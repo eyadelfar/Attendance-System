@@ -1,0 +1,24 @@
+.image-info-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .image-text {
+    margin: 0;
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .image-text p {
+    margin: 0;
+  }
+  
+  .image-description {
+    margin: 1rem 0 0 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #666;
+  }
