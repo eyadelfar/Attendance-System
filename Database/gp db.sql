@@ -78,6 +78,8 @@ WHERE REFERENCED_TABLE_NAME = 'course_registration';
 ALTER TABLE course_registration
 drop column course_id;
 
+use attendance;
+
 select * from student_details;
 select * from course_details;
 select * from course_registration;
@@ -154,7 +156,7 @@ ON UPDATE CASCADE;
 
 
 
-
+drop database attendance;
 
 
 
