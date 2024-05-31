@@ -15,9 +15,49 @@ function LectureList(props) {
   const [lecture, setLecture] = useState([]);
   const [token] = useState(localStorage.getItem('token'));
   const [semes_id] = useState(localStorage.getItem('semester_id'));
+  const [course_id] = useState(localStorage.getItem('course_id'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
 
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [Attendance_Status, setAttendance_Status] = useState('');
+  const [Camera_Source, setCamera_Source] = useState('');
+
+  const [currentLectureId, setCurrentLectureId] = useState(null);
+
+  const handleOpenPopup = (lectureId) => {
+    setCurrentLectureId(lectureId);
+    setIsPopupOpen(true);
+  };
+
+  // const handleOpenPopup = () => {
+  //   setIsPopupOpen(true);
+  // };
+
+  const handleClosePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleSubmit = async (event) => {
+    // event.preventDefault();
+    // axios.post('http://www.google.com', {
+    //     semester_id: localStorage.getItem('semester_id'),
+    //     course_id: localStorage.getItem('course_id'),
+    //     lecture_id: currentLectureId,
+    //     attendance_type: Attendance_Status,
+    //     video_source: Camera_Source
+    // })
+    // .then(response => {
+    //     console.log(response.data);
+    //     setIsPopupOpen(false);
+    // })
+    // .catch(error => {
+    //     console.error('There was an error submitting the form!', error);
+    // });
+    event.preventDefault();
+  window.location.href = 'http://www.google.com';
+  setIsPopupOpen(false);
+};
 
   
   
@@ -114,10 +154,39 @@ function LectureList(props) {
               <td>{lectures.lecture_time}</td>
               <td>
               {index === lecture.length - 1 && (
-                  <button className="camera-button-lecture">
-                    Open Camera
-                    <img className="camera-icon-lecture" src={camera} />
-                  </button>
+                      <div className="App">
+                      <button className="camera-button-lecture" onClick={handleOpenPopup}>
+                        Open Camera
+                        <img className="camera-icon-lecture" src={camera} alt="Camera Icon" />
+                      </button>
+                
+                      {isPopupOpen && (
+                        <div className="popup">
+                          <div className="popup-content">
+                            <span className="close" onClick={handleClosePopup}>&times;</span>
+                            <h2>Enter Your Details</h2>
+                            <div>
+                              <label htmlFor="textField1">Field 1:</label>
+                              <input
+                                type="text"
+                                id="textField1"
+                                value={Attendance_Status}
+                                onChange={(e) => setAttendance_Status(e.target.value)}
+                              /><br /><br />
+                              <label htmlFor="textField2">Field 2:</label>
+                              <input
+                                type="text"
+                                id="textField2"
+                                value={Camera_Source}
+                                onChange={(e) => setCamera_Source(e.target.value)}
+                              /><br /><br />
+                              <button onclick={handleSubmit}>Submit</button>
+                            </div>
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                
                 )}
               </td>
               <td>

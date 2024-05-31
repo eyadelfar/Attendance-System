@@ -47,16 +47,26 @@ def train():
     result = trainer.train()
     return result
 
+
 @app.route('/recognize', methods=['POST'])
 def recognize():
-    semester_id = request.form['semester_id']
-    course_id = request.form['course_id']
-    lecture_id = request.form['lecture_id']
-    status = request.form['status']
-    video_source = request.form['video_source']
+    if request.is_json:
+        data = request.json
+    else:
+        data = request.form
+
+    semester_id = data.get('semester_id')
+    course_id = data.get('course_id')
+    lecture_id = data.get('lecture_id')
+    status = data.get('attendance_type')
+    video_source = data.get('video_source')
+
+    if not all([semester_id, course_id, lecture_id, status, video_source]):
+        return {"status": "error", "message": "Missing required parameters"}, 400
+
     recognizer = Recognizer(db, semester_id, course_id, lecture_id, status)
     recognizer.recognize(video_source)
     return {"status": "success", "message": "Recognition completed"}
-
+    
 if __name__ == '__main__':
     app.run(debug=True)
