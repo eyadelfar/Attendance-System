@@ -54,10 +54,9 @@ module.exports = class DBQuery{
 
     async joinAllCourseDetails(){
         this.query = `SELECT 
-                        s.semester_id,
-                        c.title, 
-                        c.code, 
-                        f.fullname, 
+                        s.*,
+                        c.*, 
+                        f.*, 
                         COUNT(r.student_id) AS num_registered
                     FROM 
                         semester_details s 
@@ -76,10 +75,9 @@ module.exports = class DBQuery{
 
     async joinCourseDetails(semester_id){
         this.query = `SELECT 
-                        s.semester_id,
-                        c.title, 
-                        c.code, 
-                        f.fullname, 
+                        s.*,
+                        c.*, 
+                        f.*, 
                         COUNT(r.student_id) AS num_registered
                     FROM 
                         semester_details s 

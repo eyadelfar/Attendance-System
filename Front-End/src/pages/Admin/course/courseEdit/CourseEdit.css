@@ -4,6 +4,10 @@
   font-size: 45px;
   /* top: -50px; */
   font-weight: 400;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
 
 #course-edit-form {
@@ -17,6 +21,10 @@
   width: 70vw; 
   position: relative;
   left: 15vh;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
 
 #course-edit-form-header{

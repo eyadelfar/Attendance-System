@@ -5,7 +5,10 @@
     top: -50px;
     font-weight: 400;
     
-
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
   }
 
   .student-header-of-form{
@@ -15,6 +18,10 @@
     line-height:auto;
     border-style:hidden;
     outline:none;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
   }
 
 

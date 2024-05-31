@@ -1,21 +1,88 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useRef  } from 'react';
 import'./Register.css'
  import plus from '../../../pics/plus.png'
+import axios from 'axios';
+import { jwtDecode } from 'jwt-decode'
 
+ function RegisterList(props) {
+  const [registers, setRegisters] = useState([]);
+  const [token] = useState(localStorage.getItem('token'));
+  const decodedToken = jwtDecode(token);
+  const [error, setError] = useState(null);
+  const fileInputRef = useRef(null);
+  const [file, setFile] = useState(null);
+  const [message, setMessage] = useState('');
 
- function RegisterList() {
-    return (
-      <div className="register-list">
-       <div className='register-header'>
-       <h1>Register</h1>
+  useEffect(() => {
+    axios.get('http://localhost:4000/semester/registeration', {
+      headers: {
+        'Authorization': token,
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((res) => {
+    setRegisters(res.data);
+      // console.log(courses);
+    })
+    .catch((error) => {
+      setError(error);
+    });
+  }, []);
+
+  const handleDeleteSemester = async (semesterId,studentId) => {
+    try {
+      const response = await axios({
+        method: 'delete',
+        url: `http://localhost:4000/registrations/${semesterId}/${studentId}`,
+        headers: {
+          'Authorization': token,
+          'Content-Type': 'application/json'
+        }
+      });
+      props.onDeleteSuccess();
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleFileChange = (event) => {
+    setFile(event.target.files[0]);
+  };
+
+  const handleUpload = () => {
+    const formData = new FormData();
+    formData.append('registrationSheet', file);
+    axios.post('http://localhost:4000/registrations/upload', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': token,
+      }
+    })
+      .then((response) => {
+        setMessage(response.data.message);
+      })
+      .catch((error) => {
+        setMessage(error.message);
+      });
+  };
+
+  return (
+    <div className="register-list">
+      <div className='register-header'>
+        <h1>Register</h1>
         <div>
-        <button className='register-course' >
-        Upload
-        <img className='plus-icon' src={plus} alt={'image'} />
-          </button>
-        </div>
-        </div>
-        
+      <input type="file" onChange={handleFileChange} />
+      <button className='register-course' onClick={() => {
+        handleUpload();
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      }}>
+        Upload File
+      </button>
+      <p>{message}</p>
+    </div>
+      </div>
         <table className='register-table'>
     <thead>
       <tr>
@@ -28,36 +95,28 @@ import'./Register.css'
       </tr>
     </thead>
     <tbody className='body-table-register'>
-      <tr >
-        <td>Computer Graphics</td>
-        <td>1125 </td>
-        <td>Dale Robertson</td>
-        <td>2020123</td>
-        <td>Dale Robertson</td>
-        <td> <button className='button-register'>
-            Drop
-            </button> </td>
-        {/* Add other table cells as needed */}
-      </tr>
-      <tr>
-      <td className='space-row' style={{ height: '30px' }}></td>
-    </tr>
-      <tr >
-        <td>Computer Graphics</td>
-        <td>1125 </td>
-        <td>Dale Robertson</td>
-        <td>2020123</td>
-        <td>Dale Robertson</td>
-        <td> <button className='button-register'>
-            Drop
-            </button> </td>
-        {/* Add other table cells as needed */}
-      </tr>
-      {/* Add more rows if necessary */}
-    </tbody>
-  </table>
-  
-      </div>
+           {registers.map((register, index) => (
+            <tr key={index}>
+              <td>{register.title}</td>
+              <td>{register.code}</td>
+              <td>{register.student_name}</td>
+              <td>{register.roll_no}</td>
+              <td>{register.professor_name}</td>
+
+            <td> <button className='button-register'
+                         onClick={() => {
+                          handleDeleteSemester(register.semester_id,register.student_id);
+                          window.location.reload();
+                        }}
+                >
+                Drop
+                </button> </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        
+            </div>
     );
   }
   

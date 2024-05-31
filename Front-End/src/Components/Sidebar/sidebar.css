@@ -1,16 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* Default styles */
 .sidebar {
   background: white;
   color: black;
-  padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 197px;
+  height: fit-content;
+  width: fit-content;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */ 
+  user-select: none; /* Standard syntax */
 }
 
 .container {
   display: flex;
   height: 100vh;
+  margin-left: -19px;
 }
 
 .logo {
@@ -28,7 +35,8 @@
   align-items: center;
   padding: 10px 0;
   text-decoration: none;
-  color: black; /* Set default text color to black */
+  color: rgb(0, 0, 0); /* Set default text color to black */
+  font-weight: bold;
 }
 
 .nav-link:hover {
@@ -36,7 +44,8 @@
 }
 
 .nav-link.active {
-  font-weight: bold;
+  background-color: #395986;
+  color: #151517;
 }
 
 .logout {
@@ -47,4 +56,93 @@
   margin-bottom: 60px;
   color: black;
   cursor: pointer;
+}
+
+/* Media Queries for Responsiveness */
+
+/* Small screens (up to 480px) */
+@media (max-width: 480px) {
+  .sidebar {
+    display: none;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    font-size: 14px;
+  }
+
+  .logout {
+    margin-bottom: 40px;
+    padding: 10px 0;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+}
+
+/* Medium screens (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .sidebar {
+    width: 161px;
+    padding: 10px;
+  }
+
+  .nav-link {
+    padding: 9px 0;
+    font-size: 14px;
+  }
+
+  .logout {
+    margin-bottom: 30px;
+    padding: 9px 0;
+  }
+
+  .container {
+    margin-left: -10px;
+  }
+}
+
+/* Large screens (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sidebar {
+    width: 140px;
+    padding: 18px;
+  }
+
+  .nav-link {
+    padding: 9px 0;
+    font-size: 15px;
+  }
+
+  .logout {
+    margin-bottom: 50px;
+    padding: 9px 0;
+  }
+
+  .container {
+    margin-left: -15px;
+  }
+}
+
+/* Extra large screens (1025px and above) */
+@media (min-width: 1025px) {
+  .sidebar {
+    width: 160px;
+    padding: 20px;
+  }
+
+  .nav-link {
+    padding: 10px 0;
+    font-size: 16px;
+  }
+
+  .logout {
+    margin-bottom: 60px;
+    padding: 10px 0;
+  }
+
+  .container {
+    margin-left: -19px;
+  }
 }

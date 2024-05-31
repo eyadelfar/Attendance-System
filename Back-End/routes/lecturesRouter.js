@@ -27,13 +27,13 @@ router.get("/",
 );
 
 // get one lecture 
-router.get("/lecture",
+router.get("/lecture/:lecture_id",
     authenticate,
     async (req,res) => {
         try{
             let lectureController = new LectureController();
             let result = await lectureController.getLectureDetailed({
-                lecture_id:req.body.lecture_id
+                lecture_id:req.params.lecture_id
             });
             console.log(result[0]);
             res.status(200).json(result[0]);
@@ -45,13 +45,13 @@ router.get("/lecture",
 );
 
 // get filtered lectures 
-router.get("/semester",
+router.get("/semester/:semester_id",
     authenticate,
     async (req,res) => {
         try{
             let lectureController = new LectureController();
             let results = await lectureController.getLecturesBySemester({
-                semester_id: req.body.semester_id
+                semester_id: req.params.semester_id
             });
             
             console.log(results);
@@ -131,13 +131,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:lecture_id",
     authorize,
     async(req,res) => {
         try{
             let lectureController = new LectureController();
             let lecture = new Lecture();
-            lecture.lecture_id = req.body.lecture_id;
+            lecture.lecture_id = req.params.lecture_id;
 
             let result = await lectureController.deleteLecture(lecture);
             if(!result.problem){

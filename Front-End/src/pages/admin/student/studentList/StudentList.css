@@ -1,97 +1,199 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
- .student-list {
+
+.student-list {
   max-width: 1230px;
-  height: 100vh;
-  margin: 40px; 
-  margin-left: 200px;
-  margin-top: 80px;
+  height: auto; /* Adjust height for better responsiveness */
   padding: 20px;
-  font-family: poppins;
-  background-color: #F2F2F2;
-  border-collapse: collapse;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-bottom: none; /* Adjust border style and color */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
 }
+
 .student-list thead th {
-  background-color: #ffffff; 
+  background-color: #ffffff;
   font-weight: bold;
-  font-family: poppins;
-  padding: 15px; 
+  font-family: 'Poppins', sans-serif;
+  padding: 15px;
   text-align: center;
 }
 
-.student-table{
-
- width: 100%;
-  row-gap: 20px !important;
-  table-layout: fixed; 
-  border-collapse: collapse; /* Ensures borders collapse for spacing */
+.student-table {
+  overflow-x: auto;
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
   border-spacing: 10px !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
-
 
 .student-id {
-  font-weight: bold; 
-} 
-.create-student{
-   left: 800px;
-  position: relative;
-  color: #FFFFFF;
-  background-color: #4A9F48;
-  border: #395986;
+  font-weight: bold;
+}
+
+.create-student {
+  color: #fff;
+  background-color: #4a9f48;
+  border: none;
   font-size: 15px;
   cursor: pointer;
-  border-radius: 25px; 
+  border-radius: 25px;
   text-align: center;
   padding: 8px 20px;
-  width: 212px;
-  height: 50px;
   display: flex;
-  bottom: 60px;
   justify-content: center;
-  line-height: 30px;
+  align-items: center;
 }
-.create-student:hover{
-  background-color: #4A9F48;
-}
-.head{
-  display: flexbox; /* Use flexbox */
-  align-items: center; /* Align items vertically */
-}
-.delete{
 
-  border: 1px solid transparent;
+
+.create-student:hover {
+  background-color: #3d8742; /* Darken button on hover */
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.delete {
+  border: none;
   padding: 0px 1px;
-  left: 18px;
   background: none;
   cursor: pointer;
   position: relative;
-  background-color: #F2F2F2;
-
 }
-.delete:hover{
+
+.delete:hover {
   background-color: transparent;
 }
-.body-table{
+
+.body-table {
   background-color: white;
-  top: 40px;
   position: relative;
   text-align: center;
-  font-family: poppins;
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
 }
 
-.space-row{
+.space-row {
   background-color: #F2F2F2;
 }
-.pen-icon-student{
 
+.pen-icon-student {
   width: 10%;
- }
- .del-icon-student{
+}
+
+.del-icon-student {
   width: 30px;
   height: 30px;
- }
- .plus-icon{
+}
+
+.plus-icon {
   padding: 0px 5px;
- }
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) {
+  .student-list {
+    padding: 0px;
+    max-width: 170%;
+    margin-left: -198px;
+    margin-top: -61px;
+    margin-right: 0px;
+  }
+  
+  .create-student {
+    width: 154px;
+    height: 34px;
+    font-size: 11px;
+    margin-left: 184px;
+  }
+  
+  
+  .pen-icon-student, .del-icon-student {
+    width: 15px;
+    height: 15px;
+  }
+  .student-table, .head {
+    font-size: x-small;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .student-list {
+    margin: -20px;
+    margin-left: -7px;
+    margin-top: -18px;
+  }
+  
+  .create-student {
+    width: 110px;
+    height: 36px;
+    font-size: 9px;
+    padding: 6px 15px;
+    margin-top: -1px;
+    margin-left: 27px;
+  }
+  .student-list thead th {
+    background-color: #ffffff;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    padding: 0px;
+    text-align: center;
+    font-size: x-small;
+
+}
+  
+.body-table {
+  border-spacing: 10px;
+  font-size: xx-small;
+}
+  .pen-icon-student, .del-icon-student {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1025px) {
+  .student-list {
+    margin: -9px;
+    margin-left: -5px;
+    margin-top: -14px;
+  }
+  
+  .create-student {
+    width: 183px;
+    height: 41px;
+    font-size: 15px;
+    margin-left: 232px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .student-list {
+    margin-left: 20px;
+    margin-top: -19px;
+  }
+  
+  .create-student {
+    width: 185px;
+        height: 42px;
+        margin-left: 389px;
+        font-size: 15px;
+  }
+  
+  .pen-icon-student, .del-icon-student {
+    width: 30px;
+    height: 30px;
+  }
+}

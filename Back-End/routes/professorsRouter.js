@@ -26,12 +26,12 @@ router.get("/",
 );
 
 // get one professor 
-router.get("/professor",
+router.get("/professor/:faculty_id",
     authenticate,
     async (req,res) => {
         try{
             let professorController = new UserController();
-            let result = await professorController.getProfessorBy({faculty_id:req.body.faculty_id});
+            let result = await professorController.getProfessorBy({faculty_id:req.params.faculty_id});
             if(result.exist){
                 console.log(result[0]);
                 res.status(200).json(result[0]);
@@ -100,7 +100,7 @@ router.put("/",
             if(req.body.fullname)
                 professorNew.fullname = req.body.fullname;
             
-            if(req.body.passwordNew)
+            if(req.body.passwordNew){
                 if(professorOld.password === req.body.passwordOld)
                     professorNew.password = req.body.passwordNew;
                 else{
@@ -108,6 +108,7 @@ router.put("/",
                     console.log(result);
                     res.status(400).json(result.message);
                 }
+            }
             
             result = await professorController.editProfessor(professorOld,professorNew);
             if(!result.problem){
@@ -125,13 +126,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:faculty_id",
     authorize,
     async(req,res) => {
         try{
             let professorController = new UserController();
             let professor = new Professor();
-            professor.faculty_id = req.body.faculty_id;
+            professor.faculty_id = req.params.faculty_id;
 
             let result = await professorController.deleteProfessor(professor);
             if(!result.problem){
