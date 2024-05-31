@@ -52,13 +52,30 @@ function StudentList(props) {
     }
   };
 
+  const handleTrain = (event) => {
+    event.preventDefault(); 
+    axios.post('http://127.0.0.1:5000/train')
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('There was an error submitting the form!', error);
+    });
+  };
+  
+
   return (
     <div className="student-list">
      <div className='head'>
       <h1>Students</h1>
       <div>
+      <button className='create-student' onClick={handleTrain}>
+      <img className='plus-icon' src={plus} alt={'image'} />
+        Train
+       
+        </button>
       <a href="/StudentCreate">
-      <button className='create-student' >
+        <button className='create-student' >
       <img className='plus-icon' src={plus} alt={'image'} />
         Create Student
        

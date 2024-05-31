@@ -57,7 +57,7 @@ class Trainer:
 
         return encodings
 
-    def train(self, db_folder='db'):
+    def train(self, db_folder='F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'):
         student_folders = [os.path.join(db_folder, folder) for folder in os.listdir(db_folder) if os.path.isdir(os.path.join(db_folder, folder))]
 
         self.results = []
