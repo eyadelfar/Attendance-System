@@ -154,10 +154,8 @@ module.exports = class DBQuery{
 
     async joinAttendance(student_id){
         this.query = `SELECT 
-                        a.status, 
-                        l.lecture_date, 
-                        l.lecture_time, 
-                        l.lecture_id
+                        a.*, 
+                        l.*
                     FROM 
                         attendance a
                     JOIN 
@@ -172,13 +170,11 @@ module.exports = class DBQuery{
     async joinLectureDetailsBySemester(semester_id){
         this.query = `SELECT 
                         l.*,
-                        c.title,
-                        c.code
+                        c.*
                     FROM 
                         lectures l 
                     JOIN 
                         course_details c ON l.course_id = c.course_id 
-                    
                     WHERE
                         l.semester_id = ${semester_id};`;
 

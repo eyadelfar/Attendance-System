@@ -66,9 +66,21 @@ module.exports = class AttendanceController{
         }
     };
 
-    async getAttendancesByStudent(lecture_id){
+    async getAttendancesByLecture(lecture_id){
         try{
             let results = await this.getAttendanceBy(lecture_id);
+            return results; 
+        }catch(error){
+            return error;
+        }
+    };
+
+    async getAttendancesByStudentInLecture(student_id,lecture_id){
+        try{
+            let results = await this.getAttendanceBy({
+                student_id:student_id,
+                lecture_id:lecture_id
+            });
             return results; 
         }catch(error){
             return error;
@@ -84,6 +96,7 @@ module.exports = class AttendanceController{
             return error;
         }
     };
+
     async addAttendance(newAttendance){
         try{
             let check = await this.getAttendanceBy({
