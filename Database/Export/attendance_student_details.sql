@@ -26,14 +26,16 @@ DROP TABLE IF EXISTS `student_details`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `student_details` (
   `student_id` int NOT NULL AUTO_INCREMENT,
-  `roll_no` varchar(15) DEFAULT NULL,
+  `roll_no` varchar(16) NOT NULL,
   `fullname` varchar(255) DEFAULT NULL,
   `phone_no` varchar(15) DEFAULT NULL,
-  `password` varchar(64) DEFAULT NULL,
+  `password` varchar(32) NOT NULL,
   `level` int DEFAULT NULL,
   PRIMARY KEY (`student_id`),
-  UNIQUE KEY `roll_no` (`roll_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=321657 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  UNIQUE KEY `roll_no` (`roll_no`),
+  UNIQUE KEY `roll_no_2` (`roll_no`),
+  UNIQUE KEY `phone_no` (`phone_no`)
+) ENGINE=InnoDB AUTO_INCREMENT=321667 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +44,7 @@ CREATE TABLE `student_details` (
 
 LOCK TABLES `student_details` WRITE;
 /*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
-INSERT INTO `student_details` VALUES (1,'S001','Eyad Elfar','123-456-7890','63377',4),(2,'S002','Swilam','234-567-8901','324',4),(3,'S003','Ragab','234-567-8901','2632',1),(4,'S004','Ali','555-999-5555','3236',5),(5,'S005','Ehab','555-699-5555','6327',3),(6,'S006','Bedo','21030213','1231412',2);
+INSERT INTO `student_details` VALUES (1,'S003','eyad','01006431232','25507253',1),(2,'20200506','swilam','01068377869','123456789',4),(3,'rgb1','mahmoud ragab','01155559287','12345678',2),(4,'s03','ali','01023571756','123321',4),(5,'s02','ehab','01023571256','123321',4),(6,'qq','bedo','01023576756','qwqwwqq',3),(321665,'1001','Far far','1234567890','12314121dad',1),(321666,'s12','Eyaddd','1110234232','35875658758765',3);
 /*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -109,4 +111,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:57

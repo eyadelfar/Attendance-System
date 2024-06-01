@@ -26,11 +26,12 @@ DROP TABLE IF EXISTS `faculty_details`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `faculty_details` (
   `faculty_id` int NOT NULL AUTO_INCREMENT,
-  `password` varchar(32) DEFAULT NULL,
-  `username` varchar(24) DEFAULT NULL,
-  `fullname` varchar(32) DEFAULT NULL,
-  PRIMARY KEY (`faculty_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `password` varchar(255) NOT NULL,
+  `username` varchar(64) NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  PRIMARY KEY (`faculty_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +40,7 @@ CREATE TABLE `faculty_details` (
 
 LOCK TABLES `faculty_details` WRITE;
 /*!40000 ALTER TABLE `faculty_details` DISABLE KEYS */;
-INSERT INTO `faculty_details` VALUES (1,'password1','username1','John Doe'),(2,'password2','username2','Jane Smith'),(3,'password3','username3','Emily Brown'),(29,'password3','username3','Alice Johnson'),(30,'password3','username3','Alice Johnson');
+INSERT INTO `faculty_details` VALUES (38,'25507253','elzaboota','bedohazem');
 /*!40000 ALTER TABLE `faculty_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -106,4 +107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:56

@@ -30,7 +30,7 @@ CREATE TABLE `course_details` (
   `title` varchar(24) DEFAULT NULL,
   `credit` float DEFAULT NULL,
   PRIMARY KEY (`course_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `course_details` (
 
 LOCK TABLES `course_details` WRITE;
 /*!40000 ALTER TABLE `course_details` DISABLE KEYS */;
-INSERT INTO `course_details` VALUES (1,'C001','Statistics',3),(2,'C002','English',2),(3,'C003','Computer Science',3),(4,'C005','Programming-1',3),(30,'ENG101','English Composition',3),(31,'ENG101','English Composition',3);
+INSERT INTO `course_details` VALUES (1,'C001','Statistics',3),(3,'C003','Computer Science',3),(30,'ENG101','English Composition',3),(31,'ENG101','English Composition',3),(37,'eng2','english2',NULL),(38,'icm100','icmm',NULL);
 /*!40000 ALTER TABLE `course_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -106,4 +106,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:09
+-- Dump completed on 2024-06-01 23:50:56

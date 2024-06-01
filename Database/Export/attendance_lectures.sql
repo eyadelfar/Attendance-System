@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `lectures`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `lectures` (
-  `lecture_id` int NOT NULL auto_increment,
+  `lecture_id` int NOT NULL AUTO_INCREMENT,
   `semester_id` int DEFAULT NULL,
   `lecture_date` date DEFAULT NULL,
   `lecture_time` time DEFAULT NULL,
@@ -35,7 +35,7 @@ CREATE TABLE `lectures` (
   KEY `lectures_ibfk_1` (`semester_id`),
   CONSTRAINT `fk_lectures_course_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `lectures_ibfk_1` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `lectures` (
 
 LOCK TABLES `lectures` WRITE;
 /*!40000 ALTER TABLE `lectures` DISABLE KEYS */;
-INSERT INTO `lectures` VALUES (1,2,'2024-04-29','21:49:31',3);
+INSERT INTO `lectures` VALUES (23,34,'2024-05-15','22:27:00',37),(25,34,'2024-05-28','22:36:00',37),(26,34,'2024-05-21','23:14:00',37),(27,34,'2024-05-08','20:16:00',37),(28,34,'2024-06-04','20:17:00',37),(29,34,'2024-05-14','20:16:00',37),(30,34,'2024-05-22','23:14:00',37),(31,34,'2024-05-14','22:14:00',37),(32,34,'2024-05-23','23:15:00',37),(33,35,'2024-10-11','09:00:00',38),(34,35,'2024-05-28','14:08:00',38),(35,34,'1111-11-11','11:11:00',37);
 /*!40000 ALTER TABLE `lectures` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -97,4 +97,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:56
