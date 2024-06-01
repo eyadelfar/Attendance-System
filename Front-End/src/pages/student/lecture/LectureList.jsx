@@ -72,7 +72,7 @@ const LectureList = () => {
             <span>{index+1}</span>
           </div>
           </td>
-                <td>'Attendance'</td>
+                <td>Joined</td>
                 <td>{formatted}</td>
                <td>{lectures.lecture_time}</td>
           </tr>
