@@ -53,8 +53,8 @@ function StudentList(props) {
   };
 
   const handleTrain = (event) => {
-    event.preventDefault(); 
-    axios.post('http://127.0.0.1:5000/train')
+    event.preventDefault();
+    axios.post('http://localhost:5000/train')
     .then(response => {
       console.log(response.data);
     })
@@ -62,6 +62,7 @@ function StudentList(props) {
       console.error('There was an error submitting the form!', error);
     });
   };
+  
   
 
   return (

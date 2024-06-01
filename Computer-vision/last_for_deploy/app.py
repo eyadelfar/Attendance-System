@@ -4,13 +4,14 @@ import os
 import mysql.connector
 from flask_cors import CORS
 from train import Trainer  # Ensure you have the Trainer class implemented
-
+from recognize import Recognizer
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Enable CORS for all routes from the specified origin
 
 app.config['UPLOAD_FOLDER'] = 'F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
-
+if not os.path.exists(app.config['UPLOAD_FOLDER']):
+    os.makedirs(app.config['UPLOAD_FOLDER'])
 # Database connection (replace with your own configuration)
 db = mysql.connector.connect(
     host="127.0.0.1",
@@ -59,7 +60,7 @@ def create_student():
 
 @app.route('/train', methods=['POST'])
 def train():
-    # You can keep the trainer instantiation and training process as it is
+    print("Hello hi")
     trainer = Trainer()
     result = trainer.train()
     return jsonify(result), 200
@@ -68,19 +69,16 @@ def train():
 @app.route('/recognize', methods=['POST'])
 def recognize():
     data = request.get_json()
-
     semester_id = data.get('semester_id')
     course_id = data.get('course_id')
     lecture_id = data.get('lecture_id')
     status = data.get('attendance_type')
     video_source = data.get('video_source')
-
-    if not all([semester_id, course_id, lecture_id, status, video_source]):
-        return {"status": "error", "message": "Missing required parameters"}, 400
-
+    
     recognizer = Recognizer(db, semester_id, course_id, lecture_id, status)
     recognizer.recognize(video_source)
-    return {"status": "success", "message": "Recognition completed"}
+    
+    return jsonify({"status": "recognition process started"})
     
 if __name__ == '__main__':
     app.run(debug=True)

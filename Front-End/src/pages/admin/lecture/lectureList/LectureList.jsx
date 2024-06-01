@@ -38,22 +38,23 @@ function LectureList(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const requestData = {
-      semester_id: localStorage.getItem('semester_id'),
-      course_id: localStorage.getItem('course_id'),
-      lecture_id: currentLectureId,
-      attendance_type: Attendance_Status,
-      video_source: Camera_Source
+        semester_id: localStorage.getItem('semester_id'),
+        course_id: localStorage.getItem('course_id'),
+        lecture_id: currentLectureId,
+        attendance_type: Attendance_Status,
+        video_source: Camera_Source
     };
     
     axios.post('http://127.0.0.1:5000/recognize', requestData)
     .then(response => {
-      console.log(response.data);
-      setIsPopupOpen(false);
+        console.log(response.data);
+        setIsPopupOpen(false);
     })
     .catch(error => {
-      console.error('There was an error submitting the form!', error);
+        console.error('There was an error submitting the form!', error);
     });
-  };
+};
+
 
   useEffect(() => {
     axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {

@@ -17,8 +17,8 @@ INSERT INTO session_details (year, term, start_date, end_date, course_id)
 VALUES (2024, 'Spring', '2024-01-10', '2024-05-20', 3);
 
 
-INSERT INTO student_details (roll_no, name, phone_no)
-VALUES ('S025', 'swilam', '555-699-5555');
+INSERT INTO student_details (roll_no, fullname, phone_no,password, level)
+VALUES ('S025', 'swilam', '555-699-5555','12332134','4');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
@@ -77,9 +77,9 @@ WHERE REFERENCED_TABLE_NAME = 'course_registration';
 -- Step 3: Add new composite primary key constraint
 ALTER TABLE course_registration
 drop column course_id;
+CREATE DATABASE attendance;
 
 use attendance;
-
 select * from student_details;
 select * from course_details;
 select * from course_registration;
