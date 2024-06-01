@@ -113,6 +113,23 @@ router.get("/student",
     }
 );
 
+router.get("/studentInLecture/:lecture_id/:student_id",
+    authenticate,
+    async (req,res) => {
+        try{
+            let attendanceController = new AttendanceController();
+            let results = await attendanceController.getAttendancesByStudentInLecture(
+                req.params.student_id,
+                req.params.lecture_id
+            );
+            console.log(results);
+            res.status(200).json(results);
+        }catch(error){
+            console.log(error);
+            res.status(500).json(error);
+        }
+    }
+);
 // add attendance
 router.post("/",
     authenticate,
