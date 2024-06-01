@@ -44,8 +44,8 @@ const StudentCreate = () => {
 
   return (
     <div className="account-settings-container">
-        <h1 className='students-main-header'>Students</h1>
-            <div className="create-form">
+        <h1 className='students-main-header-create'>Students</h1>
+            <div className="create-form-student">
                 <div className='all-forms-col'>  
                     <div className='all-forms'>
                         <div className="student-header-of-form">
@@ -100,13 +100,13 @@ const StudentCreate = () => {
                             />
                         </div>
                     </div>
-                    <div >
+                    {/* <div >
                         <button id='edit-create-button' onClick={handleSaveChanges}>
                             <div className='create-button-text'>
                                 Create
                                 </div>
                         </button>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             

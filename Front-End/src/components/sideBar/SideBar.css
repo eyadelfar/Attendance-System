@@ -6,12 +6,16 @@
   color: black;
   display: flex;
   flex-direction: column;
-  height: fit-content;
+  height: 100vh;
+  overflow: auto;
   width: fit-content;
+  position: relative;
+  bottom: 40px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
+
 }
 
 .container {

@@ -1,10 +1,9 @@
-.students-main-header{
+.students-main-header-create{
     position: relative;
-    text-indent: 19.9%;
+    text-indent: 6.9%;
     font-size: 45px;
-    top: -50px;
+    top: -40px;
     font-weight: 400;
-    
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 and IE11 */
@@ -17,7 +16,11 @@
     vertical-align:text-middle;
     line-height:auto;
     border-style:hidden;
+    font-size: 3vh;
     outline:none;
+    position: relative;
+    bottom: 4vh;
+    margin-bottom: -9vh;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 and IE11 */
@@ -56,24 +59,18 @@
     margin-left: 30%;
 
   }
-  .create-form {
+  .create-form-student {
     background-color: #ffffff;
-    margin: 1%;
-    margin-left: 1%;
+    margin: 1% 1% 25% 12%; /* top right bottom left */
     width: 75%;
     justify-content: center;
     display:grid;
-    
-    display: flex;
     justify-items:stretch;
-    /* background-color: #BEBEBE; */
-    margin-left: 20%;
-    margin-right: 12%;
-    /* height: 70vh;  */
-    height: 1000px; 
-    width: 70vw; 
-    /* flex-direction: row; */
-    margin-top: -1.5%;
+    height: 80vh; 
+    width: 80vw; 
+    position: relative;
+    left: -8vh;
+    bottom: 8vh;
     
     
   }
@@ -128,7 +125,7 @@
     /* top: 10px; */
   }
   
-  .form-field {
+  .form-field-student-create {
     display: flex;
     flex-direction: column;
     padding: 5%;

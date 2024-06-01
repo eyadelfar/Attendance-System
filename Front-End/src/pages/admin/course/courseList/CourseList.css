@@ -1,6 +1,6 @@
 /* Default styles */
 .course-list {
-  max-width: 1230px;
+  width: 100%;
   height: auto; /* Adjust height for better responsiveness */
   padding: 20px;
   font-family: 'Poppins', sans-serif;
@@ -11,6 +11,7 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
+  overflow-y: auto;
 }
 
 .course-header {
@@ -110,7 +111,7 @@
     padding: 0px;
     max-width: 168%;
     margin-left: -190px;
-    margin-top: -64px;
+    margin-top: -50px;
   }
 
   .course-header {

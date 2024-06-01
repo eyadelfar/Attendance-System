@@ -13,8 +13,8 @@ const Layout = () => {
 
   return (
     <div className="page-container">
-      <div className="top-bar" style={{ gridArea: 'top-bar' }}><Topbar /></div>
       <div className="sidebar" style={{ gridArea: 'sidebar' }}><SideBar /></div>
+      <div className="top-bar" style={{ gridArea: 'top-bar' }}><Topbar /></div>
       <div className="container" style={{ gridArea: 'container' }}><Router /></div>
     </div>
   );

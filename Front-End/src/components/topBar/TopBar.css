@@ -6,10 +6,10 @@
   background-color: #ffffff;
   color: #fff;
   padding: 0 2%;
-  width: calc(100% - 65px); /* Subtract the sidebar width from 100% */
+  width: 82%; /* Subtract the sidebar width from 100% */
   position: absolute;
   top: 0;
-  left: 0px; /* Adjust according to your sidebar width */
+  left: 250px; /* Adjust according to your sidebar width */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
@@ -88,50 +88,3 @@
   margin-right: 20px;
 }
 
-/* Large screens (1025px and above) */
-@media (min-width: 1025px) {
-  .topbar {
-    width: calc(100% - 65px);
-    left: 0;
-  }
-}
-
-/* Medium screens (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .topbar {
-    width: calc(100% - 24px);
-    left: 2px;
-  }
-}
-
-/* Small screens (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .topbar {
-     width: calc(100% - -4px);
-     left: 4px;
-     height: 44px;
-  }
-  .topbar-user img {
-    height: 40px;
-    width: 40px;
-  }
-  .menu-item {
-    margin-right: 10px;
-  }
-}
-
-/* Extra small screens (up to 480px) */
-@media (max-width: 480px) {
-  .topbar {
-    display: none;
-  }
-  .topbar-left, .topbar-date, .topbar-right {
-    display: none; /* Hide certain elements on smaller screens */
-  }
-  .topbar-user img {
-    display: none;
-  }
-  .menu-item {
-    display: none;
-  }
-}
