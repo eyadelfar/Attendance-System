@@ -89,6 +89,7 @@ select * from attendance;
 select * from lectures;
 select * from data_changes;
 
+INSERT INTO student_details (roll_no, fullname, phone_no, password, level) VALUES ('1001', 'Far far', '1234567890', '12314121dad', 1);
 
 desc student_details;
 desc course_details;
@@ -353,20 +354,6 @@ LEFT JOIN
 
 
 
-DELIMITER //
-CREATE TRIGGER lenPhone BEFORE INSERT ON student_details
- FOR EACH ROW BEGIN
-
-   DECLARE numLength INT;
-   SET numLength = (SELECT LENGTH(NEW.password));
-
-   IF (numLength <> 11 ) THEN
-     SET NEW.password = 1/0;
-   END IF;
-
-END;
-//
-DELIMITER ;
 
 -- Create a trigger to set default values for lecture_date and lecture_time
 DELIMITER //

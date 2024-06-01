@@ -27,7 +27,7 @@ const StudentCreate = () => {
       }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': token,
+          'Authorization': `Bearer ${token}`,
         }
       });
 
@@ -42,7 +42,7 @@ const StudentCreate = () => {
         const uploadResponse = await axios.post('http://localhost:5000/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
-            'Authorization': token,
+            'Authorization': `Bearer ${token}`,
           }
         });
 
@@ -61,6 +61,17 @@ const StudentCreate = () => {
 
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
+  };
+
+  const handleTrain = (event) => {
+    event.preventDefault(); 
+    axios.post('http://localhost:5000/train')
+    .then(response => {
+      console.log(response.data);
+    })
+    .catch(error => {
+      console.error('There was an error submitting the form!', error);
+    });
   };
 
   return (
@@ -130,6 +141,9 @@ const StudentCreate = () => {
               <div className='create-button-text'>
                 Create
               </div>
+            </button>
+            <button onClick={handleTrain}>
+              Train
             </button>
           </div>
         </div>

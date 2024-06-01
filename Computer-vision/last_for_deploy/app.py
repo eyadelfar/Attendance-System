@@ -1,17 +1,19 @@
-from flask import Flask, request, redirect, url_for, jsonify
+from flask import Flask, request, jsonify
 from werkzeug.utils import secure_filename
 import os
 import mysql.connector
 from flask_cors import CORS
-from train import Trainer  # Ensure you have the Trainer class implemented
+from train import Trainer
 from recognize import Recognizer
+
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})  # Enable CORS for all routes from the specified origin
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 app.config['UPLOAD_FOLDER'] = 'F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
+
 # Database connection (replace with your own configuration)
 db = mysql.connector.connect(
     host="127.0.0.1",
@@ -46,25 +48,34 @@ def create_student():
     phone_no = data['phone_no']
     password = data['password']
     level = data['level']
+    
+    print(f"Data received: {data}")  # Debugging statement
 
     cursor = db.cursor()
-    cursor.execute("INSERT INTO student_details (roll_no, fullname, phone_no, password, level) VALUES (%s, %s, %s, %s, %s)", 
-                   (roll_no, fullname, phone_no, password, level))
-    db.commit()
+    query = "INSERT INTO student_details (roll_no, fullname, phone_no, password, level) VALUES (%s, %s, %s, %s, %s)"
+    values = (roll_no, fullname, phone_no, password, level)
+    
+    print(f"Executing query: {query} with values {values}")  # Debugging statement
 
-    cursor.execute("SELECT student_id FROM student_details WHERE roll_no = %s", (roll_no,))
-    student_id = cursor.fetchone()[0]
-    cursor.close()
+    try:
+        cursor.execute(query, values)
+        db.commit()
 
-    return jsonify({"status": "success", "student_id": student_id}), 201
+        cursor.execute("SELECT student_id FROM student_details WHERE roll_no = %s", (roll_no,))
+        student_id = cursor.fetchone()[0]
+        cursor.close()
+        
+        return jsonify({"status": "success", "student_id": student_id}), 201
+    except Exception as e:
+        print(f"Error: {e}")  # Debugging statement
+        db.rollback()
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/train', methods=['POST'])
 def train():
-    print("Hello hi")
     trainer = Trainer()
     result = trainer.train()
     return jsonify(result), 200
-
 
 @app.route('/recognize', methods=['POST'])
 def recognize():
