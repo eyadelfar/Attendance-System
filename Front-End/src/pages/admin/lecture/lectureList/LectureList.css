@@ -1,10 +1,8 @@
 /* Default styles */
 .session-list {
-  max-width: 1230px;
   height: 100vh;
-  margin: 40px;
-  margin-left: 200px;
-  margin-top: 80px;
+  left: 23px;
+  position: relative;
   padding: 20px;
   font-family: Poppins, sans-serif;
   background-color: #f2f2f2;
@@ -16,6 +14,7 @@
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
+  overflow: auto;
 }
 
 .lecture-header {
@@ -46,8 +45,8 @@
   width: 100%;
   row-gap: 20px !important;
   table-layout: fixed;
-  border-collapse: collapse; /* Ensures borders collapse for spacing */
-  border-spacing: 10px !important;
+  border-collapse: separate; /* Ensures borders collapse for spacing */
+  border-spacing: 0 30px !important;
 }
 
 .create-lecture {
@@ -90,7 +89,13 @@
   position: relative;
   text-align: center;
   font-family: Poppins, sans-serif;
+  border-spacing: 0 10px;
 }
+
+.row-wrapper {
+  padding-bottom: 10px; /* Adjust this value to set the space between rows */
+}
+
 
 .pen-icon-lecture {
   width: 15%;
@@ -126,160 +131,3 @@
   background-color: #4a9f48;
 }
 
-/* Media Queries for responsiveness */
-
-/* Extra small screens (up to 480px) */
-@media (max-width: 480px) {
-  .session-list {
-    margin: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
-    padding: 10px;
-  }
-
-  .create-lecture {
-    width: 150px;
-    height: 40px;
-    font-size: 12px;
-    padding: 6px 15px;
-  }
-
-  .camera-button-lecture {
-    font-size: 10px;
-    padding: 3px 8px;
-    width: 100px;
-    height: 30px;
-    line-height: 25px;
-    margin-left: 30px;
-  }
-
-  .pen-icon-lecture {
-    width: 10%;
-  }
-
-  .del-icon-lecture {
-    width: 20px;
-    height: 20px;
-  }
-
-  .body-table-lecture {
-    font-size: 14px;
-  }
-}
-
-/* Small screens (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .session-list {
-    margin: 20px;
-    margin-left: 20px;
-    margin-top: 40px;
-    padding: 15px;
-  }
-
-  .create-lecture {
-    width: 180px;
-    height: 45px;
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-
-  .camera-button-lecture {
-    font-size: 11px;
-    padding: 4px 9px;
-    width: 120px;
-    height: 32px;
-    line-height: 28px;
-    margin-left: 40px;
-  }
-
-  .pen-icon-lecture {
-    width: 12%;
-  }
-
-  .del-icon-lecture {
-    width: 25px;
-    height: 25px;
-  }
-
-  .body-table-lecture {
-    font-size: 15px;
-  }
-}
-
-/* Medium screens (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .session-list {
-    margin: 30px;
-    margin-left: 30px;
-    margin-top: 60px;
-    padding: 20px;
-  }
-
-  .create-lecture {
-    width: 190px;
-    height: 48px;
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-
-  .camera-button-lecture {
-    font-size: 12px;
-    padding: 4px 10px;
-    width: 130px;
-    height: 33px;
-    line-height: 29px;
-    margin-left: 50px;
-  }
-
-  .pen-icon-lecture {
-    width: 14%;
-  }
-
-  .del-icon-lecture {
-    width: 27px;
-    height: 27px;
-  }
-
-  .body-table-lecture {
-    font-size: 15px;
-  }
-}
-
-/* Large screens (1025px and above) */
-@media (min-width: 1025px) {
-  .session-list {
-    margin: 40px;
-    margin-left: 175px;
-    margin-top: -25px;
-    padding: 20px;
-  }
-
-  .create-lecture {
-    width: 212px;
-    height: 50px;
-    font-size: 15px;
-    padding: 8px 20px;
-  }
-
-  .camera-button-lecture {
-    font-size: 12px;
-    padding: 4px 10px;
-    width: 150px;
-    height: 35px;
-    line-height: 30px;
-    margin-left: 60px;
-  }
-
-  .pen-icon-lecture {
-    width: 15%;
-  }
-
-  .del-icon-lecture {
-    width: 30px;
-    height: 30px;
-  }
-
-  .body-table-lecture {
-    font-size: 16px;
-  }
-}

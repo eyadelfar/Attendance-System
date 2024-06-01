@@ -9,7 +9,7 @@
   width: 82%; /* Subtract the sidebar width from 100% */
   position: absolute;
   top: 0;
-  left: 250px; /* Adjust according to your sidebar width */
+  left: 200px; /* Adjust according to your sidebar width */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */

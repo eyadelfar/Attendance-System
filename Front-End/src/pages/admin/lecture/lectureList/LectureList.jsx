@@ -103,40 +103,54 @@ function LectureList(props) {
     </tr>
   </thead>
   <tbody className="body-table-lecture">
-          {lecture.map((lectures, index) => (
-            <tr key={index}>
-               <td> <div className="image-container">
-             <img src={elipse} alt="Image" />
-             <span>{index+1}</span>
-             </div>
-           </td>
-              <td>{moment(lectures.lecture_date).format('YYYY-MM-DD')}</td>
-              <td>{lectures.lecture_time}</td>
-              <td>
-              {index === lecture.length - 1 && (
-                  <button className="camera-button-lecture">
-                    Open Camera
-                    <img className="camera-icon-lecture" src={camera} />
-                  </button>
-                )}
-              </td>
-              <td>
-              <a href="#" onClick={() => handleEdit(lectures)}>
-                  <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
-                </a> 
-                    <button
-                    className="delete-course"
-                    onClick={() => {
-                      handleDeleteSemester(lectures.lecture_id);
-                      window.location.reload();
-                    }}
-                  >
-                    <img className="del-icon-course" src={Delete} />
-                  </button>
-                </td>
-            </tr>
-          ))}
-        </tbody>
+  {lecture.map((lectures, index) => (
+    <tr key={index}>
+      <td>
+        <div className="row-wrapper">
+          <div className="image-container">
+            <img src={elipse} alt="Image" />
+            <span>{index + 1}</span>
+          </div>
+        </div>
+      </td>
+      <td>
+        <div className="row-wrapper">
+          {moment(lectures.lecture_date).format('YYYY-MM-DD')}
+        </div>
+      </td>
+      <td>
+        <div className="row-wrapper">{lectures.lecture_time}</div>
+      </td>
+      <td>
+        <div className="row-wrapper">
+          {index === lecture.length - 1 && (
+            <button className="camera-button-lecture">
+              Open Camera
+              <img className="camera-icon-lecture" src={camera} />
+            </button>
+          )}
+        </div>
+      </td>
+      <td>
+        <div className="row-wrapper">
+          <a href="#" onClick={() => handleEdit(lectures)}>
+            <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
+          </a>
+          <button
+            className="delete-course"
+            onClick={() => {
+              handleDeleteSemester(lectures.lecture_id);
+              window.location.reload();
+            }}
+          >
+            <img className="del-icon-course" src={Delete} />
+          </button>
+        </div>
+      </td>
+    </tr>
+  ))}
+</tbody>
+
       </table>
     </div>
   );

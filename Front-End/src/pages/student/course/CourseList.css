@@ -39,8 +39,8 @@
   width: 100%;
    row-gap: 20px !important;
    table-layout: fixed; 
-   border-collapse: collapse; /* Ensures borders collapse for spacing */
-   border-spacing: 10px !important;
+   border-collapse: separate;
+  border-spacing: 0 30px;
  }
 
 
