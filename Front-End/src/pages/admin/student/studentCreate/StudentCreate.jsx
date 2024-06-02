@@ -131,13 +131,13 @@ const StudentCreate = () => {
                             />
                         </div>
                     </div>
-                    {/* <div >
+                    <div >
                         <button id='edit-create-button' onClick={handleSaveChanges}>
                             <div className='create-button-text'>
                                 Create
                                 </div>
                         </button>
-                    </div> */}
+                    </div> 
                 </div>
             </div>
             
