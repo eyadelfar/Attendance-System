@@ -51,8 +51,8 @@ const AdminSettings = () => {
 
 
   return (
-    <div className="account-settings-container">
-      <h1 id='adminsetting-header'>Settings</h1>
+    <div id="account-settings-container">
+      <h1 id='admin-settings-top-header'>Settings</h1>
       <h3 id='admin-container-header'>Edit Profile</h3>
           
       <div id="admin-setting-card">
@@ -72,7 +72,7 @@ const AdminSettings = () => {
               </div>
                   
               <div className="admin-settings-form-field">
-                <label htmlFor="firstName">Full Name:</label>
+                <label htmlFor="firstName" className="admin-settings-form-label">Full Name:</label>
                 <input 
                     type="text" 
                     id="firstName" 
@@ -84,7 +84,7 @@ const AdminSettings = () => {
               </div>
 
               <div className="admin-settings-form-field">
-                <label htmlFor="lastName">Username:</label>
+                <label htmlFor="lastName" className="admin-settings-form-label">Username:</label>
                 <input 
                   type="text" 
                   id="lastName" 
@@ -96,7 +96,7 @@ const AdminSettings = () => {
               </div>
 
               <div className="admin-settings-form-field">
-                <label htmlFor="oldPassword">Old Password:</label>
+                <label htmlFor="oldPassword" className="admin-settings-form-label">Old Password:</label>
                 <input
                   type="password"
                   id="oldPassword" 
@@ -108,7 +108,7 @@ const AdminSettings = () => {
               </div>
 
               <div className="admin-settings-form-field">
-                <label htmlFor="newPassword">New Password:</label>
+                <label htmlFor="newPassword" className="admin-settings-form-label">New Password:</label>
                 <input
                     type="password"
                     id="newPassword" 
