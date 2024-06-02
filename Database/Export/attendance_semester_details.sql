@@ -35,7 +35,7 @@ CREATE TABLE `semester_details` (
   KEY `fk_faculty_id` (`faculty_id`),
   CONSTRAINT `fk_course_session_id` FOREIGN KEY (`course_id`) REFERENCES `course_details` (`course_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_faculty_id` FOREIGN KEY (`faculty_id`) REFERENCES `faculty_details` (`faculty_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `semester_details` (
 
 LOCK TABLES `semester_details` WRITE;
 /*!40000 ALTER TABLE `semester_details` DISABLE KEYS */;
-INSERT INTO `semester_details` VALUES (1,2024,'Spring',1,2),(2,2024,'Spring',2,2),(3,2024,'Fall',3,1),(4,2024,'Fall',4,1);
+INSERT INTO `semester_details` VALUES (34,2024,'fall',37,38),(35,2025,'spring',38,38),(36,2024,'fall',1,38),(37,2023,'fall',1,38);
 /*!40000 ALTER TABLE `semester_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -111,4 +111,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:56

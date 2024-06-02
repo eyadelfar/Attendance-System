@@ -17,8 +17,8 @@ INSERT INTO session_details (year, term, start_date, end_date, course_id)
 VALUES (2024, 'Spring', '2024-01-10', '2024-05-20', 3);
 
 
-INSERT INTO student_details (roll_no, name, phone_no)
-VALUES ('S025', 'swilam', '555-699-5555');
+INSERT INTO student_details (roll_no, fullname, phone_no,password, level)
+VALUES ('S025', 'swilam', '555-699-5555','12332134','4');
 
 INSERT INTO course_registration (course_id, student_id)
 VALUES (2, 1);
@@ -77,7 +77,9 @@ WHERE REFERENCED_TABLE_NAME = 'course_registration';
 -- Step 3: Add new composite primary key constraint
 ALTER TABLE course_registration
 drop column course_id;
+CREATE DATABASE attendance;
 
+use attendance;
 select * from student_details;
 select * from course_details;
 select * from course_registration;
@@ -86,7 +88,19 @@ select * from semester_details;
 select * from attendance;
 select * from lectures;
 select * from data_changes;
+
+INSERT INTO semester_details (year, term, course_id, faculty_id) VALUES (2024, 'fall', 1, 38);
+
+desc student_details;
+desc course_details;
+desc course_registration;
+desc faculty_details;
+desc semester_details;
+desc attendance;
 desc lectures;
+desc data_changes;
+
+
 ALTER TABLE faces MODIFY COLUMN encoding LONGBLOB;
 ALTER TABLE attendance MODIFY COLUMN timestamp datetime;
 
@@ -151,6 +165,341 @@ FOREIGN KEY (faculty_id)
 REFERENCES faculty_details(faculty_id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
+
+use attendance;
+SELECT sd.student_id,
+sd.roll_no,
+sd.fullname As student_name,
+cd.course_id,
+cd.code as course_code,
+cd.title as course_title,
+cd.credit,
+sem.year,
+sem.term
+FROM student_details sd 
+JOIN course_registration cr ON sd.student_id = cr.student_id
+JOIN semester_details sem ON cr.semester_id = sem.semester_id
+JOIN course_details cd ON sem.course_id = cd.course_id;
+
+select * from course_registration;
+
+SELECT l.lecture_id,
+l.lecture_date,
+l.lecture_time,
+fd.fullname As faculty_name,
+cd.code as course_code,
+cd.title as course_title
+FROM lectures l
+JOIN course_details cd ON l.course_id = cd.course_id
+JOIN faculty_details fd ON l.semester_id = cd.semester_id
+WHERE l.semester_id = 34;
+
+select * from attendance;
+SELECT a.attendance_id,
+sd.roll_no,
+sd.fullname As student_name,
+a.status
+FROM attendance a
+JOIN student_details sd ON a.student_id = sd.student_id
+WHERE a.lecture_id = 35;
+
+SELECT fd.faculty_id,
+fd.fullname As faculty_name,
+cd.course_id,
+cd.code as course_code,
+cd.title as course_title,
+sem.year,
+sem.term
+FROM faculty_details fd 
+JOIN semester_details sem ON fd.semester_id = sem.semester_id
+JOIN course_details cd ON sem.course_id = cd.course_id;
+
+
+drop database attendance;
+
+select * from student_details;
+
+
+-- --
+drop view student_summary;
+drop view course_summary;
+drop view faculty_summary;
+drop view attendance_summary;
+drop view semester_overview;
+
+SELECT * FROM course_registration WHERE student_id IN (321658, 321659);
+
+SELECT * FROM semester_details WHERE semester_id IN (SELECT semester_id FROM course_registration WHERE student_id IN (321658, 321659));
+
+
+select * from student_summary;
+select * from course_summary;
+select * from faculty_summary;
+select * from attendance_summary;
+select * from semester_overview;
+
+CREATE OR REPLACE VIEW attendance_summary AS
+SELECT 
+    a.attendance_id,
+    a.student_id,
+    a.course_id,
+    a.semester_id,
+    a.timestamp,
+    a.status,
+    a.lecture_id,
+    l.lecture_date,
+    l.lecture_time,
+    cd.code AS course_code,
+    cd.title AS course_title
+FROM 
+    attendance a
+LEFT JOIN 
+    lectures l ON a.lecture_id = l.lecture_id
+LEFT JOIN 
+    course_details cd ON a.course_id = cd.course_id;
+CREATE OR REPLACE VIEW course_summary AS
+SELECT 
+    cd.course_id,
+    cd.code,
+    cd.title,
+    cd.credit,
+    smd.semester_id,
+    fd.faculty_id,
+    fd.fullname AS faculty_name,
+    COUNT(DISTINCT cr.student_id) AS registered_students
+FROM 
+    course_details cd
+LEFT JOIN 
+    semester_details smd ON cd.course_id = smd.course_id
+LEFT JOIN 
+    faculty_details fd ON smd.faculty_id = fd.faculty_id
+LEFT JOIN 
+    course_registration cr ON smd.semester_id = cr.semester_id
+GROUP BY 
+    cd.course_id, cd.code, cd.title, cd.credit, smd.semester_id, fd.faculty_id, fd.fullname;
+CREATE OR REPLACE VIEW faculty_summary AS
+SELECT 
+    fd.faculty_id,
+    fd.username,
+    fd.fullname AS faculty_name
+FROM 
+    faculty_details fd;
+CREATE OR REPLACE VIEW semester_overview AS
+SELECT 
+    smd.semester_id,
+    smd.year,
+    smd.term,
+    cd.course_id,
+    cd.code,
+    cd.title,
+    fd.faculty_id,
+    fd.fullname AS faculty_name,
+    COUNT(DISTINCT cr.student_id) AS registered_students
+FROM 
+    semester_details smd
+LEFT JOIN 
+    course_details cd ON smd.course_id = cd.course_id
+LEFT JOIN 
+    faculty_details fd ON smd.faculty_id = fd.faculty_id
+LEFT JOIN 
+    course_registration cr ON smd.semester_id = cr.semester_id
+GROUP BY 
+    smd.semester_id, smd.year, smd.term, cd.course_id, cd.code, cd.title, fd.faculty_id, fd.fullname;
+
+CREATE OR REPLACE VIEW student_summary AS
+SELECT 
+    sd.student_id,
+    sd.roll_no,
+    sd.fullname AS student_name,
+    sd.phone_no,
+    sd.level,
+    cr.semester_id,
+    cd.course_id,
+    cd.code AS course_code,
+    cd.title AS course_title,
+    smd.year,
+    smd.term
+FROM 
+    student_details sd
+LEFT JOIN 
+    course_registration cr ON sd.student_id = cr.student_id
+LEFT JOIN 
+    semester_details smd ON cr.semester_id = smd.semester_id
+LEFT JOIN 
+    course_details cd ON smd.course_id = cd.course_id;
+CREATE OR REPLACE VIEW lecture_summary AS
+SELECT 
+    l.lecture_id,
+    l.semester_id,
+    l.lecture_date,
+    l.lecture_time,
+    l.course_id,
+    cd.code AS course_code,
+    cd.title AS course_title
+FROM 
+    lectures l
+LEFT JOIN 
+    course_details cd ON l.course_id = cd.course_id;
+    
+CREATE OR REPLACE VIEW course_registration_summary AS
+SELECT 
+    cr.student_id,
+    cr.semester_id,
+    sd.roll_no,
+    sd.fullname AS student_name,
+    sd.phone_no,
+    sd.level,
+    cd.course_id,
+    cd.code AS course_code,
+    cd.title AS course_title,
+    smd.year,
+    smd.term
+FROM 
+    course_registration cr
+LEFT JOIN 
+    student_details sd ON cr.student_id = sd.student_id
+LEFT JOIN 
+    semester_details smd ON cr.semester_id = smd.semester_id
+LEFT JOIN 
+    course_details cd ON smd.course_id = cd.course_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---------------------------
+CREATE VIEW attendance_summary AS
+SELECT 
+    a.attendance_id,
+    a.student_id,
+    a.course_id,
+    a.semester_id,
+    a.timestamp,
+    a.status,
+    a.lecture_id,
+    l.lecture_date,
+    l.lecture_time,
+    cd.code AS course_code,
+    cd.title AS course_title
+FROM 
+    attendance a
+LEFT JOIN 
+    lectures l ON a.lecture_id = l.lecture_id
+LEFT JOIN 
+    semester_details smd ON a.semester_id = smd.semester_id
+LEFT JOIN 
+    course_details cd ON a.course_id = cd.course_id;
+
+CREATE VIEW course_summary AS
+SELECT 
+    cd.course_id,
+    cd.code,
+    cd.title,
+    cd.credit,
+    smd.semester_id,
+    fd.faculty_id,
+    fd.fullname AS faculty_name,
+    COUNT(DISTINCT cr.student_id) AS registered_students
+FROM 
+    course_details cd
+LEFT JOIN 
+    semester_details smd ON cd.course_id = smd.course_id
+LEFT JOIN 
+    faculty_details fd ON smd.faculty_id = fd.faculty_id
+LEFT JOIN 
+    course_registration cr ON smd.semester_id = cr.semester_id
+GROUP BY 
+    cd.course_id, cd.code, cd.title, cd.credit, smd.semester_id, fd.faculty_id, fd.fullname;
+
+CREATE VIEW faculty_summary AS
+SELECT 
+    fd.faculty_id,
+    fd.username,
+    fd.fullname AS faculty_name
+FROM 
+    faculty_details fd
+GROUP BY
+    fd.faculty_id, fd.username, fd.fullname;
+
+select * from semester_overview;
+CREATE VIEW semester_overview AS
+SELECT 
+    smd.semester_id,
+    smd.year,
+    smd.term,
+    cd.course_id,
+    cd.code,
+    cd.title,
+    fd.faculty_id,
+    fd.fullname AS faculty_name,
+    COUNT(DISTINCT cr.student_id) AS registered_students
+FROM 
+    semester_details smd
+LEFT JOIN 
+    course_details cd ON smd.course_id = cd.course_id
+LEFT JOIN 
+    faculty_details fd ON smd.faculty_id = fd.faculty_id
+LEFT JOIN 
+    course_registration cr ON smd.semester_id = cr.semester_id
+GROUP BY 
+    smd.semester_id, smd.year, smd.term, cd.course_id, cd.code, cd.title, fd.faculty_id, fd.fullname ;
+
+
+CREATE VIEW student_summary AS
+SELECT 
+    sd.student_id,
+    sd.roll_no,
+    sd.fullname AS student_name,
+    sd.phone_no,
+    sd.level,
+    cr.semester_id,
+    cd.course_id,
+    cd.code AS course_code,
+    cd.title AS course_title,
+    smd.year,
+    smd.term
+FROM 
+    student_details sd
+LEFT JOIN 
+    course_registration cr ON sd.student_id = cr.student_id
+LEFT JOIN 
+    semester_details smd ON cr.semester_id = smd.semester_id
+LEFT JOIN 
+    course_details cd ON smd.course_id = cd.course_id;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

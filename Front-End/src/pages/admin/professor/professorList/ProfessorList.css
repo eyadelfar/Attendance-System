@@ -16,7 +16,7 @@
   user-select: none; /* Standard syntax */
 }
 
-h1{
+.professor-header-admin{
   left: 30px;
   position: relative;
 }

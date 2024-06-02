@@ -103,7 +103,7 @@ const SideBar = () => {
                 <span className="link-text">Professors</span>
               </NavLink>
             )}
-            {isRoleAdmin && (
+            {/* {isRoleAdmin && (
               <NavLink to="/LectureList" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                 <span className="icon">
                   <img src={session} alt="session" style={{ marginRight: '15px' }} />
@@ -118,7 +118,7 @@ const SideBar = () => {
                 </span>
                 <span className="link-text">Lectures</span>
               </NavLink>
-            )}
+            )} */}
             {isRoleAdmin && (
               <NavLink to="/register" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                 <span className="icon">

@@ -46,7 +46,7 @@ CREATE TABLE `attendance` (
   CONSTRAINT `fk_attendance_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_session_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (2,2,'2024-05-04 21:13:00','joined',1,10,1),(2,2,'2024-05-04 21:13:03','joined',2,11,1),(2,2,'2024-05-04 21:13:27','joined',3,12,1),(2,2,'2024-05-04 21:13:54','joined',4,13,1);
+INSERT INTO `attendance` VALUES (37,34,'2024-06-01 03:45:43','joined',1,44,35),(37,34,'2024-06-01 04:07:03','joined',2,45,35),(37,34,'2024-06-01 04:07:59','joined',3,46,35),(37,34,'2024-06-01 04:11:38','joined',4,47,35);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -122,4 +122,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:57

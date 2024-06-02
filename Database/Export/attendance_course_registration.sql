@@ -39,7 +39,7 @@ CREATE TABLE `course_registration` (
 
 LOCK TABLES `course_registration` WRITE;
 /*!40000 ALTER TABLE `course_registration` DISABLE KEYS */;
-INSERT INTO `course_registration` VALUES (1,1),(1,2),(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(5,1),(5,2),(5,3);
+INSERT INTO `course_registration` VALUES (3,34),(321658,34),(321659,34);
 /*!40000 ALTER TABLE `course_registration` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -106,4 +106,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-07 19:32:08
+-- Dump completed on 2024-06-01 23:50:56

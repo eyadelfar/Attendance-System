@@ -43,7 +43,8 @@
 
 .create-student {
  position: relative;
- left: 700px;
+ left: 830px;
+ top: -29px;
   color: #FFFFFF;
   background-color: #4A9F48;
   border: none;
@@ -61,6 +62,25 @@
 
 .create-student:hover {
   background-color: #3d8742; /* Darken button on hover */
+}
+.train-student{
+
+  position: relative;
+  left: 530px;
+  top: 20px;
+   color: #FFFFFF;
+   background-color: #395986;
+   border: none;
+   font-size: 15px;
+   cursor: pointer;
+   border-radius: 25px;
+   text-align: center;
+   padding: 8px 20px;
+   width: 212px;
+   height: 50px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
 }
 
 .head {

@@ -60,7 +60,7 @@ function ProfessorsList(props) {
   return (
     <div className="professors-list">
      <div className='header'>
-      <h1>Professors</h1>
+      <h1 className='professor-header-admin'>Professors</h1>
       <div>
       <a href="/ProfessorCreate">
       <button className='button1' >

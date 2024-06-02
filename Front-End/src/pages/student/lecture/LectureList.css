@@ -1,15 +1,17 @@
 .lecture-list-student {
-  max-width: 1230px;
+
   height: 100vh;
-  margin: 40px; 
-  margin-left: 200px;
-  margin-top: 80px;
+
+
+  left: 23px;
+  position: relative;
   padding: 20px;
   font-family: poppins;
   background-color: #F2F2F2;
   border-collapse: collapse;
+  overflow: auto;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
   border-bottom: none; /* Adjust border style and color */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -28,7 +30,7 @@
   user-select: none; /* Standard syntax */
 }
 .lecture-name-student{
-  right: 340px;
+  right: 540px;
   color: #002252;
   position: relative;
 }
