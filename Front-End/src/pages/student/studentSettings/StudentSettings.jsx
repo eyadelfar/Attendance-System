@@ -51,81 +51,90 @@ const StudentSettings = () => {
 
 
   return (
-    <div className="account-settings-container">
-        <h1 id='studentsetting-header'>Settings</h1>
+    <div id="student-settings-container">
+        <h1 id='student-settings-top-header'>Settings</h1>
         <h3 id='student-container-header'>Edit Profile</h3>
         
-        <div className="parent-div">
+        <div id="student-setting-card">
 
-            <div className="account-settings-profile">
-                    <img className='student-pic' src={StudentAvatar} alt="StudentAvatar"  />
-                    <div >
-                        <h2 className="student-name" >{studentData.fullname}</h2>
-                    </div>
-                    <h3 className="left-container-text">{studentData.roll_no}</h3>
-                    <img className='phone-pic' src={phone} alt="StudentAvatar"  />
-                    <div>  
-                    <h4 className="left-container-phone">{studentData.phone_no}</h4>
-                    </div>
-                    <div>
-                    <h5 className="left-container-text-2">Level :  {studentData.level}</h5>
-                    </div>
+            <div id="student-settings-profile">
+                <img id='student-pic' src={StudentAvatar} alt="StudentAvatar"  />
+                <div >
+                    <h2 id="student-name" >{studentData.fullname}</h2>
+                </div>
+                <h3 id="student-roll">{studentData.roll_no}</h3>
+                <img id='phone-pic' src={phone} alt="StudentAvatar"  />
+                <div>  
+                  <h4 id="student-phone">{studentData.phone_no}</h4>
+                </div>
+                <div>
+                  <h5 id="role">Level :  {studentData.level}</h5>
+                </div>
             </div>
             
-            <div className="account-settings-form">
-                <div className='all-forms-col'>  
-                    <div className='all-forms'>
-                        <div className="account-settings-header">
-                            <h1>Account Settings</h1>
+            <div id="student-settings-form-parent">
+                <div id='student-settings-form-col'>  
+                    <div id='student-settings-form'>
+                        <div id="student-settings-header">
+                            <h1>Student Settings</h1>
                         </div>
                     
-                        <div className="form-field">
-                            <label htmlFor="firstName">Full Name </label>
-                            <input type="text" id="firstName" placeholder= {studentData.fullname} 
-                            
-                            value={fullname}
-                            onChange={(e) => setFullname(e.target.value)}
+                        <div className="student-settings-form-field">
+                            <label htmlFor="firstName" className="student-settings-form-label">Full Name </label>
+                            <input 
+                              type="text" 
+                              id="firstName" 
+                              className='student-settings-input' 
+                              placeholder= {studentData.fullname}
+                              value={fullname}
+                              onChange={(e) => setFullname(e.target.value)}
                             />
                         </div>
 
-                        <div className="form-field">
-                            <label htmlFor="lastName">Phone Number </label>
-                            <input type="text" id="lastName" placeholder={studentData.phone_no} 
+                        <div className="student-settings-form-field">
+                            <label htmlFor="lastName" className="student-settings-form-label">Phone Number </label>
+                            <input 
+                              type="text" 
+                              id="lastName" 
+                              className='student-settings-input' 
+                              placeholder={studentData.phone_no} 
                               value={phone_no}
                               onChange={(e) => setPhone_no(e.target.value)}
                             />
                         </div>
 
-                        <div className="form-field">
-                            <label htmlFor="oldPassword">Old Password </label>
+                        <div className="student-settings-form-field">
+                            <label htmlFor="oldPassword" className="student-settings-form-label">Old Password </label>
                             <input
-                            type="password"
-                            id="oldPassword"
-                            placeholder='Enter Your Old Password'
-                            value={passwordOld}
-                            onChange={(e) => setPasswordOld(e.target.value)}
+                              type="password"
+                              id="oldPassword"
+                              className='student-settings-input' 
+                              placeholder='Old Password'
+                              value={passwordOld}
+                              onChange={(e) => setPasswordOld(e.target.value)}
                             />
                         </div>
      
-                        <div className="form-field">
-                            <label htmlFor="newPassword">New Password:</label>
+                        <div className="student-settings-form-field">
+                            <label htmlFor="newPassword" className="student-settings-form-label">New Password:</label>
                             <input
-                            type="password"
-                            id="newPassword"
-                            placeholder='Enter Your New Password'
-                            onKeyDown={(event) => {
-                              if (event.key === 'Enter') {
-                                handleSaveChanges();
-                                window.location.reload();
-                              }
-                            }}
-                            value={passwordNew}
-                            onChange={(e) => setPasswordNew(e.target.value)}
+                              type="password"
+                              id="newPassword"
+                              className='student-settings-input' 
+                              placeholder='New Password'
+                              onKeyDown={(event) => {
+                                if (event.key === 'Enter') {
+                                  handleSaveChanges();
+                                  window.location.reload();
+                                }
+                              }}
+                              value={passwordNew}
+                              onChange={(e) => setPasswordNew(e.target.value)}
                             />
                         </div>
                     </div>
                     <div >
-                        <button className='save-button' onClick={() => {
+                        <button id='student-settings-save-button' onClick={() => {
                             handleSaveChanges();
                             window.location.reload();
                             }}>

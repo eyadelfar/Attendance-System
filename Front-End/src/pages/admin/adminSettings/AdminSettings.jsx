@@ -51,12 +51,12 @@ const AdminSettings = () => {
 
 
   return (
-    <div id="account-settings-container">
+    <div id="admin-settings-container">
       <h1 id='admin-settings-top-header'>Settings</h1>
       <h3 id='admin-container-header'>Edit Profile</h3>
           
       <div id="admin-setting-card">
-        <div id="account-settings-profile">
+        <div id="admin-settings-profile">
           <img id='admin-pic' src={AdminAvatar} alt="AdminAvatar"  />
           <div >
             <h2 id="admin-name">{professorData.fullname}</h2>
@@ -68,7 +68,7 @@ const AdminSettings = () => {
           <form id='admin-settings-form-col'>  
             <div id='admin-settings-form'>
               <div id="admin-settings-header">
-                <h1>Account Settings</h1>
+                <h1>Admin Settings</h1>
               </div>
                   
               <div className="admin-settings-form-field">
