@@ -57,15 +57,15 @@ const StudentEdit = () => {
   return (
     <div className="account-settings-container">
         <h1 className='students-main-header'>Students</h1>
-            <div className="create-form">
-                <div className='all-forms-col'>  
-                    <div className='all-forms'>
+            <div className="edit-form-student">
+                <div className='all-forms-col-edit'>  
+                    <div className='all-forms-edit'>
                         <div className="student-header-of-form">
                             <h1>Edit Student</h1>
                         </div>
                     
-                        <div className="form-field">
-                            <label htmlFor="firstName">Student Name <span className="mandatory">*</span></label>
+                        <div className="form-field-edit">
+                            <label className='first-name-label' htmlFor="firstName">Student Name <span className="mandatory">*</span></label>
                             <input type="text" id="Student-Name"  placeholder={student.fullname} 
                              value={fullname}
                              onChange={(e) => setFullname(e.target.value)}
@@ -73,7 +73,7 @@ const StudentEdit = () => {
                             />
                         </div>
 
-                        <div className="form-field">
+                        <div className="form-field-edit">
                             <label htmlFor="lastName">Old Password <span className="mandatory">*</span></label>
                             <input type="password" id="Student-Old Password"   placeholder='Enter your Old Password'
                             value={passwordOld}
@@ -81,14 +81,15 @@ const StudentEdit = () => {
                             />
                         </div>
                            
-                             <div className="form-field">
-                                <label htmlFor="lastName">New Password <span className="mandatory">*</span></label>
-                                <input type="password" id="Student-New Password"  placeholder='Enter your New Password'
-                                value={passwordNew}
-                                onChange={(e) => setPasswordNew(e.target.value)}
-                                />
-                            </div>
+                        <div className="form-field-edit">
+                            <label htmlFor="lastName">New Password <span className="mandatory">*</span></label>
+                            <input type="password" id="Student-New Password"  placeholder='Enter your New Password'
+                            value={passwordNew}
+                            onChange={(e) => setPasswordNew(e.target.value)}
+                            />
+                        </div>
 
+                    
                         <div className="id-level-form">
                             <div>
                                 <label >Student ID</label> 
@@ -98,7 +99,7 @@ const StudentEdit = () => {
                                 />
                             </div>
                             <div className='level-sperate'>
-                                <label className=''>Level</label> 
+                                <label id='student-edit-form-level-input'>Level</label> 
                                 <select className='level-select'
                                 value={level}
                                 onChange={(e) => setLevel(e.target.value)}
@@ -113,7 +114,7 @@ const StudentEdit = () => {
                            
                         </div>
 
-                        <div className="form-field-phone">
+                        <div className="form-field-edit">
                             <label htmlFor="lastName">Phone Number</label>
                             <input type="text" id="Student-No"  placeholder={student.phone_no}  
                             value={phone_no}
