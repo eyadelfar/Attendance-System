@@ -75,11 +75,11 @@ const StudentCreate = () => {
   };
 
   return (
-    <div className="account-settings-container">
+    <div className="create-student-container">
         <h1 className='students-main-header-create'>Students</h1>
             <div className="create-form-student">
-                <div className='all-forms-col'>  
-                    <div className='all-forms'>
+                <div className='all-forms-col-create'>  
+                    <div className='all-forms-create-student'>
                         <div className="student-header-of-form">
                             <h1>Create Student</h1>
                         </div>
@@ -100,7 +100,7 @@ const StudentCreate = () => {
               />
             </div>
 
-            <div className="id-level-form">
+            <div className="id-level-form-create-student">
               <div>
                 <label>Student ID </label>
                 <input type="text" id="Student-ID" placeholder='Enter The ID'

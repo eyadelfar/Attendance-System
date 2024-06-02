@@ -1,9 +1,9 @@
 .students-main-header-create{
-    position: relative;
-    text-indent: 6.9%;
-    font-size: 45px;
-    top: -40px;
-    font-weight: 400;
+  position: relative;
+  text-indent: 5.9%;
+  font-size: 45px;
+  font-weight: 400;
+  bottom: 64px;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 and IE11 */
@@ -29,16 +29,12 @@
 
 
   .parent-div {
-    display: flex;
+    background-color: #ffffff;
+    justify-content: center;
     justify-items:stretch;
-    /* background-color: #BEBEBE; */
-    margin-left: 20%;
-    margin-right: 12%;
-    /* height: 70vh;  */
-    height: 1000px; 
+    margin: -2% 12% 0 20%;
+    display:grid;
     width: 70vw; 
-    /* flex-direction: row; */
-    margin-top: -1.5%;
     
   }
 
@@ -61,22 +57,22 @@
   }
   .create-form-student {
     background-color: #ffffff;
-    margin: 1% 1% 25% 12%; /* top right bottom left */
+    /* margin: -7% 1% 0% 10%; */
     width: 75%;
     justify-content: center;
-    display:grid;
-    justify-items:stretch;
-    height: 80vh; 
-    width: 80vw; 
+    display: grid;
+    justify-items: stretch;
+    height: 92vh;
+    width: 80vw;
+    bottom: 80px;
     position: relative;
-    left: -8vh;
-    bottom: 8vh;
+    left: 6vh;
     
     
   }
   
 
-  .all-forms{
+  .all-forms-create-student{
     justify-content: space-between;
     flex-direction: column;
     display: flex;
@@ -142,7 +138,7 @@
   }
 
 
-  .id-level-form input {
+  .id-level-form-create-student input {
     background-color: #f3f3f3;
     height: 4vh;
     border-radius: 10px ;
@@ -153,14 +149,14 @@
 
   }
 
-  .id-level-form label {
+  .id-level-form-create-student label {
     display: flex;
     position: relative;
     flex-direction: column;
 
   }
   
-  .id-level-form {
+  .id-level-form-create-student {
     display: flex;
     flex-direction: row;
     padding: 5%;
@@ -176,13 +172,13 @@
     border: #395986;
     font-size: 20px;
     cursor: pointer;
-    width: 50%;  
-    display: flex; /* Use flexbox for layout */
-    border-radius: 25px; 
+    width: 35%;
+    display: flex;
+    border-radius: 25px;
     text-align: right;
-    padding: 5%;
+    padding: 2%;
     justify-content: center;
-    left: 162%;
+    left: 102%;
     top: -19vh;
   }
 
@@ -193,11 +189,13 @@
   }
 
 
-  .all-forms-col{
-    justify-content: space-around;
+  .all-forms-col-create{
+    justify-content: space-between;
     flex-direction: column;
     display: flex;
-    margin-bottom: 5%;
+    font-size: 18px;
+    font-weight:200;
+    background-attachment: fixed;
    
   }
 
