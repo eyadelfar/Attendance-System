@@ -62,13 +62,13 @@ const LectureCreate = () => {
         <h1 className='create-lecture-main-header'>Lectures</h1>
         <h2 className='course-name-header'>{courses.title}</h2>
         </div>
-            <div className="create-form">
+            <div className="create-form-lecture">
                 <div className='all-forms-col'>  
                     <div className='all-forms'>
                         <div className="lecture-header-of-form">
                             <h1>Create Lecture</h1>
                         </div>
-                        <div className="form-field-date">
+                        <div className="form-field-date-create">
                             <label htmlFor="lastName">Date <span className='mandatory'>*</span></label>
                             <input type="date" className='date-text'  placeholder='mm/dd/yy' 
                             value={lecture_date}
@@ -97,7 +97,7 @@ const LectureCreate = () => {
             
         </div>
         
-    // </div>
+     </div>
     
   );
 };
