@@ -74,11 +74,6 @@
   width: 100px;
 }
 
-.popup-input[type="text"] {
-  width: calc(100% - 110px);
-  padding: 5px;
-  margin-bottom: 10px;
-}
 
 
 .lecture-header {
