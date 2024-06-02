@@ -1,6 +1,6 @@
-.lecture-main-header{
+.lecture-main-header-edit{
     position: relative;
-    transform: translateX(290%);
+    transform: translateX(20%);
     font-size: 45px;
     top: -50px;
     font-weight: 400;
@@ -10,10 +10,10 @@
     user-select: none; /* Standard syntax */
   }
 
-  .course-name-header{
+  .course-name-header-edit{
     position: relative;
-    top: -4.5vh;
-    left: 75vh;
+    top: -6.5vh;
+    left: 55vh;
     font-weight: bolder;
     font-size: 45px;
     color: #00265c;
@@ -74,19 +74,14 @@
 
   .edit-form {
     background-color: #ffffff;
-    margin: 1%;
-    margin-left: 1%;
-    width: 75%;
+    position: relative;
+    left: 50px;
+    bottom: 68px;
     justify-content: center;
     display:grid;
     justify-items:stretch;
-    margin-left: 20%;
-    margin-right: 12%;
-
-    height: 1000px; 
-    width: 70vw; 
-
-    margin-top: -1.5%;
+    height: 620px; 
+    width: 82vw; 
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 and IE11 */
@@ -183,7 +178,7 @@
     padding: 5%;
     justify-content: center;
     left: 162%;
-    top: 20vh;
+    top: -15vh;
   }
 
 

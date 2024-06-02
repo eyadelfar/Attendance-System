@@ -74,8 +74,8 @@ const LectureEdit = () => {
   return (
     <div className="lecture-edit-header">
         <div className='lecture-headers'>
-        <h1 className='lecture-main-header'>Lectures</h1>
-        <h2 className='course-name-header'>{courses.title}</h2>
+        <h1 className='lecture-main-header-edit'>Lectures</h1>
+        <h2 className='course-name-header-edit'>{courses.title}</h2>
         </div>
             <div className="edit-form">
                 <div className='all-forms-col'>  
