@@ -69,11 +69,13 @@
   font-size: 20px;
   padding: 1% 5%;
 }
+
 #professor-create-button{
   justify-content: right;
   display: flex;
   margin: 10% 0 15%;
 }
+
 #create-button{
   position: relative;
   color: #FFFFFF;
