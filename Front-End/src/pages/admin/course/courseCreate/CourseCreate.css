@@ -1,8 +1,9 @@
 #course-create-header{
   position: relative;
-  text-indent: 19.9%;
+  text-indent: 6.9%;
   font-size: 45px;
-  /* top: -50px; */
+  position: relative;
+  top: -40px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -17,10 +18,11 @@
   justify-content: center;
   display:grid;
   justify-items:stretch;
-  height: 1000px; 
-  width: 70vw; 
+  height: 80vh; 
+  width: 80vw; 
   position: relative;
-  left: 15vh;
+  left: -8vh;
+  bottom: 8vh;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
@@ -33,7 +35,11 @@
   vertical-align:text-middle;
   line-height:auto;
   border-style:hidden;
+  font-size: 3vh;
   outline:none;
+  position: relative;
+  bottom: 4vh;
+  margin-bottom: -9vh;
 }
 
 #course-create-forms-parent{
@@ -56,6 +62,7 @@
   display: flex;
   flex-direction: column;
   padding: 5%;
+
 }
 
 .course-create-form-field input {
@@ -83,7 +90,7 @@
   color: #ffffff;
 }
 
-#term-year-form {
+#term-year-form-create {
   display: flex;
   flex-direction: row;
   padding: 5%;
@@ -94,10 +101,10 @@
   transform: translateX(200px);
 } */
 
-#xxx{
-  transform: translateX(140px);
+#term-year-form-position-create{
+  transform: translateX(45px);
 }
-#term-year-form select {
+#term-year-form-create select {
   background-color: #f3f3f3;
   height: 5vh;
   border-radius: 10px ;
@@ -144,8 +151,8 @@
   /* text-align: right; */
   padding: 5%;
   justify-content: center;
-  left: 190%;
-  top: 22vh;
+  left: 170%;
+  top: 8vh;
   justify-self: left;
 }
 

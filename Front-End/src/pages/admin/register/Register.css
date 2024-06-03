@@ -1,9 +1,8 @@
 .register-list {
-  max-width: 1230px;
-  height: 100vh;
-  margin: 40px; 
-  margin-left: 200px;
-  margin-top: 80px;
+ height: 100vh;
+ left: 20px;
+ bottom: 40px;
+ position: relative;
   padding: 20px;
   font-family: poppins;
   background-color: #F2F2F2;
@@ -41,8 +40,8 @@
   width: 100%;
   row-gap: 20px !important;
   table-layout: fixed; 
-  border-collapse: collapse; /* Ensures borders collapse for spacing */
-  border-spacing: 10px !important;
+  border-collapse: separate;
+  border-spacing: 0 30px;
 }
 
 .register-course{
@@ -103,102 +102,6 @@
   background-color: #CE0000;
 }
 
-@media (max-width: 480px) {
-  .register-list {
-    margin-left: 10px;
-    margin-top: 40px;
-  }
-  .register-header {
-    padding: 10px;
-  }
-  .register-table {
-    font-size: 12px;
-  }
-  .register-course {
-    font-size: 12px;
-    padding: 4px 8px;
-    width: 120px;
-    height: 35px;
-  }
-  .button-register {
-    font-size: 10px;
-    padding: 2px 6px;
-    width: 100px;
-    height: 30px;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 768px) {
-  .register-list {
-    margin-left: 20px;
-    margin-top: 60px;
-  }
-  .register-header {
-    padding: 15px;
-  }
-  .register-table {
-    font-size: 14px;
-  }
-  .register-course {
-    font-size: 14px;
-    padding: 6px 12px;
-    width: 150px;
-    height: 40px;
-  }
-  .button-register {
-    font-size: 12px;
-    padding: 4px 10px;
-    width: 150px;
-    height: 40px;
-  }
-}
-
-@media (min-width: 769px) and (max-width: 1024px) {
-  .register-list {
-    margin-left: 30px;
-    margin-top: 80px;
-  }
-  .register-header {
-    padding: 20px;
-  }
-  .register-table {
-    font-size: 16px;
-  }
-  .register-course {
-    font-size: 16px;
-    padding: 8px 16px;
-    width: 180px;
-    height: 50px;
-  }
-  .button-register {
-    font-size: 14px;
-    padding: 6px 14px;
-    width: 180px;
-    height: 50px;
-  }
-}
-
-@media (min-width: 1025px) {
-  .register-list {
-    margin-left: 175px;
-    margin-top: -25px;
-  }
-  .register-header {
-    padding: 25px;
-  }
-  .register-table {
-    font-size: 18px;
-  }
-  .register-course {
-    font-size: 18px;
-    padding: 10px 20px;
-    width: 161px;
-    height: 45px;
-  }
-  .button-register {
-    font-size: 16px;
-    padding: 5px 18px;
-    width: 160px;
-    height: 45px;
-  }
+.register-table tbody tr{
+  row-gap: 20px;
 }

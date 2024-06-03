@@ -1,20 +1,20 @@
 .course-list-student {
-  max-width: 1230px;
+
   height: 100vh;
-  margin: 40px; 
-  margin-left: 200px;
-  margin-top: 80px;
+  left: 23px;
+  bottom: 35px;
+  position: relative;
   padding: 20px;
   font-family: poppins;
   background-color: #F2F2F2;
   border-collapse: collapse;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-bottom: none; /* Adjust border style and color */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
   user-select: none; /* Standard syntax */
+  overflow: auto;
 }
 .course-header-student {
   display: flex;
@@ -39,8 +39,8 @@
   width: 100%;
    row-gap: 20px !important;
    table-layout: fixed; 
-   border-collapse: collapse; /* Ensures borders collapse for spacing */
-   border-spacing: 10px !important;
+   border-collapse: separate;
+  border-spacing: 0 30px;
  }
 
 

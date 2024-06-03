@@ -3,6 +3,7 @@ import './StudentList.css';
 import Edit from '../../../../pics/edit.png'
  import Delete from '../../../../pics/delete.png'
  import plus from '../../../../pics/plus.png'
+ import setting from '../../../../pics/setting.png'
  import axios from 'axios';
  import { jwtDecode } from 'jwt-decode'
  
@@ -70,8 +71,8 @@ function StudentList(props) {
      <div className='head'>
       <h1>Students</h1>
       <div>
-      <button className='create-student' onClick={handleTrain}>
-      <img className='plus-icon' src={plus} alt={'image'} />
+      <button className='train-student' onClick={handleTrain}>
+      <img className='plus-icon' src={setting} alt={'image'} />
         Train
        
         </button>

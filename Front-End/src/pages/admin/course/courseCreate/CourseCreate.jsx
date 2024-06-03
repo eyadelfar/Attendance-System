@@ -103,14 +103,14 @@ const CourseCreate = () => {
               
             </div>
 
-            <div id="term-year-form">
+            <div id="term-year-form-create">
               <label >Term <span className='mandatory'>*</span></label>
-              <label id='xxx'>Year <span className='mandatory'>*</span></label>
+              <label id='term-year-form-position-create'>Year <span className='mandatory'>*</span></label>
               
             </div>
 
-            <div id='term-year-form'>
-              <select id="term-year-form" value={term}
+            <div id='term-year-form-create'>
+              <select id="term-year-form-create" value={term}
               onChange={(e) => setTerm(e.target.value)} >
                 <option value="text">Select a term</option>
                 <option value="fall">fall</option>
@@ -118,7 +118,7 @@ const CourseCreate = () => {
                 <option value="winter">winter</option>
                 <option value="summer">summer</option>
               </select>
-              <select id="term-year-form" value={year}
+              <select id="term-year-form-create" value={year}
               onChange={(e) => setYear(e.target.value)}>
                 <option value="string">Select a year</option>
                 <option value="2024">2024</option>

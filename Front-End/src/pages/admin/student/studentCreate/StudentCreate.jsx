@@ -75,22 +75,22 @@ const StudentCreate = () => {
   };
 
   return (
-    <div className="account-settings-container">
-      <h1 className='students-main-header'>Students</h1>
-      <div className="create-form">
-        <div className='all-forms-col'>
-          <div className='all-forms'>
-            <div className="student-header-of-form">
-              <h1>Create Student</h1>
-            </div>
-
-            <div className="form-field">
-              <label htmlFor="firstName">Student Name <span className="mandatory">*</span> </label>
-              <input type="text" id="Student-Name" placeholder='Enter The Student Name'
-                value={fullname}
-                onChange={(e) => setFullname(e.target.value)}
-              />
-            </div>
+    <div className="create-student-container">
+        <h1 className='students-main-header-create'>Students</h1>
+            <div className="create-form-student">
+                <div className='all-forms-col-create'>  
+                    <div className='all-forms-create-student'>
+                        <div className="student-header-of-form">
+                            <h1>Create Student</h1>
+                        </div>
+                    
+                        <div className="form-field">
+                            <label htmlFor="firstName">Student Name <span className="mandatory">*</span> </label>
+                            <input type="text" id="Student-Name"  placeholder='Enter The Student Name' 
+                            value={fullname}
+                            onChange={(e) => setFullname(e.target.value)}
+                            />
+                        </div>
 
             <div className="form-field">
               <label htmlFor="lastName">Password  <span className="mandatory">*</span> </label>
@@ -100,7 +100,7 @@ const StudentCreate = () => {
               />
             </div>
 
-            <div className="id-level-form">
+            <div className="id-level-form-create-student">
               <div>
                 <label>Student ID </label>
                 <input type="text" id="Student-ID" placeholder='Enter The ID'
@@ -123,32 +123,28 @@ const StudentCreate = () => {
               </div>
             </div>
 
-            <div className="form-field">
-              <label htmlFor="lastName">Phone Number</label>
-              <input type="text" id="Student-No" placeholder='Enter Phone Number'
-                value={phone_no}
-                onChange={(e) => setPhone_no(e.target.value)}
-              />
+                        <div className="form-field">
+                            <label htmlFor="lastName">Phone Number</label>
+                            <input type="text" id="Student-No"  placeholder='Enter Phone Number'
+                               value={phone_no}
+                               onChange={(e) => setPhone_no(e.target.value)}
+                            />
+                        </div>
+                    </div>
+                    <div >
+                        <button id='edit-create-button' onClick={handleSaveChanges}>
+                            <div className='create-button-text'>
+                                Create
+                                </div>
+                        </button>
+                    </div> 
+                </div>
             </div>
-
-            <div className="form-field">
-              <label htmlFor="file">Student Photo</label>
-              <input type="file" onChange={handleFileChange} />
-            </div>
-          </div>
-          <div>
-            <button id='edit-create-button' onClick={handleSaveChanges}>
-              <div className='create-button-text'>
-                Create
-              </div>
-            </button>
-            <button onClick={handleTrain}>
-              Train
-            </button>
-          </div>
+            
         </div>
-      </div>
-    </div>
+        
+    // </div>
+    
   );
 };
 

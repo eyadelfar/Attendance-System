@@ -1,11 +1,9 @@
 /* Default styles */
 .professors-list {
-  max-width: 1230px;
   height: 100vh;
-  margin: 40px;
-  margin-left: 200px;
-  margin-top: 80px;
-  padding: 20px;
+  bottom: 45px;
+  margin-left: 20px;
+  position: relative;
   font-family: Poppins, sans-serif;
   background-color: #f2f2f2;
   border-collapse: collapse;
@@ -18,12 +16,17 @@
   user-select: none; /* Standard syntax */
 }
 
+.professor-header-admin{
+  left: 30px;
+  position: relative;
+}
+
 .professors-list table {
   width: 100%;
   row-gap: 20px !important;
   table-layout: fixed;
-  border-collapse: collapse; /* Ensures borders collapse for spacing */
-  border-spacing: 10px !important;
+  border-collapse: separate;
+  border-spacing: 0 30px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
@@ -56,11 +59,16 @@
   border-radius: 25px;
   text-align: center;
   padding: 8px 20px;
+  left: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
   line-height: 30px; /* Adjust the line-height to move the text down */
-  margin-bottom: 20px; /* Added margin for spacing */
+  margin-bottom: 10px; /* Added margin for spacing */
+}
+.button1:hover{
+background-color: #4a9f48;
+
 }
 
 .header {
@@ -70,6 +78,9 @@
 
 .professors-list-row {
   background-color: #4a9f48;
+}
+.professors-list tr{
+  margin-bottom: 20px;
 }
 
 .button2 {
@@ -85,7 +96,7 @@
   background-color: transparent; /* Ensure transparency on hover */
 }
 
-.table-body {
+.body-table {
   background-color: white;
   top: 40px;
   position: relative;
@@ -106,105 +117,6 @@
   background-color: #f2f2f2;
 }
 
-/* Media Queries for responsiveness */
 
-/* Extra small screens (up to 480px) */
-@media (max-width: 480px) {
-  .professors-list {
-    margin: 10px;
-    margin-left: 10px;
-    margin-top: 20px;
-    padding: 10px;
-  }
 
-  .button1 {
-    font-size: 12px;
-    padding: 6px 15px;
-  }
 
-  .edit-icon,
-  .delete-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .table-body {
-    font-size: 14px;
-  }
-}
-
-/* Small screens (481px - 768px) */
-@media (min-width: 481px) and (max-width: 768px) {
-  .professors-list {
-    margin: 20px;
-    margin-left: 20px;
-    margin-top: 40px;
-    padding: 15px;
-  }
-
-  .button1 {
-    font-size: 14px;
-    padding: 8px 20px;
-  }
-
-  .edit-icon,
-  .delete-icon {
-    width: 25px;
-    height: 25px;
-  }
-
-  .table-body {
-    font-size: 15px;
-  }
-}
-
-/* Medium screens (769px - 1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .professors-list {
-    margin: 30px;
-    margin-left: 30px;
-    margin-top: 60px;
-    padding: 20px;
-  }
-
-  .button1 {
-    font-size: 14px;
-    padding: 8px 18px;
-  }
-
-  .edit-icon,
-  .delete-icon {
-    width: 25px;
-    height: 25px;
-  }
-
-  .table-body {
-    font-size: 15px;
-  }
-}
-
-/* Large screens (1025px and above) */
-@media (min-width: 1025px) {
-  .professors-list {
-    margin: 40px;
-    margin-left: 175px;
-    margin-top: -25px;
-    padding: 20px;
-  }
-
-  .button1 {
-    font-size: 15px;
-    margin-left: 800px;
-    padding: 8px 20px;
-  }
-
-  .edit-icon,
-  .delete-icon {
-    width: 30px;
-    height: 30px;
-  }
-
-  .table-body {
-    font-size: 16px;
-  }
-}

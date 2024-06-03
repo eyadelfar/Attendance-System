@@ -1,8 +1,8 @@
 #course-edit-header{
   position: relative;
-  text-indent: 19.9%;
+  text-indent: 6.9%;
   font-size: 45px;
-  /* top: -50px; */
+  top: -40px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -17,10 +17,11 @@
   justify-content: center;
   display:grid;
   justify-items:stretch;
-  height: 1000px; 
-  width: 70vw; 
+  height: 80vh; 
+  width: 77vw; 
   position: relative;
-  left: 15vh;
+  left: -8vh;
+  bottom: 8vh;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
@@ -33,7 +34,11 @@
   vertical-align:text-middle;
   line-height:auto;
   border-style:hidden;
+  font-size: 3vh;
   outline:none;
+  position: relative;
+  bottom: 4vh;
+  margin-bottom: -9vh;
 }
 
 #course-edit-forms-parent{
@@ -113,7 +118,7 @@
 } */
 
 #xxx{
-  transform: translateX(140px);
+  transform: translateX(45px);
 }
 
 #term-year-form select {
@@ -145,7 +150,8 @@
     padding: 5%;
     justify-content: center;
     left: 190%;
-    top: 22vh;
+    top: 8vh;
+    justify-self: left;
   }
 
   #edit-course-button:hover{

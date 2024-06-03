@@ -3,7 +3,7 @@
 .page-container {
   display: grid;
   grid-template-columns: 200px 1fr; 
-  grid-template-rows: 50px 1fr; 
+  grid-template-rows: 0px 1fr; 
   grid-template-areas:
     "sidebar top-bar"
     "sidebar container";
