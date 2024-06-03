@@ -1,11 +1,20 @@
 from imports import *
 import numpy as np
+import os
+import cv2
+import pickle
+import numpy as np
+from deepface import DeepFace
+import imgaug.augmenters as iaa
+import random
+import tensorflow as tf
 
+import logging
 class Trainer:
-    def __init__(self, augment=False, save_augments=False, n_samples=2):
-        self.augment = augment
-        self.save_augments = save_augments
-        self.n_samples = n_samples
+    def __init__(self, db_folder='F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'):
+        self.target_image_count = 25
+        self.db_folder = db_folder
+        self.load_encodings()
 
     def load_encodings(self):
         if os.path.exists('F:\\GP\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\known_encodings.pkl'):
@@ -19,6 +28,8 @@ class Trainer:
             self.file_paths = []
 
     def augment_image(self, img):
+        if img is None:
+            raise ValueError("The image read is None, check the file path.")
         seq = iaa.Sequential([
             iaa.Affine(rotate=(-15, 15)),  # Random rotation
             iaa.Fliplr(0.5),  # Horizontal flip
@@ -27,38 +38,45 @@ class Trainer:
             iaa.Affine(scale={"x": (0.9, 1.1), "y": (0.9, 1.1)}),  # Random scaling
             iaa.Affine(shear=(-7, 7))  # Random shear
         ])
-        if self.augment:
-            augmented_img = seq.augment_image(img)
-            return augmented_img
-        else:
-            return img
+        augmented_img = seq(image=img)
+        return augmented_img
 
     def process_folder(self, student_folder):
-        student_id = os.path.basename(student_folder)
         image_files = [os.path.join(student_folder, file) for file in os.listdir(student_folder) if file.lower().endswith(('.png', '.jpg', '.jpeg'))]
         encodings = []
+        images = []
+        
         for img_path in image_files:
             img = cv2.imread(img_path)
-            if self.augment:
-                augmented_images = [img]  # Include original image
-                for _ in range(self.n_samples):  # Generate additional samples
-                    augmented_images.append(self.augment_image(img))
-            else:
-                augmented_images = [img]
+            if img is None:
+                print(f"Warning: Failed to read image at {img_path}")
+                continue
+            images.append((img_path, img))
+            if len(images) >= self.target_image_count:
+                break
 
-            for idx, augmented_img in enumerate(augmented_images):
-                encoding = DeepFace.represent(augmented_img, model_name='Facenet', enforce_detection=False)
-                if encoding:
-                    encodings.append((img_path, encoding[0]['embedding']))
-                    if self.save_augments and self.augment:  # Save augmented images if enabled
-                        filename = os.path.splitext(os.path.basename(img_path))[0]
-                        augmented_filename = f"augmented_{filename}_{idx}.jpg"
-                        cv2.imwrite(os.path.join(student_folder, augmented_filename), augmented_img)
+        # Process original images
+        for img_path, img in images:
+            encoding = DeepFace.represent(img, model_name='Facenet', enforce_detection=False)
+            if encoding:
+                encodings.append((img_path, encoding[0]['embedding']))
+            if len(encodings) >= self.target_image_count:
+                return encodings
 
-        return encodings
+                # Augment if necessary
+        while len(encodings) < self.target_image_count:
+            img_path, img = random.choice(images)
+            augmented_img = self.augment_image(img)
+            augmented_img_path = os.path.join(student_folder, f"augmented_{len(encodings)}.jpg")
+            cv2.imwrite(augmented_img_path, augmented_img)
+            augmented_encoding = DeepFace.represent(augmented_img, model_name='Facenet', enforce_detection=False)
+            if augmented_encoding:
+                encodings.append((augmented_img_path, augmented_encoding[0]['embedding']))
 
-    def train(self, db_folder='F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'):
-        student_folders = [os.path.join(db_folder, folder) for folder in os.listdir(db_folder) if os.path.isdir(os.path.join(db_folder, folder))]
+        return encodings[:self.target_image_count]
+
+    def train(self):
+        student_folders = [os.path.join(self.db_folder, folder) for folder in os.listdir(self.db_folder) if os.path.isdir(os.path.join(self.db_folder, folder))]
 
         self.results = []
         for student_folder in student_folders:
