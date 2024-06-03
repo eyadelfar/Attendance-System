@@ -1,27 +1,8 @@
 from imports import *
-from collections import Counter
-from datetime import datetime
-import cv2
-import os
-import sys
-import tensorflow as tf
-from imports import *
-from datetime import datetime
-import threading
-import numpy as np
-import pickle
-import mysql.connector
-import logging
-from datetime import timedelta
-from collections import Counter
-import os
-import logging
-import tensorflow as tf
-import contextlib
-import sys
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'  # Suppress TensorFlow logging
+import threading, logging, contextlib, sys,warnings
+
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 tf.get_logger().setLevel(logging.ERROR)
-import warnings
 warnings.filterwarnings(action='ignore')
 
 class DummyFile(object):

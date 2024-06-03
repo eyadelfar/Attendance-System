@@ -1,13 +1,5 @@
 from imports import *
-import numpy as np
-import os
-import cv2
-import pickle
-import numpy as np
-from deepface import DeepFace
-import imgaug.augmenters as iaa
-import random
-import tensorflow as tf
+
 
 import logging
 class Trainer:

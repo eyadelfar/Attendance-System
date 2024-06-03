@@ -46,7 +46,7 @@ CREATE TABLE `attendance` (
   CONSTRAINT `fk_attendance_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_session_id` FOREIGN KEY (`semester_id`) REFERENCES `semester_details` (`semester_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_student_id` FOREIGN KEY (`student_id`) REFERENCES `student_details` (`student_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `attendance` (
 
 LOCK TABLES `attendance` WRITE;
 /*!40000 ALTER TABLE `attendance` DISABLE KEYS */;
-INSERT INTO `attendance` VALUES (37,34,'2024-06-01 03:45:43','joined',1,44,35),(37,34,'2024-06-01 04:07:03','joined',2,45,35),(37,34,'2024-06-01 04:07:59','joined',3,46,35),(37,34,'2024-06-01 04:11:38','joined',4,47,35);
+INSERT INTO `attendance` VALUES (37,34,'2024-06-01 03:45:43','joined',1,44,35),(37,34,'2024-06-01 04:07:03','joined',2,45,35),(37,34,'2024-06-01 04:07:59','joined',3,46,35),(37,34,'2024-06-01 04:11:38','joined',4,47,35),(1,34,'2024-06-03 05:45:08','joined',1,86,23),(1,34,'2024-06-03 05:45:10','joined',3,87,23),(1,34,'2024-06-03 05:45:36','joined',2,88,23),(1,34,'2024-06-03 06:35:14','joined',6,89,23),(1,35,'2024-06-03 06:51:02','joined',1,90,23),(1,35,'2024-06-03 06:53:40','joined',3,91,23),(1,35,'2024-06-03 07:19:52','joined',4,92,23),(1,35,'2024-06-03 07:27:22','joined',2,93,23),(1,35,'2024-06-03 07:41:41','joined',6,94,23),(1,36,'2024-06-03 07:50:16','left',1,95,23),(1,36,'2024-06-03 07:50:19','left',2,96,23),(1,35,'2024-06-03 08:58:41','left',1,97,23),(1,35,'2024-06-03 09:04:50','left',4,98,23),(1,35,'2024-06-03 09:05:44','left',3,99,23),(38,35,'2024-06-03 10:44:00','joined',1,100,34),(37,34,'2024-06-03 14:17:51','joined',321666,101,35),(38,35,'2024-06-03 10:59:00','left',1,102,34);
 /*!40000 ALTER TABLE `attendance` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -122,4 +122,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-01 23:50:57
+-- Dump completed on 2024-06-03 22:34:19

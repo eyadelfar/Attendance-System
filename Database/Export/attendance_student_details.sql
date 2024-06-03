@@ -35,7 +35,7 @@ CREATE TABLE `student_details` (
   UNIQUE KEY `roll_no` (`roll_no`),
   UNIQUE KEY `roll_no_2` (`roll_no`),
   UNIQUE KEY `phone_no` (`phone_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=321667 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=321671 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `student_details` (
 
 LOCK TABLES `student_details` WRITE;
 /*!40000 ALTER TABLE `student_details` DISABLE KEYS */;
-INSERT INTO `student_details` VALUES (1,'S003','eyad','01006431232','25507253',1),(2,'20200506','swilam','01068377869','123456789',4),(3,'rgb1','mahmoud ragab','01155559287','12345678',2),(4,'s03','ali','01023571756','123321',4),(5,'s02','ehab','01023571256','123321',4),(6,'qq','bedo','01023576756','qwqwwqq',3),(321665,'1001','Far far','1234567890','12314121dad',1),(321666,'s12','Eyaddd','1110234232','35875658758765',3);
+INSERT INTO `student_details` VALUES (1,'S003','eyad','01006431232','25507253',1),(2,'20200506','swilam','01068377869','123456789',4),(3,'rgb1','mahmoud ragab','01155559287','12345678',2),(4,'s03','ali','01023571756','123321',4),(5,'s02','ehab','01023571256','123321',4),(6,'qq','bedo','01023576756','qwqwwqq',3),(321665,'1001','Far far','1234567890','12314121dad',1),(321666,'s12','Eyaddd','1110234232','35875658758765',3),(321667,'s321','Ehab','0122222222','231231341341',1),(321670,'s3821','Edoo','012222222','467564684684',4);
 /*!40000 ALTER TABLE `student_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -111,4 +111,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-01 23:50:57
+-- Dump completed on 2024-06-03 22:34:19
