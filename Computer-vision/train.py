@@ -3,14 +3,14 @@ from imports import *
 
 import logging
 class Trainer:
-    def __init__(self, db_folder='F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'):
+    def __init__(self, db_folder='F:\\GP\\Repo\\Attendance-System\\Computer-vision\\db'):
         self.target_image_count = 25
         self.db_folder = db_folder
         self.load_encodings()
 
     def load_encodings(self):
-        if os.path.exists('F:\\GP\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\known_encodings.pkl'):
-            with open('F:\\GP\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\known_encodings.pkl', 'rb') as f:
+        if os.path.exists('F:\\GP\Repo\\Attendance-System\\Computer-vision\\known_encodings.pkl'):
+            with open('F:\\GP\Repo\\Attendance-System\\Computer-vision\\known_encodings.pkl', 'rb') as f:
                 self.results = pickle.load(f)
                 self.known_encodings = [result[1] for result in self.results]
                 self.file_paths = [result[0] for result in self.results]
@@ -75,7 +75,7 @@ class Trainer:
             self.results.extend(self.process_folder(student_folder))
 
         # Save computed embeddings and corresponding file paths
-        with open('F:\\GP\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\known_encodings.pkl', 'wb') as f:
+        with open('F:\\GP\Repo\\Attendance-System\\Computer-vision\\known_encodings.pkl', 'wb') as f:
             pickle.dump(self.results, f)
 
         self.load_encodings()

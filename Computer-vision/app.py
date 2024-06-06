@@ -9,7 +9,7 @@ from recognize import Recognizer
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
 
-app.config['UPLOAD_FOLDER'] = 'F:\\GP\\Repo\\Attendance-System\\Computer-vision\\last_for_deploy\\db'
+app.config['UPLOAD_FOLDER'] = 'F:\\GP\\Repo\\Attendance-System\\Computer-vision\\db'
 app.config['ALLOWED_EXTENSIONS'] = {'png', 'jpg', 'jpeg'}
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
