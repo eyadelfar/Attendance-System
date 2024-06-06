@@ -14,7 +14,6 @@ const CourseCreate = () => {
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
   const [professorData, setProfessorData] = useState([]);
-  const [courseData, setCourseData] = useState([]);
 
   useEffect(() => {
     axios.get('http://localhost:4000/professors', {
@@ -31,29 +30,14 @@ const CourseCreate = () => {
     });
   }, []);
 
-  useEffect(() => {
-    axios.get('http://localhost:4000/courses', {
-      headers: {
-        'Authorization': token,
-        'Content-Type': 'application/json'
-      }
-    })
-    .then((res) => {
-      setCourseData(res.data);
-    })
-    .catch((error) => {
-      setError(error);
-    });
-  }, []);
-
   const [selectedProfessor, setSelectedProfessor] = useState({});
-  const [selectedCourse, setSelectedCourse] = useState({});
 
   const handleSaveChanges = async (event) => {
     event.preventDefault();
     try {
       const response = await axios.post('http://localhost:4000/semester', {
-        course_id: selectedCourse.value,
+        course_code,
+        course_title,
         faculty_id: selectedProfessor.value,
         term,
         year
@@ -74,17 +58,11 @@ const CourseCreate = () => {
     }
   };
   
-     const professorOptions = professorData.map((professor) => ({
+     const professorOptions =  professorData.map((professor) => ({
      key: professor.faculty_id,
      value: professor.faculty_id,
     label: professor.fullname
   }));
-
-  const courseOptions =  courseData.map((courses) => ({
-    key: courses.course_id,
-    value: courses.course_id,
-   label: courses.code + "  :  " + courses.title
- }));
 //   professorData.map((professor) => console.log(professor));
   return (
     <div className="">
@@ -95,15 +73,17 @@ const CourseCreate = () => {
             <div id="course-create-form-header">
               <h1>Create Course </h1>
             </div>
-            {/* <div className="course-create-form-field">
-              <label >Course   Title <span className='mandatory'>*</span></label>
+            <div className="course-create-form-field">
+              <label >Course Title <span className='mandatory'>*</span></label>
               <input 
               type="text" id="" 
               value={course_title}
               onChange={(e) => setCourseTitle(e.target.value)}
               placeholder='Enter The Course Name'
                />
+
             </div>
+
             <div id="course-create-form-field-code">
               <label >Course Code <span className='mandatory'>*</span></label>
               <input 
@@ -112,16 +92,7 @@ const CourseCreate = () => {
               onChange={(e) => setCourseCode(e.target.value)}
               placeholder='Enter The Code'
                />
-            </div> */}
-
-            <div className="course-create-form-field">
-              <label >Course Name <span className='mandatory'>*</span></label>  
-              <select className="course-select" value={selectedCourse.value} onChange={(event) => setSelectedCourse(event.target)}>
-                <option value="">Select A Course</option>
-                {courseOptions.map((option) => <option value={option.value}>{option.label}</option>)}
-              </select>
             </div>
-
 
             <div className="course-create-form-field">
               <label >Professor Name <span className='mandatory'>*</span></label>  
