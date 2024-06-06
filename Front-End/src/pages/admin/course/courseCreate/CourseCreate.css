@@ -3,7 +3,7 @@
   text-indent: 6.9%;
   font-size: 45px;
   position: relative;
-  top: -40px;
+  top: -15px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -13,7 +13,7 @@
 
 #course-create-form {
   background-color: #ffffff;
-  margin: 1% 1% 25% 12%; /* top right bottom left */
+  margin: 5% 0% 0% 10%;
   width: 75%;
   justify-content: center;
   display:grid;

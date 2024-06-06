@@ -1,8 +1,8 @@
 .students-main-header{
     position: relative;
-    text-indent: 19.9%;
+    text-indent: 12.9%;
     font-size: 45px;
-    top: -50px;
+    top: -10px;
     font-weight: 400;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -59,16 +59,12 @@
   .edit-form-student {
     background-color: #ffffff;
     justify-content: center;
-    display:grid;
+    display: grid;
     display: flex;
-    justify-items:stretch;
-    /* background-color: #BEBEBE; */
-
-    /* height: 70vh;  */
-    height: 800px; 
-    width: 70vw; 
-    /* flex-direction: row; */
-    margin-top: -5.5%;
+    justify-items: stretch;
+    height: 604px;
+    width: 70vw;
+    margin-top: -2.5%;
     position: relative;
     left: 120px;
 

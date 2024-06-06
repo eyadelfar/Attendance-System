@@ -10,16 +10,18 @@
   position: relative;
   text-indent: 19.9%;
   font-size: 45px;
-  margin-bottom: -10px;
+  position: relative;
+  top: 40px;
+  left: 35px;
   font-weight: 400;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 
 #student-container-header{
   position: relative;
+  left: 300px;
+  top: 15px;
   color: #FFFFFF;
   background-color: #395986;
   border: #395986;
@@ -31,8 +33,6 @@
   border-top-right-radius: 8px;
   padding: 0.5% 0%;
   justify-content: center;
-  margin-left: 20%;
-  margin-bottom: 0px;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
@@ -43,12 +43,13 @@
   display: flex;
   justify-items: stretch;
   background-color: #BEBEBE;
-  margin: 0 12% 0 20%;
+  position: relative;
+  left: 300px;
+  top: 10px;
   height: 550px;
   width: 70vw;
   -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  user-select: none;
 }
 
 #student-settings-profile {
@@ -95,10 +96,9 @@
   color: #4D4D4D;
   font-size: 30px;
   left: 4vh;
-}
+}z
 
-#role{
-  margin-bottom: 1000%;
+#student-level{
   font-weight: 400;
   color: #4D4D4D;
   font-size: 30px;

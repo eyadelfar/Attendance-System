@@ -1,14 +1,14 @@
 .register-list {
  height: 100vh;
  left: 20px;
- bottom: 40px;
+ bottom: 0px;
  position: relative;
   padding: 20px;
   font-family: poppins;
   background-color: #F2F2F2;
   border-collapse: collapse;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
   border-bottom: none; /* Adjust border style and color */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */

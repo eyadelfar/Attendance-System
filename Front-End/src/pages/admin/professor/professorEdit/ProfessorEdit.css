@@ -8,22 +8,26 @@
 
 #professor-edit-header{
   position: relative;
-  text-indent: 19.9%;
+  text-indent: 15.9%;
   font-size: 45px;
+  top: 50px;
+  left: 87px;
   font-weight: 400;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #professor-edit-form {
   background-color: #ffffff;
   justify-content: center;
-  justify-items:stretch;
-  margin: -2% 12% 0 20%;
-  display:grid;
-  width: 70vw; 
+  justify-items: stretch;
+  /* margin: 6% 0% 0 24%; */
+  position: relative;
+  left: 280px;
+  top: 40px;
+  display: grid;
+  width: 70vw;
+
 }
 
 #professor-edit-forms-col{
