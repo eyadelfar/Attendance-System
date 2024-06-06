@@ -53,7 +53,7 @@ import { jwtDecode } from 'jwt-decode'
           <tr key={index}>
             <td>{course.title}</td>
             <td>{course.code}</td>
-            <td>{course.faculty_id}</td>
+            <td>{course.fullname}</td>
             <td> 
             <a href="#" onClick={() => handleLecture(course)}>
               <button className='button-course-student'>

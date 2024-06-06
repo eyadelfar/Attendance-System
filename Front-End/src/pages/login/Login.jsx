@@ -26,7 +26,7 @@ function Login() {
       const role = decodedToken.role;
           if (role === 'faculty') {
         // Redirect to admin dashboard
-        window.location.href = '/AdminSettings';
+        window.location.href = '/dashboard';
       } else if (role === 'student') {
         // Redirect to user dashboard
         window.location.href = '/CourseListStudent';
