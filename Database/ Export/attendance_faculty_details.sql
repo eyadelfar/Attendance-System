@@ -4,7 +4,7 @@ USE `attendance`;
 --
 -- Host: localhost    Database: attendance
 -- ------------------------------------------------------
--- Server version	8.3.0
+-- Server version	8.0.30
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -31,7 +31,7 @@ CREATE TABLE `faculty_details` (
   `fullname` varchar(255) NOT NULL,
   PRIMARY KEY (`faculty_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,7 +40,7 @@ CREATE TABLE `faculty_details` (
 
 LOCK TABLES `faculty_details` WRITE;
 /*!40000 ALTER TABLE `faculty_details` DISABLE KEYS */;
-INSERT INTO `faculty_details` VALUES (38,'25507253','elzaboota','bedohazem');
+INSERT INTO `faculty_details` VALUES (1,'password123','username123','Ahmed Mohamed'),(2,'password456','username456','Sara Ibrahim'),(3,'password789','username789','Youssef Ali'),(4,'password012','username012','Fatma Yassin'),(5,'password345','username345','Omar Sami'),(6,'password111','username111','Laila Mahmoud'),(7,'password222','username222','Mohamed Tarek'),(8,'password333','username333','Nour Hany'),(9,'password444','username444','Hassan Khaled'),(10,'password555','username555','Amira Nabil'),(11,'password666','username666','Khaled Saeed'),(12,'password777','username777','Salma Ali'),(13,'password888','username888','Ali Karim'),(14,'password999','username999','Farida Samir'),(15,'password000','username000','Tamer Fathy'),(16,'passwordabc','usernameabc','Rania Said'),(17,'passworddef','usernamedef','Nader Adel'),(18,'passwordghi','usernameghi','Mai Reda'),(19,'passwordjkl','usernamejkl','Yara Gamal'),(20,'passwordmno','usernamemno','Tarek Fawzy'),(21,'passwordpqr','usernamepqr','Marwa Hisham'),(22,'passwordstu','usernamestu','Samir Ismail'),(23,'passwordvwx','usernamevwx','Nihal Wael'),(24,'passwordyz1','usernameyz1','Mostafa Shaker'),(25,'password234','username234','Nada Omar'),(26,'password567','username567','Ziad Zaki'),(27,'password890','username890','Lamia Kamel'),(33,'password678','username678','Reda Shady'),(34,'password901','username901','Reem Hady');
 /*!40000 ALTER TABLE `faculty_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -107,4 +107,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-03 22:34:19
+-- Dump completed on 2024-06-05 16:09:08

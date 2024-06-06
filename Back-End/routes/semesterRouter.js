@@ -164,40 +164,69 @@ router.get("/registeration/student",
 );
 
 // add semester
+// router.post("/",
+//     authorize,
+//     async (req, res) => {
+//         try{
+//             let semesterController = new SemesterController();
+//             let courseController = new CourseController();
+//             let semester = new Semester();
+            
+//             let check = await courseController.getCourseBy({
+//                 code: req.body.course_code
+//             });
+//             if(check.exist)
+//                 semester = {
+//                     faculty_id: req.body.faculty_id,
+//                     course_id: check[0].course_id,
+//                     year: req.body.year,
+//                     term: req.body.term
+//                 }            
+//             else{
+//                 let newCourse = {
+//                     code: req.body.course_code,
+//                     title: req.body.course_title,
+//                 }
+//                 await courseController.addCourse(newCourse);
+//                 let course = await courseController.getCourseBy({
+//                     code: req.body.course_code
+//                 });
+
+//                 semester = {
+//                     faculty_id: req.body.faculty_id,
+//                     course_id: course[0].course_id,
+//                     year: req.body.year,
+//                     term: req.body.term
+//                 }
+//             }
+//             let result = await semesterController.addSemester(semester);
+    
+//             if(!result.problem){
+//                 console.log(result);
+//                 res.status(200).json(result.message);
+//             }
+//             else{
+//                 console.log(result.message);
+//                 res.status(400).json(result.message);
+//             }
+//         } catch (error){
+//             console.log(error);
+//             res.status(500).json(error);
+//         }
+//     }
+// );
+
 router.post("/",
     authorize,
     async (req, res) => {
         try{
             let semesterController = new SemesterController();
-            let courseController = new CourseController();
             let semester = new Semester();
-            
-            let check = await courseController.getCourseBy({
-                code: req.body.course_code
-            });
-            if(check.exist)
-                semester = {
-                    faculty_id: req.body.faculty_id,
-                    course_id: check[0].course_id,
-                    year: req.body.year,
-                    term: req.body.term
-                }            
-            else{
-                let newCourse = {
-                    code: req.body.course_code,
-                    title: req.body.course_title,
-                }
-                await courseController.addCourse(newCourse);
-                let course = await courseController.getCourseBy({
-                    code: req.body.course_code
-                });
-
-                semester = {
-                    faculty_id: req.body.faculty_id,
-                    course_id: course[0].course_id,
-                    year: req.body.year,
-                    term: req.body.term
-                }
+            semester = {
+                course_id: req.body.course_id,
+                faculty_id: req.body.faculty_id,
+                year: req.body.year,
+                term: req.body.term
             }
             let result = await semesterController.addSemester(semester);
     

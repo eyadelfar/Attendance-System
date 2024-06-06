@@ -121,7 +121,7 @@ router.post("/upload",
     async (req, res) => {
         try{
             if(!req.file){
-                res.status(400).send('No file uploaded');
+                return res.status(400).send('No file uploaded');
             }
             const workbook = xlsx.readFile(req.file.path);
             const worksheet = workbook.Sheets[workbook.SheetNames[0]];
