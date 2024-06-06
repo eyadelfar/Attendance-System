@@ -1,0 +1,12 @@
+.powerbi-container {
+position: relative;
+ left: 15px;
+ top: 17px;
+ width: fit-content; /* increase the width */
+height: fit-content; /* increase the height */
+   
+  }
+  .powerbi{
+    width: 1270px; /* increase the width */
+    height: 700px; /* increase the height */
+  }
