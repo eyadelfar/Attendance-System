@@ -69,7 +69,9 @@ module.exports = class UserController{
 */
     async addStudent(newStudent){
         try{
-            let check = await this.getStudentsBy({roll_no:newStudent.roll_no});
+            let check = await this.getStudentsBy({
+                roll_no:newStudent.roll_no
+            });
             if(check.length){
                 check.problem = 1;
                 return check;
