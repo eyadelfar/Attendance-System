@@ -8,8 +8,9 @@
 
 #professor-create-header{
   position: relative;
-  text-indent: 19.9%;
+  text-indent: 23.9%;
   font-size: 45px;
+  top: 50px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -21,7 +22,9 @@
   background-color: #ffffff;
   justify-content: center;
   justify-items:stretch;
-  margin: -2% 12% 0 20%;
+  position: relative;
+  top: 40px;
+  left: 270px;
   display:grid;
   width: 70vw; 
 }

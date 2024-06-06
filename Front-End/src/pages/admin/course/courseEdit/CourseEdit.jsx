@@ -126,7 +126,7 @@ const CourseEdit = () => {
             <a href="/CourseList">
              <button id='edit-course-button' onClick={handleSaveChanges}>
             <div className='edit-course-text'>
-                    Create
+                    Save Change
            </div>
           </button>
             </a>

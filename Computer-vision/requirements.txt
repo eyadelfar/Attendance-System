@@ -1,0 +1,12 @@
+flask
+mysql-connector-python
+flask-cors
+opencv-python-headless
+tensorflow
+deepface
+imgaug
+numpy
+Flask==2.0.1
+flask-cors==3.0.10
+mysql-connector-python==8.0.26
+Werkzeug==2.0.1

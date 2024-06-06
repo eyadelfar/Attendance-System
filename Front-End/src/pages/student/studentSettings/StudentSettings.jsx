@@ -64,11 +64,11 @@ const StudentSettings = () => {
                 </div>
                 <h3 id="student-roll">{studentData.roll_no}</h3>
                 <img id='phone-pic' src={phone} alt="StudentAvatar"  />
-                <div>  
-                  <h4 id="student-phone">{studentData.phone_no}</h4>
+                <div className='student-phone'>  
+                  <h4 >{studentData.phone_no}</h4>
                 </div>
-                <div>
-                  <h5 id="role">Level :  {studentData.level}</h5>
+                <div className='student-level'>
+                  <h5 >Level :  {studentData.level}</h5>
                 </div>
             </div>
             

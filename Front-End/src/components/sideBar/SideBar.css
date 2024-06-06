@@ -6,21 +6,21 @@
   color: black;
   display: flex;
   flex-direction: column;
-  height: 107vh;
-  width: fit-content;
+  height: 103vh;
+  width: -moz-fit-content;
+  width: 200px;
   position: relative;
-  bottom: 40px;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  bottom: 20px;
+  left: 5px;
+  -webkit-user-select: none;
+  user-select: none;
 
 }
 
 .container {
   display: flex;
-  height: 100vh;
-  /* margin-left: -19px; */
+  height: 103vh;
+
  
 }
 
