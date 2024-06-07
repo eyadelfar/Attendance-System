@@ -95,24 +95,6 @@ const CourseCreate = () => {
             <div id="course-create-form-header">
               <h1>Create Course </h1>
             </div>
-            {/* <div className="course-create-form-field">
-              <label >Course   Title <span className='mandatory'>*</span></label>
-              <input 
-              type="text" id="" 
-              value={course_title}
-              onChange={(e) => setCourseTitle(e.target.value)}
-              placeholder='Enter The Course Name'
-               />
-            </div>
-            <div id="course-create-form-field-code">
-              <label >Course Code <span className='mandatory'>*</span></label>
-              <input 
-              type="text" id="" 
-              value={course_code}
-              onChange={(e) => setCourseCode(e.target.value)}
-              placeholder='Enter The Code'
-               />
-            </div> */}
 
             <div className="course-create-form-field">
               <label >Course Name <span className='mandatory'>*</span></label>  
