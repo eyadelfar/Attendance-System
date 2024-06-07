@@ -34,8 +34,8 @@ const ProfessorEdit = () => {
       try {
         const response = await axios.put('http://localhost:4000/professors', {
           faculty_id:faculty_id,
-          username: username ? username : professor.username,
-          fullname: fullname ? fullname : professor.fullname,
+          username,
+          fullname,
           passwordOld,
           passwordNew
           
