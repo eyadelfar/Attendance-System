@@ -139,39 +139,6 @@ router.post("/upload",
         }
     }
 );
-/*
-// edit registration
-router.put("/",
-    async (req, res) => {
-        try{
-            let registrationController = new RegistrationController();
-            let registrationOld = new Registration();
-            let registrationNew = new Registration();
-
-            registrationOld.student_id = req.body.student_id;
-            registrationOld.semester_id = req.body.semester_id;
-
-            if(req.body.student_id)
-                registrationNew.student_id = req.body.student_id;
-            if(req.body.semester_id)
-                registrationNew.semester_id = req.body.semester_id;
-
-            let result = await registrationController.editRegistration(registrationOld,registrationNew);
-            if(!result.problem){
-                console.log(result);
-                res.status(200).json(result.message);
-            }
-            else{
-                console.log(result.message);
-                res.status(400).json(result.message);
-            }
-        } catch (error){
-            console.log(error);
-            res.status(500).json(error);
-        }
-    }
-);
-*/
 router.delete("/:semester_id/:student_id",
     async(req,res) => {
         try{

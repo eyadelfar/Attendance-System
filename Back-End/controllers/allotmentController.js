@@ -38,6 +38,7 @@ module.exports = class AllotmentController{
             return error;
         }
     };
+
     async getAllotmentsByCourse(course){
         try{
             let results = await this.getAllotmentBy('course',course);

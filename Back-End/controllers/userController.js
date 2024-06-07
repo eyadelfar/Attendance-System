@@ -1,3 +1,4 @@
+// database connection
 const DBQuery = require ("../db/dbQuery");
 let dbQuery = new DBQuery();
 
@@ -56,16 +57,7 @@ module.exports = class UserController{
             return error;
         }
     };
-/*
-    async getStudentsByLevel(level){
-        try{
-            let results = await this.getStudentsBy({level:level})
-            return results; 
-        }catch(error){
-            return error;
-        }
-    };
-*/
+
     async addStudent(newStudent){
         try{
             let check = await this.getStudentsBy({

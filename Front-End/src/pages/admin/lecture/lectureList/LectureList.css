@@ -9,12 +9,13 @@
   border-collapse: collapse;
   border-radius: 10px;
  
-  border-bottom: none; 
-  -webkit-user-select: none; 
-  -moz-user-select: none; 
-  -ms-user-select: none;
-  user-select: none; 
-  overflow: auto;
+  border-bottom: none; /* Adjust border style and color */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
+  /* overflow: auto; */
+  overflow-y: auto;
 }
 .App {
   font-family: Arial, sans-serif;

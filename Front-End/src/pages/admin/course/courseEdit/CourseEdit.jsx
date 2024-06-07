@@ -3,19 +3,20 @@ import './CourseEdit.css';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
 
+
 const CourseEdit = () => {
-  const [courses, setCourses] = useState({});
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
   const [semes_id] = useState(localStorage.getItem('semester_id'));
   const [professorData, setProfessorData] = useState([]);
   const [selectedProfessor, setSelectedProfessor] = useState({});
-  const [course_title, setCourse_title] = useState('');
-  const [course_code, setCourse_code] = useState('');
   const [term, setTerm] = useState('');
   const [year, setYear] = useState('');
-  const [count, setCount] = useState(0);
+  const [selectedCourse, setSelectedCourse] = useState({});
+  const [courseData, setCourseData] = useState([]);
+
+
   useEffect(() => {
     axios.get('http://localhost:4000/professors', {
       headers: {
@@ -31,26 +32,27 @@ const CourseEdit = () => {
     });
   }, []);
 
+
   useEffect(() => {
-    axios.get(`http://localhost:4000/semester/courseDetails/semester/${semes_id}`, {
+    axios.get('http://localhost:4000/courses', {
       headers: {
         'Authorization': token,
         'Content-Type': 'application/json'
       }
     })
     .then((res) => {
-      setCourses(res.data);
-      console.log(courses);
+      setCourseData(res.data);
     })
     .catch((error) => {
       setError(error);
     });
   }, []);
+
+
   const handleSaveChanges = async () => {
     try {
       const response = await axios.put(`http://localhost:4000/semester/${semes_id}`, {
-        course_title,
-        course_code,
+        course_id: selectedCourse.value,
         faculty_id: selectedProfessor.value,
         year,
         term
@@ -60,7 +62,7 @@ const CourseEdit = () => {
           'Content-Type': 'application/json'
         }
       });
-      console.log(response.data);
+      window.location.href = '/CourseList';
     } catch (error) {
       console.error(error);
     }
@@ -72,6 +74,12 @@ const CourseEdit = () => {
     label: professor.fullname
   }));
 
+  const courseOptions =  courseData.map((courses) => ({
+    key: courses.course_id,
+    value: courses.course_id,
+   label: courses.code + "  :  " + courses.title
+ }));
+
   return (
     <div className="">
       <h1 id='course-edit-header'>Courses</h1>
@@ -81,14 +89,13 @@ const CourseEdit = () => {
             <div id="course-edit-form-header">
               <h1>Edit Course </h1>
             </div>
-            <div className="course-edit-form-field">
-              <label >Course Title <span className='mandatory'>*</span></label>
-              <input type="text" id="" placeholder={courses.title} value={course_title} onChange={(e) =>  setCourse_title(e.target.value)} />
-            </div>
 
-            <div id="course-edit-form-field-code">
-              <label >Course Code <span className='mandatory'>*</span></label>
-              <input type="text" id="" placeholder={courses.code} value={course_code} onChange={(e) =>  setCourse_code(e.target.value)}/>
+            <div className="course-create-form-field">
+              <label >Course Name <span className='mandatory'>*</span></label>  
+              <select className="course-select" value={selectedCourse.value} onChange={(event) => setSelectedCourse(event.target)}>
+                <option value="">Select A Course</option>
+                {courseOptions.map((option) => <option value={option.value}>{option.label}</option>)}
+              </select>
             </div>
 
             <div className="course-create-form-field">
@@ -124,9 +131,10 @@ const CourseEdit = () => {
 
              <div>
             <a href="/CourseList">
-             <button id='edit-course-button' onClick={handleSaveChanges}>
+             <button id='edit-course-button' onClick={handleSaveChanges}
+             >
             <div className='edit-course-text'>
-                    Save Change
+                    Confirm
            </div>
           </button>
             </a>

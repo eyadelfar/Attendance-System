@@ -11,7 +11,7 @@ import { jwtDecode } from 'jwt-decode'
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/semester/courseDetails', {
+    axios.get(`http://localhost:4000/semester/registeration/${decodedToken.user_id}`, {
       headers: {
         'Authorization': token,
         'Content-Type': 'application/json'

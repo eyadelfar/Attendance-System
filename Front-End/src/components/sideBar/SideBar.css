@@ -6,8 +6,9 @@
   color: black;
   display: flex;
   flex-direction: column;
-  height: 107vh;
-  width: fit-content;
+  height: 103vh;
+  width: -moz-fit-content;
+  width: 200px;
   position: relative;
   bottom: 19px;
     left: 5px;
@@ -21,8 +22,8 @@
 
 .container {
   display: flex;
-  height: 100vh;
-  /* margin-left: -19px; */
+  height: 103vh;
+
  
 }
 
