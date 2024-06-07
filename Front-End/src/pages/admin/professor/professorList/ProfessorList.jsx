@@ -62,15 +62,17 @@ function ProfessorsList(props) {
      <div className='header'>
       <h1 className='professor-header-admin'>Professors</h1>
       <div>
-      <a href="/ProfessorCreate">
-      <button className='button1' >
-      <img src={plus} alt={'image'} />
-        Create Professor
        
-        </button>
+          <button className='button1' >
+          <img src={plus} alt={'image'} />
+
+          <a href="/ProfessorCreate">
+              Create Professor
         </a>
+
+          </button>
       </div>
-      </div>
+    </div>
       
       <table className='list-table'>
   <thead>
@@ -87,7 +89,7 @@ function ProfessorsList(props) {
               <td>{professor.username}</td>
             
              <td> <a href="#" onClick={() => handleEdit(professor)}>
-               <img className='pen-icon-student' src={Edit} alt={'edit-image'} />
+               <img className='edit-icon' src={Edit} alt={'edit-image'} />
                  </a>
             <button className='delete'
              onClick={() => {
