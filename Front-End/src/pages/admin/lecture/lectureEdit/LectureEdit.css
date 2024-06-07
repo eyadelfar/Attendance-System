@@ -1,21 +1,22 @@
 .lecture-main-header-edit{
-    position: relative;
-    transform: translateX(20%);
-    font-size: 45px;
-    top: -50px;
-    font-weight: 400;
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10 and IE11 */
-    user-select: none; /* Standard syntax */
+  position: relative;
+  transform: translateX(290%);
+  font-size: 45px;
+  top: -7px;
+  right: 495px;
+  font-weight: 400;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10 and IE11 */
+  user-select: none; /* Standard syntax */
   }
 
   .course-name-header-edit{
     position: relative;
-    top: -6.5vh;
-    left: 55vh;
+    top: -0.5vh;
+    left: 30vh;
     font-weight: bolder;
-    font-size: 45px;
+    font-size: 40px;
     color: #00265c;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -74,18 +75,17 @@
 
   .edit-form {
     background-color: #ffffff;
+    width: 75%;
     position: relative;
-    left: 50px;
-    bottom: 68px;
+    left: 41px;
+    bottom: 24px;
     justify-content: center;
-    display:grid;
-    justify-items:stretch;
-    height: 620px; 
-    width: 82vw; 
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10 and IE11 */
-    user-select: none; /* Standard syntax */
+    display: grid;
+    justify-items: stretch;
+    height: 620px;
+    width: 83vw;
+    -webkit-user-select: none;
+    user-select: none;
     
   }
   

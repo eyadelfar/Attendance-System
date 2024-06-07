@@ -139,16 +139,15 @@
     border: #395986;
     font-size: 20px;
     cursor: pointer;
-    width: 50%;  
-    display: flex; /* Use flexbox for layout */
+    width: 50%;
+    display: flex;
     /* margin-top: 20%; */
-    border-radius: 25px; 
+    border-radius: 25px;
     text-align: center;
     padding: 5%;
     justify-content: center;
-    left: 190%;
-    top: 8vh;
-    justify-self: left;
+    left: 97%;
+    top: 21vh;
   }
 
   #edit-course-button:hover{

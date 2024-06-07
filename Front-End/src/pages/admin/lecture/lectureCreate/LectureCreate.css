@@ -2,7 +2,7 @@
     position: relative;
     transform: translateX(290%);
     font-size: 45px;
-    top: -50px;
+    top: -7px;
     right: 495px;
     font-weight: 400;
     -webkit-user-select: none; /* Safari */
@@ -13,10 +13,10 @@
 
   .course-name-header{
     position: relative;
-    top: -8.5vh;
-    left: 62vh;
+    top: -0.5vh;
+    left: 30vh;
     font-weight: bolder;
-    font-size: 45px;
+    font-size: 40px;
     color: #00265c;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -89,18 +89,15 @@
     background-color: #ffffff;
     width: 75%;
     position: relative;
-    left: 50px;
-    bottom: 65px;
+    left: 41px;
+    bottom: 24px;
     justify-content: center;
-    display:grid;
-    justify-items:stretch;
+    display: grid;
+    justify-items: stretch;
     height: 620px;
-    width: 83vw; 
-    -webkit-user-select: none; /* Safari */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10 and IE11 */
-    user-select: none; /* Standard syntax */
-    
+    width: 83vw;
+    -webkit-user-select: none;
+    user-select: none;
   }
   
 

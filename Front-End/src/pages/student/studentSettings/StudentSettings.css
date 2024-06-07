@@ -69,11 +69,11 @@
 
 #student-name{
   text-align: center;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 20px;
   position: relative;
-  left: 50px;
-  bottom: 30px;
+  left: 14px;
+  bottom: 40px;
   width: -moz-fit-content;
   width: fit-content;
 
@@ -88,10 +88,7 @@
   left: 11px;
 }
 
-#student-phone{
-  width: fit-content;
-  right:-40px;
-}
+
 #phone-pic{
   position: relative;
   bottom: 64px;
@@ -126,7 +123,7 @@
   font-weight: 400;
   color: #4D4D4D;
   font-size: 30px;
-  /* left: 4vh; */
+  left: 3.9vh;
 }
 
 #level{
