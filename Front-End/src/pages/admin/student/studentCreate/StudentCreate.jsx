@@ -63,16 +63,6 @@ const StudentCreate = () => {
     setSelectedFile(event.target.files[0]);
   };
 
-  // const handleTrain = (event) => {
-  //   event.preventDefault(); 
-  //   axios.post('http://localhost:5000/train')
-  //   .then(response => {
-  //     console.log(response.data);
-  //   })
-  //   .catch(error => {
-  //     console.error('There was an error submitting the form!', error);
-  //   });
-  // };
 
   return (
     <div className="create-student-container">

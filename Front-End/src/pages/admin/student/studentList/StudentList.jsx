@@ -23,7 +23,6 @@ function StudentList(props) {
     })
     .then((res) => {
       setStudents(res.data);
-      // console.log(courses);
     })
     .catch((error) => {
       setError(error);

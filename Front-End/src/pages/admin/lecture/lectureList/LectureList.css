@@ -9,11 +9,11 @@
   border-collapse: collapse;
   border-radius: 10px;
  
-  border-bottom: none; /* Adjust border style and color */
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  border-bottom: none; 
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none;
+  user-select: none; 
   overflow: auto;
 }
 .App {
@@ -82,10 +82,10 @@
   align-items: center;
   padding: 20px;
   border-bottom: 1px solid #ddd;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  -webkit-user-select: none; 
+  -moz-user-select: none; 
+  -ms-user-select: none; 
+  user-select: none; 
 }
 
 .lecture-name {
@@ -104,7 +104,7 @@
   width: 100%;
   row-gap: 20px !important;
   table-layout: fixed;
-  border-collapse: separate; /* Ensures borders collapse for spacing */
+  border-collapse: separate;
   border-spacing: 0 30px !important;
 }
 
@@ -152,7 +152,7 @@
 }
 
 .row-wrapper {
-  padding-bottom: 10px; /* Adjust this value to set the space between rows */
+  padding-bottom: 10px; 
 }
 
 
@@ -169,15 +169,15 @@
   color: #ffffff;
   background-color: #4a9f48;
   border: 1px solid #395986;
-  font-size: 12px; /* reduced font size */
+  font-size: 12px; 
   cursor: pointer;
-  border-radius: 20px; /* reduced border radius */
+  border-radius: 20px; 
   text-align: center;
-  padding: 4px 10px; /* reduced padding */
-  width: 150px; /* reduced width */
-  height: 35px; /* reduced height */
+  padding: 4px 10px; 
+  width: 150px; 
+  height: 35px; 
   justify-content: center;
-  line-height: 30px; /* reduced line height */
+  line-height: 30px; 
   display: flex;
   margin-left: 60px;
 }

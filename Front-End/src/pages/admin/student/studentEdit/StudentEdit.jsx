@@ -24,7 +24,6 @@ const StudentEdit = () => {
         })
         .then((res) => {
          setStudent(res.data);
-          // console.log(courses);
         })
         .catch((error) => {
           setError(error);

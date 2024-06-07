@@ -33,7 +33,6 @@ function LectureList(props) {
   const handleClosePopup = () => {
     setIsPopupOpen(false);
   };
-  // console.log(currentLectureId);
 
   const handleSubmit = (event) => {
     event.preventDefault();
