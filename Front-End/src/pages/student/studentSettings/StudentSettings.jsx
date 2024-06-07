@@ -59,16 +59,20 @@ const StudentSettings = () => {
 
             <div id="student-settings-profile">
                 <img id='student-pic' src={StudentAvatar} alt="StudentAvatar"  />
-                <div >
-                    <h2 id="student-name" >{studentData.fullname}</h2>
+                <div  id="student-name" >
+                    <h2>{studentData.fullname}</h2>
                 </div>
-                <h3 id="student-roll">{studentData.roll_no}</h3>
-                <img id='phone-pic' src={phone} alt="StudentAvatar"  />
-                <div className='student-phone'>  
-                  <h4 >{studentData.phone_no}</h4>
+                
+                <div id="phone">                
+                  <h3 id="student-phone">{studentData.phone_no}</h3>
+                  <img id='phone-pic' src={phone} alt="StudentAvatar"  />
                 </div>
-                <div className='student-level'>
-                  <h5 >Level :  {studentData.level}</h5>
+
+                <div id="student-roll">  
+                  <h4>{studentData.roll_no}</h4>
+                </div>
+                <div>
+                  <h5 id="role">Level :  {studentData.level}</h5>
                 </div>
             </div>
             

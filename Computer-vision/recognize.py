@@ -10,7 +10,7 @@ class DummyFile(object):
     def flush(self): pass
 
 class Recognizer:
-    def __init__(self, db, semester_id, course_id, lecture_id, status, confidence_threshold=0.65, consistency_threshold=3, frame_skip=10):
+    def __init__(self, db, semester_id, course_id, lecture_id, status, confidence_threshold=0.65, consistency_threshold=4, frame_skip=5):
         self.db = db
         self.semester_id = semester_id
         self.course_id = course_id

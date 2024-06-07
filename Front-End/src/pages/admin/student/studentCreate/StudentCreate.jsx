@@ -63,16 +63,16 @@ const StudentCreate = () => {
     setSelectedFile(event.target.files[0]);
   };
 
-  const handleTrain = (event) => {
-    event.preventDefault(); 
-    axios.post('http://localhost:5000/train')
-    .then(response => {
-      console.log(response.data);
-    })
-    .catch(error => {
-      console.error('There was an error submitting the form!', error);
-    });
-  };
+  // const handleTrain = (event) => {
+  //   event.preventDefault(); 
+  //   axios.post('http://localhost:5000/train')
+  //   .then(response => {
+  //     console.log(response.data);
+  //   })
+  //   .catch(error => {
+  //     console.error('There was an error submitting the form!', error);
+  //   });
+  // };
 
   return (
     <div className="create-student-container">
@@ -123,28 +123,29 @@ const StudentCreate = () => {
               </div>
             </div>
 
-                        <div className="form-field">
-                            <label htmlFor="lastName">Phone Number</label>
-                            <input type="text" id="Student-No"  placeholder='Enter Phone Number'
-                               value={phone_no}
-                               onChange={(e) => setPhone_no(e.target.value)}
-                            />
-                        </div>
-                    </div>
-                    <div >
-                        <button id='edit-create-button' onClick={handleSaveChanges}>
-                            <div className='create-button-text'>
-                                Create
-                                </div>
-                        </button>
-                    </div> 
-                </div>
+            <div className="form-field">
+                <label htmlFor="lastName">Phone Number</label>
+                <input type="text" id="Student-No"  placeholder='Enter Phone Number'
+                    value={phone_no}
+                    onChange={(e) => setPhone_no(e.target.value)}
+                />
             </div>
-            
+
+            <div className="form-field">
+              <label htmlFor="file">Student Photo</label>
+              <input type="file" onChange={handleFileChange} />
+            </div>
+          </div>
+          <div >
+              <button id='edit-create-button' onClick={handleSaveChanges}>
+                  <div className='create-button-text'>
+                    Create
+                  </div>
+              </button>
+          </div> 
         </div>
-        
-    // </div>
-    
+      </div>
+    </div>
   );
 };
 
