@@ -38,25 +38,7 @@ module.exports = class AllotmentController{
             return error;
         }
     };
-/*    
-    async getAllotmentsByYear(year){
-        try{
-            let results = await this.getAllotmentBy('year',year);
-            return results; 
-        }catch(error){
-            return error;
-        }
-    };
 
-    async getAllotmentsByTerm(term){
-        try{
-            let results = await this.getAllotmentBy('term',term);
-            return results; 
-        }catch(error){
-            return error;
-        }
-    };
-*/
     async getAllotmentsByCourse(course){
         try{
             let results = await this.getAllotmentBy('course',course);

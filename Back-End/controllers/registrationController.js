@@ -112,27 +112,4 @@ module.exports = class RegistrationController{
             return error;
         }
     };
-/*
-    async editRegistration(oldRegistration,newRegistration){
-        try{
-            let result = await this.getRegistrationBy(oldRegistration);
-            if(!result.exist){
-                result.problem = 1;
-                return result;
-            }
-            
-            newRegistration.semester_id = newRegistration.semester_id ? newRegistration.semester_id : oldRegistration.semester_id;
-            newRegistration.student_id = newRegistration.student_id ? newRegistration.student_id : oldRegistration.student_id;
-
-            await dbQuery.update('course_registration',newRegistration);
-            await dbQuery.where(oldRegistration);
-            result = await dbQuery.execute();
-            result.message = 'REGISTRATION UPDATED...';
-            return result; 
-            
-        }catch(error){
-            return {error:error};
-        }
-    };
-*/
 };
