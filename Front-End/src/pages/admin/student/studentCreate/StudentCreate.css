@@ -3,7 +3,7 @@
   text-indent: 5.9%;
   font-size: 45px;
   font-weight: 400;
-  bottom: 64px;
+  bottom: 10px;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10 and IE11 */
@@ -64,7 +64,7 @@
     justify-items: stretch;
     height: 92vh;
     width: 80vw;
-    bottom: 80px;
+    bottom: 30px;
     position: relative;
     left: 6vh;
     
@@ -178,8 +178,8 @@
     text-align: right;
     padding: 2%;
     justify-content: center;
-    left: 102%;
-    top: -19vh;
+    left: 106%;
+    top: -9vh;
   }
 
 

@@ -3,7 +3,7 @@
   text-indent: 6.9%;
   font-size: 45px;
   position: relative;
-  top: -15px;
+  top: -10px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -13,7 +13,6 @@
 
 #course-create-form {
   background-color: #ffffff;
-  margin: 5% 0% 0% 10%;
   width: 75%;
   justify-content: center;
   display:grid;
@@ -21,8 +20,8 @@
   height: 80vh; 
   width: 80vw; 
   position: relative;
-  left: -8vh;
-  bottom: 8vh;
+  left: 8vh;
+  bottom: 4vh;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
@@ -145,15 +144,15 @@
   border: #395986;
   font-size: 20px;
   cursor: pointer;
-  width: 50%;  
+  width: 50%;
   display: flex;
-  border-radius: 25px; 
-  /* text-align: right; */
-  padding: 5%;
+  border-radius: 25px;
+
+  padding: 4%;
   justify-content: center;
-  left: 170%;
-  top: 8vh;
-  justify-self: left;
+  left: 123%;
+  top: 12vh;
+
 }
 
 #course-create-button:hover{
