@@ -165,14 +165,14 @@ function LectureList(props) {
                             <span className="close" onClick={handleClosePopup}>&times;</span>
                             <h2>Enter Your Details</h2>
                             <div>
-                              <label className='field1-label' htmlFor="textField1">Field 1:</label>
+                              <label className='field1-label' htmlFor="textField1">Status:</label>
                               <input className='popup-input'
                                 type="text"
                                 id="textField1"
                                 value={Attendance_Status}
                                 onChange={(e) => setAttendance_Status(e.target.value)}
                               /><br /><br />
-                              <label className='field2-label' htmlFor="textField2">Field 2:</label>
+                              <label className='field2-label' htmlFor="textField2">Source:</label>
                               <input className='popup-input'
                                 type="text"
                                 id="textField2"
