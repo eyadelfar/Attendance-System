@@ -12,7 +12,6 @@ This project is a comprehensive Attendance System that integrates backend, compu
 - [Usage](#usage)
 - [Project Structure](#project-structure)
 - [Contributing](#contributing)
-- [License](#license)
 - [Acknowledgements](#acknowledgements)
 
 ## Features
