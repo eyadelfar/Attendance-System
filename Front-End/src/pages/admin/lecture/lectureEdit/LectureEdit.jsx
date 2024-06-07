@@ -67,6 +67,7 @@ const LectureEdit = () => {
             }
           });
         //   console.log(response.data);
+        window.location.href = '/LectureList';
         } catch (error) {
           console.error(error);
         }

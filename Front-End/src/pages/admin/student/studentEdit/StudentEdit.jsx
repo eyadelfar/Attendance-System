@@ -47,7 +47,7 @@ const StudentEdit = () => {
               'Content-Type': 'application/json'
             }
           });
-        
+          window.location.href = '/StudentList';
         } catch (error) {
           console.error(error);
         }

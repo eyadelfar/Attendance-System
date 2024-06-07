@@ -90,7 +90,7 @@ function CourseList(props) {
               <td>{course.num_registered}</td>
               <td>{course.fullname}</td>
               <td>
-              <a href="#" onClick={() => handleLecture(course)}>
+              <a  onClick={() => handleLecture(course)}>
                   <button className="button-course">
                     Go to Lecture
                   </button>

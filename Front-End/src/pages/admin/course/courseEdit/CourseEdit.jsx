@@ -66,6 +66,7 @@ const CourseEdit = () => {
     } catch (error) {
       console.error(error);
     }
+    
   };
 
   const professorOptions = professorData.map((professor) => ({
@@ -130,14 +131,12 @@ const CourseEdit = () => {
             </div>
 
              <div>
-            <a href="/CourseList">
              <button id='edit-course-button' onClick={handleSaveChanges}
              >
             <div className='edit-course-text'>
                     Confirm
            </div>
           </button>
-            </a>
             </div>
           </div>
         </form>

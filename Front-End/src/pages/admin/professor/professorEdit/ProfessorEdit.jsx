@@ -45,7 +45,7 @@ const ProfessorEdit = () => {
             'Content-Type': 'application/json'
           }
         });
-      
+        window.location.href = '/ProfessorList';
       } catch (error) {
         console.error(error);
       }
