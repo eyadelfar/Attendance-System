@@ -7,6 +7,7 @@
   font-family: Poppins, sans-serif;
   background-color: #f2f2f2;
   border-collapse: collapse;
+  border-radius: 10px;
   border-bottom: none; /* Adjust border style and color */
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -103,7 +104,9 @@ background-color: #4a9f48;
 }
 
 .edit-icon {
-  width: 10%;
+  width: 9%;
+  position: relative;
+  bottom: -4px;
 }
 
 .delete-icon {

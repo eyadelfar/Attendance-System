@@ -71,8 +71,9 @@ const StudentSettings = () => {
                 <div id="student-roll">  
                   <h4>{studentData.roll_no}</h4>
                 </div>
-                <div>
-                  <h5 id="role">Level :  {studentData.level}</h5>
+
+                <div id="level">
+                  <h5>Level :  {studentData.level}</h5>
                 </div>
             </div>
             

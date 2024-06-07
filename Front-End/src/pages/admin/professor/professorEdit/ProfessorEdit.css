@@ -8,10 +8,9 @@
 
 #professor-edit-header{
   position: relative;
-  text-indent: 15.9%;
+  text-indent: 26.9%;
   font-size: 45px;
   top: 50px;
-  left: 87px;
   font-weight: 400;
   -webkit-user-select: none;
   user-select: none;
@@ -21,13 +20,9 @@
   background-color: #ffffff;
   justify-content: center;
   justify-items: stretch;
-  /* margin: 6% 0% 0 24%; */
-  position: relative;
-  left: 280px;
-  top: 40px;
+  margin: 5% 12% 0 26%;
   display: grid;
   width: 70vw;
-
 }
 
 #professor-edit-forms-col{
