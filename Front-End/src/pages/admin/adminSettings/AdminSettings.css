@@ -10,8 +10,8 @@
 #admin-settings-top-header {
   position: relative;
   text-indent: 19.9%;
+  top: 45px;
   font-size: 45px;
-  margin-bottom: -10px;
   font-weight: 400;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -22,6 +22,7 @@
 #admin-container-header {
   position: relative;
   color: #FFFFFF;
+  bottom: -15px;
   background-color: #395986;
   border: #395986;
   font-size: 20px;
@@ -44,7 +45,7 @@
   display: flex;
   justify-items: stretch;
   background-color: #BEBEBE;
-  margin: 0 12% 0 20%;
+  margin: 20px 12% 0 20%;
   height: 550px;
   width: 70vw;
   -webkit-user-select: none;

@@ -1,8 +1,8 @@
 .students-main-header{
     position: relative;
-    text-indent: 19.9%;
+    text-indent: 14.9%;
     font-size: 45px;
-    top: -50px;
+    top: -5px;
     font-weight: 400;
     -webkit-user-select: none; /* Safari */
     -moz-user-select: none; /* Firefox */
@@ -59,16 +59,11 @@
   .edit-form-student {
     background-color: #ffffff;
     justify-content: center;
-    display:grid;
+    display: grid;
     display: flex;
-    justify-items:stretch;
-    /* background-color: #BEBEBE; */
-
-    /* height: 70vh;  */
-    height: 800px; 
-    width: 70vw; 
-    /* flex-direction: row; */
-    margin-top: -5.5%;
+    justify-items: stretch;
+    height: 639px;
+    width: 70vw;
     position: relative;
     left: 120px;
 
@@ -113,14 +108,14 @@
   .level-select{
     position: relative;
     background-color: #f3f3f3;
-    border-radius: 10px ;
+    border-radius: 10px;
     border: 2px solid #2b56b4;
     border-width: 2px;
     font-weight: 400;
     font-size: 20px;
-    width: 240px;
+    width: 200px;
     height: 4.5vh;
-    /* top: 10px; */
+    top: 1.5px;
   }
   
   .id-level-form {
@@ -141,6 +136,7 @@
     border: 2px solid #2b56b4;
     font-weight: 400;
     font-size: 20px;
+    margin-left: 20px;
     margin-right: 19px;
     max-width: 140px;
   }
@@ -149,6 +145,7 @@
     display: flex;
     position: relative;
     flex-direction: column;
+    margin-left: 20px;
 
   }
 
@@ -166,7 +163,7 @@
     padding: 3%;
     justify-content: center;
     left: 108%;
-    bottom: 71px;
+
   }
 
 

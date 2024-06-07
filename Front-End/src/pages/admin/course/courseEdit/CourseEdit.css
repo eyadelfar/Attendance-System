@@ -2,7 +2,7 @@
   position: relative;
   text-indent: 6.9%;
   font-size: 45px;
-  top: -40px;
+  top: -10px;
   font-weight: 400;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -12,20 +12,17 @@
 
 #course-edit-form {
   background-color: #ffffff;
-  margin: 1% 1% 25% 12%; /* top right bottom left */
   width: 75%;
   justify-content: center;
-  display:grid;
-  justify-items:stretch;
-  height: 80vh; 
-  width: 77vw; 
+  display: grid;
+  justify-items: stretch;
+  height: 80vh;
+  width: 77vw;
   position: relative;
-  left: -8vh;
-  bottom: 8vh;
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10 and IE11 */
-  user-select: none; /* Standard syntax */
+  left: 9vh;
+  bottom: 4vh;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 #course-edit-form-header{
@@ -146,7 +143,7 @@
     display: flex; /* Use flexbox for layout */
     /* margin-top: 20%; */
     border-radius: 25px; 
-    text-align: right;
+    text-align: center;
     padding: 5%;
     justify-content: center;
     left: 190%;

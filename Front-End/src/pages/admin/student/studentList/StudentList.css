@@ -9,7 +9,7 @@
   border-radius: 10px;
   position: relative;
   left: 25px;
-  bottom: 35px;
+  bottom: -15px;
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10 and IE11 */
