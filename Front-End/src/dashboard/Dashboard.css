@@ -4,9 +4,16 @@ position: relative;
  top: 17px;
  width: fit-content; /* increase the width */
 height: fit-content; /* increase the height */
-   
+-webkit-user-select: none; /* Safari */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10 and IE11 */
+user-select: none; /* Standard syntax */
   }
   .powerbi{
     width: 1290px; /* increase the width */
     height: 750px; /* increase the height */
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
   }
