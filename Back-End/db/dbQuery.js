@@ -130,9 +130,7 @@ module.exports = class DBQuery{
 
     async joinRegisteredCourses(student_id){
         this.query = `SELECT 
-                        c.title, 
-                        c.code, 
-                        c.course_id,
+                        c.*, 
                         f.fullname, 
                         sm.semester_id
                     FROM 
@@ -148,7 +146,7 @@ module.exports = class DBQuery{
                     WHERE 
                         st.student_id = ${student_id}
                     ORDER BY
-                            s.year;` ;        
+                        sm.year;` ;        
         return this;
     }
 

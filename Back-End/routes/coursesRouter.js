@@ -47,12 +47,6 @@ router.get("/course",
         }
     }
 );
-
-// get filtered courses
-router.post("/filter",
-    authenticate,
-    (req,res) => {
-    });
     
 // add course
 router.post("/",
