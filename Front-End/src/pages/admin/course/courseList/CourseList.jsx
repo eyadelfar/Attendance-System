@@ -70,14 +70,6 @@ function CourseList(props) {
             </button>
           </a>
         </div>
-        <div>
-          <a href="/DbCourseCreate">
-            <button className="create-course1">
-              <img className="plus-icon" src={plus} alt={'image'} />
-              Create New Course
-            </button>
-          </a>
-        </div>
       </div>
       <table className="course-table">
         <thead>
