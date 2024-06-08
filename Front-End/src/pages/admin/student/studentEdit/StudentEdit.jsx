@@ -124,7 +124,7 @@ const StudentEdit = () => {
                     <div >
                        <button id='edit-confirm-button' onClick={() => {
                        handleSaveChanges();
-                      window.location.reload();
+                      // window.location.reload();
                        }}>
                          <div className='create-button-text'>
                                 Confirm
