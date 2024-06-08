@@ -71,12 +71,20 @@ const SideBar = () => {
                 <span className="link-text">Dashboard</span>
               </NavLink>
             )}
+              {isRoleAdmin && (
+              <NavLink to="/DbCourseList" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
+                <span className="icon">
+                  <img src={session} alt="session" style={{ marginRight: '15px' }} />
+                </span>
+                <span className="link-text">Courses</span>
+              </NavLink>
+             )} 
             {isRoleAdmin && (
               <NavLink to="/CourseList" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                 <span className="icon">
                   <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
                 </span>
-                <span className="link-text">Courses</span>
+                <span className="link-text">Semester</span>
               </NavLink>
             )}
             {isRoleStudent && (
@@ -84,7 +92,7 @@ const SideBar = () => {
                 <span className="icon">
                   <img src={courses} alt="courses" style={{ marginRight: '15px' }} />
                 </span>
-                <span className="link-text">Courses</span>
+                <span className="link-text">Semester</span>
               </NavLink>
             )}
             {isRoleAdmin && (
@@ -103,22 +111,6 @@ const SideBar = () => {
                 <span className="link-text">Professors</span>
               </NavLink>
             )}
-            {/* {isRoleAdmin && (
-              <NavLink to="/LectureList" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="icon">
-                  <img src={session} alt="session" style={{ marginRight: '15px' }} />
-                </span>
-                <span className="link-text">Lectures</span>
-              </NavLink>
-            )}
-            {isRoleStudent && (
-              <NavLink to="/LectureListStudent" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
-                <span className="icon">
-                  <img src={session} alt="session" style={{ marginRight: '15px' }} />
-                </span>
-                <span className="link-text">Lectures</span>
-              </NavLink>
-            )} */}
             {isRoleAdmin && (
               <NavLink to="/register" className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}>
                 <span className="icon">

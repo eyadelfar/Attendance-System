@@ -88,18 +88,18 @@ const CourseCreate = () => {
 //   professorData.map((professor) => console.log(professor));
   return (
     <div className="">
-      <h1 id='course-create-header'>Courses</h1>
+      <h1 id='course-create-header'>Semester</h1>
       <div id="course-create-form">
         <form id='course-create-forms-parent'>
           <div id='course-create-form-child'>
             <div id="course-create-form-header">
-              <h1>Create Course </h1>
+              <h1>Create Semester </h1>
             </div>
 
             <div className="course-create-form-field">
-              <label >Course Name <span className='mandatory'>*</span></label>  
+              <label >Semester Name <span className='mandatory'>*</span></label>  
               <select className="course-select" value={selectedCourse.value} onChange={(event) => setSelectedCourse(event.target)}>
-                <option value="">Select A Course</option>
+                <option value="">Select A Semester</option>
                 {courseOptions.map((option) => <option value={option.value}>{option.label}</option>)}
               </select>
             </div>

@@ -18,6 +18,9 @@ import CourseEdit from '../pages/admin/course/courseEdit/CourseEdit';
 import Register from '../pages/admin/register/Register';
 import CourseListStudent from '../pages/student/course/CourseList';
 import LectureListStudent from '../pages/student/lecture/LectureList';
+import DbCourseCreate from '../pages/admin/semester/DbcourseCreate/DbCourseCreate';
+import DbCourseEdit from '../pages/admin/semester/DbcourseEdit/DbCourseEdit';
+import DbCourseList from '../pages/admin/semester/DbcourseList/DbCourseList';
 import TEST from'../pages/TEST';
 import Dashboard from '../dashboard/Dashboard';
 const Router = () => {
@@ -44,6 +47,10 @@ const Router = () => {
             <Route path='/LectureCreate' element={<LectureCreate/>}/>
             <Route path='/LectureList' element={<LectureList/>}/>
             <Route path='/LectureEdit' element={<LectureEdit/>}/>
+
+            <Route path='/DbCourseCreate' element={<DbCourseCreate/>}/>
+            <Route path="/DbCourseEdit" element={<DbCourseEdit/>} />
+            <Route path="/DbCourseList" element={<DbCourseList/>} />
 
             <Route path='/CourseCreate' element={<CourseCreate/>}/>
             <Route path="/CourseEdit" element={<CourseEdit/>} />

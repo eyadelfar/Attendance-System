@@ -1,0 +1,121 @@
+/* Default styles */
+.course-list {
+    width: 100%;
+    height: auto; /* Adjust height for better responsiveness */
+    padding: 20px;
+    position: relative;
+    left: 25px;
+    bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f2f2f2;
+    border-radius: 10px;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
+    overflow-y: auto;
+  }
+  
+  .course-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #ddd;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
+  }
+  
+  .course-list thead th {
+    background-color: #ffffff;
+    font-weight: bold;
+    padding: 15px;
+    text-align: center;
+  }
+  
+  .course-table {
+    width: 100%; /* Ensure full width usage */
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0 30px;
+    row-gap: 20px !important;
+  }
+  
+  .create-course {
+    color: #fff;
+    background-color: #4a9f48;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    text-align: center;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .create-course1 {
+    color: #fff;
+    background-color: #4a9f48;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 25px;
+    text-align: center;
+    padding: 8px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .create-course:hover {
+    background-color: #3e8e41;
+  }
+  
+  .delete-course {
+    border: none;
+    padding: 0px 1px;
+    background: none;
+    cursor: pointer;
+    background-color: #f2f2f2;
+  }
+  
+  .delete-course:hover {
+    background-color: transparent;
+  }
+  
+  .body-table-course {
+    background-color: white;
+    position: relative;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .pen-icon-course {
+    width: 15%;
+  }
+  
+  .del-icon-course {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .button-course {
+    color: #fff;
+    background-color: #395986;
+    border: 1px solid #395986;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 20px;
+    text-align: center;
+    padding: 4px 10px;
+    width: 150px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+  }
+  
+  

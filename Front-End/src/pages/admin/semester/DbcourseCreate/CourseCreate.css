@@ -1,0 +1,162 @@
+#course-create-header{
+    position: relative;
+    text-indent: 6.9%;
+    font-size: 45px;
+    position: relative;
+    top: -10px;
+    font-weight: 400;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
+  }
+  
+  #course-create-form {
+    background-color: #ffffff;
+    width: 75%;
+    justify-content: center;
+    display:grid;
+    justify-items:stretch;
+    height: 80vh; 
+    width: 80vw; 
+    position: relative;
+    left: 8vh;
+    bottom: 4vh;
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10 and IE11 */
+    user-select: none; /* Standard syntax */
+  }
+  
+  #course-create-form-header{
+    color:#002251;
+    text-align:center;
+    vertical-align:text-middle;
+    line-height:auto;
+    border-style:hidden;
+    font-size: 3vh;
+    outline:none;
+    position: relative;
+    bottom: 4vh;
+    margin-bottom: -9vh;
+  }
+  
+  #course-create-forms-parent{
+    justify-content: space-around;
+    flex-direction: column;
+    display: block;
+    margin-bottom: 55%;
+  }
+  
+  #course-create-form-child{
+    justify-content: space-between;
+    flex-direction: column;
+    display: block;
+    font-size: 24px;
+    font-weight:400;
+    background-attachment: fixed;
+  }
+  
+  .course-create-form-field {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+  
+  }
+  
+  .course-create-form-field input {
+    background-color: #f3f3f3;
+    height: 4vh;
+    border-radius: 10px ;
+    border: 2px solid #2b56b4;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 2% 5% ;
+  }
+  
+  .course-create-form-field select {
+    background-color: #f3f3f3;
+    height: 5vh;
+    /* min-height:25px; */
+    border-radius: 10px ;
+    border: 2px solid #2b56b4;
+    font-weight: 400;
+    font-size: 20px;
+    padding: 3% 5% 1% 5%;
+  }
+  
+  .course-create-form-field select:first-child{
+    color: #ffffff;
+  }
+  
+  #term-year-form-create {
+    display: flex;
+    flex-direction: row;
+    padding: 5%;
+    margin-bottom: -10%;
+  }
+  
+  /* #term-year-form label{
+    transform: translateX(200px);
+  } */
+  
+  #term-year-form-position-create{
+    transform: translateX(45px);
+  }
+  #term-year-form-create select {
+    background-color: #f3f3f3;
+    height: 5vh;
+    border-radius: 10px ;
+    border-color: #1B3877;
+    font-weight: 400;
+    font-size: 20px;
+    width: 15vh;
+    padding: 2% 5% ;
+    border: 2px solid #2b56b4;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  
+  #course-create-form-field-code {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+    
+  }
+  
+  
+  #course-create-form-field-code input {
+    background-color: #f3f3f3;
+    height: 4vh;
+    border-radius: 10px ;
+    border: 2px solid #2b56b4;
+    font-weight: 400;
+    font-size: 20px;
+    width: 175px;
+    padding: 2% 5% ;
+  }
+  
+  #course-create-button{
+    position: relative;
+    color: #FFFFFF;
+    background-color: #4A9F48;
+    border: #395986;
+    font-size: 20px;
+    cursor: pointer;
+    width: 50%;
+    display: flex;
+    border-radius: 25px;
+  
+    padding: 4%;
+    justify-content: center;
+    left: 123%;
+    top: 12vh;
+  
+  }
+  
+  #course-create-button:hover{
+    background-color: #3bce38;
+  }
+  
+  

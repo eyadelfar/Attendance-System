@@ -6,21 +6,21 @@ import plus from '../../../../pics/plus.png';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'
 
-function CourseList(props) {
+function DbCourseList(props) {
   const [courses, setCourses] = useState([]);
   const [token] = useState(localStorage.getItem('token'));
   const decodedToken = jwtDecode(token);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('http://localhost:4000/semester/courseDetails', {
+    axios.get('http://localhost:4000/courses', {
       headers: {
         'Authorization': token,
         'Content-Type': 'application/json'
       }
     })
     .then((res) => {
-      setCourses(res.data);
+      setCourses(res.data); 
     })
     .catch((error) => {
       setError(error);
@@ -29,24 +29,24 @@ function CourseList(props) {
 
   const handleEdit = (course) => {
     // Save the course.semester_id in local storage
-    localStorage.setItem('semester_id', course.semester_id);
-    // Redirect to the new page
-    window.location.href = '/CourseEdit';
-  };
-
-  const handleLecture = (course) => {
-    // Save the course.semester_id in local storage
-    localStorage.setItem('semester_id', course.semester_id);
     localStorage.setItem('course_id', course.course_id);
     // Redirect to the new page
-    window.location.href = '/LectureList';
+    window.location.href = '/DbCourseEdit';
   };
 
-  const handleDeleteSemester = async (semesterId) => {
+  // const handleLecture = (course) => {
+  //   // Save the course.semester_id in local storage
+  //   localStorage.setItem('semester_id', course.semester_id);
+  //   localStorage.setItem('course_id', course.course_id);
+  //   // Redirect to the new page
+  //   window.location.href = '/LectureList';
+  // };
+
+  const handleDeleteSemester = async (courseId) => {
     try {
       const response = await axios({
         method: 'delete',
-        url: `http://localhost:4000/semester/${semesterId}`,
+        url: `http://localhost:4000/courses/${courseId}`,
         headers: {
           'Authorization': token,
           'Content-Type': 'application/json'
@@ -61,12 +61,12 @@ function CourseList(props) {
   return (
     <div className="course-list">
       <div className="course-header">
-        <h1>Semester</h1>
+        <h1>Courses</h1>
         <div>
-          <a href="/CourseCreate">
+          <a href="/DbCourseCreate">
             <button className="create-course">
               <img className="plus-icon" src={plus} alt={'image'} />
-              Create Semester
+              Create Course
             </button>
           </a>
         </div>
@@ -74,28 +74,27 @@ function CourseList(props) {
       <table className="course-table">
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Course_id</th>
             <th>Code</th>
-            <th>No. Registerations</th>
-            <th>Professor Name</th>
-            <th>Lecture</th>
+            <th>title</th>
+            <th>Credit</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody className="body-table-course">
           {courses.map((course, index) => (
             <tr key={index}>
-              <td>{course.title}</td>
+              <td>{course.course_id}</td>
               <td>{course.code}</td>
-              <td>{course.num_registered}</td>
-              <td>{course.fullname}</td>
-              <td>
+              <td>{course.title}</td>
+              <td>{course.credit}</td>
+              {/* <td>
               <a  onClick={() => handleLecture(course)}>
                   <button className="button-course">
                     Go to Lecture
                   </button>
                 </a>
-              </td>
+              </td> */}
               <td>
                 <a href="#" onClick={() => handleEdit(course)}>
                   <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
@@ -103,7 +102,7 @@ function CourseList(props) {
                 <button
                 className="delete-course"
                 onClick={() => {
-                  handleDeleteSemester(course.semester_id);
+                  handleDeleteSemester(course.course_id);
                   window.location.reload();
                 }}
               >
@@ -118,4 +117,4 @@ function CourseList(props) {
   );
 }
 
-export default CourseList;
+export default DbCourseList;

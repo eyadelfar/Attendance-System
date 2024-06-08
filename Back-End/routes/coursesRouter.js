@@ -27,12 +27,12 @@ router.get("/",
 );
 
 // get one course 
-router.get("/course",
+router.get("/course/:course_id",
     authenticate,
     async (req,res) => {
         try{
             let courseController = new CourseController();
-            let result = await courseController.getCourseBy({course_id:req.body.course_id});
+            let result = await courseController.getCourseBy({course_id:req.params.course_id});
             if(!result.exist){
                 console.log(result.message);
                 res.status(400).json(result.message);
@@ -78,7 +78,7 @@ router.post("/",
 );
 
 // edit course
-router.put("/",
+router.put("/:course_id",
     authorize,
     async (req, res) => {
         try{
@@ -86,7 +86,7 @@ router.put("/",
             let courseOld = new Course();
             let courseNew = new Course();
 
-            courseOld.course_id = req.body.course_id;
+            courseOld.course_id = req.params.course_id;
 
             if(req.body.code)
                 courseNew.code = req.body.code;
@@ -111,13 +111,13 @@ router.put("/",
     }
 );
 
-router.delete("/",
+router.delete("/:course_id",
     authorize,
     async(req,res) => {
         try{
             let courseController = new CourseController();
             let course = new Course();
-            course.course_id = req.body.course_id;
+            course.course_id = req.params.course_id;
 
             let result = await courseController.deleteCourse(course);
             if(!result.problem){
