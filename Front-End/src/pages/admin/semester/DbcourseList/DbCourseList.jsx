@@ -30,17 +30,10 @@ function DbCourseList(props) {
   const handleEdit = (course) => {
     // Save the course.semester_id in local storage
     localStorage.setItem('course_id', course.course_id);
-    // Redirect to the new page
     window.location.href = '/DbCourseEdit';
   };
 
-  // const handleLecture = (course) => {
-  //   // Save the course.semester_id in local storage
-  //   localStorage.setItem('semester_id', course.semester_id);
-  //   localStorage.setItem('course_id', course.course_id);
-  //   // Redirect to the new page
-  //   window.location.href = '/LectureList';
-  // };
+  
 
   const handleDeleteSemester = async (courseId) => {
     try {
@@ -74,7 +67,6 @@ function DbCourseList(props) {
       <table className="course-table">
         <thead>
           <tr>
-            <th>Course_id</th>
             <th>Code</th>
             <th>title</th>
             <th>Credit</th>
@@ -84,17 +76,9 @@ function DbCourseList(props) {
         <tbody className="body-table-course">
           {courses.map((course, index) => (
             <tr key={index}>
-              <td>{course.course_id}</td>
               <td>{course.code}</td>
               <td>{course.title}</td>
               <td>{course.credit}</td>
-              {/* <td>
-              <a  onClick={() => handleLecture(course)}>
-                  <button className="button-course">
-                    Go to Lecture
-                  </button>
-                </a>
-              </td> */}
               <td>
                 <a href="#" onClick={() => handleEdit(course)}>
                   <img className="pen-icon-lecture" src={Edit} alt={'edit-image'} />
