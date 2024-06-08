@@ -54,14 +54,12 @@ module.exports = class DBQuery{
 
     async joinAllCourseDetails(){
         this.query = `SELECT 
-                        s.semester_id,
+                        s.*,
                         c.title, 
                         c.code, 
                         f.fullname, 
                         COUNT(r.student_id) AS num_registered,
                         f.faculty_id,
-                        s.term,
-                        s.year,
                         c.course_id
                     FROM 
                         semester_details s 
@@ -74,7 +72,7 @@ module.exports = class DBQuery{
                     GROUP BY 
                         s.semester_id
                     ORDER BY
-                        s.year;` ;        
+                        num_registered DESC;` ;        
         return this;
     }
 
